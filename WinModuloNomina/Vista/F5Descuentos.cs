@@ -45,7 +45,6 @@ namespace WinModuloNomina.Vista
 
         private void dgvDescuentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            idEmpleadoTxt.Text = e.RowIndex.ToString();
 
         }
 
