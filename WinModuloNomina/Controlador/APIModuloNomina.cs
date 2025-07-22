@@ -27,6 +27,38 @@ namespace WinModuloNomina.Controlador
             return JsonConvert.DeserializeObject<T>(contenido);
 
         }
+        // lo de arriva pero con post: la idea es que funcione para agregar, editar y eliminar
+        public async Task<T> PostAsync<T>(string endpoint, object data)
+        {
+            var json = JsonConvert.SerializeObject(data);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var respuesta = await _httpClient.PostAsync($"{_baseUrl}/{endpoint}", content);
+            respuesta.EnsureSuccessStatusCode();
+            var contenido = await respuesta.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(contenido);
+        }
+        public async Task<T> PutAsync<T>(string endpoint, object data)
+        {
+            var json = JsonConvert.SerializeObject(data);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var respuesta = await _httpClient.PutAsync($"{_baseUrl}/{endpoint}", content);
+            respuesta.EnsureSuccessStatusCode();
+            var contenido = await respuesta.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(contenido);
+        }
+        // eliminar generico <T> tambien 
+        public async Task<bool> DeleteAsync(string endpoint)
+        {
+            var response = await _httpClient.DeleteAsync(_baseUrl + endpoint);
+            return response.IsSuccessStatusCode;
+        }
+
+
+
+
+
+
+
 
     }
 }
