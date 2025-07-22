@@ -60,5 +60,32 @@ namespace WinModuloNomina.Controlador
 
 
 
+        public async Task<T> CrearEntidad<T>(T entidad,
+                                     string endPoint,
+                                     string nombreentidad)
+        {
+            var json = JsonConvert.SerializeObject(entidad);
+            var contenido = new StringContent(JsonConvert.SerializeObject(entidad), Encoding.UTF8, "application/json");
+            var respuesta = await _httpClient.PostAsync($"{_baseUrl}/{endPoint}", contenido);
+           
+            if (!respuesta.IsSuccessStatusCode)
+            {
+                var errorContent = await respuesta.Content.ReadAsStringAsync();
+                throw new Exception($"Error al crear {nombreentidad}: {errorContent}");
+            }
+
+
+            var respuestaContenido = await respuesta.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(respuestaContenido);
+        }
+  
+
+public async Task<T> EliminarAsyn<T>(string endpoint)
+        {
+            var respuesta = await _httpClient.DeleteAsync($"{_baseUrl}/{endpoint}");
+            respuesta.EnsureSuccessStatusCode();
+            var contenido = await respuesta.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(contenido);
+        }
     }
 }
