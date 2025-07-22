@@ -169,44 +169,31 @@ namespace WinModuloNomina.Vista
         {
             if (string.IsNullOrWhiteSpace(txtIdPuesto.Text))
             {
-                MessageBox.Show("Por favor, selecciona un puesto para eliminar.");
+                MessageBox.Show("Por favor, seleccione un puesto para borrar.");
                 return;
             }
-
-            int idPuesto;
-            if (!int.TryParse(txtIdPuesto.Text, out idPuesto))
-            {
-                MessageBox.Show("ID del puesto no es válido.");
-                return;
-            }
-
-            // Confirmación opcional para no eliminar por accidente
-            var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este puesto?", "Confirmar eliminación", MessageBoxButtons.YesNo);
-            if (confirmResult != DialogResult.Yes)
-                return;
+           
 
             try
             {
-                bool eliminado = await _apimodulonomina.DeleteAsync($"PuestoControlador/EliminarPuesto/{idPuesto}");
+                int idPuesto = int.Parse(txtIdPuesto.Text);
+                await _apimodulonomina.DeleteAsync($"PuestoControlador/EliminarPuesto/{idPuesto}" );
                 MessageBox.Show("Puesto eliminado exitosamente.");
-                await CargarPuestos();  // Recarga la tabla con los datos actualizados
-                txtIdPuesto.Clear();
+                await CargarPuestos();
                 txtNombrePuesto.Clear();
                 txtSalarioPuesto.Clear();
-
-
-
-
+                txtIdPuesto.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al eliminar el puesto esta asosiado a un empleado: {ex.Message}");
+                MessageBox.Show($"Error al eliminar el puesto: {ex.Message}");
             }
         }
 
 
-       
-       
+
+
+
 
         private void dgvPuestos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {

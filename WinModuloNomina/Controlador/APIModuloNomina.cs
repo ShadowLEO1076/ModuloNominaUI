@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http.Json;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+using Aplicacion.DTO.DTOs;
+using Infraestructura.AccesoDatos;
 using Newtonsoft.Json;
 
 namespace WinModuloNomina.Controlador
@@ -47,11 +51,25 @@ namespace WinModuloNomina.Controlador
             return JsonConvert.DeserializeObject<T>(contenido);
         }
         // eliminar generico <T> tambien 
-        public async Task<bool> DeleteAsync(string endpoint)
+        public async Task DeleteAsync(string endpoint)
         {
-            var response = await _httpClient.DeleteAsync(_baseUrl + endpoint);
-            return response.IsSuccessStatusCode;
+            var respuesta = await _httpClient.DeleteAsync($"{_baseUrl}/{endpoint}" );
+
+            if (!respuesta.IsSuccessStatusCode)
+            {
+                string contenido = await respuesta.Content.ReadAsStringAsync();
+                throw new Exception($"Error en la petición DELETE: {respuesta.StatusCode} - {contenido}");
+            }
         }
+        // para obtener el resumen de solicitudes de vacaciones en mi dgvSolicitudes:
+        public async Task<List<SolicitudVacacionDTO>> ObtenerResumenSolicitudesVacaciones()
+        {
+            var endpoint = "SolicitudVacacionesControlador/ObtenerResumenSolicitudes";
+            return await GetAsync<List<SolicitudVacacionDTO>>(endpoint);
+        }
+
+        
+
 
 
 
