@@ -22,16 +22,13 @@ namespace WinModuloNomina.Vista
         public F1Puestos()
         {
             InitializeComponent();
-            
+
             ApiUrl = ConfigurationManager.AppSettings["APIBaseUrl"]; // Obtiene la URL de la API desde el archivo de configuración
             _apimodulonomina = new APIModuloNomina(ApiUrl); // Inicializa la instancia de APINomina con la URL de la API
             this.Load += F1Puestos_Load; // Asocia el even
             txtBuscar.TextChanged += txtBuscar_TextChanged;
-            dgvPuestos.CellClick += dgvPuestos_CellClick;
-
-
-
-
+            dgvPuestos.CellClick += dgvPuestos_CellContentClick_1;
+            //BackColor = backColor;
         }
         public async Task CargarPuestos()
         {
@@ -74,13 +71,13 @@ namespace WinModuloNomina.Vista
 
 
 
-        private void  F1Puestos_Load(object sender, EventArgs e)
+        private void F1Puestos_Load(object sender, EventArgs e)
         {
             CargarPuestos(); // usa await correctamente
 
         }
 
-        
+
 
 
         private async void btnCrear_Click(object sender, EventArgs e)
@@ -208,13 +205,10 @@ namespace WinModuloNomina.Vista
         }
 
 
-        private void dgvPuestos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+       
+       
 
-            
-
-        }
-        private void dgvPuestos_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvPuestos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dgvPuestos.Rows.Count)
             {
@@ -227,6 +221,5 @@ namespace WinModuloNomina.Vista
                 }
             }
         }
-
     }
 }
