@@ -47,7 +47,6 @@
             IdEmpleadoLb = new Label();
             idEmplTxt = new TextBox();
             correoTxt = new TextBox();
-            generoTxt = new TextBox();
             nombresTxt = new TextBox();
             apellidosTxt = new TextBox();
             cedulaLb = new Label();
@@ -59,10 +58,12 @@
             puestosCb = new ComboBox();
             fechaNacDtp = new DateTimePicker();
             estadoCheckbox = new CheckBox();
+            generoCb = new ComboBox();
             empleadosDgv = new DataGridView();
             empleadosBindingSource = new BindingSource(components);
             panel3 = new Panel();
             presentLb = new Label();
+            limpiarBtn = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             tablaEmpleados.SuspendLayout();
@@ -79,7 +80,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(935, 144);
+            panel1.Size = new Size(967, 144);
             panel1.TabIndex = 2;
             // 
             // panel2
@@ -90,7 +91,7 @@
             panel2.Controls.Add(buscarBtn);
             panel2.Controls.Add(editarBtn);
             panel2.Controls.Add(crearBtn);
-            panel2.Location = new Point(816, 0);
+            panel2.Location = new Point(848, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(118, 142);
@@ -168,11 +169,11 @@
             tablaEmpleados.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tablaEmpleados.ColumnCount = 6;
             tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18.2203388F));
-            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.7796612F));
-            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23.9406776F));
-            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 26.0593224F));
-            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 78F));
-            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 101F));
+            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.5526733F));
+            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.7730961F));
+            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.52188F));
+            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 105F));
+            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 113F));
             tablaEmpleados.Controls.Add(fecIngresoDtp, 5, 1);
             tablaEmpleados.Controls.Add(telfTxt, 5, 0);
             tablaEmpleados.Controls.Add(apellidosLb, 0, 3);
@@ -183,7 +184,6 @@
             tablaEmpleados.Controls.Add(IdEmpleadoLb, 0, 0);
             tablaEmpleados.Controls.Add(idEmplTxt, 1, 0);
             tablaEmpleados.Controls.Add(correoTxt, 3, 1);
-            tablaEmpleados.Controls.Add(generoTxt, 3, 3);
             tablaEmpleados.Controls.Add(nombresTxt, 1, 2);
             tablaEmpleados.Controls.Add(apellidosTxt, 1, 3);
             tablaEmpleados.Controls.Add(cedulaLb, 2, 0);
@@ -195,6 +195,8 @@
             tablaEmpleados.Controls.Add(puestosCb, 1, 1);
             tablaEmpleados.Controls.Add(fechaNacDtp, 3, 2);
             tablaEmpleados.Controls.Add(estadoCheckbox, 5, 2);
+            tablaEmpleados.Controls.Add(generoCb, 3, 3);
+            tablaEmpleados.Controls.Add(limpiarBtn, 5, 3);
             tablaEmpleados.Location = new Point(12, 9);
             tablaEmpleados.Margin = new Padding(3, 2, 3, 2);
             tablaEmpleados.Name = "tablaEmpleados";
@@ -203,13 +205,13 @@
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tablaEmpleados.Size = new Size(778, 122);
+            tablaEmpleados.Size = new Size(830, 122);
             tablaEmpleados.TabIndex = 3;
             // 
             // fecIngresoDtp
             // 
             fecIngresoDtp.Format = DateTimePickerFormat.Short;
-            fecIngresoDtp.Location = new Point(679, 33);
+            fecIngresoDtp.Location = new Point(718, 33);
             fecIngresoDtp.Name = "fecIngresoDtp";
             fecIngresoDtp.Size = new Size(96, 23);
             fecIngresoDtp.TabIndex = 31;
@@ -217,10 +219,10 @@
             // telfTxt
             // 
             telfTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            telfTxt.Location = new Point(679, 3);
+            telfTxt.Location = new Point(718, 3);
             telfTxt.Margin = new Padding(3, 2, 3, 2);
             telfTxt.Name = "telfTxt";
-            telfTxt.Size = new Size(96, 23);
+            telfTxt.Size = new Size(109, 23);
             telfTxt.TabIndex = 29;
             // 
             // apellidosLb
@@ -235,7 +237,7 @@
             // fechaNacLb
             // 
             fechaNacLb.AutoSize = true;
-            fechaNacLb.Location = new Point(302, 60);
+            fechaNacLb.Location = new Point(282, 60);
             fechaNacLb.Name = "fechaNacLb";
             fechaNacLb.Size = new Size(103, 15);
             fechaNacLb.TabIndex = 21;
@@ -253,7 +255,7 @@
             // correoLb
             // 
             correoLb.AutoSize = true;
-            correoLb.Location = new Point(302, 30);
+            correoLb.Location = new Point(282, 30);
             correoLb.Name = "correoLb";
             correoLb.Size = new Size(43, 15);
             correoLb.TabIndex = 19;
@@ -280,53 +282,44 @@
             // idEmplTxt
             // 
             idEmplTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            idEmplTxt.Location = new Point(112, 3);
+            idEmplTxt.Location = new Point(114, 3);
             idEmplTxt.Margin = new Padding(3, 2, 3, 2);
             idEmplTxt.Name = "idEmplTxt";
             idEmplTxt.ReadOnly = true;
-            idEmplTxt.Size = new Size(184, 23);
+            idEmplTxt.Size = new Size(162, 23);
             idEmplTxt.TabIndex = 7;
             // 
             // correoTxt
             // 
             correoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            correoTxt.Location = new Point(445, 33);
+            correoTxt.Location = new Point(402, 33);
             correoTxt.Margin = new Padding(3, 2, 3, 2);
             correoTxt.Name = "correoTxt";
-            correoTxt.Size = new Size(150, 23);
+            correoTxt.Size = new Size(205, 23);
             correoTxt.TabIndex = 13;
-            // 
-            // generoTxt
-            // 
-            generoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            generoTxt.Location = new Point(445, 94);
-            generoTxt.Margin = new Padding(3, 2, 3, 2);
-            generoTxt.Name = "generoTxt";
-            generoTxt.Size = new Size(150, 23);
-            generoTxt.TabIndex = 9;
             // 
             // nombresTxt
             // 
             nombresTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            nombresTxt.Location = new Point(112, 63);
+            nombresTxt.Location = new Point(114, 63);
             nombresTxt.Margin = new Padding(3, 2, 3, 2);
             nombresTxt.Name = "nombresTxt";
-            nombresTxt.Size = new Size(184, 23);
+            nombresTxt.Size = new Size(162, 23);
             nombresTxt.TabIndex = 15;
             // 
             // apellidosTxt
             // 
             apellidosTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            apellidosTxt.Location = new Point(112, 94);
+            apellidosTxt.Location = new Point(114, 94);
             apellidosTxt.Margin = new Padding(3, 2, 3, 2);
             apellidosTxt.Name = "apellidosTxt";
-            apellidosTxt.Size = new Size(184, 23);
+            apellidosTxt.Size = new Size(162, 23);
             apellidosTxt.TabIndex = 16;
             // 
             // cedulaLb
             // 
             cedulaLb.AutoSize = true;
-            cedulaLb.Location = new Point(302, 0);
+            cedulaLb.Location = new Point(282, 0);
             cedulaLb.Name = "cedulaLb";
             cedulaLb.Size = new Size(44, 15);
             cedulaLb.TabIndex = 17;
@@ -335,43 +328,43 @@
             // cedulaTxt
             // 
             cedulaTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            cedulaTxt.Location = new Point(445, 3);
+            cedulaTxt.Location = new Point(402, 3);
             cedulaTxt.Margin = new Padding(3, 2, 3, 2);
             cedulaTxt.Name = "cedulaTxt";
-            cedulaTxt.Size = new Size(150, 23);
+            cedulaTxt.Size = new Size(205, 23);
             cedulaTxt.TabIndex = 10;
             // 
             // telefonoLb
             // 
             telefonoLb.AutoSize = true;
-            telefonoLb.Location = new Point(601, 0);
+            telefonoLb.Location = new Point(613, 0);
             telefonoLb.Name = "telefonoLb";
             telefonoLb.Size = new Size(52, 15);
             telefonoLb.TabIndex = 24;
-            telefonoLb.Text = "Telefono";
+            telefonoLb.Text = "Teléfono";
             // 
             // generoLb
             // 
             generoLb.AutoSize = true;
-            generoLb.Location = new Point(302, 90);
+            generoLb.Location = new Point(282, 90);
             generoLb.Name = "generoLb";
             generoLb.Size = new Size(45, 15);
             generoLb.TabIndex = 23;
-            generoLb.Text = "Genero";
+            generoLb.Text = "Género";
             // 
             // fechaIngresoLb
             // 
             fechaIngresoLb.AutoSize = true;
-            fechaIngresoLb.Location = new Point(601, 30);
+            fechaIngresoLb.Location = new Point(613, 30);
             fechaIngresoLb.Name = "fechaIngresoLb";
-            fechaIngresoLb.Size = new Size(46, 30);
+            fechaIngresoLb.Size = new Size(80, 15);
             fechaIngresoLb.TabIndex = 25;
             fechaIngresoLb.Text = "Fecha Ingreso";
             // 
             // estadoLb
             // 
             estadoLb.AutoSize = true;
-            estadoLb.Location = new Point(601, 60);
+            estadoLb.Location = new Point(613, 60);
             estadoLb.Name = "estadoLb";
             estadoLb.Size = new Size(42, 15);
             estadoLb.TabIndex = 26;
@@ -380,27 +373,35 @@
             // puestosCb
             // 
             puestosCb.FormattingEnabled = true;
-            puestosCb.Location = new Point(112, 33);
+            puestosCb.Location = new Point(114, 33);
             puestosCb.Name = "puestosCb";
-            puestosCb.Size = new Size(137, 23);
+            puestosCb.Size = new Size(153, 23);
             puestosCb.TabIndex = 27;
             // 
             // fechaNacDtp
             // 
             fechaNacDtp.Format = DateTimePickerFormat.Short;
-            fechaNacDtp.Location = new Point(445, 63);
+            fechaNacDtp.Location = new Point(402, 63);
             fechaNacDtp.Name = "fechaNacDtp";
-            fechaNacDtp.Size = new Size(111, 23);
+            fechaNacDtp.Size = new Size(194, 23);
             fechaNacDtp.TabIndex = 28;
             // 
             // estadoCheckbox
             // 
             estadoCheckbox.AutoSize = true;
-            estadoCheckbox.Location = new Point(679, 63);
+            estadoCheckbox.Location = new Point(718, 63);
             estadoCheckbox.Name = "estadoCheckbox";
             estadoCheckbox.Size = new Size(15, 14);
             estadoCheckbox.TabIndex = 32;
             estadoCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // generoCb
+            // 
+            generoCb.FormattingEnabled = true;
+            generoCb.Location = new Point(402, 93);
+            generoCb.Name = "generoCb";
+            generoCb.Size = new Size(205, 23);
+            generoCb.TabIndex = 33;
             // 
             // empleadosDgv
             // 
@@ -410,9 +411,9 @@
             empleadosDgv.Margin = new Padding(3, 2, 3, 2);
             empleadosDgv.Name = "empleadosDgv";
             empleadosDgv.RowHeadersWidth = 51;
-            empleadosDgv.Size = new Size(935, 189);
+            empleadosDgv.Size = new Size(967, 189);
             empleadosDgv.TabIndex = 8;
-            empleadosDgv.CellContentClick += empleadosDgv_CellContentClick;
+            empleadosDgv.CellClick += empleadosDgv_CellClick;
             // 
             // panel3
             // 
@@ -421,24 +422,34 @@
             panel3.Location = new Point(0, 144);
             panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(935, 36);
+            panel3.Size = new Size(967, 36);
             panel3.TabIndex = 9;
             // 
             // presentLb
             // 
             presentLb.Anchor = AnchorStyles.None;
             presentLb.AutoSize = true;
-            presentLb.Location = new Point(462, 6);
+            presentLb.Location = new Point(478, 6);
             presentLb.Name = "presentLb";
             presentLb.Size = new Size(65, 15);
             presentLb.TabIndex = 10;
             presentLb.Text = "Empleados";
             // 
+            // limpiarBtn
+            // 
+            limpiarBtn.Location = new Point(718, 93);
+            limpiarBtn.Name = "limpiarBtn";
+            limpiarBtn.Size = new Size(109, 23);
+            limpiarBtn.TabIndex = 34;
+            limpiarBtn.Text = "Limpiar datos";
+            limpiarBtn.UseVisualStyleBackColor = true;
+            limpiarBtn.Click += limpiarBtn_Click;
+            // 
             // F2Empleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(935, 369);
+            ClientSize = new Size(967, 369);
             Controls.Add(empleadosDgv);
             Controls.Add(panel3);
             Controls.Add(panel1);
@@ -476,7 +487,6 @@
         private TextBox nombresTxt;
         private TextBox textBox8;
         private TextBox correoTxt;
-        private TextBox generoTxt;
         private Panel panel2;
         private DataGridView empleadosDgv;
         private FontAwesome.Sharp.IconButton borrarBtn;
@@ -508,5 +518,7 @@
         private DataGridViewTextBoxColumn fechaModificacionDataGridViewTextBoxColumn;
         private BindingSource empleadosBindingSource;
         private CheckBox estadoCheckbox;
+        private ComboBox generoCb;
+        private Button limpiarBtn;
     }
 }

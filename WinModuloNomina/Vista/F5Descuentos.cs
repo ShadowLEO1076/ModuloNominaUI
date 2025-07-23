@@ -79,7 +79,7 @@ namespace WinModuloNomina.Vista
                     Fecha = DateOnly.FromDateTime(fechaDTP.Value),
                     Tipo = tipoTxt.Text,
                 };
-                await _api.CrearEntidad<Descuentos>(entidad, "DescuentosControlador/AgregarAsync", "Descuentos");
+                await _api.PostAsync<Descuentos>("DescuentosControlador/AgregarAsync", entidad);
                 await CargarDescuentos();
 
             }
