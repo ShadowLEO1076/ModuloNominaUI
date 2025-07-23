@@ -97,7 +97,7 @@
             tableLayoutPanel1.Controls.Add(textBox7, 3, 1);
             tableLayoutPanel1.Controls.Add(textBox3, 3, 3);
             tableLayoutPanel1.Controls.Add(textBox2, 3, 4);
-            tableLayoutPanel1.Location = new Point(245, 155);
+            tableLayoutPanel1.Location = new Point(257, 165);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
@@ -295,7 +295,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Location = new Point(303, 169);
+            dataGridView1.Location = new Point(356, 321);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(194, 112);
