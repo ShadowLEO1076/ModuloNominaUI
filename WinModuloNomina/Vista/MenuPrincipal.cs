@@ -37,7 +37,7 @@ namespace WinModuloNomina.Vista
 
             // Configuración inicial
             labelTitulo.Text = "HOME S.NOMINA";
-            labelTitulo.ForeColor = iconDefaultColor;
+            //labelTitulo.ForeColor = iconDefaultColor;
 
             // Establecer eventos para todos los botones del menú
             foreach (Control control in panelMenu.Controls)
@@ -46,7 +46,7 @@ namespace WinModuloNomina.Vista
                 {
                     var btn = (IconButton)control;
                     btn.MouseEnter += Button_MouseEnter;
-                    btn.MouseLeave += Button_MouseLeave;
+                   // btn.MouseLeave += Button_MouseLeave;
                 }
             }
         }
@@ -65,20 +65,20 @@ namespace WinModuloNomina.Vista
                 // Restablecer el botón anterior
                 if (currentButton != null)
                 {
-                    currentButton.BackColor = menuColor;
+                   // currentButton.BackColor = menuColor;
                     currentButton.ForeColor = buttonDefaultColor;
                     currentButton.IconColor = buttonDefaultColor;
-                    currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
-                    currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+                    //currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+                    //currentButton.ImageAlign = ContentAlignment.MiddleLeft;
                 }
 
                 // Establecer el nuevo botón activo
                 currentButton = (IconButton)senderBtn;
-                currentButton.BackColor = Color.FromArgb(0, 122, 204); // Azul similar al de tu diseño
+                //currentButton.BackColor = Color.FromArgb(0, 122, 204); // Azul similar al de tu diseño
                 currentButton.ForeColor = buttonSelectedColor;
                 currentButton.IconColor = iconSelectedColor;
-                currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
-                currentButton.ImageAlign = ContentAlignment.MiddleRight;
+                //currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
+                //currentButton.ImageAlign = ContentAlignment.MiddleRight;
             }
         }
 
@@ -100,7 +100,7 @@ namespace WinModuloNomina.Vista
 
             // Actualizar el título
             labelTitulo.Text = title;
-            labelTitulo.ForeColor = iconDefaultColor;
+            //labelTitulo.ForeColor = iconDefaultColor;
 
             // Mostrar el formulario
             childForm.BringToFront();
@@ -221,7 +221,7 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        private void Button_MouseLeave(object sender, EventArgs e)
+        /*private void Button_MouseLeave(object sender, EventArgs e)
         {
             var btn = (IconButton)sender;
             if (btn != currentButton)
@@ -231,7 +231,7 @@ namespace WinModuloNomina.Vista
                 btn.IconColor = buttonDefaultColor;
             }
         }
-
+        */
         #endregion
     }
 }

@@ -116,6 +116,7 @@
             btnCerrar.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCerrar.UseVisualStyleBackColor = false;
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // btnIngresar
             // 

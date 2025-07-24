@@ -48,6 +48,7 @@
             txtIdPuesto = new TextBox();
             dgvPuestos = new DataGridView();
             puestosBindingSource1 = new BindingSource(components);
+            puestosBindingSource2 = new BindingSource(components);
             idPuestoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             salarioBaseDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -58,6 +59,7 @@
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPuestos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)puestosBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)puestosBindingSource2).BeginInit();
             SuspendLayout();
             // 
             // panel3
@@ -245,7 +247,7 @@
             dgvPuestos.AutoGenerateColumns = false;
             dgvPuestos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPuestos.Columns.AddRange(new DataGridViewColumn[] { idPuestoDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, salarioBaseDataGridViewTextBoxColumn });
-            dgvPuestos.DataSource = puestosBindingSource1;
+            dgvPuestos.DataSource = puestosBindingSource2;
             dgvPuestos.Dock = DockStyle.Fill;
             dgvPuestos.Location = new Point(0, 222);
             dgvPuestos.Name = "dgvPuestos";
@@ -257,6 +259,10 @@
             // puestosBindingSource1
             // 
             puestosBindingSource1.DataSource = typeof(Infraestructura.AccesoDatos.Puestos);
+            // 
+            // puestosBindingSource2
+            // 
+            puestosBindingSource2.DataSource = typeof(Infraestructura.AccesoDatos.Puestos);
             // 
             // idPuestoDataGridViewTextBoxColumn
             // 
@@ -304,6 +310,7 @@
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPuestos).EndInit();
             ((System.ComponentModel.ISupportInitialize)puestosBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)puestosBindingSource2).EndInit();
             ResumeLayout(false);
         }
 
@@ -313,9 +320,6 @@
         private TextBox textBox9;
         private TextBox textBox5;
         private Panel panel3;
-        private DataGridViewTextBoxColumn idPuestoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn salarioBaseDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -337,5 +341,9 @@
         private Label label11;
         private DataGridView dgvPuestos;
         private BindingSource puestosBindingSource1;
+        private DataGridViewTextBoxColumn idPuestoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn salarioBaseDataGridViewTextBoxColumn;
+        private BindingSource puestosBindingSource2;
     }
 }

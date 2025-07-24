@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -11,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Aplicacion.DTO.DTOs;
 using WinModuloNomina.Modelo;
+using WinModuloNomina.Modelo.DTOS;
 
 namespace WinModuloNomina.Vista
 {
@@ -31,64 +31,67 @@ namespace WinModuloNomina.Vista
 
             try
             {
+                // Mostrar indicador de carga
+                btnIngresar.Enabled = false;
+                Cursor.Current = Cursors.WaitCursor;
+
                 var loginDto = new LoginDTO
                 {
                     Cedula = txtCedula.Text.Trim(),
                     Contraseña = txtContraseña.Text.Trim()
                 };
 
-                // Configuración especial para desarrollo
-                var handler = new HttpClientHandler
-                {
-                    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-                };
-
-                using HttpClient client = new HttpClient(handler);
+                // Configuración del HttpClient (simplificada)
+                using HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("https://localhost:7164/");
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Debug: Ver request
-                var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(loginDto),
-                    Encoding.UTF8,
-                    "application/json");
-
-                Console.WriteLine($"Request: {await jsonContent.ReadAsStringAsync()}");
-
-                var response = await client.PostAsync("api/UsuariosControlador/login", jsonContent);
-
-                // Debug: Ver respuesta en crudo
-                string rawResponse = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Raw response: {rawResponse}");
+                var response = await client.PostAsJsonAsync("api/UsuariosControlador/login", loginDto);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    try
-                    {
-                        var usuario = await response.Content.ReadFromJsonAsync<UsuarioDTO>();
-                        MessageBox.Show($"Bienvenido, {usuario.NombreCompleto}", "Éxito",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        new MenuPrincipal().Show();
-                        this.Hide();
-                    }
-                    catch (JsonException)
-                    {
-                        MessageBox.Show($"La API devolvió formato inválido:\n{rawResponse}",
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    var usuario = await response.Content.ReadFromJsonAsync<UsuarioDTO>();
+
+                    // GUARDAR DATOS EN SESIÓN (lo que necesitas)
+                    UsuarioSesion.Cedula = usuario.Cedula;
+                    UsuarioSesion.Rol = usuario.Rol;
+                    
+
+                    // Mostrar menú principal
+                    new MenuPrincipal().Show();
+                    this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show($"Error HTTP {(int)response.StatusCode}: {response.ReasonPhrase}\n{rawResponse}",
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Error en autenticación: {response.ReasonPhrase}\n{errorContent}",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Error de conexión: {ex.Message}", "Error de red",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error inesperado:\n{ex.Message}\n\nStack Trace:\n{ex.StackTrace}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                // Restaurar controles
+                btnIngresar.Enabled = true;
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            // Cierra la aplicación
+            Application.Exit();
+
         }
     }
 }

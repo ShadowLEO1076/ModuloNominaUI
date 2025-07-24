@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinModuloNomina.Modelo
+namespace WinModuloNomina.Modelo.DTOS
 {
     public class EmpleadoDTO
     {

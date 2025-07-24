@@ -6,7 +6,6 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Aplicacion.DTO.DTOs;
 using Infraestructura.AccesoDatos;
 using Newtonsoft.Json;
 
@@ -61,14 +60,16 @@ namespace WinModuloNomina.Controlador
                 throw new Exception($"Error en la petición DELETE: {respuesta.StatusCode} - {contenido}");
             }
         }
-        // para obtener el resumen de solicitudes de vacaciones en mi dgvSolicitudes:
-        public async Task<List<SolicitudVacacionDTO>> ObtenerResumenSolicitudesVacaciones()
+        public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
         {
-            var endpoint = "SolicitudVacacionesControlador/ObtenerResumenSolicitudes";
-            return await GetAsync<List<SolicitudVacacionDTO>>(endpoint);
+            var respuesta = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");
+            respuesta.EnsureSuccessStatusCode();
+            var contenido = await respuesta.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(contenido);
+
         }
 
-        
+
 
 
 
