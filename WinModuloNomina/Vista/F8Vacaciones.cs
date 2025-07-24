@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace WinModuloNomina.Vista
                 this.Load += F8Vacaciones_Load;
                 txtBuscar2.TextChanged += txtBuscar2_TextChanged;
                 dgvSolicitudes.CellClick += dgvSolicitudes_CellContentClick;
-             
+
                 txtIdSVacacion.Enabled = false;
                 txtidAprovacion.Enabled = false;
 
@@ -265,34 +266,71 @@ namespace WinModuloNomina.Vista
         }
         private void dataRevisionV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // quiero que al selecionar cualquier campo de la tabla de revisiones, se muestre el id de la revision que es IdAprobacion 
-            // 2por cualcuquier celda seleccionada , se muestre el id de la aprovacion en el txtIdAprovacion
-            if (e.RowIndex < 0 || e.RowIndex >= dataRevisionV.Rows.Count) return;
+            // Verifica que el click no fue en encabezado o fuera de rango
+            if (e.RowIndex < 0 || e.RowIndex >= dataRevisionV.Rows.Count)
+            {
+                txtidAprovacion.Text = string.Empty;
+                return;
+            }
+
             try
             {
-                if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+                // Obtener la fila seleccionada de forma segura
+                DataGridViewRow selectedRow = dataRevisionV.Rows[e.RowIndex];
 
-                try
+                // Verificar que la fila y la celda existen
+                if (selectedRow == null || selectedRow.Cells.Count == 0)
                 {
-                    var valorId = dataRevisionV.Rows[e.RowIndex].Cells[0].Value?.ToString();
-                    if (!string.IsNullOrWhiteSpace(valorId))
-                    {
-                        txtidAprovacion.Text = valorId;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MostrarError("Error al seleccionar revisión", ex, false);
+                    txtidAprovacion.Text = string.Empty;
+                    return;
                 }
 
+                // Intentar obtener el ID de aprobación de la primera columna
+                object cellValue = selectedRow.Cells[0].Value;
+                string valorId = cellValue?.ToString()?.Trim() ?? string.Empty;
+
+                // Validar que el valor no esté vacío
+                if (string.IsNullOrEmpty(valorId))
+                {
+                    txtidAprovacion.Text = string.Empty;
+                    MessageBox.Show("La fila seleccionada no contiene un ID válido.",
+                                  "Advertencia",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Asignar el valor al TextBox
+                txtidAprovacion.Text = valorId;
+
+                // Opcional: Seleccionar automáticamente la fila completa
+                selectedRow.Selected = true;
+
+                // Opcional: Deseleccionar otras filas
+                foreach (DataGridViewRow row in dataRevisionV.Rows)
+                {
+                    if (row.Index != e.RowIndex) row.Selected = false;
+                }
+            }
+            catch (ArgumentOutOfRangeException argEx)
+            {
+                txtidAprovacion.Text = string.Empty;
+                MostrarError("Error de rango al seleccionar revisión", argEx, false);
+            }
+            catch (NullReferenceException nullEx)
+            {
+                txtidAprovacion.Text = string.Empty;
+                MostrarError("Referencia nula al seleccionar revisión", nullEx, false);
             }
             catch (Exception ex)
             {
-                MostrarError("Error al seleccionar revisión", ex, false);
+                txtidAprovacion.Text = string.Empty;
+                MostrarError("Error inesperado al seleccionar revisión", ex, false);
             }
-
         }
-       
+
+
+
 
         private void dgvSolicitudes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -425,33 +463,46 @@ namespace WinModuloNomina.Vista
 
         private async void btnCrear_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!ValidarFormulario(true)) return; // Validamos fechas al crear
+            if (!ValidarFormulario(true)) return;
 
-                var nuevasolicitudes = new SolicitudVacaciones
+            // Crear solicitud de vacaciones
+            var nuevaSolicitud = new SolicitudVacaciones
+            {
+                EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
+                FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
+                FechaFin = DateOnly.FromDateTime(dateFin.Value),
+                DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
+                Estado = cbxEstado.Text,
+                FechaCreacion = DateTime.Now.Date
+            };
+
+            // Enviar solicitud
+            var solicitudCreada = await _apimodulonomina.PostAsync<SolicitudVacaciones>(
+                "SolicitudVacacionesControlador/InsertarSolicitudVacaciones",
+                nuevaSolicitud);
+            await Task.Delay(5000);
+
+            // Si es aprobada, crear aprobación automática
+            if (nuevaSolicitud.Estado == "Aprobado")
+            {
+                // metodo para esperar 5 segundos antes de continuar 
+                
+                
+                var aprobacion = new AprobacionVacaciones
                 {
-                    EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
-                    FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
-                    FechaFin = DateOnly.FromDateTime(dateFin.Value),
-                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
-                    Estado = cbxEstado.Text,
-                    FechaCreacion = DateTime.Now.Date
+                    SolicitudId = solicitudCreada.IdSolicitud,
+                    FechaAprobacion = DateTime.Now.Date,
+                    UsuarioAprobador = UsuarioSesion.Cedula
                 };
 
-                await _apimodulonomina.PostAsync<SolicitudVacaciones>(
-                    "SolicitudVacacionesControlador/InsertarSolicitudVacaciones",
-                    nuevasolicitudes);
+                await _apimodulonomina.PostAsync<AprobacionVacaciones>(
+                    "AprovacionVacacionesControlador/InsertarAprobacionVacaciones",
+                    aprobacion);
+            }
 
-                MessageBox.Show("Solicitud de vacaciones creada exitosamente. 🏖️",
-                               "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarFormulario();
-                await CargarVacaciones();
-            }
-            catch (Exception ex)
-            {
-                MostrarError("Error al crear solicitud", ex);
-            }
+            // Actualizar interfaz
+            LimpiarFormulario();
+            await CargarVacaciones();
         }
 
 
@@ -505,6 +556,68 @@ namespace WinModuloNomina.Vista
 
 
 
+
+
+
+        private void LimpiarFormulario()
+        {
+            try
+            {
+                cbxEmpleado.SelectedIndex = -1;
+                txtDiasSolicitados.Text = string.Empty;
+                cbxEstado.SelectedIndex = 0;
+                dateInicio.Value = DateTime.Today;
+                dateFin.Value = DateTime.Today.AddDays(1);
+            }
+            catch (Exception ex)
+            {
+                MostrarError("Error al limpiar formulario", ex, false);
+            }
+        }
+
+        private void MostrarError(string mensaje, Exception ex, bool esCritico = true)
+        {
+            string mensajeCompleto = $"{mensaje}: {ex.Message}";
+
+            if (esCritico)
+            {
+                MessageBox.Show(mensajeCompleto, "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show(mensajeCompleto, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            // Loggear el error (podrías implementar un sistema de logging aquí)
+            Console.WriteLine($"{DateTime.Now}: {mensajeCompleto}\n{ex.StackTrace}");
+        }
+
+        private async void btnBorrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    int idsolicitud = int.Parse(txtIdSVacacion.Text);
+                    await _apimodulonomina.DeleteAsync($"SolicitudVacacionesControlador/EliminarSolicitudVacaciones/{idsolicitud}");
+                    MessageBox.Show("solicitud eliminado exitosamente.");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al eliminar el solicitud: {ex.Message}");
+                }
+                await CargarVacaciones();
+
+
+            }
+            catch (Exception ex)
+            {
+                MostrarError("Error al eliminar solicitud", ex);
+            }
+
+
+        }
         private async void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -518,7 +631,7 @@ namespace WinModuloNomina.Vista
                 // Obtener estado actual
                 var solicitudActual = await _apimodulonomina.GetAsync<SolicitudVacaciones>(
                     $"SolicitudVacacionesControlador/BuscarPorId/{idSolicitud}");
-                estadoAnterior = solicitudActual?.Estado ?? "";
+                estadoAnterior = solicitudActual?.Estado ?? ""; 
 
                 // Validar cambio de estado a "Aprobado"
                 if (nuevoEstado == "Aprobado" && !UsuarioSesion.EsAdministrador)
@@ -573,21 +686,74 @@ namespace WinModuloNomina.Vista
                     string json = JsonConvert.SerializeObject(aprobacion);
                     await _apimodulonomina.PostAsync<AprobacionVacaciones>("AprovacionVacacionesControlador/InsertarAprobacionVacaciones", aprobacion);
 
-
-
                 }
-
-
-                else if (nuevoEstado != "Aprobado")
+                else if (nuevoEstado == "Rechazado")
                 {
-                    int idaprovacion = int.Parse(txtidAprovacion.Text);
-                    idaprovacion = Convert.ToInt32(txtidAprovacion.Text);
-                    // logica para elminar la aprovacionvacaciones por id si se ediata  Rechazado la solicitud:
+                    if (string.IsNullOrWhiteSpace(txtidAprovacion.Text))
+                    {
+                        MessageBox.Show("Seleccione una aprobación para eliminar",
+                                      "Validación",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Convertir el ID a entero de forma segura
+                    if (!int.TryParse(txtidAprovacion.Text.Trim(), out int idaprovacion))
+                    {
+                        MessageBox.Show("El ID de aprobación no es válido",
+                                      "Error",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Confirmar eliminación
+                    var confirmacion = MessageBox.Show($"¿Está seguro de eliminar la aprobación con ID {idaprovacion}?",
+                                                     "Confirmar eliminación",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
+
+                    if (confirmacion != DialogResult.Yes) return;
+
+                    // Eliminar usando el ID directamente en la URL
+                    await _apimodulonomina.DeleteAsync($"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
+                }
+                else if (nuevoEstado == "Pendiente")
+                {
+                    if (string.IsNullOrWhiteSpace(txtidAprovacion.Text))
+                    {
+                        MessageBox.Show("Seleccione una aprobación para eliminar",
+                                      "Validación",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Convertir el ID a entero de forma segura
+                    if (!int.TryParse(txtidAprovacion.Text.Trim(), out int idaprovacion))
+                    {
+                        MessageBox.Show("El ID de aprobación no es válido",
+                                      "Error",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Confirmar eliminación
+                    var confirmacion = MessageBox.Show($"¿Está seguro de eliminar la aprobación con ID {idaprovacion}?",
+                                                     "Confirmar eliminación",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
+
+                    if (confirmacion != DialogResult.Yes) return;
+
+                    // Eliminar usando el ID directamente en la URL
                     await _apimodulonomina.DeleteAsync($"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar el estado de la solicitud.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al actualizar aqui la solicitud.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 await CargarVacaciones();
 
@@ -596,79 +762,54 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al editar solicitud", ex);
+                MostrarError("Error al editar solicitud aca", ex);
             }
         }
 
-
-        private void LimpiarFormulario()
+        private async void btnEliminarA_Click(object sender, EventArgs e)
         {
             try
             {
-                cbxEmpleado.SelectedIndex = -1;
-                txtDiasSolicitados.Text = string.Empty;
-                cbxEstado.SelectedIndex = 0;
-                dateInicio.Value = DateTime.Today;
-                dateFin.Value = DateTime.Today.AddDays(1);
-            }
-            catch (Exception ex)
-            {
-                MostrarError("Error al limpiar formulario", ex, false);
-            }
-        }
-
-        private void MostrarError(string mensaje, Exception ex, bool esCritico = true)
-        {
-            string mensajeCompleto = $"{mensaje}: {ex.Message}";
-
-            if (esCritico)
-            {
-                MessageBox.Show(mensajeCompleto, "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                MessageBox.Show(mensajeCompleto, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            // Loggear el error (podrías implementar un sistema de logging aquí)
-            Console.WriteLine($"{DateTime.Now}: {mensajeCompleto}\n{ex.StackTrace}");
-        }
-
-        private async void btnBorrar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                try
+                // Validar que el campo no esté vacío
+                if (string.IsNullOrWhiteSpace(txtidAprovacion.Text))
                 {
-                    int idsolicitud = int.Parse(txtIdSVacacion.Text);
-                    await _apimodulonomina.DeleteAsync($"SolicitudVacacionesControlador/EliminarSolicitudVacaciones/{idsolicitud}");
-                    MessageBox.Show("Puesto eliminado exitosamente.");
-                    
+                    MessageBox.Show("Seleccione una aprobación para eliminar",
+                                  "Validación",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Warning);
+                    return;
                 }
-                catch (Exception ex)
+
+                // Convertir el ID a entero de forma segura
+                if (!int.TryParse(txtidAprovacion.Text.Trim(), out int idaprovacion))
                 {
-                    MessageBox.Show($"Error al eliminar el aprovacion: {ex.Message}");
+                    MessageBox.Show("El ID de aprobación no es válido",
+                                  "Error",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error);
+                    return;
                 }
-                await CargarVacaciones();
-                
-            }
-            catch (Exception ex)
-            {
-                MostrarError("Error al eliminar solicitud", ex);
-            }
-            try
-            {
-                int idaprovacion = int.Parse(txtidAprovacion.Text);
-                idaprovacion = Convert.ToInt32(txtidAprovacion.Text);
-                // logica para elminar la aprovacionvacaciones por id si se ediata  Rechazado la solicitud:
+
+                // Confirmar eliminación
+                var confirmacion = MessageBox.Show($"¿Está seguro de eliminar la aprobación con ID {idaprovacion}?",
+                                                 "Confirmar eliminación",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+
+                if (confirmacion != DialogResult.Yes) return;
+
+                // Eliminar usando el ID directamente en la URL
                 await _apimodulonomina.DeleteAsync($"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al eliminar la aprovacion: {ex.Message}");
+                MostrarError("Error al eliminar aprobación", ex);
             }
-            await CargarVacaciones();
-
+            finally
+            {
+                await CargarVacaciones(); // Actualizar la vista siempre
+            }
         }
     }
 }

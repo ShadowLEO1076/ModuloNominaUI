@@ -81,6 +81,7 @@ namespace WinModuloNomina.Vista
             estadoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fechaCreacionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             solicitudVacacionDTOBindingSource3 = new BindingSource(components);
+            btnEliminarA = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -107,7 +108,7 @@ namespace WinModuloNomina.Vista
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1171, 159);
+            panel1.Size = new Size(1049, 159);
             panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -138,14 +139,14 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(903, 159);
+            tableLayoutPanel1.Size = new Size(781, 159);
             tableLayoutPanel1.TabIndex = 13;
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Location = new Point(61, 122);
+            label5.Location = new Point(45, 122);
             label5.Name = "label5";
             label5.Size = new Size(56, 20);
             label5.TabIndex = 20;
@@ -155,7 +156,7 @@ namespace WinModuloNomina.Vista
             // 
             label3.Anchor = AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(40, 69);
+            label3.Location = new Point(24, 69);
             label3.Name = "label3";
             label3.Size = new Size(77, 20);
             label3.TabIndex = 18;
@@ -165,7 +166,7 @@ namespace WinModuloNomina.Vista
             // 
             label1.Anchor = AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(33, 16);
+            label1.Location = new Point(17, 16);
             label1.Name = "label1";
             label1.Size = new Size(84, 20);
             label1.TabIndex = 7;
@@ -174,18 +175,18 @@ namespace WinModuloNomina.Vista
             // txtIdSVacacion
             // 
             txtIdSVacacion.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtIdSVacacion.Location = new Point(123, 13);
+            txtIdSVacacion.Location = new Point(107, 13);
             txtIdSVacacion.Name = "txtIdSVacacion";
-            txtIdSVacacion.Size = new Size(275, 27);
+            txtIdSVacacion.Size = new Size(237, 27);
             txtIdSVacacion.TabIndex = 7;
             // 
             // cbxEmpleado
             // 
             cbxEmpleado.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbxEmpleado.FormattingEnabled = true;
-            cbxEmpleado.Location = new Point(123, 65);
+            cbxEmpleado.Location = new Point(107, 65);
             cbxEmpleado.Name = "cbxEmpleado";
-            cbxEmpleado.Size = new Size(275, 28);
+            cbxEmpleado.Size = new Size(237, 28);
             cbxEmpleado.TabIndex = 22;
             // 
             // dateInicio
@@ -194,26 +195,26 @@ namespace WinModuloNomina.Vista
             dateInicio.Cursor = Cursors.SizeAll;
             dateInicio.CustomFormat = "";
             dateInicio.Format = DateTimePickerFormat.Short;
-            dateInicio.Location = new Point(123, 119);
+            dateInicio.Location = new Point(107, 119);
             dateInicio.Name = "dateInicio";
-            dateInicio.Size = new Size(275, 27);
+            dateInicio.Size = new Size(237, 27);
             dateInicio.TabIndex = 26;
             // 
             // txtDiasSolicitados
             // 
             txtDiasSolicitados.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtDiasSolicitados.Location = new Point(620, 66);
+            txtDiasSolicitados.Location = new Point(537, 66);
             txtDiasSolicitados.Name = "txtDiasSolicitados";
-            txtDiasSolicitados.Size = new Size(280, 27);
+            txtDiasSolicitados.Size = new Size(241, 27);
             txtDiasSolicitados.TabIndex = 13;
             // 
             // cbxEstado
             // 
             cbxEstado.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbxEstado.FormattingEnabled = true;
-            cbxEstado.Location = new Point(620, 118);
+            cbxEstado.Location = new Point(537, 118);
             cbxEstado.Name = "cbxEstado";
-            cbxEstado.Size = new Size(280, 28);
+            cbxEstado.Size = new Size(241, 28);
             cbxEstado.TabIndex = 25;
             // 
             // dateFin
@@ -222,24 +223,24 @@ namespace WinModuloNomina.Vista
             dateFin.Cursor = Cursors.SizeAll;
             dateFin.CustomFormat = "";
             dateFin.Format = DateTimePickerFormat.Short;
-            dateFin.Location = new Point(620, 13);
+            dateFin.Location = new Point(537, 13);
             dateFin.Name = "dateFin";
-            dateFin.Size = new Size(280, 27);
+            dateFin.Size = new Size(241, 27);
             dateFin.TabIndex = 27;
             // 
             // txtidAprovacion
             // 
             txtidAprovacion.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtidAprovacion.Location = new Point(404, 13);
+            txtidAprovacion.Location = new Point(350, 13);
             txtidAprovacion.Name = "txtidAprovacion";
-            txtidAprovacion.Size = new Size(90, 27);
+            txtidAprovacion.Size = new Size(77, 27);
             txtidAprovacion.TabIndex = 28;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Right;
             label4.AutoSize = true;
-            label4.Location = new Point(572, 69);
+            label4.Location = new Point(489, 69);
             label4.Name = "label4";
             label4.Size = new Size(42, 20);
             label4.TabIndex = 19;
@@ -249,7 +250,7 @@ namespace WinModuloNomina.Vista
             // 
             label2.Anchor = AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(553, 16);
+            label2.Location = new Point(470, 16);
             label2.Name = "label2";
             label2.Size = new Size(61, 20);
             label2.TabIndex = 17;
@@ -259,7 +260,7 @@ namespace WinModuloNomina.Vista
             // 
             label6.Anchor = AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Location = new Point(560, 122);
+            label6.Location = new Point(477, 122);
             label6.Name = "label6";
             label6.Size = new Size(54, 20);
             label6.TabIndex = 21;
@@ -270,18 +271,19 @@ namespace WinModuloNomina.Vista
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel5.Location = new Point(438, 159);
             panel5.Name = "panel5";
-            panel5.Size = new Size(733, 50);
+            panel5.Size = new Size(611, 50);
             panel5.TabIndex = 12;
             // 
             // panel2
             // 
+            panel2.Controls.Add(btnEliminarA);
             panel2.Controls.Add(btnBorrar);
             panel2.Controls.Add(txtBuscar2);
             panel2.Controls.Add(btnEditar);
             panel2.Controls.Add(btnBuscar);
             panel2.Controls.Add(btnCrear);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(903, 0);
+            panel2.Location = new Point(781, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(268, 159);
             panel2.TabIndex = 4;
@@ -289,14 +291,16 @@ namespace WinModuloNomina.Vista
             // btnBorrar
             // 
             btnBorrar.Anchor = AnchorStyles.Right;
-            btnBorrar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnBorrar.IconChar = FontAwesome.Sharp.IconChar.Trash;
             btnBorrar.IconColor = Color.Black;
             btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBorrar.Location = new Point(158, 110);
+            btnBorrar.IconSize = 22;
+            btnBorrar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBorrar.Location = new Point(6, 95);
             btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(94, 29);
+            btnBorrar.Size = new Size(120, 41);
             btnBorrar.TabIndex = 12;
-            btnBorrar.Text = "Borrar";
+            btnBorrar.Text = "Solicitud";
             btnBorrar.UseVisualStyleBackColor = true;
             btnBorrar.Click += btnBorrar_Click;
             // 
@@ -314,9 +318,9 @@ namespace WinModuloNomina.Vista
             btnEditar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEditar.Location = new Point(158, 75);
+            btnEditar.Location = new Point(136, 48);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(94, 29);
+            btnEditar.Size = new Size(120, 41);
             btnEditar.TabIndex = 11;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
@@ -343,9 +347,9 @@ namespace WinModuloNomina.Vista
             btnCrear.IconChar = FontAwesome.Sharp.IconChar.None;
             btnCrear.IconColor = Color.Black;
             btnCrear.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCrear.Location = new Point(158, 45);
+            btnCrear.Location = new Point(6, 48);
             btnCrear.Name = "btnCrear";
-            btnCrear.Size = new Size(94, 29);
+            btnCrear.Size = new Size(120, 41);
             btnCrear.TabIndex = 9;
             btnCrear.Text = "Crear";
             btnCrear.UseVisualStyleBackColor = true;
@@ -355,7 +359,7 @@ namespace WinModuloNomina.Vista
             // 
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
-            label7.Location = new Point(542, 13);
+            label7.Location = new Point(481, 13);
             label7.Name = "label7";
             label7.Size = new Size(95, 20);
             label7.TabIndex = 10;
@@ -384,7 +388,7 @@ namespace WinModuloNomina.Vista
             dgvRevisionV.Dock = DockStyle.Top;
             dgvRevisionV.Location = new Point(0, 159);
             dgvRevisionV.Name = "dgvRevisionV";
-            dgvRevisionV.Size = new Size(1171, 45);
+            dgvRevisionV.Size = new Size(1049, 45);
             dgvRevisionV.TabIndex = 13;
             // 
             // dataRevisionV
@@ -398,7 +402,7 @@ namespace WinModuloNomina.Vista
             dataRevisionV.Location = new Point(3, 3);
             dataRevisionV.Name = "dataRevisionV";
             dataRevisionV.RowHeadersWidth = 51;
-            dataRevisionV.Size = new Size(1165, 89);
+            dataRevisionV.Size = new Size(1043, 89);
             dataRevisionV.TabIndex = 14;
             dataRevisionV.CellContentClick += dataRevisionV_CellContentClick;
             // 
@@ -445,7 +449,7 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(1171, 95);
+            tableLayoutPanel2.Size = new Size(1049, 95);
             tableLayoutPanel2.TabIndex = 15;
             // 
             // panel4
@@ -455,7 +459,7 @@ namespace WinModuloNomina.Vista
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 299);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1171, 47);
+            panel4.Size = new Size(1049, 47);
             panel4.TabIndex = 16;
             // 
             // label8
@@ -491,7 +495,7 @@ namespace WinModuloNomina.Vista
             dgvSolicitudes.Name = "dgvSolicitudes";
             dgvSolicitudes.RightToLeft = RightToLeft.No;
             dgvSolicitudes.RowHeadersWidth = 51;
-            dgvSolicitudes.Size = new Size(1171, 231);
+            dgvSolicitudes.Size = new Size(1049, 231);
             dgvSolicitudes.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             dgvSolicitudes.TabIndex = 17;
             // 
@@ -571,11 +575,28 @@ namespace WinModuloNomina.Vista
             // 
             solicitudVacacionDTOBindingSource3.DataSource = typeof(SolicitudVacacionDTO);
             // 
+            // btnEliminarA
+            // 
+            btnEliminarA.Anchor = AnchorStyles.Right;
+            btnEliminarA.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnEliminarA.IconColor = Color.Black;
+            btnEliminarA.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEliminarA.IconSize = 22;
+            btnEliminarA.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEliminarA.Location = new Point(136, 95);
+            btnEliminarA.Name = "btnEliminarA";
+            btnEliminarA.Size = new Size(120, 41);
+            btnEliminarA.TabIndex = 16;
+            btnEliminarA.Text = "Aprovacion";
+            btnEliminarA.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEliminarA.UseVisualStyleBackColor = true;
+            btnEliminarA.Click += btnEliminarA_Click;
+            // 
             // F8Vacaciones
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1171, 577);
+            ClientSize = new Size(1049, 577);
             Controls.Add(dgvSolicitudes);
             Controls.Add(panel4);
             Controls.Add(tableLayoutPanel2);
@@ -663,5 +684,6 @@ namespace WinModuloNomina.Vista
         private DateTimePicker dateFin;
         private TextBox txtidAprovacion;
         private Label label6;
+        private FontAwesome.Sharp.IconButton btnEliminarA;
     }
 }
