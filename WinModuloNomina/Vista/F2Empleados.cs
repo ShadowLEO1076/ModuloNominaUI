@@ -31,7 +31,6 @@ namespace WinModuloNomina.Vista
             await CargarEmpleados();
             await CargarPuesto();
             CargarGenero();
-            editarBtn.Enabled = false;
             //limitacíon de caracteres, los métodos están al final del todo
             this.cedulaTxt.KeyPress += SoloNumeros_KeyPress;
             this.telfTxt.KeyPress += SoloNumeros_KeyPress;
@@ -51,9 +50,6 @@ namespace WinModuloNomina.Vista
 
         private async void crearBtn_Click(object sender, EventArgs e)
         {
-
-
-
             var empleado = new Empleados();
             
             
@@ -65,6 +61,19 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Llenar todos los campos: nombres, apellidos, cédula, correo, teléfono");
                 return;
             }
+            //validación de largo de digitos en cedula y telf
+            if (cedulaTxt.Text.Length != 10)
+            {
+                MessageBox.Show("La cédula debe tener exactamente 10 dígitos.");
+                return;
+            }
+
+            if (telfTxt.Text.Length != 10)
+            {
+                MessageBox.Show("El teléfono debe tener exactamente 10 dígitos.");
+                return;
+            }
+
             // validación de formato de correo
             if (!Regex.IsMatch(correoTxt.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
@@ -89,6 +98,17 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Debe seleccionar un género.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            var existente = await _api.GetAsync<Empleados>($"EmpleadosControlador/ObtenerEmpleadoPorCedula/{cedulaTxt.Text}");
+
+            if (existente != null)
+            {
+                MessageBox.Show("Ya existe un empleado con esta cédula.");
+                return;
+            }
+
+            var confirm = MessageBox.Show("¿Está seguro que desea crear este registro?", "Confirmar edición", MessageBoxButtons.YesNo);
+            if (confirm != DialogResult.Yes) return;
 
             empleado = new Empleados
             {
@@ -125,7 +145,16 @@ namespace WinModuloNomina.Vista
                         cedulaTxt.Text = empleadoSeleccionado.Cedula;
                         correoTxt.Text = empleadoSeleccionado.Correo;
                         fecIngresoDtp.Value = empleadoSeleccionado.FechaIngreso.ToDateTime(TimeOnly.MinValue);
-                        generoCb.SelectedValue = empleadoSeleccionado.Genero;
+
+                        if (_generos.ContainsValue(empleadoSeleccionado.Genero))
+                          {
+                            generoCb.SelectedValue = empleadoSeleccionado.Genero;
+                          }
+                        else
+                          {
+                            generoCb.SelectedIndex = -1;
+                          }
+
                         telfTxt.Text = empleadoSeleccionado.Telefono;
                         fechaNacDtp.Value = empleadoSeleccionado.FechaNacimiento.ToDateTime(TimeOnly.MinValue);
                         puestosCb.SelectedValue = empleadoSeleccionado.PuestoId;
@@ -133,6 +162,7 @@ namespace WinModuloNomina.Vista
                     }
 
                     editarBtn.Enabled = true;
+                    crearBtn.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -150,6 +180,18 @@ namespace WinModuloNomina.Vista
             if (string.IsNullOrWhiteSpace(idEmplTxt.Text))
             {
                 MessageBox.Show($"Presione una de las entidades en la lista de abajo para poder modificar el dato. O en su defecto, búsquelo por cédula");
+            }
+            //validación de largo de digitos en cedula y telf
+            if (cedulaTxt.Text.Length != 10)
+            {
+                MessageBox.Show("La cédula debe tener exactamente 10 dígitos.");
+                return;
+            }
+
+            if (telfTxt.Text.Length != 10)
+            {
+                MessageBox.Show("El teléfono debe tener exactamente 10 dígitos.");
+                return;
             }
             // validación de formato de correo
             if (!Regex.IsMatch(correoTxt.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
@@ -175,6 +217,9 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Debe seleccionar un género.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            //última verificacion
+            var confirm = MessageBox.Show("¿Está seguro que desea modificar este registro?", "Confirmar edición", MessageBoxButtons.YesNo);
+            if (confirm != DialogResult.Yes) return;
 
             empleado = new Empleados
             {
@@ -208,6 +253,12 @@ namespace WinModuloNomina.Vista
                 var empleadoSeleccionado = await _api.GetAsync<Empleados>($"EmpleadosControlador/ObtenerEmpleadoPorCedula/{queryCedula}");
 
 
+                if (empleadoSeleccionado == null)
+                {
+                    MessageBox.Show("No se encontró un empleado con esa cédula.");
+                    return;
+                }
+
                 idEmplTxt.Text = empleadoSeleccionado.IdEmpleado.ToString();
                 nombresTxt.Text = empleadoSeleccionado.Nombres;
                 apellidosTxt.Text = empleadoSeleccionado.Apellidos;
@@ -225,6 +276,7 @@ namespace WinModuloNomina.Vista
         private void limpiarBtn_Click(object sender, EventArgs e)
         {
             LimpiarInfo();
+            crearBtn.Enabled = true;
             editarBtn.Enabled = false;
         }
 

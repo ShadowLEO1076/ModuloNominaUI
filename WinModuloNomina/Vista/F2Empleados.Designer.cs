@@ -29,14 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            panel1 = new Panel();
-            panel2 = new Panel();
-            txtBuscar = new TextBox();
-            borrarBtn = new FontAwesome.Sharp.IconButton();
-            buscarBtn = new FontAwesome.Sharp.IconButton();
-            editarBtn = new FontAwesome.Sharp.IconButton();
-            crearBtn = new FontAwesome.Sharp.IconButton();
-            tablaEmpleados = new TableLayoutPanel();
+            TableLayoutPanel tablaEmpleados;
             fecIngresoDtp = new DateTimePicker();
             telfTxt = new TextBox();
             apellidosLb = new Label();
@@ -59,109 +52,26 @@
             fechaNacDtp = new DateTimePicker();
             estadoCheckbox = new CheckBox();
             generoCb = new ComboBox();
+            limpiarBtn = new Button();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            txtBuscar = new TextBox();
+            borrarBtn = new FontAwesome.Sharp.IconButton();
+            buscarBtn = new FontAwesome.Sharp.IconButton();
+            editarBtn = new FontAwesome.Sharp.IconButton();
+            crearBtn = new FontAwesome.Sharp.IconButton();
             empleadosDgv = new DataGridView();
             empleadosBindingSource = new BindingSource(components);
             panel3 = new Panel();
             presentLb = new Label();
-            limpiarBtn = new Button();
+            tablaEmpleados = new TableLayoutPanel();
+            tablaEmpleados.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            tablaEmpleados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)empleadosDgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)empleadosBindingSource).BeginInit();
             panel3.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(panel2);
-            panel1.Controls.Add(tablaEmpleados);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(967, 144);
-            panel1.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            panel2.Anchor = AnchorStyles.Right;
-            panel2.Controls.Add(txtBuscar);
-            panel2.Controls.Add(borrarBtn);
-            panel2.Controls.Add(buscarBtn);
-            panel2.Controls.Add(editarBtn);
-            panel2.Controls.Add(crearBtn);
-            panel2.Location = new Point(848, 0);
-            panel2.Margin = new Padding(3, 2, 3, 2);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(118, 142);
-            panel2.TabIndex = 4;
-            // 
-            // txtBuscar
-            // 
-            txtBuscar.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtBuscar.Location = new Point(4, 12);
-            txtBuscar.Margin = new Padding(3, 2, 3, 2);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.PlaceholderText = "Cedula a buscar";
-            txtBuscar.Size = new Size(112, 23);
-            txtBuscar.TabIndex = 32;
-            // 
-            // borrarBtn
-            // 
-            borrarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            borrarBtn.IconColor = Color.Black;
-            borrarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            borrarBtn.Location = new Point(25, 115);
-            borrarBtn.Margin = new Padding(3, 2, 3, 2);
-            borrarBtn.Name = "borrarBtn";
-            borrarBtn.Size = new Size(82, 22);
-            borrarBtn.TabIndex = 12;
-            borrarBtn.Text = "Borrar";
-            borrarBtn.UseVisualStyleBackColor = true;
-            borrarBtn.Visible = false;
-            // 
-            // buscarBtn
-            // 
-            buscarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            buscarBtn.IconColor = Color.Black;
-            buscarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            buscarBtn.Location = new Point(25, 41);
-            buscarBtn.Margin = new Padding(3, 2, 3, 2);
-            buscarBtn.Name = "buscarBtn";
-            buscarBtn.Size = new Size(82, 22);
-            buscarBtn.TabIndex = 10;
-            buscarBtn.Text = "Buscar";
-            buscarBtn.UseVisualStyleBackColor = true;
-            buscarBtn.Click += buscarBtn_Click;
-            // 
-            // editarBtn
-            // 
-            editarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            editarBtn.IconColor = Color.Black;
-            editarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            editarBtn.Location = new Point(25, 89);
-            editarBtn.Margin = new Padding(3, 2, 3, 2);
-            editarBtn.Name = "editarBtn";
-            editarBtn.Size = new Size(82, 22);
-            editarBtn.TabIndex = 11;
-            editarBtn.Text = "Editar";
-            editarBtn.UseVisualStyleBackColor = true;
-            editarBtn.Click += editarBtn_Click;
-            // 
-            // crearBtn
-            // 
-            crearBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            crearBtn.IconColor = Color.Black;
-            crearBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            crearBtn.Location = new Point(25, 65);
-            crearBtn.Margin = new Padding(3, 2, 3, 2);
-            crearBtn.Name = "crearBtn";
-            crearBtn.Size = new Size(82, 22);
-            crearBtn.TabIndex = 9;
-            crearBtn.Text = "Crear";
-            crearBtn.UseVisualStyleBackColor = true;
-            crearBtn.Click += crearBtn_Click;
             // 
             // tablaEmpleados
             // 
@@ -372,10 +282,11 @@
             // 
             // puestosCb
             // 
+            puestosCb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             puestosCb.FormattingEnabled = true;
             puestosCb.Location = new Point(114, 33);
             puestosCb.Name = "puestosCb";
-            puestosCb.Size = new Size(153, 23);
+            puestosCb.Size = new Size(162, 23);
             puestosCb.TabIndex = 27;
             // 
             // fechaNacDtp
@@ -403,15 +314,116 @@
             generoCb.Size = new Size(205, 23);
             generoCb.TabIndex = 33;
             // 
+            // limpiarBtn
+            // 
+            limpiarBtn.Location = new Point(718, 93);
+            limpiarBtn.Name = "limpiarBtn";
+            limpiarBtn.Size = new Size(109, 23);
+            limpiarBtn.TabIndex = 34;
+            limpiarBtn.Text = "Limpiar datos";
+            limpiarBtn.UseVisualStyleBackColor = true;
+            limpiarBtn.Click += limpiarBtn_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(tablaEmpleados);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(967, 144);
+            panel1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.Right;
+            panel2.Controls.Add(txtBuscar);
+            panel2.Controls.Add(borrarBtn);
+            panel2.Controls.Add(buscarBtn);
+            panel2.Controls.Add(editarBtn);
+            panel2.Controls.Add(crearBtn);
+            panel2.Location = new Point(848, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(118, 142);
+            panel2.TabIndex = 4;
+            // 
+            // txtBuscar
+            // 
+            txtBuscar.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtBuscar.Location = new Point(4, 12);
+            txtBuscar.Margin = new Padding(3, 2, 3, 2);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.PlaceholderText = "Cedula a buscar";
+            txtBuscar.Size = new Size(112, 23);
+            txtBuscar.TabIndex = 32;
+            // 
+            // borrarBtn
+            // 
+            borrarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            borrarBtn.IconColor = Color.Black;
+            borrarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            borrarBtn.Location = new Point(25, 115);
+            borrarBtn.Margin = new Padding(3, 2, 3, 2);
+            borrarBtn.Name = "borrarBtn";
+            borrarBtn.Size = new Size(82, 22);
+            borrarBtn.TabIndex = 12;
+            borrarBtn.Text = "Borrar";
+            borrarBtn.UseVisualStyleBackColor = true;
+            borrarBtn.Visible = false;
+            // 
+            // buscarBtn
+            // 
+            buscarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            buscarBtn.IconColor = Color.Black;
+            buscarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buscarBtn.Location = new Point(25, 41);
+            buscarBtn.Margin = new Padding(3, 2, 3, 2);
+            buscarBtn.Name = "buscarBtn";
+            buscarBtn.Size = new Size(82, 22);
+            buscarBtn.TabIndex = 10;
+            buscarBtn.Text = "Buscar";
+            buscarBtn.UseVisualStyleBackColor = true;
+            buscarBtn.Click += buscarBtn_Click;
+            // 
+            // editarBtn
+            // 
+            editarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            editarBtn.IconColor = Color.Black;
+            editarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            editarBtn.Location = new Point(25, 88);
+            editarBtn.Margin = new Padding(3, 2, 3, 2);
+            editarBtn.Name = "editarBtn";
+            editarBtn.Size = new Size(82, 22);
+            editarBtn.TabIndex = 11;
+            editarBtn.Text = "Editar";
+            editarBtn.UseVisualStyleBackColor = true;
+            editarBtn.Click += editarBtn_Click;
+            // 
+            // crearBtn
+            // 
+            crearBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            crearBtn.IconColor = Color.Black;
+            crearBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            crearBtn.Location = new Point(25, 65);
+            crearBtn.Margin = new Padding(3, 2, 3, 2);
+            crearBtn.Name = "crearBtn";
+            crearBtn.Size = new Size(82, 22);
+            crearBtn.TabIndex = 9;
+            crearBtn.Text = "Insertar";
+            crearBtn.UseVisualStyleBackColor = true;
+            crearBtn.Click += crearBtn_Click;
+            // 
             // empleadosDgv
             // 
             empleadosDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            empleadosDgv.Dock = DockStyle.Fill;
+            empleadosDgv.Dock = DockStyle.Top;
             empleadosDgv.Location = new Point(0, 180);
             empleadosDgv.Margin = new Padding(3, 2, 3, 2);
             empleadosDgv.Name = "empleadosDgv";
             empleadosDgv.RowHeadersWidth = 51;
-            empleadosDgv.Size = new Size(967, 189);
+            empleadosDgv.Size = new Size(967, 127);
             empleadosDgv.TabIndex = 8;
             empleadosDgv.CellClick += empleadosDgv_CellClick;
             // 
@@ -427,23 +439,13 @@
             // 
             // presentLb
             // 
-            presentLb.Anchor = AnchorStyles.None;
             presentLb.AutoSize = true;
-            presentLb.Location = new Point(478, 6);
+            presentLb.Location = new Point(3, 19);
             presentLb.Name = "presentLb";
-            presentLb.Size = new Size(65, 15);
+            presentLb.Size = new Size(107, 15);
             presentLb.TabIndex = 10;
-            presentLb.Text = "Empleados";
-            // 
-            // limpiarBtn
-            // 
-            limpiarBtn.Location = new Point(718, 93);
-            limpiarBtn.Name = "limpiarBtn";
-            limpiarBtn.Size = new Size(109, 23);
-            limpiarBtn.TabIndex = 34;
-            limpiarBtn.Text = "Limpiar datos";
-            limpiarBtn.UseVisualStyleBackColor = true;
-            limpiarBtn.Click += limpiarBtn_Click;
+            presentLb.Text = "Empleados Activos";
+            presentLb.TextAlign = ContentAlignment.TopCenter;
             // 
             // F2Empleados
             // 
@@ -457,11 +459,11 @@
             Name = "F2Empleados";
             Text = "F2Empleados";
             Load += F2Empleados_Load;
+            tablaEmpleados.ResumeLayout(false);
+            tablaEmpleados.PerformLayout();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            tablaEmpleados.ResumeLayout(false);
-            tablaEmpleados.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)empleadosDgv).EndInit();
             ((System.ComponentModel.ISupportInitialize)empleadosBindingSource).EndInit();
             panel3.ResumeLayout(false);
