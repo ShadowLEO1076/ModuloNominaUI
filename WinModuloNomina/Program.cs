@@ -14,9 +14,13 @@ namespace WinModuloNomina
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
+<<<<<<< HEAD
             //Application.Run(new LoginForm());
 
             Application.Run(new LoginForm());
+=======
+            Application.Run(new MenuPrincipal());
+>>>>>>> af800a64825d1148f5ef0276b74bf42bbf0b1935
 
         }
     }
