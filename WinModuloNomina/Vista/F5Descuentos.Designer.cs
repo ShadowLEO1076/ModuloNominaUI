@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            iconButton4 = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
+            btnBorrar = new FontAwesome.Sharp.IconButton();
+            btnEditar = new FontAwesome.Sharp.IconButton();
+            btnBuscar = new FontAwesome.Sharp.IconButton();
             btnCrear = new FontAwesome.Sharp.IconButton();
             dgvDescuentos = new DataGridView();
             panel2 = new Panel();
@@ -38,14 +38,12 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             label10 = new Label();
             fechaLb = new Label();
+            idDescuentosTxt = new Label();
             label8 = new Label();
             label6 = new Label();
             label4 = new Label();
-            label2 = new Label();
             descripcionTxt = new TextBox();
             tipoTxt = new TextBox();
-            textBox4 = new TextBox();
-            idEmpleadoTxt = new TextBox();
             montoTxt = new TextBox();
             textBox8 = new TextBox();
             textBox7 = new TextBox();
@@ -55,51 +53,53 @@
             tipoLb = new Label();
             descripcionLb = new Label();
             fechaDTP = new DateTimePicker();
+            textBox4 = new TextBox();
             idEmpleadoLb = new Label();
+            idEmpleadoCb = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvDescuentos).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
-            // iconButton4
+            // btnBorrar
             // 
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton4.IconColor = Color.Black;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.Location = new Point(6, 87);
-            iconButton4.Margin = new Padding(3, 2, 3, 2);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(82, 22);
-            iconButton4.TabIndex = 20;
-            iconButton4.Text = "Borrar";
-            iconButton4.UseVisualStyleBackColor = true;
+            btnBorrar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnBorrar.IconColor = Color.Black;
+            btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBorrar.Location = new Point(6, 87);
+            btnBorrar.Margin = new Padding(3, 2, 3, 2);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(82, 22);
+            btnBorrar.TabIndex = 20;
+            btnBorrar.Text = "Borrar";
+            btnBorrar.UseVisualStyleBackColor = true;
             // 
-            // iconButton3
+            // btnEditar
             // 
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.Black;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.Location = new Point(6, 61);
-            iconButton3.Margin = new Padding(3, 2, 3, 2);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(82, 22);
-            iconButton3.TabIndex = 19;
-            iconButton3.Text = "Editar";
-            iconButton3.UseVisualStyleBackColor = true;
+            btnEditar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnEditar.IconColor = Color.Black;
+            btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEditar.Location = new Point(6, 61);
+            btnEditar.Margin = new Padding(3, 2, 3, 2);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(82, 22);
+            btnEditar.TabIndex = 19;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
             // 
-            // iconButton2
+            // btnBuscar
             // 
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(6, 34);
-            iconButton2.Margin = new Padding(3, 2, 3, 2);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(82, 22);
-            iconButton2.TabIndex = 18;
-            iconButton2.Text = "Buscar";
-            iconButton2.UseVisualStyleBackColor = true;
+            btnBuscar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnBuscar.IconColor = Color.Black;
+            btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBuscar.Location = new Point(6, 34);
+            btnBuscar.Margin = new Padding(3, 2, 3, 2);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(82, 22);
+            btnBuscar.TabIndex = 18;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
             // 
             // btnCrear
             // 
@@ -128,10 +128,10 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(iconButton4);
-            panel2.Controls.Add(iconButton3);
+            panel2.Controls.Add(btnBorrar);
+            panel2.Controls.Add(btnEditar);
             panel2.Controls.Add(btnCrear);
-            panel2.Controls.Add(iconButton2);
+            panel2.Controls.Add(btnBuscar);
             panel2.Dock = DockStyle.Right;
             panel2.Location = new Point(560, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
@@ -159,14 +159,12 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.Controls.Add(label10, 2, 4);
             tableLayoutPanel1.Controls.Add(fechaLb, 0, 4);
+            tableLayoutPanel1.Controls.Add(idDescuentosTxt, 0, 0);
             tableLayoutPanel1.Controls.Add(label8, 2, 3);
             tableLayoutPanel1.Controls.Add(label6, 2, 2);
             tableLayoutPanel1.Controls.Add(label4, 2, 1);
-            tableLayoutPanel1.Controls.Add(label2, 2, 0);
             tableLayoutPanel1.Controls.Add(descripcionTxt, 1, 2);
             tableLayoutPanel1.Controls.Add(tipoTxt, 1, 1);
-            tableLayoutPanel1.Controls.Add(textBox4, 3, 0);
-            tableLayoutPanel1.Controls.Add(idEmpleadoTxt, 1, 0);
             tableLayoutPanel1.Controls.Add(montoTxt, 1, 3);
             tableLayoutPanel1.Controls.Add(textBox8, 3, 2);
             tableLayoutPanel1.Controls.Add(textBox7, 3, 1);
@@ -176,7 +174,9 @@
             tableLayoutPanel1.Controls.Add(tipoLb, 0, 1);
             tableLayoutPanel1.Controls.Add(descripcionLb, 0, 2);
             tableLayoutPanel1.Controls.Add(fechaDTP, 1, 4);
-            tableLayoutPanel1.Controls.Add(idEmpleadoLb, 0, 0);
+            tableLayoutPanel1.Controls.Add(textBox4, 1, 0);
+            tableLayoutPanel1.Controls.Add(idEmpleadoLb, 2, 0);
+            tableLayoutPanel1.Controls.Add(idEmpleadoCb, 3, 0);
             tableLayoutPanel1.Location = new Point(24, 8);
             tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -207,6 +207,15 @@
             fechaLb.TabIndex = 24;
             fechaLb.Text = "Fecha";
             // 
+            // idDescuentosTxt
+            // 
+            idDescuentosTxt.AutoSize = true;
+            idDescuentosTxt.Location = new Point(3, 0);
+            idDescuentosTxt.Name = "idDescuentosTxt";
+            idDescuentosTxt.Size = new Size(81, 15);
+            idDescuentosTxt.TabIndex = 17;
+            idDescuentosTxt.Text = "Id Descuentos";
+            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -234,15 +243,6 @@
             label4.TabIndex = 19;
             label4.Text = "label4";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(267, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 17;
-            label2.Text = "label2";
-            // 
             // descripcionTxt
             // 
             descripcionTxt.Location = new Point(135, 56);
@@ -256,31 +256,15 @@
             tipoTxt.Location = new Point(135, 29);
             tipoTxt.Margin = new Padding(3, 2, 3, 2);
             tipoTxt.Name = "tipoTxt";
-            tipoTxt.Size = new Size(62, 23);
+            tipoTxt.Size = new Size(126, 23);
             tipoTxt.TabIndex = 12;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(399, 2);
-            textBox4.Margin = new Padding(3, 2, 3, 2);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(62, 23);
-            textBox4.TabIndex = 10;
-            // 
-            // idEmpleadoTxt
-            // 
-            idEmpleadoTxt.Location = new Point(135, 2);
-            idEmpleadoTxt.Margin = new Padding(3, 2, 3, 2);
-            idEmpleadoTxt.Name = "idEmpleadoTxt";
-            idEmpleadoTxt.Size = new Size(62, 23);
-            idEmpleadoTxt.TabIndex = 7;
             // 
             // montoTxt
             // 
             montoTxt.Location = new Point(135, 83);
             montoTxt.Margin = new Padding(3, 2, 3, 2);
             montoTxt.Name = "montoTxt";
-            montoTxt.Size = new Size(62, 23);
+            montoTxt.Size = new Size(126, 23);
             montoTxt.TabIndex = 15;
             // 
             // textBox8
@@ -351,14 +335,31 @@
             fechaDTP.TabIndex = 26;
             fechaDTP.Value = new DateTime(2025, 7, 21, 20, 56, 31, 0);
             // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(135, 2);
+            textBox4.Margin = new Padding(3, 2, 3, 2);
+            textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
+            textBox4.Size = new Size(126, 23);
+            textBox4.TabIndex = 10;
+            // 
             // idEmpleadoLb
             // 
             idEmpleadoLb.AutoSize = true;
-            idEmpleadoLb.Location = new Point(3, 0);
+            idEmpleadoLb.Location = new Point(267, 0);
             idEmpleadoLb.Name = "idEmpleadoLb";
             idEmpleadoLb.Size = new Size(74, 15);
             idEmpleadoLb.TabIndex = 7;
             idEmpleadoLb.Text = "ID Empleado";
+            // 
+            // idEmpleadoCb
+            // 
+            idEmpleadoCb.FormattingEnabled = true;
+            idEmpleadoCb.Location = new Point(399, 3);
+            idEmpleadoCb.Name = "idEmpleadoCb";
+            idEmpleadoCb.Size = new Size(121, 23);
+            idEmpleadoCb.TabIndex = 27;
             // 
             // F5Descuentos
             // 
@@ -380,9 +381,9 @@
 
         #endregion
 
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnBorrar;
+        private FontAwesome.Sharp.IconButton btnEditar;
+        private FontAwesome.Sharp.IconButton btnBuscar;
         private FontAwesome.Sharp.IconButton btnCrear;
         private DataGridView dgvDescuentos;
         private Panel panel2;
@@ -396,17 +397,17 @@
         private Label montoLb;
         private Label label4;
         private Label tipoLb;
-        private Label label2;
+        private Label idDescuentosTxt;
         private Label idEmpleadoLb;
         private TextBox descripcionTxt;
         private TextBox tipoTxt;
         private TextBox textBox4;
-        private TextBox idEmpleadoTxt;
         private TextBox montoTxt;
         private TextBox textBox8;
         private TextBox textBox7;
         private TextBox textBox3;
         private TextBox textBox2;
         private DateTimePicker fechaDTP;
+        private ComboBox idEmpleadoCb;
     }
 }

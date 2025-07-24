@@ -25,6 +25,24 @@ namespace WinModuloNomina.Vista
             this.Load += F5Descuentos_Load;
         }
 
+        public async Task CargarEmpleados()
+        {
+            try
+            {
+                var empleado = await _api.GetAsync<List<Empleados>>("EmpleadoControlador/ListarEmpleados");
+                idEmpleadoCb.DataSource = empleado;
+                idEmpleadoCb.DisplayMember = "Cedula";
+                idEmpleadoCb.ValueMember = "IdEmpleado";
+
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show($"Error al cargar los empleados: {ex.Message}");
+
+            }
+        }
+
+
         public async Task CargarDescuentos()
         {
             try
@@ -41,6 +59,7 @@ namespace WinModuloNomina.Vista
         private void F5Descuentos_Load(object sender, EventArgs e)
         {
             CargarDescuentos();
+            CargarEmpleados();
         }
 
         private void dgvDescuentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -54,13 +73,13 @@ namespace WinModuloNomina.Vista
             {
                 var entidad = new Descuentos
                 {
-                    EmpleadoId = int.Parse(idEmpleadoTxt.Text),
+                    EmpleadoId = int.Parse(idEmpleadoCb.SelectedValue.ToString()),
                     Descripcion = descripcionTxt.Text,
                     Monto = decimal.Parse(montoTxt.Text),
                     Fecha = DateOnly.FromDateTime(fechaDTP.Value),
                     Tipo = tipoTxt.Text,
                 };
-                await _api.CrearEntidad<Descuentos>(entidad, "DescuentosControlador/AgregarAsync", "Descuentos");
+                await _api.PostAsync<Descuentos>("DescuentosControlador/AgregarAsync", entidad);
                 await CargarDescuentos();
 
             }
