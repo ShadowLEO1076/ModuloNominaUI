@@ -373,8 +373,6 @@ namespace WinModuloNomina.Vista
             }
 
         }
-
-     
     }
 }
 

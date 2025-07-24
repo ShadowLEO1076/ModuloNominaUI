@@ -34,25 +34,49 @@ namespace WinModuloNomina.Vista
             //carga de datos solo para la comboBox del comboBox de año en IngresoAuto y el NumericUpDown
 
             CargarMesesIngresoAuto();
-            LimitarNumUpDownIngresoAuto();
+            //el numerico muestra el año actual, sin embargo si puede modififcarse.
+            anioNud.Minimum = DateTime.Now.Year;
+            anioNud.Value = DateTime.Now.Year;
+            anioNud.Maximum = DateTime.Now.Year;
         }
 
         private void nominasActivasDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.RowIndex < nominasActivasDgv.Rows.Count)
+            {
+                var nominaSeleccionada = nominasActivasDgv.Rows[e.RowIndex].DataBoundItem as NominasDTO;
 
+                if (nominaSeleccionada != null)
+                {
+                    idNomTxt.Text = nominaSeleccionada.IdNomina.ToString();
+                    empleAutoCb.SelectedValue = nominaSeleccionada.IdEmpleado;
+                    anioNud.Value = nominaSeleccionada.Anio;
+                    mesAutoCb.SelectedIndex = nominaSeleccionada.Mes - 1; // necesitamos el -1 para conseguir el dato correcto en el ComboBox
+                    salManTxt.Text = nominaSeleccionada.Salario.ToString();
+                    fecEmiDtp.Value = nominaSeleccionada.FechaEmision.ToDateTime(TimeOnly.MinValue);
+                    boniManTxt.Text = nominaSeleccionada.Bonificaciones.ToString();
+                }
+            }
         }
 
         private async void ingAutoBtn_Click(object sender, EventArgs e)
         {
             try
             {
+
                 BusquedaDTO nuevoDato = new BusquedaDTO
                 {
-
-                    CedulaEmpleado = empleAutoCb.Text,
-                    mes = mesAutoCb.SelectedIndex + 1,
-                    anio = int.Parse(anioAutoNumUpDown.Value.ToString())
+                    
+                    
                 };
+
+                var verificacion = _api.PostAsync<NominasDTO>("NominasControlador/ObtenerNominaPorEmpleadoMesAnioAsync", nuevoDato);
+
+                if (verificacion != null)
+                {
+                    MessageBox.Show("Ya existe una nómina a nombre del empleado en la fecha establecida, en caso de necesitar hacer algo, editarla manualmente.");
+                    return;
+                }
 
                 await _api.PostAsync<BusquedaDTO>("NominasControlador/InsertarNominaAuto", nuevoDato);
                 await CargarNominasActivosAsync();
@@ -65,17 +89,14 @@ namespace WinModuloNomina.Vista
 
         //codigo que no tiene que ver con la forma
 
-        public void LimitarNumUpDownIngresoAuto()
-        {
-            anioAutoNumUpDown.Minimum = 2000;
-            anioAutoNumUpDown.Maximum = DateTime.Now.Year;
-            anioAutoNumUpDown.Value = DateTime.Now.Year;
-        }
+     
 
         public void CargarMesesIngresoAuto()
         {
             mesAutoCb.DataSource = System.Globalization.CultureInfo.CurrentCulture
                   .DateTimeFormat.MonthNames.Where(m => !string.IsNullOrEmpty(m)).ToList();
+            
+            
         }
         public async Task CargarNominasActivosAsync()
         {
@@ -97,7 +118,7 @@ namespace WinModuloNomina.Vista
             {
                 var datos = await _api.GetAsync<List<Empleados>>("EmpleadosControlador/ObtenerTodosActivosAsync");
                 empleAutoCb.DataSource = datos;
-                empleAutoCb.ValueMember = "Cedula";
+                empleAutoCb.ValueMember = "IdEmpleado";
                 empleAutoCb.DisplayMember = "Cedula";
             }
             catch

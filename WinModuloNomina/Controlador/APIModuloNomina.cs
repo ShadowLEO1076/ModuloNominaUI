@@ -124,7 +124,7 @@ namespace WinModuloNomina.Controlador
 
             return false; // Retorna false si hubo cualquier tipo de excepción
         }
-<<<<<<< HEAD
+
         public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
         {
             var respuesta = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");
@@ -133,19 +133,9 @@ namespace WinModuloNomina.Controlador
             return JsonConvert.DeserializeObject<T>(contenido);
 
         }
-
-
-
-
-
-
-
-
-
-=======
     } 
 }
->>>>>>> af800a64825d1148f5ef0276b74bf42bbf0b1935
+
 
 
         /*

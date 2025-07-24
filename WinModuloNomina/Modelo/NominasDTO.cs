@@ -22,8 +22,8 @@ namespace WinModuloNomina.Modelo
             public int? HorasJornada { get; set; }
 
             public decimal Bonificaciones { get; set; }
-
             public decimal Descuentos { get; set; }
+            public DateOnly FechaEmision { get; set; }
             public byte Mes { get; set; }
 
             public short Anio { get; set; }
