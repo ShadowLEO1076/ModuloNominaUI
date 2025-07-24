@@ -505,7 +505,6 @@ namespace WinModuloNomina.Vista
             await CargarVacaciones();
         }
 
-
         private bool ValidarFormulario(bool validarFechas = true)
         {
             if (cbxEmpleado.SelectedValue == null || cbxEstado.SelectedItem == null)
@@ -553,11 +552,6 @@ namespace WinModuloNomina.Vista
 
             return true;
         }
-
-
-
-
-
 
         private void LimpiarFormulario()
         {

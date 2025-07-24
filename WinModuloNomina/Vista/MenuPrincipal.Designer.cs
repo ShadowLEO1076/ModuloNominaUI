@@ -184,7 +184,6 @@ namespace WinModuloNomina.Vista
             btnPuestos.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPuestos.UseVisualStyleBackColor = false;
             btnPuestos.Click += btnPuestos_Click_1;
-            btnPuestos.BackColor = Color.Transparent;
             // 
             // btnEmpleados
             // 
@@ -396,12 +395,16 @@ namespace WinModuloNomina.Vista
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaptionText;
+            BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1183, 696);
             Controls.Add(panelEscritorio);
             Controls.Add(panelLogo2);
             Controls.Add(panelMenu);
             Name = "MenuPrincipal";
-            Text = "MenuPrincipal";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Maximized;
             Load += MenuPrincipal_Load;
             panelLogo2.ResumeLayout(false);
             panelLogo2.PerformLayout();

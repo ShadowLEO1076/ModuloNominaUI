@@ -186,9 +186,11 @@ namespace WinModuloNomina.Vista
         {
             if (activeForm != null)
             {
+                
                 activeForm.Close();
-                activeForm = null;
-
+                // quiero que al presionar el btncerrar abra el formulario de inicio de secion y cierre el formulario de menuprincipal
+                this.Hide();
+                new LoginForm().Show();
                 // Restablecer el título
                 labelTitulo.Text = "HOME S.NOMINA";
                 labelTitulo.ForeColor = iconDefaultColor;
