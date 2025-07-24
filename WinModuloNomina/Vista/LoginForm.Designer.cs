@@ -103,8 +103,9 @@
             btnCerrar.BackColor = Color.LightCoral;
             btnCerrar.FlatAppearance.BorderSize = 0;
             btnCerrar.FlatStyle = FlatStyle.Flat;
-            btnCerrar.IconChar = FontAwesome.Sharp.IconChar.SignOut;
-            btnCerrar.IconColor = Color.Black;
+            btnCerrar.ForeColor = Color.Gainsboro;
+            btnCerrar.IconChar = FontAwesome.Sharp.IconChar.Close;
+            btnCerrar.IconColor = Color.Gainsboro;
             btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCerrar.ImageAlign = ContentAlignment.MiddleLeft;
             btnCerrar.Location = new Point(248, 265);
@@ -112,7 +113,7 @@
             btnCerrar.Padding = new Padding(12, 0, 0, 0);
             btnCerrar.Size = new Size(143, 57);
             btnCerrar.TabIndex = 4;
-            btnCerrar.Text = "Ingresar";
+            btnCerrar.Text = "Cerrar";
             btnCerrar.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCerrar.UseVisualStyleBackColor = false;
@@ -123,8 +124,9 @@
             btnIngresar.BackColor = Color.SteelBlue;
             btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
+            btnIngresar.ForeColor = Color.Gainsboro;
             btnIngresar.IconChar = FontAwesome.Sharp.IconChar.SignIn;
-            btnIngresar.IconColor = Color.Black;
+            btnIngresar.IconColor = Color.Gainsboro;
             btnIngresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnIngresar.ImageAlign = ContentAlignment.MiddleLeft;
             btnIngresar.Location = new Point(67, 265);

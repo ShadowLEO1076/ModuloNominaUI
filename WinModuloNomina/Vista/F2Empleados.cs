@@ -26,6 +26,7 @@ namespace WinModuloNomina.Vista
             InitializeComponent();
         }
 
+
         private async void F2Empleados_Load(object sender, EventArgs e)
         {
             await CargarEmpleados();

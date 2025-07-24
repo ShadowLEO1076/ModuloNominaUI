@@ -101,28 +101,15 @@ namespace WinModuloNomina.Controlador
             return default(T); // Asegura que siempre retorna algo
         }
         // eliminar generico <T> tambien 
-        public async Task<bool> DeleteAsync(string endpoint)
+        public async Task DeleteAsync(string endpoint)
         {
-            try
-            {
-                var response = await _httpClient.DeleteAsync(_baseUrl + endpoint);
-                if (!response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show($"Error al eliminar el recurso. Código: {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+            var respuesta = await _httpClient.DeleteAsync($"{_baseUrl}/{endpoint}");
 
-                return response.IsSuccessStatusCode;
-            }
-            catch (HttpRequestException httpEx)
+            if (!respuesta.IsSuccessStatusCode)
             {
-                MessageBox.Show($"Error de conexión al servidor: {httpEx.Message}", "Error HTTP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string contenido = await respuesta.Content.ReadAsStringAsync();
+                throw new Exception($"Error en la petición DELETE: {respuesta.StatusCode} - {contenido}");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error inesperado al eliminar: {ex.Message}", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return false; // Retorna false si hubo cualquier tipo de excepción
         }
 
         public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
@@ -133,8 +120,30 @@ namespace WinModuloNomina.Controlador
             return JsonConvert.DeserializeObject<T>(contenido);
 
         }
+
     } 
 }
+/*
+        public async Task<T> EliminarAsyn<T>(string endpoint)
+        {
+            var respuesta = await _httpClient.DeleteAsync($"{_baseUrl}/{endpoint}");
+            respuesta.EnsureSuccessStatusCode();
+            var contenido = await respuesta.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(contenido);
+        }
+    }
+
+
+
+
+
+
+
+
+
+} 
+
+
 
 
 
