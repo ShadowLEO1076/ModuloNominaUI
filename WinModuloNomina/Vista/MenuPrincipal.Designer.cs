@@ -44,7 +44,6 @@ namespace WinModuloNomina.Vista
             btnBonos = new FontAwesome.Sharp.IconButton();
             btnDescuentos = new FontAwesome.Sharp.IconButton();
             btnNomina = new FontAwesome.Sharp.IconButton();
-            btnReportes = new FontAwesome.Sharp.IconButton();
             btnVacaciones = new FontAwesome.Sharp.IconButton();
             panelEscritorio = new Panel();
             label3 = new Label();
@@ -60,9 +59,9 @@ namespace WinModuloNomina.Vista
             btnMenu.BackColor = Color.Transparent;
             btnMenu.FlatAppearance.BorderSize = 0;
             btnMenu.FlatStyle = FlatStyle.Flat;
-            btnMenu.ForeColor = Color.White;
+            btnMenu.ForeColor = Color.Black;
             btnMenu.IconChar = FontAwesome.Sharp.IconChar.Bars;
-            btnMenu.IconColor = Color.White;
+            btnMenu.IconColor = Color.WhiteSmoke;
             btnMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
             btnMenu.Location = new Point(6, -3);
@@ -112,8 +111,9 @@ namespace WinModuloNomina.Vista
             // 
             btnCerrar.FlatAppearance.BorderSize = 0;
             btnCerrar.FlatStyle = FlatStyle.Flat;
+            btnCerrar.ForeColor = Color.WhiteSmoke;
             btnCerrar.IconChar = FontAwesome.Sharp.IconChar.DoorOpen;
-            btnCerrar.IconColor = Color.Gainsboro;
+            btnCerrar.IconColor = Color.WhiteSmoke;
             btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCerrar.Location = new Point(6, 10);
             btnCerrar.Name = "btnCerrar";
@@ -132,6 +132,7 @@ namespace WinModuloNomina.Vista
             label2.Size = new Size(57, 18);
             label2.TabIndex = 6;
             label2.Text = "MENU";
+            label2.Click += label2_Click;
             // 
             // panelMenu
             // 
@@ -144,7 +145,6 @@ namespace WinModuloNomina.Vista
             panelMenu.Controls.Add(btnBonos);
             panelMenu.Controls.Add(btnDescuentos);
             panelMenu.Controls.Add(btnNomina);
-            panelMenu.Controls.Add(btnReportes);
             panelMenu.Controls.Add(btnVacaciones);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
@@ -167,10 +167,10 @@ namespace WinModuloNomina.Vista
             btnPuestos.BackColor = Color.Transparent;
             btnPuestos.FlatAppearance.BorderSize = 0;
             btnPuestos.FlatStyle = FlatStyle.Flat;
-            btnPuestos.Font = new Font("Microsoft Sans Serif", 9F);
-            btnPuestos.ForeColor = Color.Gainsboro;
+            btnPuestos.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnPuestos.ForeColor = Color.WhiteSmoke;
             btnPuestos.IconChar = FontAwesome.Sharp.IconChar.Briefcase;
-            btnPuestos.IconColor = Color.Gainsboro;
+            btnPuestos.IconColor = Color.WhiteSmoke;
             btnPuestos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnPuestos.ImageAlign = ContentAlignment.MiddleLeft;
             btnPuestos.Location = new Point(0, 83);
@@ -190,10 +190,10 @@ namespace WinModuloNomina.Vista
             btnEmpleados.BackColor = Color.Transparent;
             btnEmpleados.FlatAppearance.BorderSize = 0;
             btnEmpleados.FlatStyle = FlatStyle.Flat;
-            btnEmpleados.Font = new Font("Microsoft Sans Serif", 9F);
-            btnEmpleados.ForeColor = Color.Gainsboro;
+            btnEmpleados.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnEmpleados.ForeColor = Color.WhiteSmoke;
             btnEmpleados.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
-            btnEmpleados.IconColor = Color.Gainsboro;
+            btnEmpleados.IconColor = Color.WhiteSmoke;
             btnEmpleados.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEmpleados.ImageAlign = ContentAlignment.MiddleLeft;
             btnEmpleados.Location = new Point(0, 143);
@@ -213,10 +213,10 @@ namespace WinModuloNomina.Vista
             btnContratos.BackColor = Color.Transparent;
             btnContratos.FlatAppearance.BorderSize = 0;
             btnContratos.FlatStyle = FlatStyle.Flat;
-            btnContratos.Font = new Font("Microsoft Sans Serif", 9F);
-            btnContratos.ForeColor = Color.Gainsboro;
+            btnContratos.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnContratos.ForeColor = Color.WhiteSmoke;
             btnContratos.IconChar = FontAwesome.Sharp.IconChar.FileSignature;
-            btnContratos.IconColor = Color.Gainsboro;
+            btnContratos.IconColor = Color.WhiteSmoke;
             btnContratos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnContratos.ImageAlign = ContentAlignment.MiddleLeft;
             btnContratos.Location = new Point(0, 203);
@@ -236,10 +236,10 @@ namespace WinModuloNomina.Vista
             btnAsistencias.BackColor = Color.Transparent;
             btnAsistencias.FlatAppearance.BorderSize = 0;
             btnAsistencias.FlatStyle = FlatStyle.Flat;
-            btnAsistencias.Font = new Font("Microsoft Sans Serif", 9F);
-            btnAsistencias.ForeColor = Color.Gainsboro;
+            btnAsistencias.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnAsistencias.ForeColor = Color.WhiteSmoke;
             btnAsistencias.IconChar = FontAwesome.Sharp.IconChar.UserClock;
-            btnAsistencias.IconColor = Color.Gainsboro;
+            btnAsistencias.IconColor = Color.WhiteSmoke;
             btnAsistencias.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAsistencias.ImageAlign = ContentAlignment.MiddleLeft;
             btnAsistencias.Location = new Point(0, 263);
@@ -259,10 +259,10 @@ namespace WinModuloNomina.Vista
             btnBonos.BackColor = Color.Transparent;
             btnBonos.FlatAppearance.BorderSize = 0;
             btnBonos.FlatStyle = FlatStyle.Flat;
-            btnBonos.Font = new Font("Microsoft Sans Serif", 9F);
-            btnBonos.ForeColor = Color.Gainsboro;
+            btnBonos.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnBonos.ForeColor = Color.WhiteSmoke;
             btnBonos.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTrendUp;
-            btnBonos.IconColor = Color.Gainsboro;
+            btnBonos.IconColor = Color.WhiteSmoke;
             btnBonos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBonos.ImageAlign = ContentAlignment.MiddleLeft;
             btnBonos.Location = new Point(0, 323);
@@ -282,10 +282,10 @@ namespace WinModuloNomina.Vista
             btnDescuentos.BackColor = Color.Transparent;
             btnDescuentos.FlatAppearance.BorderSize = 0;
             btnDescuentos.FlatStyle = FlatStyle.Flat;
-            btnDescuentos.Font = new Font("Microsoft Sans Serif", 9F);
-            btnDescuentos.ForeColor = Color.Gainsboro;
+            btnDescuentos.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnDescuentos.ForeColor = Color.WhiteSmoke;
             btnDescuentos.IconChar = FontAwesome.Sharp.IconChar.SackXmark;
-            btnDescuentos.IconColor = Color.Gainsboro;
+            btnDescuentos.IconColor = Color.WhiteSmoke;
             btnDescuentos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDescuentos.ImageAlign = ContentAlignment.MiddleLeft;
             btnDescuentos.Location = new Point(0, 383);
@@ -305,10 +305,10 @@ namespace WinModuloNomina.Vista
             btnNomina.BackColor = Color.Transparent;
             btnNomina.FlatAppearance.BorderSize = 0;
             btnNomina.FlatStyle = FlatStyle.Flat;
-            btnNomina.Font = new Font("Microsoft Sans Serif", 9F);
-            btnNomina.ForeColor = Color.Gainsboro;
+            btnNomina.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnNomina.ForeColor = Color.WhiteSmoke;
             btnNomina.IconChar = FontAwesome.Sharp.IconChar.FileInvoiceDollar;
-            btnNomina.IconColor = Color.Gainsboro;
+            btnNomina.IconColor = Color.WhiteSmoke;
             btnNomina.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnNomina.ImageAlign = ContentAlignment.MiddleLeft;
             btnNomina.Location = new Point(0, 443);
@@ -323,41 +323,18 @@ namespace WinModuloNomina.Vista
             btnNomina.UseVisualStyleBackColor = false;
             btnNomina.Click += btnNomina_Click;
             // 
-            // btnReportes
-            // 
-            btnReportes.BackColor = Color.Transparent;
-            btnReportes.FlatAppearance.BorderSize = 0;
-            btnReportes.FlatStyle = FlatStyle.Flat;
-            btnReportes.Font = new Font("Microsoft Sans Serif", 9F);
-            btnReportes.ForeColor = Color.Gainsboro;
-            btnReportes.IconChar = FontAwesome.Sharp.IconChar.ChartColumn;
-            btnReportes.IconColor = Color.Gainsboro;
-            btnReportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnReportes.ImageAlign = ContentAlignment.MiddleLeft;
-            btnReportes.Location = new Point(0, 503);
-            btnReportes.Margin = new Padding(0);
-            btnReportes.Name = "btnReportes";
-            btnReportes.Padding = new Padding(14, 0, 0, 0);
-            btnReportes.Size = new Size(220, 60);
-            btnReportes.TabIndex = 12;
-            btnReportes.Text = "    Reportes";
-            btnReportes.TextAlign = ContentAlignment.MiddleLeft;
-            btnReportes.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnReportes.UseVisualStyleBackColor = false;
-            btnReportes.Click += btnReportes_Click;
-            // 
             // btnVacaciones
             // 
             btnVacaciones.BackColor = Color.Transparent;
             btnVacaciones.FlatAppearance.BorderSize = 0;
             btnVacaciones.FlatStyle = FlatStyle.Flat;
-            btnVacaciones.Font = new Font("Microsoft Sans Serif", 9F);
-            btnVacaciones.ForeColor = Color.Gainsboro;
+            btnVacaciones.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnVacaciones.ForeColor = Color.WhiteSmoke;
             btnVacaciones.IconChar = FontAwesome.Sharp.IconChar.Hourglass2;
-            btnVacaciones.IconColor = Color.Gainsboro;
+            btnVacaciones.IconColor = Color.WhiteSmoke;
             btnVacaciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnVacaciones.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVacaciones.Location = new Point(0, 563);
+            btnVacaciones.Location = new Point(0, 503);
             btnVacaciones.Margin = new Padding(0);
             btnVacaciones.Name = "btnVacaciones";
             btnVacaciones.Padding = new Padding(14, 0, 0, 0);
@@ -371,7 +348,7 @@ namespace WinModuloNomina.Vista
             // 
             // panelEscritorio
             // 
-            panelEscritorio.BackColor = Color.DimGray;
+            panelEscritorio.BackColor = Color.LightSteelBlue;
             panelEscritorio.Controls.Add(label3);
             panelEscritorio.Dock = DockStyle.Fill;
             panelEscritorio.Location = new Point(235, 80);
@@ -439,7 +416,6 @@ namespace WinModuloNomina.Vista
         private FontAwesome.Sharp.IconButton btnBonos;
         private FontAwesome.Sharp.IconButton btnDescuentos;
         private FontAwesome.Sharp.IconButton btnNomina;
-        private FontAwesome.Sharp.IconButton btnReportes;
         private FontAwesome.Sharp.IconButton btnVacaciones;
         private Panel panelEscritorio;
         private Label label3;

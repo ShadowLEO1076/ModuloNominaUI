@@ -26,25 +26,25 @@ namespace WinModuloNomina.Vista
             string baseUrl = ConfigurationManager.AppSettings["APIBaseUrl"];
             _apimodulonomina = new APIModuloNomina(baseUrl);
 
-            ConfigurarDataGridView();
+        
             ConfigurarEventos();
             CargarDatosIniciales();
         }
 
-        private void ConfigurarDataGridView()
+
+        private async void CargarDatosIniciales()
         {
-            dgvHistorialContratos.EditMode = DataGridViewEditMode.EditOnEnter;
-            dgvHistorialContratos.AllowUserToAddRows = false;
-            dgvHistorialContratos.AllowUserToDeleteRows = false;
-            dgvHistorialContratos.ReadOnly = false;
-            dgvHistorialContratos.FilterAndSortEnabled = true;
+            await CargarJornadaTipo();
+            await CargarTiposContrato();
+            await CargarEmpleados();
+            await CargarContratosHistorico();
+            await CargarComboBoxEstado();
         }
 
+      
         private void ConfigurarEventos()
         {
             cbJornadaTipo.SelectedIndexChanged += cbJornadaTipo_SelectedIndexChanged;
-            dgvHistorialContratos.DataBindingComplete += DgvHistorialContratos_DataBindingComplete;
-            dgvHistorialContratos.CellValidating += dgvHistorialContratos_CellValidating;
 
             dgvHistorialContratos.FilterStringChanged += (s, e) =>
             {
@@ -59,61 +59,10 @@ namespace WinModuloNomina.Vista
             };
         }
 
-        private void DgvHistorialContratos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            ConfigurarColumnasDataGridView();
-        }
 
-        private void ConfigurarColumnasDataGridView()
-        {
-            if (dgvHistorialContratos.Columns.Count == 0) return;
 
-            // Configurar columnas de solo lectura
-            SetColumnReadOnly("IdContrato");
-            SetColumnReadOnly("FechaCreacion");
-            SetColumnReadOnly("FechaModificacion");
 
-            // Configurar formatos
-            SetColumnFormat("FechaInicio", "d");
-            SetColumnFormat("FechaFin", "d");
-            SetColumnFormat("FechaCreacion", "g");
-            SetColumnFormat("FechaModificacion", "g");
-            SetColumnFormat("Salario", "C2");
-
-            // Configurar columna de estado como ComboBox
-            if (dgvHistorialContratos.Columns.Contains("Estado"))
-            {
-                var colEstado = new DataGridViewComboBoxColumn
-                {
-                    HeaderText = "Estado",
-                    Name = "Estado",
-                    DataPropertyName = "Estado",
-                    DataSource = new List<string> { "Vigente", "Finalizado" }
-                };
-
-                int index = dgvHistorialContratos.Columns["Estado"].Index;
-                dgvHistorialContratos.Columns.Remove("Estado");
-                dgvHistorialContratos.Columns.Insert(index, colEstado);
-            }
-
-            dgvHistorialContratos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
-
-        private void SetColumnReadOnly(string columnName)
-        {
-            if (dgvHistorialContratos.Columns.Contains(columnName))
-            {
-                dgvHistorialContratos.Columns[columnName].ReadOnly = true;
-            }
-        }
-
-        private void SetColumnFormat(string columnName, string format)
-        {
-            if (dgvHistorialContratos.Columns.Contains(columnName))
-            {
-                dgvHistorialContratos.Columns[columnName].DefaultCellStyle.Format = format;
-            }
-        }
+       
 
         public async Task CargarContratosHistorico()
         {
@@ -128,16 +77,6 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("No se pudieron cargar los contratos: " + ex.Message);
             }
         }
-
-        private async void CargarDatosIniciales()
-        {
-            await CargarJornadaTipo();
-            await CargarTiposContrato();
-            await CargarEmpleados();
-            await CargarContratosHistorico();
-            await CargarComboBoxEstado();
-        }
-
         private async Task CargarJornadaTipo()
         {
             cbJornadaTipo.Items.Clear();
@@ -146,7 +85,6 @@ namespace WinModuloNomina.Vista
             cbJornadaTipo.Items.Add("Tiempo Parcial");
             await Task.CompletedTask;
         }
-
         private async Task CargarComboBoxEstado()
         {
             cbEstadoContrato.Items.Clear();
@@ -155,7 +93,6 @@ namespace WinModuloNomina.Vista
             cbEstadoContrato.SelectedIndex = 0;
             await Task.CompletedTask;
         }
-
         private void cbJornadaTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string seleccion = cbJornadaTipo.SelectedItem?.ToString();
@@ -176,7 +113,6 @@ namespace WinModuloNomina.Vista
                 txtHorasJornada.Enabled = true;
             }
         }
-
         private async Task CargarTiposContrato()
         {
             try
@@ -191,7 +127,6 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Error al cargar tipos de contrato: " + ex.Message);
             }
         }
-
         private async Task CargarEmpleados()
         {
             try
@@ -215,7 +150,6 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("No se pudieron cargar los empleados: " + ex.Message);
             }
         }
-
 
 
         private async Task CrearContrato()
@@ -353,31 +287,7 @@ namespace WinModuloNomina.Vista
             txtHorasJornada.Value = 0;
         }
 
-        private void dgvHistorialContratos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            string headerText = dgvHistorialContratos.Columns[e.ColumnIndex].HeaderText;
-
-            if (headerText.Equals("FechaFin"))
-            {
-                DateTime fechaInicio = (DateTime)dgvHistorialContratos.Rows[e.RowIndex].Cells["FechaInicio"].Value;
-                DateTime fechaFin = (DateTime)e.FormattedValue;
-
-                if (fechaFin < fechaInicio)
-                {
-                    MessageBox.Show("La fecha fin debe ser posterior a la fecha inicio");
-                    e.Cancel = true;
-                }
-            }
-
-            if (headerText.Equals("Salario"))
-            {
-                if (!decimal.TryParse(e.FormattedValue.ToString(), out decimal salario) || salario <= 0)
-                {
-                    MessageBox.Show("El salario debe ser un número positivo");
-                    e.Cancel = true;
-                }
-            }
-        }
+        
 
         private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
         {
@@ -390,6 +300,16 @@ namespace WinModuloNomina.Vista
         }
 
         private void btnBorrarTipoContrato_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbTipoContrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbEmpleado_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

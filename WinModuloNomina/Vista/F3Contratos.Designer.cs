@@ -507,6 +507,7 @@
             cbTipoContrato.Name = "cbTipoContrato";
             cbTipoContrato.Size = new Size(218, 28);
             cbTipoContrato.TabIndex = 24;
+            cbTipoContrato.SelectedIndexChanged += cbTipoContrato_SelectedIndexChanged;
             // 
             // txtIdContrato
             // 
@@ -565,6 +566,7 @@
             cbEmpleado.Name = "cbEmpleado";
             cbEmpleado.Size = new Size(218, 28);
             cbEmpleado.TabIndex = 26;
+            cbEmpleado.SelectedIndexChanged += cbEmpleado_SelectedIndexChanged;
             // 
             // panel2
             // 

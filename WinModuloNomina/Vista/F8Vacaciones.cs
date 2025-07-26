@@ -486,8 +486,8 @@ namespace WinModuloNomina.Vista
             if (nuevaSolicitud.Estado == "Aprobado")
             {
                 // metodo para esperar 5 segundos antes de continuar 
-                
-                
+
+
                 var aprobacion = new AprobacionVacaciones
                 {
                     SolicitudId = solicitudCreada.IdSolicitud,
@@ -625,7 +625,7 @@ namespace WinModuloNomina.Vista
                 // Obtener estado actual
                 var solicitudActual = await _apimodulonomina.GetAsync<SolicitudVacaciones>(
                     $"SolicitudVacacionesControlador/BuscarPorId/{idSolicitud}");
-                estadoAnterior = solicitudActual?.Estado ?? ""; 
+                estadoAnterior = solicitudActual?.Estado ?? "";
 
                 // Validar cambio de estado a "Aprobado"
                 if (nuevoEstado == "Aprobado" && !UsuarioSesion.EsAdministrador)

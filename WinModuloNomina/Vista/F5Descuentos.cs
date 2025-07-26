@@ -29,19 +29,61 @@ namespace WinModuloNomina.Vista
         {
             try
             {
+
                 var empleado = await _api.GetAsync<List<Empleados>>("EmpleadoControlador/ListarEmpleados");
-                idEmpleadoCb.DataSource = empleado;
-                idEmpleadoCb.DisplayMember = "Cedula";
+                var listaNombre = empleado
+                    .Select(e => new
+                    {
+                        NombreCompleto = $"{e.Nombres} {e.Apellidos}",
+                        Valor = e.IdEmpleado
+                    })
+                    .ToList();
+                idEmpleadoCb.DataSource = listaNombre;
+                idEmpleadoCb.DisplayMember = "NombreCompleto";
                 idEmpleadoCb.ValueMember = "IdEmpleado";
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
                 MessageBox.Show($"Error al cargar los empleados: {ex.Message}");
 
             }
         }
+        private async Task CargarDescuentosTipo()
+        {
+            tipoTxt.Items.Clear();
+            tipoTxt.Items.Add("Anticipo");
+            tipoTxt.Items.Add("Inasistencias");
+            tipoTxt.Items.Add("Falla Operativa");
+            await Task.CompletedTask;
 
+        }
+       
+       
+        private async void tipoTxt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string seleccion = tipoTxt.SelectedItem?.ToString();
+
+            if (seleccion == "Anticipo")
+            {
+                montoTxt.Value = 0;
+                montoTxt.Enabled = true;
+            }
+            else if (seleccion == "Inasistencias")
+            {
+            
+                montoTxt.Value = 0 ;
+                montoTxt.Enabled = false;
+            }
+            else if (seleccion == "Falla Operativa")
+            {
+                montoTxt.Value = 0;
+                montoTxt.Enabled = true;
+            }
+
+        }
+       
 
         public async Task CargarDescuentos()
         {
@@ -56,10 +98,26 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show($"Error al cargar los descuentos: {ex.Message}");
             }
         }
-        private void F5Descuentos_Load(object sender, EventArgs e)
+        public async Task CargarInasistencias()
         {
-            CargarDescuentos();
-            CargarEmpleados();
+            try
+            {
+                var inacistencia = await _api.GetAsync<List<Inasistencias>>("InasistenciasControlador/ObtenerTodosAsync");
+                dgvInasistencias.DataSource = inacistencia;
+                dgvInasistencias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los descuentos: {ex.Message}");
+            }
+        }
+
+        private async void F5Descuentos_Load(object sender, EventArgs e)
+        {
+            await CargarDescuentos();
+            await CargarEmpleados();
+            await CargarDescuentosTipo();
+            await CargarInasistencias();
         }
 
         private void dgvDescuentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -72,8 +130,7 @@ namespace WinModuloNomina.Vista
             try
             {
                 var entidad = new Descuentos
-                {
-                    EmpleadoId = int.Parse(idEmpleadoCb.SelectedValue.ToString()),
+                {//EmpleadoId = int.Parse(idEmpleadoCb.SelectedValue.ToString()),
                     Descripcion = descripcionTxt.Text,
                     Monto = decimal.Parse(montoTxt.Text),
                     Fecha = DateOnly.FromDateTime(fechaDTP.Value),
@@ -88,5 +145,12 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void dgvDescuentos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+       
     }
 }
