@@ -112,6 +112,7 @@ namespace WinModuloNomina.Controlador
             }
         }
 
+        //lo mismo del get de arriba.
         public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
         {
             var respuesta = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");

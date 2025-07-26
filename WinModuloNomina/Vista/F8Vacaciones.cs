@@ -36,24 +36,11 @@ namespace WinModuloNomina.Vista
 
                 this.Load += F8Vacaciones_Load;
                 txtBuscar2.TextChanged += txtBuscar2_TextChanged;
-                dgvSolicitudes.CellClick += dgvSolicitudes_CellContentClick;
 
                 txtIdSVacacion.Enabled = false;
                 txtidAprovacion.Enabled = false;
 
                 // Configurar ADGV
-                dgvSolicitudes.FilterAndSortEnabled = true;
-                dgvSolicitudes.FilterStringChanged += (s, e) =>
-                {
-                    if (bindingSource1.DataSource != null)
-                        bindingSource1.Filter = dgvSolicitudes.FilterString;
-                };
-
-                dgvSolicitudes.SortStringChanged += (s, e) =>
-                {
-                    if (bindingSource1.DataSource != null)
-                        bindingSource1.Sort = dgvSolicitudes.SortString;
-                };
             }
             catch (Exception ex)
             {
@@ -175,13 +162,8 @@ namespace WinModuloNomina.Vista
                 // Convertir a DataTable
                 DataTable dtSolicitudes = ToDataTable(solicitudes);
                 bindingSource1.DataSource = dtSolicitudes;
-                dgvSolicitudes.DataSource = bindingSource1;
 
                 // Configurar modo de orden para cada columna
-                foreach (DataGridViewColumn col in dgvSolicitudes.Columns)
-                {
-                    col.SortMode = DataGridViewColumnSortMode.Programmatic;
-                }
 
                 // Cargar las otras grids (sin cambios)
                 var aprovados = await _apimodulonomina.GetAsync<List<EmpleadosVacacionesTotales>>("EmpleadoVacacionesTotalesControlador/resumen-vacaciones");
@@ -190,7 +172,6 @@ namespace WinModuloNomina.Vista
                 //dgvAprovados.DataSource = aprovados;
                 dataRevisionV.DataSource = revisiones;
 
-                dgvSolicitudes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 //dgvAprovados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataRevisionV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
@@ -334,29 +315,18 @@ namespace WinModuloNomina.Vista
 
         private void dgvSolicitudes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.RowIndex >= dgvSolicitudes.Rows.Count) return;
 
             try
             {
-                var row = dgvSolicitudes.Rows[e.RowIndex];
-                var dataRow = ((DataRowView)row.DataBoundItem)?.Row;
 
-                if (dataRow == null) return;
 
                 // Desactivar eventos temporalmente
                 UnsubscribeDateEvents();
-
-                // Cargar datos básicos
-                LoadBasicData(dataRow);
-
-                // Cargar y validar fechas
-                LoadAndValidateDates(dataRow);
 
                 // Reactivar eventos
                 SubscribeDateEvents();
 
                 // Colorear fila seleccionada
-                HighlightSelectedRow(row);
             }
             catch (Exception ex)
             {
@@ -420,10 +390,6 @@ namespace WinModuloNomina.Vista
 
         private void HighlightSelectedRow(DataGridViewRow selectedRow)
         {
-            foreach (DataGridViewRow row in dgvSolicitudes.SelectedRows)
-            {
-                row.DefaultCellStyle.BackColor = Color.LightBlue;
-            }
         }
 
 
@@ -653,7 +619,6 @@ namespace WinModuloNomina.Vista
                     "SolicitudVacacionesControlador/ActualizarSolicitudVacaciones",
                     solicitud);
                 // 1. Obtener la fila seleccionada
-                if (dgvSolicitudes.CurrentRow == null)
                 {
                     MessageBox.Show("Seleccione una solicitud para editar.", "Advertencia");
                     return;
