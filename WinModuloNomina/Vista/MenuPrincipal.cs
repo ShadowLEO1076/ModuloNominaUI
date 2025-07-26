@@ -45,7 +45,7 @@ namespace WinModuloNomina.Vista
                 if (control is IconButton)
                 {
                     var btn = (IconButton)control;
-                    btn.MouseEnter += Button_MouseEnter;
+                    //btn.MouseEnter += Button_MouseEnter;
                    // btn.MouseLeave += Button_MouseLeave;
                 }
             }
@@ -186,9 +186,11 @@ namespace WinModuloNomina.Vista
         {
             if (activeForm != null)
             {
+                
                 activeForm.Close();
-                activeForm = null;
-
+                // quiero que al presionar el btncerrar abra el formulario de inicio de secion y cierre el formulario de menuprincipal
+                this.Hide();
+                new LoginForm().Show();
                 // Restablecer el título
                 labelTitulo.Text = "HOME S.NOMINA";
                 labelTitulo.ForeColor = iconDefaultColor;
@@ -210,7 +212,7 @@ namespace WinModuloNomina.Vista
 
         #region Efectos visuales para los botones
 
-        private void Button_MouseEnter(object sender, EventArgs e)
+        /*private void Button_MouseEnter(object sender, EventArgs e)
         {
             var btn = (IconButton)sender;
             if (btn != currentButton)
@@ -219,7 +221,7 @@ namespace WinModuloNomina.Vista
                 btn.ForeColor = buttonHoverColor;
                 btn.IconColor = buttonHoverColor;
             }
-        }
+        }*/
 
         /*private void Button_MouseLeave(object sender, EventArgs e)
         {

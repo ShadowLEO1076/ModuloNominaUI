@@ -19,6 +19,7 @@ namespace WinModuloNomina.Vista
         public LoginForm()
         {
             InitializeComponent();
+            txtContraseña.UseSystemPasswordChar = true;
         }
 
         private async void btnIngresar_Click(object sender, EventArgs e)

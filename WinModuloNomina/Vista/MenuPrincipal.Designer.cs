@@ -82,9 +82,9 @@ namespace WinModuloNomina.Vista
             panelLogo2.Controls.Add(labelTitulo);
             panelLogo2.Controls.Add(panel3);
             panelLogo2.Dock = DockStyle.Top;
-            panelLogo2.Location = new Point(220, 0);
+            panelLogo2.Location = new Point(235, 0);
             panelLogo2.Name = "panelLogo2";
-            panelLogo2.Size = new Size(963, 80);
+            panelLogo2.Size = new Size(948, 80);
             panelLogo2.TabIndex = 4;
             // 
             // labelTitulo
@@ -93,7 +93,7 @@ namespace WinModuloNomina.Vista
             labelTitulo.AutoSize = true;
             labelTitulo.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTitulo.ForeColor = Color.White;
-            labelTitulo.Location = new Point(422, 28);
+            labelTitulo.Location = new Point(375, 28);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(159, 20);
             labelTitulo.TabIndex = 5;
@@ -149,7 +149,7 @@ namespace WinModuloNomina.Vista
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(220, 696);
+            panelMenu.Size = new Size(235, 696);
             panelMenu.TabIndex = 3;
             // 
             // panel2
@@ -184,7 +184,6 @@ namespace WinModuloNomina.Vista
             btnPuestos.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPuestos.UseVisualStyleBackColor = false;
             btnPuestos.Click += btnPuestos_Click_1;
-            btnPuestos.BackColor = Color.Transparent;
             // 
             // btnEmpleados
             // 
@@ -375,9 +374,9 @@ namespace WinModuloNomina.Vista
             panelEscritorio.BackColor = Color.DimGray;
             panelEscritorio.Controls.Add(label3);
             panelEscritorio.Dock = DockStyle.Fill;
-            panelEscritorio.Location = new Point(220, 80);
+            panelEscritorio.Location = new Point(235, 80);
             panelEscritorio.Name = "panelEscritorio";
-            panelEscritorio.Size = new Size(963, 616);
+            panelEscritorio.Size = new Size(948, 616);
             panelEscritorio.TabIndex = 5;
             // 
             // label3
@@ -386,7 +385,7 @@ namespace WinModuloNomina.Vista
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Gainsboro;
-            label3.Location = new Point(240, 243);
+            label3.Location = new Point(233, 243);
             label3.Name = "label3";
             label3.Size = new Size(509, 69);
             label3.TabIndex = 0;
@@ -396,12 +395,16 @@ namespace WinModuloNomina.Vista
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaptionText;
+            BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1183, 696);
             Controls.Add(panelEscritorio);
             Controls.Add(panelLogo2);
             Controls.Add(panelMenu);
             Name = "MenuPrincipal";
-            Text = "MenuPrincipal";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Maximized;
             Load += MenuPrincipal_Load;
             panelLogo2.ResumeLayout(false);
             panelLogo2.PerformLayout();

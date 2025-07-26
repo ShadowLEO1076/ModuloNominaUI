@@ -1,4 +1,6 @@
-﻿namespace WinModuloNomina.Vista
+﻿using WinModuloNomina.Modelo;
+
+namespace WinModuloNomina.Vista
 {
     partial class F6Nominas
     {
@@ -28,359 +30,505 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            nominasIngeManuLb = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            textBox10 = new TextBox();
-            textBox6 = new TextBox();
-            textBox4 = new TextBox();
-            textBox1 = new TextBox();
-            textBox9 = new TextBox();
+            nominaLb = new Label();
+            idNomTxt = new TextBox();
+            anioLb = new Label();
+            mesLb = new Label();
+            idEmpleadoLb = new Label();
+            salManTxt = new TextBox();
+            boniManTxt = new TextBox();
+            salarioLb = new Label();
+            bonificacionesLb = new Label();
+            fecEmisionLb = new Label();
+            descuentosLb = new Label();
             textBox5 = new TextBox();
-            textBox8 = new TextBox();
-            textBox7 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            empleAutoCb = new ComboBox();
+            mesAutoCb = new ComboBox();
+            anioNud = new NumericUpDown();
+            fecEmiDtp = new DateTimePicker();
             panel2 = new Panel();
-            dataGridView1 = new DataGridView();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            insertarBtn = new FontAwesome.Sharp.IconButton();
+            limpiarBtn = new FontAwesome.Sharp.IconButton();
+            buscarBtn = new FontAwesome.Sharp.IconButton();
+            editarBtn = new FontAwesome.Sharp.IconButton();
+            nominasActivasDgv = new DataGridView();
+            idNominaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idEmpleadoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nombresApellidosDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cedulaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            salarioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            horasJornadaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            bonificacionesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descuentosDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            mesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            anioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            salarioNetoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nominasDTOBindingSource = new BindingSource(components);
+            panel3 = new Panel();
+            presentLb = new Label();
+            panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)anioNud).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nominasActivasDgv).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nominasDTOBindingSource).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.AutoSize = true;
+            panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panel1.Controls.Add(nominasIngeManuLb);
+            panel1.Controls.Add(tableLayoutPanel1);
+            panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 159);
+            panel1.Size = new Size(700, 161);
             panel1.TabIndex = 2;
+            // 
+            // nominasIngeManuLb
+            // 
+            nominasIngeManuLb.AutoSize = true;
+            nominasIngeManuLb.Location = new Point(12, 6);
+            nominasIngeManuLb.Name = "nominasIngeManuLb";
+            nominasIngeManuLb.Size = new Size(149, 15);
+            nominasIngeManuLb.TabIndex = 11;
+            nominasIngeManuLb.Text = "Ingreso manual de nómina";
+            nominasIngeManuLb.TextAlign = ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.Controls.Add(label10, 2, 4);
-            tableLayoutPanel1.Controls.Add(label9, 0, 4);
-            tableLayoutPanel1.Controls.Add(label8, 2, 3);
-            tableLayoutPanel1.Controls.Add(label7, 0, 3);
-            tableLayoutPanel1.Controls.Add(label6, 2, 2);
-            tableLayoutPanel1.Controls.Add(label5, 0, 2);
-            tableLayoutPanel1.Controls.Add(label4, 2, 1);
-            tableLayoutPanel1.Controls.Add(label3, 0, 1);
-            tableLayoutPanel1.Controls.Add(label2, 2, 0);
-            tableLayoutPanel1.Controls.Add(label1, 0, 0);
-            tableLayoutPanel1.Controls.Add(textBox10, 1, 2);
-            tableLayoutPanel1.Controls.Add(textBox6, 1, 1);
-            tableLayoutPanel1.Controls.Add(textBox4, 3, 0);
-            tableLayoutPanel1.Controls.Add(textBox1, 1, 0);
-            tableLayoutPanel1.Controls.Add(textBox9, 1, 3);
-            tableLayoutPanel1.Controls.Add(textBox5, 1, 4);
-            tableLayoutPanel1.Controls.Add(textBox8, 3, 2);
-            tableLayoutPanel1.Controls.Add(textBox7, 3, 1);
-            tableLayoutPanel1.Controls.Add(textBox3, 3, 3);
-            tableLayoutPanel1.Controls.Add(textBox2, 3, 4);
-            tableLayoutPanel1.Location = new Point(245, 155);
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.Controls.Add(nominaLb, 0, 0);
+            tableLayoutPanel1.Controls.Add(idNomTxt, 1, 0);
+            tableLayoutPanel1.Controls.Add(anioLb, 0, 1);
+            tableLayoutPanel1.Controls.Add(mesLb, 2, 1);
+            tableLayoutPanel1.Controls.Add(idEmpleadoLb, 2, 0);
+            tableLayoutPanel1.Controls.Add(salManTxt, 1, 2);
+            tableLayoutPanel1.Controls.Add(boniManTxt, 1, 3);
+            tableLayoutPanel1.Controls.Add(salarioLb, 0, 2);
+            tableLayoutPanel1.Controls.Add(bonificacionesLb, 0, 3);
+            tableLayoutPanel1.Controls.Add(fecEmisionLb, 2, 2);
+            tableLayoutPanel1.Controls.Add(descuentosLb, 2, 3);
+            tableLayoutPanel1.Controls.Add(textBox5, 3, 3);
+            tableLayoutPanel1.Controls.Add(empleAutoCb, 3, 0);
+            tableLayoutPanel1.Controls.Add(mesAutoCb, 3, 1);
+            tableLayoutPanel1.Controls.Add(anioNud, 1, 1);
+            tableLayoutPanel1.Controls.Add(fecEmiDtp, 3, 2);
+            tableLayoutPanel1.Location = new Point(12, 23);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 5;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.Size = new Size(311, 140);
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(566, 115);
             tableLayoutPanel1.TabIndex = 3;
             // 
-            // label10
+            // nominaLb
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(157, 112);
-            label10.Name = "label10";
-            label10.Size = new Size(58, 20);
-            label10.TabIndex = 25;
-            label10.Text = "label10";
+            nominaLb.AutoSize = true;
+            nominaLb.Location = new Point(3, 0);
+            nominaLb.Name = "nominaLb";
+            nominaLb.Size = new Size(64, 15);
+            nominaLb.TabIndex = 7;
+            nominaLb.Text = "ID Nomina";
             // 
-            // label9
+            // idNomTxt
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(3, 112);
-            label9.Name = "label9";
-            label9.Size = new Size(50, 20);
-            label9.TabIndex = 24;
-            label9.Text = "label9";
+            idNomTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            idNomTxt.Location = new Point(93, 3);
+            idNomTxt.Margin = new Padding(3, 2, 3, 2);
+            idNomTxt.Name = "idNomTxt";
+            idNomTxt.ReadOnly = true;
+            idNomTxt.Size = new Size(123, 23);
+            idNomTxt.TabIndex = 7;
             // 
-            // label8
+            // anioLb
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(157, 84);
-            label8.Name = "label8";
-            label8.Size = new Size(50, 20);
-            label8.TabIndex = 23;
-            label8.Text = "label8";
+            anioLb.AutoSize = true;
+            anioLb.Location = new Point(3, 29);
+            anioLb.Name = "anioLb";
+            anioLb.Size = new Size(29, 15);
+            anioLb.TabIndex = 22;
+            anioLb.Text = "Año";
             // 
-            // label7
+            // mesLb
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(3, 84);
-            label7.Name = "label7";
-            label7.Size = new Size(50, 20);
-            label7.TabIndex = 22;
-            label7.Text = "label7";
+            mesLb.AutoSize = true;
+            mesLb.Location = new Point(222, 29);
+            mesLb.Name = "mesLb";
+            mesLb.Size = new Size(29, 15);
+            mesLb.TabIndex = 20;
+            mesLb.Text = "Mes";
             // 
-            // label6
+            // idEmpleadoLb
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(157, 56);
-            label6.Name = "label6";
-            label6.Size = new Size(50, 20);
-            label6.TabIndex = 21;
-            label6.Text = "label6";
+            idEmpleadoLb.AutoSize = true;
+            idEmpleadoLb.Location = new Point(222, 0);
+            idEmpleadoLb.Name = "idEmpleadoLb";
+            idEmpleadoLb.Size = new Size(60, 15);
+            idEmpleadoLb.TabIndex = 18;
+            idEmpleadoLb.Text = "Empleado";
             // 
-            // label5
+            // salManTxt
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(3, 56);
-            label5.Name = "label5";
-            label5.Size = new Size(50, 20);
-            label5.TabIndex = 20;
-            label5.Text = "label5";
+            salManTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            salManTxt.Location = new Point(93, 61);
+            salManTxt.Margin = new Padding(3, 2, 3, 2);
+            salManTxt.Name = "salManTxt";
+            salManTxt.Size = new Size(123, 23);
+            salManTxt.TabIndex = 26;
             // 
-            // label4
+            // boniManTxt
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(157, 28);
-            label4.Name = "label4";
-            label4.Size = new Size(50, 20);
-            label4.TabIndex = 19;
-            label4.Text = "label4";
+            boniManTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            boniManTxt.Location = new Point(93, 89);
+            boniManTxt.Margin = new Padding(3, 2, 3, 2);
+            boniManTxt.Name = "boniManTxt";
+            boniManTxt.Size = new Size(123, 23);
+            boniManTxt.TabIndex = 15;
             // 
-            // label3
+            // salarioLb
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(3, 28);
-            label3.Name = "label3";
-            label3.Size = new Size(50, 20);
-            label3.TabIndex = 18;
-            label3.Text = "label3";
+            salarioLb.AutoSize = true;
+            salarioLb.Location = new Point(3, 58);
+            salarioLb.Name = "salarioLb";
+            salarioLb.Size = new Size(74, 15);
+            salarioLb.TabIndex = 24;
+            salarioLb.Text = "Salario Bruto";
             // 
-            // label2
+            // bonificacionesLb
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(157, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 20);
-            label2.TabIndex = 17;
-            label2.Text = "label2";
+            bonificacionesLb.AutoSize = true;
+            bonificacionesLb.Location = new Point(3, 87);
+            bonificacionesLb.Name = "bonificacionesLb";
+            bonificacionesLb.Size = new Size(84, 15);
+            bonificacionesLb.TabIndex = 17;
+            bonificacionesLb.Text = "Bonificaciones";
             // 
-            // label1
+            // fecEmisionLb
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 7;
-            label1.Text = "label1";
+            fecEmisionLb.AutoSize = true;
+            fecEmisionLb.Location = new Point(222, 58);
+            fecEmisionLb.Name = "fecEmisionLb";
+            fecEmisionLb.Size = new Size(99, 15);
+            fecEmisionLb.TabIndex = 25;
+            fecEmisionLb.Text = "Fecha de emisión";
             // 
-            // textBox10
+            // descuentosLb
             // 
-            textBox10.Location = new Point(80, 59);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(71, 27);
-            textBox10.TabIndex = 16;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(80, 31);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(71, 27);
-            textBox6.TabIndex = 12;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(234, 3);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(71, 27);
-            textBox4.TabIndex = 10;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(80, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(71, 27);
-            textBox1.TabIndex = 7;
-            // 
-            // textBox9
-            // 
-            textBox9.Location = new Point(80, 87);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(71, 27);
-            textBox9.TabIndex = 15;
+            descuentosLb.AutoSize = true;
+            descuentosLb.Location = new Point(222, 87);
+            descuentosLb.Name = "descuentosLb";
+            descuentosLb.Size = new Size(68, 15);
+            descuentosLb.TabIndex = 19;
+            descuentosLb.Text = "Descuentos";
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(80, 115);
+            textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox5.Location = new Point(327, 89);
+            textBox5.Margin = new Padding(3, 2, 3, 2);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(71, 27);
+            textBox5.Size = new Size(239, 23);
             textBox5.TabIndex = 11;
             // 
-            // textBox8
+            // empleAutoCb
             // 
-            textBox8.Location = new Point(234, 59);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(71, 27);
-            textBox8.TabIndex = 14;
+            empleAutoCb.FormattingEnabled = true;
+            empleAutoCb.Location = new Point(327, 3);
+            empleAutoCb.Name = "empleAutoCb";
+            empleAutoCb.Size = new Size(239, 23);
+            empleAutoCb.TabIndex = 27;
             // 
-            // textBox7
+            // mesAutoCb
             // 
-            textBox7.Location = new Point(234, 31);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(71, 27);
-            textBox7.TabIndex = 13;
+            mesAutoCb.FormattingEnabled = true;
+            mesAutoCb.Location = new Point(327, 32);
+            mesAutoCb.Name = "mesAutoCb";
+            mesAutoCb.Size = new Size(239, 23);
+            mesAutoCb.TabIndex = 28;
             // 
-            // textBox3
+            // anioNud
             // 
-            textBox3.Location = new Point(234, 87);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(71, 27);
-            textBox3.TabIndex = 9;
+            anioNud.Location = new Point(93, 32);
+            anioNud.Name = "anioNud";
+            anioNud.Size = new Size(120, 23);
+            anioNud.TabIndex = 29;
             // 
-            // textBox2
+            // fecEmiDtp
             // 
-            textBox2.Location = new Point(234, 115);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(71, 27);
-            textBox2.TabIndex = 8;
+            fecEmiDtp.Format = DateTimePickerFormat.Short;
+            fecEmiDtp.Location = new Point(327, 61);
+            fecEmiDtp.Name = "fecEmiDtp";
+            fecEmiDtp.Size = new Size(239, 23);
+            fecEmiDtp.TabIndex = 30;
             // 
             // panel2
             // 
-            panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(691, 159);
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.AutoSize = true;
+            panel2.Controls.Add(insertarBtn);
+            panel2.Controls.Add(limpiarBtn);
+            panel2.Controls.Add(buscarBtn);
+            panel2.Controls.Add(editarBtn);
+            panel2.Location = new Point(584, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(109, 291);
+            panel2.Size = new Size(116, 159);
             panel2.TabIndex = 4;
             // 
-            // dataGridView1
+            // insertarBtn
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(303, 169);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(194, 112);
-            dataGridView1.TabIndex = 8;
+            insertarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            insertarBtn.IconColor = Color.Black;
+            insertarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            insertarBtn.Location = new Point(21, 27);
+            insertarBtn.Margin = new Padding(3, 2, 3, 2);
+            insertarBtn.Name = "insertarBtn";
+            insertarBtn.Size = new Size(82, 22);
+            insertarBtn.TabIndex = 9;
+            insertarBtn.Text = "Insertar";
+            insertarBtn.UseVisualStyleBackColor = true;
+            insertarBtn.Click += ingAutoBtn_Click;
             // 
-            // iconButton4
+            // limpiarBtn
             // 
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton4.IconColor = Color.Black;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.Location = new Point(44, 300);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(94, 29);
-            iconButton4.TabIndex = 12;
-            iconButton4.Text = "Borrar";
-            iconButton4.UseVisualStyleBackColor = true;
+            limpiarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            limpiarBtn.IconColor = Color.Black;
+            limpiarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            limpiarBtn.Location = new Point(21, 111);
+            limpiarBtn.Margin = new Padding(3, 2, 3, 2);
+            limpiarBtn.Name = "limpiarBtn";
+            limpiarBtn.Size = new Size(82, 42);
+            limpiarBtn.TabIndex = 12;
+            limpiarBtn.Text = "Limpiar datos";
+            limpiarBtn.UseVisualStyleBackColor = true;
             // 
-            // iconButton3
+            // buscarBtn
             // 
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.Black;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.Location = new Point(44, 265);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(94, 29);
-            iconButton3.TabIndex = 11;
-            iconButton3.Text = "Editar";
-            iconButton3.UseVisualStyleBackColor = true;
+            buscarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            buscarBtn.IconColor = Color.Black;
+            buscarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buscarBtn.Location = new Point(21, 82);
+            buscarBtn.Margin = new Padding(3, 2, 3, 2);
+            buscarBtn.Name = "buscarBtn";
+            buscarBtn.Size = new Size(82, 22);
+            buscarBtn.TabIndex = 10;
+            buscarBtn.Text = "Buscar";
+            buscarBtn.UseVisualStyleBackColor = true;
             // 
-            // iconButton2
+            // editarBtn
             // 
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(44, 230);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(94, 29);
-            iconButton2.TabIndex = 10;
-            iconButton2.Text = "Buscar";
-            iconButton2.UseVisualStyleBackColor = true;
+            editarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            editarBtn.IconColor = Color.Black;
+            editarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            editarBtn.Location = new Point(21, 54);
+            editarBtn.Margin = new Padding(3, 2, 3, 2);
+            editarBtn.Name = "editarBtn";
+            editarBtn.Size = new Size(82, 22);
+            editarBtn.TabIndex = 11;
+            editarBtn.Text = "Editar";
+            editarBtn.UseVisualStyleBackColor = true;
             // 
-            // iconButton1
+            // nominasActivasDgv
             // 
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(44, 195);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(94, 29);
-            iconButton1.TabIndex = 9;
-            iconButton1.Text = "Crear";
-            iconButton1.UseVisualStyleBackColor = true;
+            nominasActivasDgv.AutoGenerateColumns = false;
+            nominasActivasDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            nominasActivasDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            nominasActivasDgv.Columns.AddRange(new DataGridViewColumn[] { idNominaDataGridViewTextBoxColumn, idEmpleadoDataGridViewTextBoxColumn, nombresApellidosDataGridViewTextBoxColumn, cedulaDataGridViewTextBoxColumn, salarioDataGridViewTextBoxColumn, horasJornadaDataGridViewTextBoxColumn, bonificacionesDataGridViewTextBoxColumn, descuentosDataGridViewTextBoxColumn, mesDataGridViewTextBoxColumn, anioDataGridViewTextBoxColumn, salarioNetoDataGridViewTextBoxColumn });
+            nominasActivasDgv.DataSource = nominasDTOBindingSource;
+            nominasActivasDgv.Dock = DockStyle.Top;
+            nominasActivasDgv.Location = new Point(0, 195);
+            nominasActivasDgv.Margin = new Padding(3, 2, 3, 2);
+            nominasActivasDgv.Name = "nominasActivasDgv";
+            nominasActivasDgv.RowHeadersWidth = 51;
+            nominasActivasDgv.Size = new Size(700, 147);
+            nominasActivasDgv.TabIndex = 8;
+            nominasActivasDgv.CellClick += nominasActivasDgv_CellClick;
+            // 
+            // idNominaDataGridViewTextBoxColumn
+            // 
+            idNominaDataGridViewTextBoxColumn.DataPropertyName = "IdNomina";
+            idNominaDataGridViewTextBoxColumn.HeaderText = "ID Nomina";
+            idNominaDataGridViewTextBoxColumn.Name = "idNominaDataGridViewTextBoxColumn";
+            idNominaDataGridViewTextBoxColumn.Width = 82;
+            // 
+            // idEmpleadoDataGridViewTextBoxColumn
+            // 
+            idEmpleadoDataGridViewTextBoxColumn.DataPropertyName = "IdEmpleado";
+            idEmpleadoDataGridViewTextBoxColumn.HeaderText = "ID Empleado";
+            idEmpleadoDataGridViewTextBoxColumn.Name = "idEmpleadoDataGridViewTextBoxColumn";
+            idEmpleadoDataGridViewTextBoxColumn.Width = 91;
+            // 
+            // nombresApellidosDataGridViewTextBoxColumn
+            // 
+            nombresApellidosDataGridViewTextBoxColumn.DataPropertyName = "NombresApellidos";
+            nombresApellidosDataGridViewTextBoxColumn.HeaderText = "Nombres y Apellidos";
+            nombresApellidosDataGridViewTextBoxColumn.Name = "nombresApellidosDataGridViewTextBoxColumn";
+            nombresApellidosDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // cedulaDataGridViewTextBoxColumn
+            // 
+            cedulaDataGridViewTextBoxColumn.DataPropertyName = "Cedula";
+            cedulaDataGridViewTextBoxColumn.HeaderText = "Cedula";
+            cedulaDataGridViewTextBoxColumn.Name = "cedulaDataGridViewTextBoxColumn";
+            cedulaDataGridViewTextBoxColumn.Width = 69;
+            // 
+            // salarioDataGridViewTextBoxColumn
+            // 
+            salarioDataGridViewTextBoxColumn.DataPropertyName = "Salario";
+            salarioDataGridViewTextBoxColumn.HeaderText = "Salario";
+            salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
+            salarioDataGridViewTextBoxColumn.Width = 67;
+            // 
+            // horasJornadaDataGridViewTextBoxColumn
+            // 
+            horasJornadaDataGridViewTextBoxColumn.DataPropertyName = "HorasJornada";
+            horasJornadaDataGridViewTextBoxColumn.HeaderText = "Horas Jornada";
+            horasJornadaDataGridViewTextBoxColumn.Name = "horasJornadaDataGridViewTextBoxColumn";
+            horasJornadaDataGridViewTextBoxColumn.Width = 98;
+            // 
+            // bonificacionesDataGridViewTextBoxColumn
+            // 
+            bonificacionesDataGridViewTextBoxColumn.DataPropertyName = "Bonificaciones";
+            bonificacionesDataGridViewTextBoxColumn.HeaderText = "Bonificaciones";
+            bonificacionesDataGridViewTextBoxColumn.Name = "bonificacionesDataGridViewTextBoxColumn";
+            bonificacionesDataGridViewTextBoxColumn.Width = 109;
+            // 
+            // descuentosDataGridViewTextBoxColumn
+            // 
+            descuentosDataGridViewTextBoxColumn.DataPropertyName = "Descuentos";
+            descuentosDataGridViewTextBoxColumn.HeaderText = "Descuentos";
+            descuentosDataGridViewTextBoxColumn.Name = "descuentosDataGridViewTextBoxColumn";
+            descuentosDataGridViewTextBoxColumn.Width = 93;
+            // 
+            // mesDataGridViewTextBoxColumn
+            // 
+            mesDataGridViewTextBoxColumn.DataPropertyName = "Mes";
+            mesDataGridViewTextBoxColumn.HeaderText = "Mes";
+            mesDataGridViewTextBoxColumn.Name = "mesDataGridViewTextBoxColumn";
+            mesDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // anioDataGridViewTextBoxColumn
+            // 
+            anioDataGridViewTextBoxColumn.DataPropertyName = "Anio";
+            anioDataGridViewTextBoxColumn.HeaderText = "Año";
+            anioDataGridViewTextBoxColumn.Name = "anioDataGridViewTextBoxColumn";
+            anioDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // salarioNetoDataGridViewTextBoxColumn
+            // 
+            salarioNetoDataGridViewTextBoxColumn.DataPropertyName = "SalarioNeto";
+            salarioNetoDataGridViewTextBoxColumn.HeaderText = "Salario Neto";
+            salarioNetoDataGridViewTextBoxColumn.Name = "salarioNetoDataGridViewTextBoxColumn";
+            salarioNetoDataGridViewTextBoxColumn.Width = 88;
+            // 
+            // nominasDTOBindingSource
+            // 
+            nominasDTOBindingSource.DataSource = typeof(NominasDTO);
+            // 
+            // panel3
+            // 
+            panel3.AutoSize = true;
+            panel3.Controls.Add(presentLb);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 161);
+            panel3.Margin = new Padding(3, 2, 3, 2);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(700, 34);
+            panel3.TabIndex = 10;
+            // 
+            // presentLb
+            // 
+            presentLb.AutoSize = true;
+            presentLb.Location = new Point(3, 19);
+            presentLb.Name = "presentLb";
+            presentLb.Size = new Size(96, 15);
+            presentLb.TabIndex = 10;
+            presentLb.Text = "Nominas Activas";
+            presentLb.TextAlign = ContentAlignment.TopCenter;
             // 
             // F6Nominas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(iconButton4);
-            Controls.Add(iconButton3);
-            Controls.Add(iconButton2);
-            Controls.Add(iconButton1);
-            Controls.Add(dataGridView1);
-            Controls.Add(panel2);
-            Controls.Add(tableLayoutPanel1);
+            ClientSize = new Size(700, 338);
+            Controls.Add(nominasActivasDgv);
+            Controls.Add(panel3);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "F6Nominas";
             Text = "F6Nominas";
+            Load += F6Nominas_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)anioNud).EndInit();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)nominasActivasDgv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nominasDTOBindingSource).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Panel panel1;
         private TableLayoutPanel tableLayoutPanel1;
-        private Label label10;
-        private Label label9;
-        private Label label8;
-        private Label label7;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label1;
-        private TextBox textBox10;
-        private TextBox textBox6;
-        private TextBox textBox4;
-        private TextBox textBox1;
-        private TextBox textBox9;
+        private Label salarioLb;
+        private Label anioLb;
+        private Label mesLb;
+        private Label descuentosLb;
+        private Label idEmpleadoLb;
+        private Label bonificacionesLb;
+        private Label nominaLb;
+        private TextBox idNomTxt;
+        private TextBox boniManTxt;
         private TextBox textBox5;
-        private TextBox textBox8;
-        private TextBox textBox7;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private DataGridView nominasActivasDgv;
+        private FontAwesome.Sharp.IconButton limpiarBtn;
+        private FontAwesome.Sharp.IconButton editarBtn;
+        private FontAwesome.Sharp.IconButton buscarBtn;
+        private Panel panel3;
+        private Label fecEmisionLb;
+        private TextBox salManTxt;
+        private BindingSource nominasDTOBindingSource;
+        private DataGridViewTextBoxColumn idNominaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn idEmpleadoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nombresApellidosDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cedulaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn salarioDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn horasJornadaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn bonificacionesDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descuentosDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn mesDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn anioDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn salarioNetoDataGridViewTextBoxColumn;
+        private Label nominasIngeManuLb;
+        private Label presentLb;
         private Panel panel2;
-        private DataGridView dataGridView1;
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton insertarBtn;
+        private ComboBox empleAutoCb;
+        private ComboBox mesAutoCb;
+        private NumericUpDown anioNud;
+        private DateTimePicker fecEmiDtp;
     }
 }

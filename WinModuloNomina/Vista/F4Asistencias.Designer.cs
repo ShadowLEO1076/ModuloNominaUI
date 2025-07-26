@@ -66,8 +66,9 @@
             // 
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 159);
+            panel1.Size = new Size(700, 119);
             panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -97,7 +98,8 @@
             tableLayoutPanel1.Controls.Add(textBox7, 3, 1);
             tableLayoutPanel1.Controls.Add(textBox3, 3, 3);
             tableLayoutPanel1.Controls.Add(textBox2, 3, 4);
-            tableLayoutPanel1.Location = new Point(245, 155);
+            tableLayoutPanel1.Location = new Point(214, 116);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
@@ -105,87 +107,87 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.Size = new Size(311, 140);
+            tableLayoutPanel1.Size = new Size(272, 105);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(157, 112);
+            label10.Location = new Point(139, 84);
             label10.Name = "label10";
-            label10.Size = new Size(58, 20);
+            label10.Size = new Size(44, 15);
             label10.TabIndex = 25;
             label10.Text = "label10";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(3, 112);
+            label9.Location = new Point(3, 84);
             label9.Name = "label9";
-            label9.Size = new Size(50, 20);
+            label9.Size = new Size(38, 15);
             label9.TabIndex = 24;
             label9.Text = "label9";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(157, 84);
+            label8.Location = new Point(139, 63);
             label8.Name = "label8";
-            label8.Size = new Size(50, 20);
+            label8.Size = new Size(38, 15);
             label8.TabIndex = 23;
             label8.Text = "label8";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(3, 84);
+            label7.Location = new Point(3, 63);
             label7.Name = "label7";
-            label7.Size = new Size(50, 20);
+            label7.Size = new Size(38, 15);
             label7.TabIndex = 22;
             label7.Text = "label7";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(157, 56);
+            label6.Location = new Point(139, 42);
             label6.Name = "label6";
-            label6.Size = new Size(50, 20);
+            label6.Size = new Size(38, 15);
             label6.TabIndex = 21;
             label6.Text = "label6";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(3, 56);
+            label5.Location = new Point(3, 42);
             label5.Name = "label5";
-            label5.Size = new Size(50, 20);
+            label5.Size = new Size(38, 15);
             label5.TabIndex = 20;
             label5.Text = "label5";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(157, 28);
+            label4.Location = new Point(139, 21);
             label4.Name = "label4";
-            label4.Size = new Size(50, 20);
+            label4.Size = new Size(38, 15);
             label4.TabIndex = 19;
             label4.Text = "label4";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 28);
+            label3.Location = new Point(3, 21);
             label3.Name = "label3";
-            label3.Size = new Size(50, 20);
+            label3.Size = new Size(38, 15);
             label3.TabIndex = 18;
             label3.Text = "label3";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(157, 0);
+            label2.Location = new Point(139, 0);
             label2.Name = "label2";
-            label2.Size = new Size(50, 20);
+            label2.Size = new Size(38, 15);
             label2.TabIndex = 17;
             label2.Text = "label2";
             // 
@@ -194,86 +196,97 @@
             label1.AutoSize = true;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(50, 20);
+            label1.Size = new Size(38, 15);
             label1.TabIndex = 7;
             label1.Text = "label1";
             // 
             // textBox10
             // 
-            textBox10.Location = new Point(80, 59);
+            textBox10.Location = new Point(71, 44);
+            textBox10.Margin = new Padding(3, 2, 3, 2);
             textBox10.Name = "textBox10";
-            textBox10.Size = new Size(71, 27);
+            textBox10.Size = new Size(62, 23);
             textBox10.TabIndex = 16;
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(80, 31);
+            textBox6.Location = new Point(71, 23);
+            textBox6.Margin = new Padding(3, 2, 3, 2);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(71, 27);
+            textBox6.Size = new Size(62, 23);
             textBox6.TabIndex = 12;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(234, 3);
+            textBox4.Location = new Point(207, 2);
+            textBox4.Margin = new Padding(3, 2, 3, 2);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(71, 27);
+            textBox4.Size = new Size(62, 23);
             textBox4.TabIndex = 10;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(80, 3);
+            textBox1.Location = new Point(71, 2);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(71, 27);
+            textBox1.Size = new Size(62, 23);
             textBox1.TabIndex = 7;
             // 
             // textBox9
             // 
-            textBox9.Location = new Point(80, 87);
+            textBox9.Location = new Point(71, 65);
+            textBox9.Margin = new Padding(3, 2, 3, 2);
             textBox9.Name = "textBox9";
-            textBox9.Size = new Size(71, 27);
+            textBox9.Size = new Size(62, 23);
             textBox9.TabIndex = 15;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(80, 115);
+            textBox5.Location = new Point(71, 86);
+            textBox5.Margin = new Padding(3, 2, 3, 2);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(71, 27);
+            textBox5.Size = new Size(62, 23);
             textBox5.TabIndex = 11;
             // 
             // textBox8
             // 
-            textBox8.Location = new Point(234, 59);
+            textBox8.Location = new Point(207, 44);
+            textBox8.Margin = new Padding(3, 2, 3, 2);
             textBox8.Name = "textBox8";
-            textBox8.Size = new Size(71, 27);
+            textBox8.Size = new Size(62, 23);
             textBox8.TabIndex = 14;
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(234, 31);
+            textBox7.Location = new Point(207, 23);
+            textBox7.Margin = new Padding(3, 2, 3, 2);
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(71, 27);
+            textBox7.Size = new Size(62, 23);
             textBox7.TabIndex = 13;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(234, 87);
+            textBox3.Location = new Point(207, 65);
+            textBox3.Margin = new Padding(3, 2, 3, 2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(71, 27);
+            textBox3.Size = new Size(62, 23);
             textBox3.TabIndex = 9;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(234, 115);
+            textBox2.Location = new Point(207, 86);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(71, 27);
+            textBox2.Size = new Size(62, 23);
             textBox2.TabIndex = 8;
             // 
             // panel2
             // 
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(691, 159);
+            panel2.Location = new Point(605, 119);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(109, 291);
+            panel2.Size = new Size(95, 219);
             panel2.TabIndex = 4;
             // 
             // dataGridView1
@@ -295,10 +308,11 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Location = new Point(303, 169);
+            dataGridView1.Location = new Point(265, 127);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(194, 112);
+            dataGridView1.Size = new Size(170, 84);
             dataGridView1.TabIndex = 8;
             // 
             // iconButton4
@@ -306,9 +320,10 @@
             iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButton4.IconColor = Color.Black;
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.Location = new Point(61, 340);
+            iconButton4.Location = new Point(53, 255);
+            iconButton4.Margin = new Padding(3, 2, 3, 2);
             iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(94, 29);
+            iconButton4.Size = new Size(82, 22);
             iconButton4.TabIndex = 12;
             iconButton4.Text = "Borrar";
             iconButton4.UseVisualStyleBackColor = true;
@@ -318,9 +333,10 @@
             iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButton3.IconColor = Color.Black;
             iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.Location = new Point(61, 305);
+            iconButton3.Location = new Point(53, 229);
+            iconButton3.Margin = new Padding(3, 2, 3, 2);
             iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(94, 29);
+            iconButton3.Size = new Size(82, 22);
             iconButton3.TabIndex = 11;
             iconButton3.Text = "Editar";
             iconButton3.UseVisualStyleBackColor = true;
@@ -330,9 +346,10 @@
             iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButton2.IconColor = Color.Black;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(61, 270);
+            iconButton2.Location = new Point(53, 202);
+            iconButton2.Margin = new Padding(3, 2, 3, 2);
             iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(94, 29);
+            iconButton2.Size = new Size(82, 22);
             iconButton2.TabIndex = 10;
             iconButton2.Text = "Buscar";
             iconButton2.UseVisualStyleBackColor = true;
@@ -342,18 +359,19 @@
             iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButton1.IconColor = Color.Black;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(61, 235);
+            iconButton1.Location = new Point(53, 176);
+            iconButton1.Margin = new Padding(3, 2, 3, 2);
             iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(94, 29);
+            iconButton1.Size = new Size(82, 22);
             iconButton1.TabIndex = 9;
             iconButton1.Text = "Crear";
             iconButton1.UseVisualStyleBackColor = true;
             // 
             // F4Asistencias
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(iconButton4);
             Controls.Add(iconButton3);
             Controls.Add(iconButton2);
@@ -362,6 +380,7 @@
             Controls.Add(panel2);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "F4Asistencias";
             Text = "F4Asistencias";
             Load += F4Asistencias_Load;

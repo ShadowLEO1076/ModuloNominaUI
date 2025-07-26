@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace WinModuloNomina.Controlador
 {
-    
+
     public class APIModuloNomina
     {
         private readonly HttpClient _httpClient;
@@ -20,39 +20,90 @@ namespace WinModuloNomina.Controlador
         {
             _baseUrl = baseUrl.TrimEnd('/');
             _httpClient = new HttpClient();
-           
+
         }
         public async Task<T> GetAsync<T>(string endpoint)
         {
-            var respuesta = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");
-            respuesta.EnsureSuccessStatusCode();
-            var contenido = await respuesta.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(contenido);
+            try
+            {
+                var respuesta = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");
+                respuesta.EnsureSuccessStatusCode();
+                var contenido = await respuesta.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(contenido);
+            }
+            catch (HttpRequestException httpEx)
+            {
+                MessageBox.Show($"Error de conexión al servidor: asegurese de que los datos ingresados sean correctos", "Error HTTP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (JsonException jsonEx)
+            {
+                MessageBox.Show($"Error al procesar la respuesta del servidor.", "Error de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado. Llame al personal pertinente para resolverlo.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+            return default(T); // Asegura que siempre retorna algo
         }
         // lo de arriva pero con post: la idea es que funcione para agregar, editar y eliminar
         public async Task<T> PostAsync<T>(string endpoint, object data)
         {
-            var json = JsonConvert.SerializeObject(data);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var respuesta = await _httpClient.PostAsync($"{_baseUrl}/{endpoint}", content);
-            respuesta.EnsureSuccessStatusCode();
-            var contenido = await respuesta.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(contenido);
+            try
+            {
+                var json = JsonConvert.SerializeObject(data);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var respuesta = await _httpClient.PostAsync($"{_baseUrl}/{endpoint}", content);
+                respuesta.EnsureSuccessStatusCode();
+                var contenido = await respuesta.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(contenido);
+            }
+            catch (HttpRequestException httpEx)
+            {
+                MessageBox.Show($"Error de conexión al servidor: asegurese de que los datos ingresados sean correctos", "Error HTTP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (JsonException jsonEx)
+            {
+                MessageBox.Show($"Error al procesar la respuesta del servidor.", "Error de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado. Llame al personal pertinente para resolverlo.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return default(T); // Asegura que siempre retorna algo
+
         }
         public async Task<T> PutAsync<T>(string endpoint, object data)
         {
-            var json = JsonConvert.SerializeObject(data);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var respuesta = await _httpClient.PutAsync($"{_baseUrl}/{endpoint}", content);
-            respuesta.EnsureSuccessStatusCode();
-            var contenido = await respuesta.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(contenido);
+            try
+            {
+                var json = JsonConvert.SerializeObject(data);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var respuesta = await _httpClient.PutAsync($"{_baseUrl}/{endpoint}", content);
+                respuesta.EnsureSuccessStatusCode();
+                var contenido = await respuesta.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(contenido);
+            }
+            catch (HttpRequestException httpEx)
+            {
+                MessageBox.Show($"Error de conexión al servidor: asegurese de que los datos ingresados sean correctos", "Error HTTP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (JsonException jsonEx)
+            {
+                MessageBox.Show($"Error al procesar la respuesta del servidor.", "Error de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado. Llame al personal pertinente para resolverlo.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return default(T); // Asegura que siempre retorna algo
         }
         // eliminar generico <T> tambien 
         public async Task DeleteAsync(string endpoint)
         {
-            var respuesta = await _httpClient.DeleteAsync($"{_baseUrl}/{endpoint}" );
+            var respuesta = await _httpClient.DeleteAsync($"{_baseUrl}/{endpoint}");
 
             if (!respuesta.IsSuccessStatusCode)
             {
@@ -60,6 +111,7 @@ namespace WinModuloNomina.Controlador
                 throw new Exception($"Error en la petición DELETE: {respuesta.StatusCode} - {contenido}");
             }
         }
+
         public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
         {
             var respuesta = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");
@@ -69,6 +121,17 @@ namespace WinModuloNomina.Controlador
 
         }
 
+    } 
+}
+/*
+        public async Task<T> EliminarAsyn<T>(string endpoint)
+        {
+            var respuesta = await _httpClient.DeleteAsync($"{_baseUrl}/{endpoint}");
+            respuesta.EnsureSuccessStatusCode();
+            var contenido = await respuesta.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(contenido);
+        }
+    }
 
 
 
@@ -78,7 +141,13 @@ namespace WinModuloNomina.Controlador
 
 
 
+} 
 
+
+
+
+
+        /*
         public async Task<T> CrearEntidad<T>(T entidad,
                                      string endPoint,
                                      string nombreentidad)
@@ -107,4 +176,5 @@ public async Task<T> EliminarAsyn<T>(string endpoint)
             return JsonConvert.DeserializeObject<T>(contenido);
         }
     }
-}
+        */
+

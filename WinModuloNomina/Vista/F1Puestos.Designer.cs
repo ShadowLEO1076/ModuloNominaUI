@@ -30,14 +30,14 @@
         {
             components = new System.ComponentModel.Container();
             panel3 = new Panel();
+            btnBuscar = new FontAwesome.Sharp.IconButton();
             label11 = new Label();
+            txtBuscar = new TextBox();
             puestosBindingSource = new BindingSource(components);
             panel1 = new Panel();
             panel2 = new Panel();
-            txtBuscar = new TextBox();
             btnCrear = new FontAwesome.Sharp.IconButton();
             btnBorrar = new FontAwesome.Sharp.IconButton();
-            btnBuscar = new FontAwesome.Sharp.IconButton();
             btnEditar = new FontAwesome.Sharp.IconButton();
             tableLayoutPanel1 = new TableLayoutPanel();
             lbl = new Label();
@@ -47,19 +47,19 @@
             txtNombrePuesto = new TextBox();
             txtIdPuesto = new TextBox();
             dgvPuestos = new DataGridView();
-            puestosBindingSource1 = new BindingSource(components);
-            puestosBindingSource2 = new BindingSource(components);
             idPuestoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             salarioBaseDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            puestosBindingSource2 = new BindingSource(components);
+            puestosBindingSource1 = new BindingSource(components);
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)puestosBindingSource).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPuestos).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)puestosBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)puestosBindingSource2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)puestosBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // panel3
@@ -68,18 +68,41 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 177);
             panel3.Name = "panel3";
-            panel3.Size = new Size(736, 45);
+            panel3.Size = new Size(748, 45);
             panel3.TabIndex = 8;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Anchor = AnchorStyles.Right;
+            btnBuscar.FlatAppearance.BorderSize = 0;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.IconChar = FontAwesome.Sharp.IconChar.Search;
+            btnBuscar.IconColor = Color.Black;
+            btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBuscar.IconSize = 35;
+            btnBuscar.Location = new Point(187, 22);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(56, 32);
+            btnBuscar.TabIndex = 11;
+            btnBuscar.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
             label11.Anchor = AnchorStyles.None;
             label11.AutoSize = true;
-            label11.Location = new Point(337, 12);
+            label11.Location = new Point(315, 16);
             label11.Name = "label11";
-            label11.Size = new Size(58, 20);
+            label11.Size = new Size(140, 20);
             label11.TabIndex = 9;
-            label11.Text = "label11";
+            label11.Text = "PUESTOS - CARGOS";
+            // 
+            // txtBuscar
+            // 
+            txtBuscar.Anchor = AnchorStyles.Left;
+            txtBuscar.Location = new Point(24, 22);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(168, 27);
+            txtBuscar.TabIndex = 8;
             // 
             // panel1
             // 
@@ -88,29 +111,21 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(736, 177);
+            panel1.Size = new Size(748, 177);
             panel1.TabIndex = 1;
             // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Right;
+            panel2.Controls.Add(btnBuscar);
             panel2.Controls.Add(txtBuscar);
             panel2.Controls.Add(btnCrear);
             panel2.Controls.Add(btnBorrar);
-            panel2.Controls.Add(btnBuscar);
             panel2.Controls.Add(btnEditar);
-            panel2.Location = new Point(511, 0);
+            panel2.Location = new Point(481, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(225, 174);
+            panel2.Size = new Size(267, 174);
             panel2.TabIndex = 2;
-            // 
-            // txtBuscar
-            // 
-            txtBuscar.Anchor = AnchorStyles.Left;
-            txtBuscar.Location = new Point(3, 19);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(162, 27);
-            txtBuscar.TabIndex = 8;
             // 
             // btnCrear
             // 
@@ -118,9 +133,9 @@
             btnCrear.IconChar = FontAwesome.Sharp.IconChar.None;
             btnCrear.IconColor = Color.Black;
             btnCrear.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCrear.Location = new Point(119, 51);
+            btnCrear.Location = new Point(24, 71);
             btnCrear.Name = "btnCrear";
-            btnCrear.Size = new Size(94, 29);
+            btnCrear.Size = new Size(107, 38);
             btnCrear.TabIndex = 3;
             btnCrear.Text = "Crear";
             btnCrear.UseVisualStyleBackColor = true;
@@ -132,26 +147,13 @@
             btnBorrar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnBorrar.IconColor = Color.Black;
             btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBorrar.Location = new Point(119, 121);
+            btnBorrar.Location = new Point(148, 119);
             btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(94, 29);
+            btnBorrar.Size = new Size(107, 38);
             btnBorrar.TabIndex = 6;
             btnBorrar.Text = "Borrar";
             btnBorrar.UseVisualStyleBackColor = true;
             btnBorrar.Click += btnBorrar_Click;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Anchor = AnchorStyles.Right;
-            btnBuscar.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnBuscar.IconColor = Color.Black;
-            btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBuscar.Location = new Point(171, 16);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(42, 29);
-            btnBuscar.TabIndex = 4;
-            btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
             // 
             // btnEditar
             // 
@@ -159,9 +161,9 @@
             btnEditar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEditar.Location = new Point(119, 86);
+            btnEditar.Location = new Point(148, 72);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(94, 29);
+            btnEditar.Size = new Size(107, 41);
             btnEditar.TabIndex = 5;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
@@ -170,81 +172,83 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.Controls.Add(lbl, 0, 2);
             tableLayoutPanel1.Controls.Add(lbl2, 0, 1);
             tableLayoutPanel1.Controls.Add(lbl3, 0, 0);
             tableLayoutPanel1.Controls.Add(txtSalarioPuesto, 1, 2);
             tableLayoutPanel1.Controls.Add(txtNombrePuesto, 1, 1);
             tableLayoutPanel1.Controls.Add(txtIdPuesto, 1, 0);
-            tableLayoutPanel1.Location = new Point(21, 16);
+            tableLayoutPanel1.Location = new Point(29, 16);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.Size = new Size(458, 138);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Size = new Size(446, 138);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // lbl
             // 
-            lbl.Anchor = AnchorStyles.None;
+            lbl.Anchor = AnchorStyles.Right;
             lbl.AutoSize = true;
-            lbl.Location = new Point(89, 105);
+            lbl.Location = new Point(12, 95);
             lbl.Name = "lbl";
-            lbl.Size = new Size(50, 20);
+            lbl.Size = new Size(59, 40);
             lbl.TabIndex = 20;
-            lbl.Text = "label5";
+            lbl.Text = "Salario Base:";
             // 
             // lbl2
             // 
-            lbl2.Anchor = AnchorStyles.None;
+            lbl2.Anchor = AnchorStyles.Right;
             lbl2.AutoSize = true;
-            lbl2.Location = new Point(89, 59);
+            lbl2.Location = new Point(4, 59);
             lbl2.Name = "lbl2";
-            lbl2.Size = new Size(50, 20);
+            lbl2.Size = new Size(67, 20);
             lbl2.TabIndex = 18;
-            lbl2.Text = "label3";
+            lbl2.Text = "Nombre:";
             // 
             // lbl3
             // 
-            lbl3.Anchor = AnchorStyles.None;
+            lbl3.Anchor = AnchorStyles.Right;
             lbl3.AutoSize = true;
-            lbl3.Location = new Point(89, 13);
+            lbl3.Location = new Point(44, 13);
             lbl3.Name = "lbl3";
-            lbl3.Size = new Size(50, 20);
+            lbl3.Size = new Size(27, 20);
             lbl3.TabIndex = 7;
-            lbl3.Text = "label1";
+            lbl3.Text = "ID:";
             // 
             // txtSalarioPuesto
             // 
-            txtSalarioPuesto.Anchor = AnchorStyles.Left;
-            txtSalarioPuesto.Location = new Point(232, 101);
+            txtSalarioPuesto.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtSalarioPuesto.Location = new Point(77, 101);
             txtSalarioPuesto.Name = "txtSalarioPuesto";
-            txtSalarioPuesto.Size = new Size(223, 27);
+            txtSalarioPuesto.Size = new Size(217, 27);
             txtSalarioPuesto.TabIndex = 16;
             // 
             // txtNombrePuesto
             // 
-            txtNombrePuesto.Anchor = AnchorStyles.Left;
-            txtNombrePuesto.Location = new Point(232, 55);
+            txtNombrePuesto.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtNombrePuesto.Location = new Point(77, 55);
             txtNombrePuesto.Name = "txtNombrePuesto";
-            txtNombrePuesto.Size = new Size(223, 27);
+            txtNombrePuesto.Size = new Size(217, 27);
             txtNombrePuesto.TabIndex = 12;
             // 
             // txtIdPuesto
             // 
-            txtIdPuesto.Anchor = AnchorStyles.Left;
-            txtIdPuesto.Location = new Point(232, 9);
+            txtIdPuesto.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtIdPuesto.Location = new Point(77, 9);
             txtIdPuesto.Name = "txtIdPuesto";
-            txtIdPuesto.Size = new Size(223, 27);
+            txtIdPuesto.Size = new Size(217, 27);
             txtIdPuesto.TabIndex = 7;
             // 
             // dgvPuestos
             // 
             dgvPuestos.AutoGenerateColumns = false;
+            dgvPuestos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPuestos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPuestos.Columns.AddRange(new DataGridViewColumn[] { idPuestoDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, salarioBaseDataGridViewTextBoxColumn });
             dgvPuestos.DataSource = puestosBindingSource2;
@@ -252,17 +256,9 @@
             dgvPuestos.Location = new Point(0, 222);
             dgvPuestos.Name = "dgvPuestos";
             dgvPuestos.RowHeadersWidth = 51;
-            dgvPuestos.Size = new Size(736, 196);
+            dgvPuestos.Size = new Size(748, 160);
             dgvPuestos.TabIndex = 9;
             dgvPuestos.CellContentClick += dgvPuestos_CellContentClick_1;
-            // 
-            // puestosBindingSource1
-            // 
-            puestosBindingSource1.DataSource = typeof(Infraestructura.AccesoDatos.Puestos);
-            // 
-            // puestosBindingSource2
-            // 
-            puestosBindingSource2.DataSource = typeof(Infraestructura.AccesoDatos.Puestos);
             // 
             // idPuestoDataGridViewTextBoxColumn
             // 
@@ -270,7 +266,6 @@
             idPuestoDataGridViewTextBoxColumn.HeaderText = "IdPuesto";
             idPuestoDataGridViewTextBoxColumn.MinimumWidth = 6;
             idPuestoDataGridViewTextBoxColumn.Name = "idPuestoDataGridViewTextBoxColumn";
-            idPuestoDataGridViewTextBoxColumn.Width = 125;
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -278,7 +273,6 @@
             nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
             nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
             nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            nombreDataGridViewTextBoxColumn.Width = 125;
             // 
             // salarioBaseDataGridViewTextBoxColumn
             // 
@@ -286,14 +280,21 @@
             salarioBaseDataGridViewTextBoxColumn.HeaderText = "SalarioBase";
             salarioBaseDataGridViewTextBoxColumn.MinimumWidth = 6;
             salarioBaseDataGridViewTextBoxColumn.Name = "salarioBaseDataGridViewTextBoxColumn";
-            salarioBaseDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // puestosBindingSource2
+            // 
+            puestosBindingSource2.DataSource = typeof(Infraestructura.AccesoDatos.Puestos);
+            // 
+            // puestosBindingSource1
+            // 
+            puestosBindingSource1.DataSource = typeof(Infraestructura.AccesoDatos.Puestos);
             // 
             // F1Puestos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(736, 418);
+            ClientSize = new Size(748, 382);
             Controls.Add(dgvPuestos);
             Controls.Add(panel3);
             Controls.Add(panel1);
@@ -309,8 +310,8 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPuestos).EndInit();
-            ((System.ComponentModel.ISupportInitialize)puestosBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)puestosBindingSource2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)puestosBindingSource1).EndInit();
             ResumeLayout(false);
         }
 
@@ -329,7 +330,6 @@
         private TextBox txtBuscar;
         private FontAwesome.Sharp.IconButton btnCrear;
         private FontAwesome.Sharp.IconButton btnBorrar;
-        private FontAwesome.Sharp.IconButton btnBuscar;
         private FontAwesome.Sharp.IconButton btnEditar;
         private TableLayoutPanel tableLayoutPanel1;
         private Label lbl;
@@ -345,5 +345,6 @@
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salarioBaseDataGridViewTextBoxColumn;
         private BindingSource puestosBindingSource2;
+        private FontAwesome.Sharp.IconButton btnBuscar;
     }
 }
