@@ -32,16 +32,17 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            limpiarBtn = new FontAwesome.Sharp.IconButton();
             infoLb = new Label();
             label11 = new Label();
             panel2 = new Panel();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
+            EliminarBtn = new FontAwesome.Sharp.IconButton();
             actualizarBtn = new FontAwesome.Sharp.IconButton();
             ingresarBtn = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             tableLayoutPanel1 = new TableLayoutPanel();
             asisLb = new Label();
-            asisTxt = new TextBox();
+            idAsisTxt = new TextBox();
             empleLb = new Label();
             fecLb = new Label();
             entradaLb = new Label();
@@ -68,6 +69,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(limpiarBtn);
             panel1.Controls.Add(infoLb);
             panel1.Controls.Add(label11);
             panel1.Controls.Add(panel2);
@@ -76,8 +78,22 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(700, 162);
+            panel1.Size = new Size(700, 175);
             panel1.TabIndex = 2;
+            // 
+            // limpiarBtn
+            // 
+            limpiarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            limpiarBtn.IconColor = Color.Black;
+            limpiarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            limpiarBtn.Location = new Point(438, 144);
+            limpiarBtn.Margin = new Padding(3, 2, 3, 2);
+            limpiarBtn.Name = "limpiarBtn";
+            limpiarBtn.Size = new Size(90, 22);
+            limpiarBtn.TabIndex = 13;
+            limpiarBtn.Text = "Limpiar datos";
+            limpiarBtn.UseVisualStyleBackColor = true;
+            limpiarBtn.Click += limpiarBtn_Click;
             // 
             // infoLb
             // 
@@ -98,7 +114,7 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(iconButton4);
+            panel2.Controls.Add(EliminarBtn);
             panel2.Controls.Add(actualizarBtn);
             panel2.Controls.Add(ingresarBtn);
             panel2.Controls.Add(iconButton2);
@@ -106,21 +122,22 @@
             panel2.Location = new Point(564, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(136, 162);
+            panel2.Size = new Size(136, 175);
             panel2.TabIndex = 4;
             // 
-            // iconButton4
+            // EliminarBtn
             // 
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton4.IconColor = Color.Black;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.Location = new Point(28, 133);
-            iconButton4.Margin = new Padding(3, 2, 3, 2);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(82, 22);
-            iconButton4.TabIndex = 12;
-            iconButton4.Text = "Borrar";
-            iconButton4.UseVisualStyleBackColor = true;
+            EliminarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            EliminarBtn.IconColor = Color.Black;
+            EliminarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            EliminarBtn.Location = new Point(28, 133);
+            EliminarBtn.Margin = new Padding(3, 2, 3, 2);
+            EliminarBtn.Name = "EliminarBtn";
+            EliminarBtn.Size = new Size(82, 22);
+            EliminarBtn.TabIndex = 12;
+            EliminarBtn.Text = "Eliminar";
+            EliminarBtn.UseVisualStyleBackColor = true;
+            EliminarBtn.Click += EliminarBtn_Click;
             // 
             // actualizarBtn
             // 
@@ -134,6 +151,7 @@
             actualizarBtn.TabIndex = 11;
             actualizarBtn.Text = "Actualizar";
             actualizarBtn.UseVisualStyleBackColor = true;
+            actualizarBtn.Click += actualizarBtn_Click;
             // 
             // ingresarBtn
             // 
@@ -168,7 +186,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 43.15545F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 56.8445473F));
             tableLayoutPanel1.Controls.Add(asisLb, 0, 0);
-            tableLayoutPanel1.Controls.Add(asisTxt, 1, 0);
+            tableLayoutPanel1.Controls.Add(idAsisTxt, 1, 0);
             tableLayoutPanel1.Controls.Add(empleLb, 0, 1);
             tableLayoutPanel1.Controls.Add(fecLb, 0, 2);
             tableLayoutPanel1.Controls.Add(entradaLb, 0, 3);
@@ -199,14 +217,14 @@
             asisLb.TabIndex = 7;
             asisLb.Text = "ID Asistencia";
             // 
-            // asisTxt
+            // idAsisTxt
             // 
-            asisTxt.Location = new Point(169, 2);
-            asisTxt.Margin = new Padding(3, 2, 3, 2);
-            asisTxt.Name = "asisTxt";
-            asisTxt.ReadOnly = true;
-            asisTxt.Size = new Size(213, 23);
-            asisTxt.TabIndex = 7;
+            idAsisTxt.Location = new Point(169, 2);
+            idAsisTxt.Margin = new Padding(3, 2, 3, 2);
+            idAsisTxt.Name = "idAsisTxt";
+            idAsisTxt.ReadOnly = true;
+            idAsisTxt.Size = new Size(213, 23);
+            idAsisTxt.TabIndex = 7;
             // 
             // empleLb
             // 
@@ -304,6 +322,7 @@
             asistenciasDgv.RowHeadersWidth = 51;
             asistenciasDgv.Size = new Size(700, 160);
             asistenciasDgv.TabIndex = 8;
+            asistenciasDgv.CellClick += asistenciasDgv_CellClick;
             // 
             // idAsistenciaDataGridViewTextBoxColumn
             // 
@@ -377,7 +396,7 @@
         private Panel panel1;
         private Panel panel2;
         private DataGridView asistenciasDgv;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton EliminarBtn;
         private FontAwesome.Sharp.IconButton actualizarBtn;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton ingresarBtn;
@@ -393,7 +412,7 @@
         private Label infoLb;
         private TableLayoutPanel tableLayoutPanel1;
         private Label asisLb;
-        private TextBox asisTxt;
+        private TextBox idAsisTxt;
         private Label empleLb;
         private Label fecLb;
         private Label entradaLb;
@@ -402,5 +421,6 @@
         private DateTimePicker fecAsisDtp;
         private DateTimePicker horaEntraDtp;
         private DateTimePicker horaSaliDtp;
+        private FontAwesome.Sharp.IconButton limpiarBtn;
     }
 }

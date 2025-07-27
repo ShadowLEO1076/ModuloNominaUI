@@ -64,6 +64,7 @@
             empleadosBindingSource = new BindingSource(components);
             panel3 = new Panel();
             presentLb = new Label();
+            empleadoDTOBindingSource = new BindingSource(components);
             tablaEmpleados = new TableLayoutPanel();
             tablaEmpleados.SuspendLayout();
             panel1.SuspendLayout();
@@ -71,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)empleadosDgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)empleadosBindingSource).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)empleadoDTOBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tablaEmpleados
@@ -447,6 +449,10 @@
             presentLb.Text = "Empleados";
             presentLb.TextAlign = ContentAlignment.TopCenter;
             // 
+            // empleadoDTOBindingSource
+            // 
+            empleadoDTOBindingSource.DataSource = typeof(Modelo.DTOS.EmpleadoDTO);
+            // 
             // F2Empleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -468,6 +474,7 @@
             ((System.ComponentModel.ISupportInitialize)empleadosBindingSource).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)empleadoDTOBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -522,5 +529,6 @@
         private CheckBox estadoCheckbox;
         private ComboBox generoCb;
         private Button limpiarBtn;
+        private BindingSource empleadoDTOBindingSource;
     }
 }

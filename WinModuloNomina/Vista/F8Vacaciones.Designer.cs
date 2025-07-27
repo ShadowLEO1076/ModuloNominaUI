@@ -33,26 +33,12 @@ namespace WinModuloNomina.Vista
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
             panel5 = new Panel();
-<<<<<<< HEAD
-            panel2 = new Panel();
-            btnEliminarA = new FontAwesome.Sharp.IconButton();
             btnBorrar = new FontAwesome.Sharp.IconButton();
-=======
->>>>>>> origin
             txtBuscar2 = new TextBox();
             btnBuscar = new FontAwesome.Sharp.IconButton();
             btnEditar = new FontAwesome.Sharp.IconButton();
             btnCrear = new FontAwesome.Sharp.IconButton();
-<<<<<<< HEAD
-            label7 = new Label();
-            dgvRevisionV = new Panel();
             dataRevisionV = new DataGridView();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            panel4 = new Panel();
-            label8 = new Label();
-            dgvSolicitudes = new Zuby.ADGV.AdvancedDataGridView();
-            solicitudVacacionDTOBindingSource = new BindingSource(components);
-=======
             tableLayoutPanel1 = new TableLayoutPanel();
             cbxEmpleado = new ComboBox();
             label5 = new Label();
@@ -66,65 +52,15 @@ namespace WinModuloNomina.Vista
             label3 = new Label();
             txtIdSVacacion = new TextBox();
             txtidAprovacion = new TextBox();
-            btnEliminarA = new FontAwesome.Sharp.IconButton();
             dataRevisionV = new DataGridView();
-            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn13 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn14 = new DataGridViewTextBoxColumn();
-            aprobacionVacacionesBindingSource = new BindingSource(components);
-            solicitudVacacionDTOBindingSource = new BindingSource(components);
             tableLayoutPanel4 = new TableLayoutPanel();
             btnBorrar = new FontAwesome.Sharp.IconButton();
-            dgvSolicitudes = new Zuby.ADGV.AdvancedDataGridView();
->>>>>>> origin
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
-<<<<<<< HEAD
-            aprobacionVacacionesBindingSource = new BindingSource(components);
-            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn13 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn14 = new DataGridViewTextBoxColumn();
-            panel1.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            panel2.SuspendLayout();
-            dgvRevisionV.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataRevisionV).BeginInit();
-            tableLayoutPanel2.SuspendLayout();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSolicitudes).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)solicitudVacacionDTOBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)aprobacionVacacionesBindingSource).BeginInit();
-=======
-            panel2 = new Panel();
-            label1 = new Label();
-            panel3 = new Panel();
-            label7 = new Label();
-            label8 = new Label();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataRevisionV).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)aprobacionVacacionesBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)solicitudVacacionDTOBindingSource).BeginInit();
+            panel1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSolicitudes).BeginInit();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
->>>>>>> origin
             SuspendLayout();
             // 
             // panel1
@@ -133,7 +69,6 @@ namespace WinModuloNomina.Vista
             panel1.Controls.Add(panel5);
             panel1.Location = new Point(-23, 0);
             panel1.Name = "panel1";
-<<<<<<< HEAD
             panel1.Size = new Size(989, 159);
             panel1.TabIndex = 2;
             // 
@@ -147,7 +82,6 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.38291F));
             tableLayoutPanel1.Controls.Add(label5, 0, 2);
             tableLayoutPanel1.Controls.Add(label3, 0, 1);
-            tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Controls.Add(txtIdSVacacion, 1, 0);
             tableLayoutPanel1.Controls.Add(cbxEmpleado, 1, 1);
             tableLayoutPanel1.Controls.Add(dateInicio, 1, 2);
@@ -187,16 +121,6 @@ namespace WinModuloNomina.Vista
             label3.Size = new Size(77, 20);
             label3.TabIndex = 18;
             label3.Text = "Empleado";
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Location = new Point(9, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(84, 20);
-            label1.TabIndex = 7;
-            label1.Text = "id Solicitud";
             // 
             // txtIdSVacacion
             // 
@@ -292,52 +216,18 @@ namespace WinModuloNomina.Vista
             label6.TabIndex = 21;
             label6.Text = "Estado";
             // 
-=======
             panel1.Size = new Size(1078, 52);
             panel1.TabIndex = 2;
             // 
->>>>>>> origin
             // panel5
             // 
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel5.Location = new Point(438, 159);
             panel5.Name = "panel5";
-<<<<<<< HEAD
             panel5.Size = new Size(551, 50);
             panel5.TabIndex = 12;
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(btnEliminarA);
-            panel2.Controls.Add(btnBorrar);
-            panel2.Controls.Add(txtBuscar2);
-            panel2.Controls.Add(btnEditar);
-            panel2.Controls.Add(btnBuscar);
-            panel2.Controls.Add(btnCrear);
-            panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(721, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(268, 159);
-            panel2.TabIndex = 4;
-            // 
             // btnEliminarA
-            // 
-            btnEliminarA.Anchor = AnchorStyles.Right;
-            btnEliminarA.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnEliminarA.IconColor = Color.Black;
-            btnEliminarA.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEliminarA.IconSize = 22;
-            btnEliminarA.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminarA.Location = new Point(136, 95);
-            btnEliminarA.Name = "btnEliminarA";
-            btnEliminarA.Size = new Size(120, 41);
-            btnEliminarA.TabIndex = 16;
-            btnEliminarA.Text = "Aprovacion";
-            btnEliminarA.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEliminarA.UseVisualStyleBackColor = true;
-            btnEliminarA.Click += btnEliminarA_Click;
-            // 
-            // btnBorrar
             // 
             btnBorrar.Anchor = AnchorStyles.Right;
             btnBorrar.IconChar = FontAwesome.Sharp.IconChar.Trash;
@@ -353,11 +243,9 @@ namespace WinModuloNomina.Vista
             btnBorrar.UseVisualStyleBackColor = true;
             btnBorrar.Click += btnBorrar_Click;
             // 
-=======
             panel5.Size = new Size(640, 0);
             panel5.TabIndex = 12;
             // 
->>>>>>> origin
             // txtBuscar2
             // 
             txtBuscar2.Anchor = AnchorStyles.Right;
@@ -366,7 +254,6 @@ namespace WinModuloNomina.Vista
             txtBuscar2.Size = new Size(177, 27);
             txtBuscar2.TabIndex = 15;
             // 
-<<<<<<< HEAD
             // btnEditar
             // 
             btnEditar.Anchor = AnchorStyles.Right;
@@ -381,8 +268,6 @@ namespace WinModuloNomina.Vista
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
-=======
->>>>>>> origin
             // btnBuscar
             // 
             btnBuscar.Anchor = AnchorStyles.Right;
@@ -422,45 +307,21 @@ namespace WinModuloNomina.Vista
             btnCrear.IconChar = FontAwesome.Sharp.IconChar.Save;
             btnCrear.IconColor = Color.Black;
             btnCrear.IconFont = FontAwesome.Sharp.IconFont.Auto;
-<<<<<<< HEAD
             btnCrear.Location = new Point(6, 48);
             btnCrear.Name = "btnCrear";
             btnCrear.Size = new Size(120, 41);
-=======
             btnCrear.IconSize = 35;
             btnCrear.ImageAlign = ContentAlignment.MiddleLeft;
             btnCrear.Location = new Point(242, 3);
             btnCrear.Name = "btnCrear";
             btnCrear.Size = new Size(233, 39);
->>>>>>> origin
             btnCrear.TabIndex = 9;
             btnCrear.Text = "Ingresar";
             btnCrear.TextAlign = ContentAlignment.MiddleLeft;
             btnCrear.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCrear.UseVisualStyleBackColor = true;
             btnCrear.Click += btnCrear_Click;
-            // 
-            // tableLayoutPanel1
-            // 
-<<<<<<< HEAD
-            label7.Anchor = AnchorStyles.None;
-            label7.AutoSize = true;
-            label7.Location = new Point(451, 13);
-            label7.Name = "label7";
-            label7.Size = new Size(95, 20);
-            label7.TabIndex = 10;
-            label7.Text = "APROVADOS";
-            // 
-            // dgvRevisionV
-            // 
-            dgvRevisionV.BackColor = SystemColors.ActiveCaption;
-            dgvRevisionV.Controls.Add(label7);
-            dgvRevisionV.Dock = DockStyle.Top;
-            dgvRevisionV.Location = new Point(0, 159);
-            dgvRevisionV.Name = "dgvRevisionV";
-            dgvRevisionV.Size = new Size(989, 45);
-            dgvRevisionV.TabIndex = 13;
-=======
+
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
@@ -600,73 +461,18 @@ namespace WinModuloNomina.Vista
             txtidAprovacion.Size = new Size(367, 27);
             txtidAprovacion.TabIndex = 28;
             // 
-            // btnEliminarA
-            // 
-            btnEliminarA.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEliminarA.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnEliminarA.IconColor = Color.Black;
-            btnEliminarA.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEliminarA.IconSize = 22;
-            btnEliminarA.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminarA.Location = new Point(867, 108);
-            btnEliminarA.Name = "btnEliminarA";
-            btnEliminarA.Size = new Size(135, 40);
-            btnEliminarA.TabIndex = 16;
-            btnEliminarA.Text = "Eliminar";
-            btnEliminarA.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEliminarA.UseVisualStyleBackColor = true;
-            btnEliminarA.Click += btnEliminarA_Click;
-            // 
             // dataRevisionV
             // 
             dataRevisionV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             dataRevisionV.AutoGenerateColumns = false;
             dataRevisionV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataRevisionV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataRevisionV.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12, dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn14 });
-            dataRevisionV.DataSource = aprobacionVacacionesBindingSource;
             dataRevisionV.Location = new Point(378, 152);
             dataRevisionV.Name = "dataRevisionV";
             dataRevisionV.RowHeadersWidth = 51;
             dataRevisionV.Size = new Size(624, 163);
             dataRevisionV.TabIndex = 14;
             dataRevisionV.CellContentClick += dataRevisionV_CellContentClick;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            dataGridViewTextBoxColumn11.DataPropertyName = "IdAprobacion";
-            dataGridViewTextBoxColumn11.HeaderText = "IdAprobacion";
-            dataGridViewTextBoxColumn11.MinimumWidth = 6;
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            dataGridViewTextBoxColumn12.DataPropertyName = "SolicitudId";
-            dataGridViewTextBoxColumn12.HeaderText = "SolicitudId";
-            dataGridViewTextBoxColumn12.MinimumWidth = 6;
-            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            dataGridViewTextBoxColumn13.DataPropertyName = "FechaAprobacion";
-            dataGridViewTextBoxColumn13.HeaderText = "FechaAprobacion";
-            dataGridViewTextBoxColumn13.MinimumWidth = 6;
-            dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            dataGridViewTextBoxColumn14.DataPropertyName = "UsuarioAprobador";
-            dataGridViewTextBoxColumn14.HeaderText = "UsuarioAprobador";
-            dataGridViewTextBoxColumn14.MinimumWidth = 6;
-            dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            // 
-            // aprobacionVacacionesBindingSource
-            // 
-            aprobacionVacacionesBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.AprobacionVacaciones);
-            // 
-            // solicitudVacacionDTOBindingSource
-            // 
-            solicitudVacacionDTOBindingSource.DataSource = typeof(SolicitudVacacionDTO);
             // 
             // tableLayoutPanel4
             // 
@@ -686,16 +492,12 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.Size = new Size(959, 45);
             tableLayoutPanel4.TabIndex = 0;
->>>>>>> origin
             // 
             // btnBorrar
             // 
-<<<<<<< HEAD
             dataRevisionV.AutoGenerateColumns = false;
             dataRevisionV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataRevisionV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataRevisionV.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12, dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn14 });
-            dataRevisionV.DataSource = aprobacionVacacionesBindingSource;
             dataRevisionV.Dock = DockStyle.Fill;
             dataRevisionV.Location = new Point(3, 3);
             dataRevisionV.Name = "dataRevisionV";
@@ -703,40 +505,6 @@ namespace WinModuloNomina.Vista
             dataRevisionV.Size = new Size(983, 89);
             dataRevisionV.TabIndex = 14;
             dataRevisionV.CellContentClick += dataRevisionV_CellContentClick;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(dataRevisionV, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Top;
-            tableLayoutPanel2.Location = new Point(0, 204);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(989, 95);
-            tableLayoutPanel2.TabIndex = 15;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = SystemColors.ActiveCaption;
-            panel4.Controls.Add(label8);
-            panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 299);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(989, 47);
-            panel4.TabIndex = 16;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(385, 14);
-            label8.Name = "label8";
-            label8.Size = new Size(97, 20);
-            label8.TabIndex = 0;
-            label8.Text = "SOLICITUDES";
-=======
             btnBorrar.Dock = DockStyle.Fill;
             btnBorrar.IconChar = FontAwesome.Sharp.IconChar.Trash;
             btnBorrar.IconColor = Color.Black;
@@ -750,333 +518,17 @@ namespace WinModuloNomina.Vista
             btnBorrar.Text = "Eliminar";
             btnBorrar.UseVisualStyleBackColor = true;
             btnBorrar.Click += btnBorrar_Click;
->>>>>>> origin
-            // 
-            // dgvSolicitudes
-            // 
-            dgvSolicitudes.AllowUserToOrderColumns = true;
-            dgvSolicitudes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvSolicitudes.AutoGenerateColumns = false;
-            dgvSolicitudes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvSolicitudes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
-            dgvSolicitudes.BackgroundColor = Color.Gainsboro;
-            dgvSolicitudes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSolicitudes.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10 });
-            dgvSolicitudes.DataSource = solicitudVacacionDTOBindingSource;
-<<<<<<< HEAD
-            dgvSolicitudes.Dock = DockStyle.Fill;
-=======
->>>>>>> origin
-            dgvSolicitudes.FilterAndSortEnabled = true;
-            dgvSolicitudes.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            dgvSolicitudes.Location = new Point(46, 440);
-            dgvSolicitudes.MaxFilterButtonImageHeight = 23;
-            dgvSolicitudes.Name = "dgvSolicitudes";
-            dgvSolicitudes.RightToLeft = RightToLeft.No;
-            dgvSolicitudes.RowHeadersWidth = 51;
-<<<<<<< HEAD
-            dgvSolicitudes.Size = new Size(989, 231);
-=======
-            dgvSolicitudes.Size = new Size(959, 150);
->>>>>>> origin
-            dgvSolicitudes.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            dgvSolicitudes.TabIndex = 20;
-            // 
-<<<<<<< HEAD
-            // solicitudVacacionDTOBindingSource
-            // 
-            solicitudVacacionDTOBindingSource.DataSource = typeof(SolicitudVacacionDTO);
-            // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "IdSolicitud";
-            dataGridViewTextBoxColumn1.HeaderText = "IdSolicitud";
-            dataGridViewTextBoxColumn1.MinimumWidth = 24;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "IdEmpleado";
-            dataGridViewTextBoxColumn2.HeaderText = "IdEmpleado";
-            dataGridViewTextBoxColumn2.MinimumWidth = 24;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "NombreCompleto";
-            dataGridViewTextBoxColumn3.HeaderText = "NombreCompleto";
-            dataGridViewTextBoxColumn3.MinimumWidth = 24;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "Cedula";
-            dataGridViewTextBoxColumn5.HeaderText = "Cedula";
-            dataGridViewTextBoxColumn5.MinimumWidth = 24;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "FechaInicio";
-            dataGridViewTextBoxColumn6.HeaderText = "FechaInicio";
-            dataGridViewTextBoxColumn6.MinimumWidth = 24;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "FechaFin";
-            dataGridViewTextBoxColumn7.HeaderText = "FechaFin";
-            dataGridViewTextBoxColumn7.MinimumWidth = 24;
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.DataPropertyName = "DiasSolicitados";
-            dataGridViewTextBoxColumn8.HeaderText = "DiasSolicitados";
-            dataGridViewTextBoxColumn8.MinimumWidth = 24;
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            dataGridViewTextBoxColumn8.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.DataPropertyName = "Estado";
-            dataGridViewTextBoxColumn9.HeaderText = "Estado";
-            dataGridViewTextBoxColumn9.MinimumWidth = 24;
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            dataGridViewTextBoxColumn9.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            dataGridViewTextBoxColumn10.DataPropertyName = "FechaCreacion";
-            dataGridViewTextBoxColumn10.HeaderText = "FechaCreacion";
-            dataGridViewTextBoxColumn10.MinimumWidth = 24;
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            dataGridViewTextBoxColumn10.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // aprobacionVacacionesBindingSource
-            // 
-            aprobacionVacacionesBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.AprobacionVacaciones);
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            dataGridViewTextBoxColumn11.DataPropertyName = "IdAprobacion";
-            dataGridViewTextBoxColumn11.HeaderText = "IdAprobacion";
-            dataGridViewTextBoxColumn11.MinimumWidth = 6;
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            dataGridViewTextBoxColumn12.DataPropertyName = "SolicitudId";
-            dataGridViewTextBoxColumn12.HeaderText = "SolicitudId";
-            dataGridViewTextBoxColumn12.MinimumWidth = 6;
-            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            dataGridViewTextBoxColumn13.DataPropertyName = "FechaAprobacion";
-            dataGridViewTextBoxColumn13.HeaderText = "FechaAprobacion";
-            dataGridViewTextBoxColumn13.MinimumWidth = 6;
-            dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            dataGridViewTextBoxColumn14.DataPropertyName = "UsuarioAprobador";
-            dataGridViewTextBoxColumn14.HeaderText = "UsuarioAprobador";
-            dataGridViewTextBoxColumn14.MinimumWidth = 6;
-            dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-=======
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "IdSolicitud";
-            dataGridViewTextBoxColumn1.HeaderText = "IdSolicitud";
-            dataGridViewTextBoxColumn1.MinimumWidth = 24;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "IdEmpleado";
-            dataGridViewTextBoxColumn2.HeaderText = "IdEmpleado";
-            dataGridViewTextBoxColumn2.MinimumWidth = 24;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "NombreCompleto";
-            dataGridViewTextBoxColumn3.HeaderText = "NombreCompleto";
-            dataGridViewTextBoxColumn3.MinimumWidth = 24;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "Cedula";
-            dataGridViewTextBoxColumn5.HeaderText = "Cedula";
-            dataGridViewTextBoxColumn5.MinimumWidth = 24;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "FechaInicio";
-            dataGridViewTextBoxColumn6.HeaderText = "FechaInicio";
-            dataGridViewTextBoxColumn6.MinimumWidth = 24;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "FechaFin";
-            dataGridViewTextBoxColumn7.HeaderText = "FechaFin";
-            dataGridViewTextBoxColumn7.MinimumWidth = 24;
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.DataPropertyName = "DiasSolicitados";
-            dataGridViewTextBoxColumn8.HeaderText = "DiasSolicitados";
-            dataGridViewTextBoxColumn8.MinimumWidth = 24;
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            dataGridViewTextBoxColumn8.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.DataPropertyName = "Estado";
-            dataGridViewTextBoxColumn9.HeaderText = "Estado";
-            dataGridViewTextBoxColumn9.MinimumWidth = 24;
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            dataGridViewTextBoxColumn9.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            dataGridViewTextBoxColumn10.DataPropertyName = "FechaCreacion";
-            dataGridViewTextBoxColumn10.HeaderText = "FechaCreacion";
-            dataGridViewTextBoxColumn10.MinimumWidth = 24;
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            dataGridViewTextBoxColumn10.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // panel2
-            // 
-            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel2.BackColor = Color.FromArgb(0, 0, 64);
-            panel2.Controls.Add(label1);
-            panel2.Location = new Point(375, 61);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(628, 45);
-            panel2.TabIndex = 29;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(3, 3);
-            label1.Name = "label1";
-            label1.Size = new Size(218, 20);
-            label1.TabIndex = 16;
-            label1.Text = "RESUMEN APROVADAS";
-            // 
-            // panel3
-            // 
-            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel3.BackColor = Color.FromArgb(0, 0, 64);
-            panel3.Controls.Add(txtBuscar2);
-            panel3.Controls.Add(btnBuscar);
-            panel3.Controls.Add(label7);
-            panel3.Location = new Point(46, 328);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(957, 52);
-            panel3.TabIndex = 30;
-            // 
-            // label7
-            // 
-            label7.Anchor = AnchorStyles.None;
-            label7.AutoSize = true;
-            label7.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(377, 17);
-            label7.Name = "label7";
-            label7.Size = new Size(227, 20);
-            label7.TabIndex = 17;
-            label7.Text = "RESUMEN SOLICITUDES";
-            // 
-            // label8
-            // 
-            label8.Anchor = AnchorStyles.None;
-            label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(3, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(176, 20);
-            label8.TabIndex = 32;
-            label8.Text = "DATOS SOLICITUD";
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10.5410786F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 89.45892F));
-            tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 1, 0);
-            tableLayoutPanel2.Location = new Point(0, 115);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(333, 203);
-            tableLayoutPanel2.TabIndex = 31;
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel3.ColumnCount = 1;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Controls.Add(tableLayoutPanel1, 0, 0);
-            tableLayoutPanel3.Location = new Point(38, 3);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(292, 197);
-            tableLayoutPanel3.TabIndex = 32;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            flowLayoutPanel1.BackColor = Color.FromArgb(0, 0, 64);
-            flowLayoutPanel1.Controls.Add(label8);
-            flowLayoutPanel1.Location = new Point(40, 61);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(293, 45);
-            flowLayoutPanel1.TabIndex = 32;
->>>>>>> origin
             // 
             // F8Vacaciones
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-<<<<<<< HEAD
             ClientSize = new Size(989, 577);
-            Controls.Add(dgvSolicitudes);
-            Controls.Add(panel4);
-=======
             ClientSize = new Size(1055, 588);
-            Controls.Add(flowLayoutPanel1);
->>>>>>> origin
-            Controls.Add(tableLayoutPanel2);
-            Controls.Add(panel3);
             Controls.Add(txtidAprovacion);
-            Controls.Add(btnEliminarA);
-            Controls.Add(panel2);
             Controls.Add(tableLayoutPanel4);
-            Controls.Add(dgvSolicitudes);
             Controls.Add(dataRevisionV);
             Controls.Add(panel1);
             Name = "F8Vacaciones";
@@ -1086,31 +538,9 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataRevisionV).EndInit();
-            ((System.ComponentModel.ISupportInitialize)aprobacionVacacionesBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)solicitudVacacionDTOBindingSource).EndInit();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSolicitudes).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-<<<<<<< HEAD
-            dgvRevisionV.ResumeLayout(false);
-            dgvRevisionV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataRevisionV).EndInit();
-            tableLayoutPanel2.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSolicitudes).EndInit();
-            ((System.ComponentModel.ISupportInitialize)solicitudVacacionDTOBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)aprobacionVacacionesBindingSource).EndInit();
-=======
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
->>>>>>> origin
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1134,10 +564,7 @@ namespace WinModuloNomina.Vista
         private DataGridViewTextBoxColumn empleadoIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn empleadoNombreCompletoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-<<<<<<< HEAD
         private Zuby.ADGV.AdvancedDataGridView dgvSolicitudes;
-=======
->>>>>>> origin
         private DataGridViewTextBoxColumn idSolicitudDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idEmpleadoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreCompletoDataGridViewTextBoxColumn;
@@ -1163,7 +590,6 @@ namespace WinModuloNomina.Vista
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private BindingSource aprobacionVacacionesBindingSource;
         private BindingSource solicitudVacacionDTOBindingSource;
-        private Zuby.ADGV.AdvancedDataGridView dgvSolicitudes;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -1177,24 +603,6 @@ namespace WinModuloNomina.Vista
         private FontAwesome.Sharp.IconButton btnBorrar;
         private ComboBox cbxEstado;
         private Label label6;
-<<<<<<< HEAD
-        private FontAwesome.Sharp.IconButton btnEliminarA;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private BindingSource aprobacionVacacionesBindingSource;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private BindingSource solicitudVacacionDTOBindingSource;
-=======
         private Panel panel2;
         private Label label1;
         private Panel panel3;
@@ -1203,6 +611,5 @@ namespace WinModuloNomina.Vista
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private FlowLayoutPanel flowLayoutPanel1;
->>>>>>> origin
     }
 }

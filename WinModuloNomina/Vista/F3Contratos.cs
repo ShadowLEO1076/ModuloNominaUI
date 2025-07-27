@@ -17,20 +17,15 @@ namespace WinModuloNomina.Vista
     public partial class F3Contratos : Form
     {
         private readonly APIModuloNomina _apimodulonomina;
-<<<<<<< HEAD
         private string ApiUrl;
         private BindingSource bindingSource1 = new BindingSource();
-=======
-        private BindingSource bindingSource1 = new BindingSource();
         private List<Contratos> _contratosOriginales = new List<Contratos>();
->>>>>>> origin
 
         public F3Contratos()
         {
             InitializeComponent();
             string baseUrl = ConfigurationManager.AppSettings["APIBaseUrl"];
             _apimodulonomina = new APIModuloNomina(baseUrl);
-<<<<<<< HEAD
             CargarDatosIniciales();
             CargarJornadatipo();
            
@@ -45,7 +40,6 @@ namespace WinModuloNomina.Vista
             txtHorasJornada.Enabled = false;
             // Configurar ADGV
             dgvHistorialContratos.FilterAndSortEnabled = true;
-=======
 
             ConfigurarDataGridView();
             ConfigurarEventos();
@@ -64,10 +58,7 @@ namespace WinModuloNomina.Vista
         private void ConfigurarEventos()
         {
             cbJornadaTipo.SelectedIndexChanged += cbJornadaTipo_SelectedIndexChanged;
-            dgvHistorialContratos.DataBindingComplete += DgvHistorialContratos_DataBindingComplete;
-            dgvHistorialContratos.CellValidating += dgvHistorialContratos_CellValidating;
 
->>>>>>> origin
             dgvHistorialContratos.FilterStringChanged += (s, e) =>
             {
                 if (bindingSource1.DataSource != null)
@@ -80,7 +71,6 @@ namespace WinModuloNomina.Vista
                     bindingSource1.Sort = dgvHistorialContratos.SortString;
             };
         }
-<<<<<<< HEAD
         private void CargarJornadatipo()
         {
             cbJornadaTipo.Items.Add("Tiempo Completo");
@@ -111,7 +101,6 @@ namespace WinModuloNomina.Vista
         }
 
       
-=======
 
         private void DgvHistorialContratos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -169,12 +158,10 @@ namespace WinModuloNomina.Vista
             }
         }
 
->>>>>>> origin
         public async Task CargarContratosHistorico()
         {
             try
             {
-<<<<<<< HEAD
                 var contratos = await _apimodulonomina.GetAsync<List<Contratos>>("ContratosControlador/ListarContratos");
                 // Convertir a DataTable
                 DataTable dtSolicitudes = ToDataTable(contratos);
@@ -198,46 +185,10 @@ namespace WinModuloNomina.Vista
         }
         private async void CargarDatosIniciales()
         {
-=======
                 _contratosOriginales = await _apimodulonomina.GetAsync<List<Contratos>>("ContratosControlador/ListarContratos");
                 bindingSource1.DataSource = _contratosOriginales;
                 dgvHistorialContratos.DataSource = bindingSource1;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudieron cargar los contratos: " + ex.Message);
-            }
-        }
-
-        private async void CargarDatosIniciales()
-        {
-            await CargarJornadaTipo();
->>>>>>> origin
-            await CargarTiposContrato();
-            await CargarEmpleados();
-            await CargarContratosHistorico();
-            await CargarComboBoxEstado();
-<<<<<<< HEAD
-            
-
-        }
-        private async Task CargarComboBoxEstado()
-        {
-            try
-            {
-             
-                cbEstadoContrato.Items.Add("Vigente");
-                cbEstadoContrato.Items.Add("Finalizado");
-                cbEstadoContrato.SelectedIndex = 0;
-                
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudieron cargar los estados");
-            }
-=======
-        }
 
         private async Task CargarJornadaTipo()
         {
@@ -255,7 +206,6 @@ namespace WinModuloNomina.Vista
             cbEstadoContrato.Items.Add("Finalizado");
             cbEstadoContrato.SelectedIndex = 0;
             await Task.CompletedTask;
->>>>>>> origin
         }
 
         private void cbJornadaTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -275,7 +225,6 @@ namespace WinModuloNomina.Vista
             else if (seleccion == "Tiempo Parcial")
             {
                 txtHorasJornada.Value = 0;
-<<<<<<< HEAD
                 txtHorasJornada.Enabled = true; // permitir que el usuario escriba manual
             }
             
@@ -314,9 +263,7 @@ namespace WinModuloNomina.Vista
             {
                 MessageBox.Show("La fecha fin no puede ser menor a la de inicio.");
                 dtpFechaFin.Value = dtpFechaInicio.Value;
-=======
                 txtHorasJornada.Enabled = true;
->>>>>>> origin
             }
         }
 
@@ -325,7 +272,6 @@ namespace WinModuloNomina.Vista
             try
             {
                 var tiposContrato = await _apimodulonomina.GetAsync<List<ContratosTipo>>("ContratoTipoControlador/ListarTiposContratos");
-<<<<<<< HEAD
                 var listacontratos = tiposContrato
                     .Select(t => new
                     {
@@ -345,26 +291,6 @@ namespace WinModuloNomina.Vista
 
             }
         }
-
-
-
-
-
-
-
-
-=======
-                cbTipoContrato.DataSource = tiposContrato;
-                cbTipoContrato.DisplayMember = "Nombre";
-                cbTipoContrato.ValueMember = "IdTipo";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar tipos de contrato: " + ex.Message);
-            }
-        }
-
->>>>>>> origin
         private async Task CargarEmpleados()
         {
             try
@@ -385,23 +311,19 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-<<<<<<< HEAD
                 MessageBox.Show("No se pudieron cargar los empleados, ojito 😵‍💫");
                 MessageBox.Show(ex.Message);
-=======
                 MessageBox.Show("No se pudieron cargar los empleados: " + ex.Message);
->>>>>>> origin
             }
         }
 
 
 
-<<<<<<< HEAD
         private async Task CargarHistorialContratos()
         {
             var contratos = await _apimodulonomina.GetAsync<List<Contratos>>("ContratosControlador/ListarContratos");
             dgvHistorialContratos.DataSource = contratos;
-=======
+        }
         private async Task CrearContrato()
         {
             try
@@ -566,7 +488,8 @@ namespace WinModuloNomina.Vista
         private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
         {
 
->>>>>>> origin
+
+
         }
 
         private void F3Contratos_Load(object sender, EventArgs e)
@@ -574,7 +497,6 @@ namespace WinModuloNomina.Vista
 
         }
 
-<<<<<<< HEAD
 
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -656,9 +578,6 @@ namespace WinModuloNomina.Vista
         }
 
         private void dgvHistorialContratos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-=======
-        private void btnBorrarTipoContrato_Click(object sender, EventArgs e)
->>>>>>> origin
         {
 
         }
