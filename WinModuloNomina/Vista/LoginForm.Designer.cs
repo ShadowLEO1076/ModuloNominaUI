@@ -63,7 +63,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.Gainsboro;
+            label1.ForeColor = Color.WhiteSmoke;
             label1.Location = new Point(21, 267);
             label1.Name = "label1";
             label1.Size = new Size(245, 36);
@@ -74,9 +74,9 @@
             // 
             iconPictureBox1.Anchor = AnchorStyles.None;
             iconPictureBox1.BackColor = SystemColors.HotTrack;
-            iconPictureBox1.ForeColor = Color.Gainsboro;
+            iconPictureBox1.ForeColor = Color.WhiteSmoke;
             iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Keycdn;
-            iconPictureBox1.IconColor = Color.Gainsboro;
+            iconPictureBox1.IconColor = Color.WhiteSmoke;
             iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox1.IconSize = 198;
             iconPictureBox1.Location = new Point(46, 38);
@@ -87,7 +87,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.Gainsboro;
+            panel2.BackColor = Color.LightSteelBlue;
             panel2.Controls.Add(btnCerrar);
             panel2.Controls.Add(btnIngresar);
             panel2.Controls.Add(tableLayoutPanel2);
@@ -100,18 +100,18 @@
             // 
             // btnCerrar
             // 
-            btnCerrar.BackColor = Color.LightCoral;
+            btnCerrar.BackColor = Color.IndianRed;
             btnCerrar.FlatAppearance.BorderSize = 0;
             btnCerrar.FlatStyle = FlatStyle.Flat;
-            btnCerrar.ForeColor = Color.Gainsboro;
+            btnCerrar.ForeColor = Color.WhiteSmoke;
             btnCerrar.IconChar = FontAwesome.Sharp.IconChar.Close;
-            btnCerrar.IconColor = Color.Gainsboro;
+            btnCerrar.IconColor = Color.WhiteSmoke;
             btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCerrar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrar.Location = new Point(248, 265);
+            btnCerrar.Location = new Point(238, 267);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Padding = new Padding(12, 0, 0, 0);
-            btnCerrar.Size = new Size(143, 57);
+            btnCerrar.Size = new Size(170, 57);
             btnCerrar.TabIndex = 4;
             btnCerrar.Text = "Cerrar";
             btnCerrar.TextAlign = ContentAlignment.MiddleLeft;
@@ -121,20 +121,20 @@
             // 
             // btnIngresar
             // 
-            btnIngresar.BackColor = Color.SteelBlue;
+            btnIngresar.BackColor = SystemColors.Highlight;
             btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.ForeColor = Color.Gainsboro;
+            btnIngresar.ForeColor = Color.WhiteSmoke;
             btnIngresar.IconChar = FontAwesome.Sharp.IconChar.SignIn;
-            btnIngresar.IconColor = Color.Gainsboro;
+            btnIngresar.IconColor = Color.WhiteSmoke;
             btnIngresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnIngresar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnIngresar.Location = new Point(67, 265);
+            btnIngresar.Location = new Point(48, 267);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Padding = new Padding(12, 0, 0, 0);
-            btnIngresar.Size = new Size(143, 57);
+            btnIngresar.Size = new Size(170, 57);
             btnIngresar.TabIndex = 3;
-            btnIngresar.Text = "Ingresar";
+            btnIngresar.Text = "Iniciar Secion";
             btnIngresar.TextAlign = ContentAlignment.MiddleLeft;
             btnIngresar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnIngresar.UseVisualStyleBackColor = false;
@@ -166,6 +166,7 @@
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
             label3.Location = new Point(3, 11);
             label3.Name = "label3";
             label3.Size = new Size(100, 18);
@@ -191,6 +192,7 @@
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
             label2.Location = new Point(3, 11);
             label2.Name = "label2";
             label2.Size = new Size(72, 18);

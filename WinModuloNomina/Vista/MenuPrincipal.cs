@@ -46,7 +46,7 @@ namespace WinModuloNomina.Vista
                 {
                     var btn = (IconButton)control;
                     //btn.MouseEnter += Button_MouseEnter;
-                   // btn.MouseLeave += Button_MouseLeave;
+                    // btn.MouseLeave += Button_MouseLeave;
                 }
             }
         }
@@ -65,7 +65,7 @@ namespace WinModuloNomina.Vista
                 // Restablecer el botón anterior
                 if (currentButton != null)
                 {
-                   // currentButton.BackColor = menuColor;
+                    // currentButton.BackColor = menuColor;
                     currentButton.ForeColor = buttonDefaultColor;
                     currentButton.IconColor = buttonDefaultColor;
                     //currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -82,7 +82,7 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        private void OpenChildForm(Form childForm, string title)
+        private async void OpenChildForm(Form childForm, string title)
         {
             // Cerrar el formulario activo si existe
             if (activeForm != null)
@@ -104,7 +104,12 @@ namespace WinModuloNomina.Vista
 
             // Mostrar el formulario
             childForm.BringToFront();
-            childForm.Show();
+            await Task.Delay(500);
+            this.BeginInvoke((Action)(() =>
+            {
+                childForm.Show();
+            }));
+
         }
 
         #endregion
@@ -127,7 +132,7 @@ namespace WinModuloNomina.Vista
             }
         }
 
-       
+
         private void btnPuestos_Click_1(object sender, EventArgs e)
         {
             ActivateButton(sender);
@@ -170,11 +175,7 @@ namespace WinModuloNomina.Vista
             OpenChildForm(new F6Nominas(), "GESTIÓN DE NÓMINA");
         }
 
-        private void btnReportes_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender);
-            OpenChildForm(new F7Reportes(), "REPORTES");
-        }
+      
 
         private void btnVacaciones_Click(object sender, EventArgs e)
         {
@@ -186,7 +187,7 @@ namespace WinModuloNomina.Vista
         {
             if (activeForm != null)
             {
-                
+
                 activeForm.Close();
                 // quiero que al presionar el btncerrar abra el formulario de inicio de secion y cierre el formulario de menuprincipal
                 this.Hide();
@@ -235,6 +236,22 @@ namespace WinModuloNomina.Vista
         }
         */
         #endregion
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            if (sliderExpand)
+            {
+                panelMenu.Width = 77;
+                btnMenu.IconChar = IconChar.Bars;
+                sliderExpand = false;
+            }
+            else
+            {
+                panelMenu.Width = 220;
+                btnMenu.IconChar = IconChar.Times;
+                sliderExpand = true;
+            }
+        }
     }
 }
 

@@ -172,12 +172,12 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Por favor, seleccione un puesto para borrar.");
                 return;
             }
-           
+
 
             try
             {
                 int idPuesto = int.Parse(txtIdPuesto.Text);
-                await _apimodulonomina.DeleteAsync($"PuestoControlador/EliminarPuesto/{idPuesto}" );
+                await _apimodulonomina.DeleteAsync($"PuestoControlador/EliminarPuesto/{idPuesto}");
                 MessageBox.Show("Puesto eliminado exitosamente.");
                 await CargarPuestos();
                 txtNombrePuesto.Clear();
