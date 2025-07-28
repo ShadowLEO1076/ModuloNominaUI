@@ -216,18 +216,18 @@ namespace WinModuloNomina.Vista
         {
             // no se elimina, solo se cambia su estado a false.
             try
-            { 
-            var asistencia = new Asistencias
             {
-                IdAsistencia = int.Parse(idAsisTxt.Text),
-                EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
-                HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
-                Estado = false
-            };
+                var asistencia = new Asistencias
+                {
+                    IdAsistencia = int.Parse(idAsisTxt.Text),
+                    EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
+                    Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
+                    HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
+                    HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
+                    Estado = false
+                };
 
-            await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
+                await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
                 await CargarAsistencias();
             }
             catch
@@ -235,5 +235,7 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Error al insertar asistencia, verifique que los datos sean correctos");
             }
         }
+
+      
     }
 }

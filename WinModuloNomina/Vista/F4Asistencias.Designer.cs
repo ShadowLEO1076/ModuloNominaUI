@@ -35,14 +35,6 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             licenciaLb = new Label();
             licenciaCb = new ComboBox();
-            limpiarBtn = new FontAwesome.Sharp.IconButton();
-            infoLb = new Label();
-            label11 = new Label();
-            panel2 = new Panel();
-            EliminarBtn = new FontAwesome.Sharp.IconButton();
-            actualizarBtn = new FontAwesome.Sharp.IconButton();
-            ingresarBtn = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
             tableLayoutPanel1 = new TableLayoutPanel();
             idAsisTxt = new TextBox();
             empleLb = new Label();
@@ -54,14 +46,22 @@
             horaEntraDtp = new DateTimePicker();
             horaSaliDtp = new DateTimePicker();
             asisLb = new Label();
+            limpiarBtn = new FontAwesome.Sharp.IconButton();
+            panel2 = new Panel();
+            EliminarBtn = new FontAwesome.Sharp.IconButton();
+            iconButton2 = new FontAwesome.Sharp.IconButton();
+            actualizarBtn = new FontAwesome.Sharp.IconButton();
+            ingresarBtn = new FontAwesome.Sharp.IconButton();
+            infoLb = new Label();
+            label11 = new Label();
             asistenciasDgv = new DataGridView();
             asistenciasFormDTOBindingSource = new BindingSource(components);
             inasisDgv = new DataGridView();
             tableLayoutPanel3 = new TableLayoutPanel();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            panel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)asistenciasDgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)asistenciasFormDTOBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)inasisDgv).BeginInit();
@@ -71,14 +71,16 @@
             // panel1
             // 
             panel1.Controls.Add(tableLayoutPanel2);
+            panel1.Controls.Add(tableLayoutPanel1);
             panel1.Controls.Add(limpiarBtn);
+            panel1.Controls.Add(panel2);
             panel1.Controls.Add(infoLb);
             panel1.Controls.Add(label11);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(719, 119);
+            panel1.Size = new Size(1159, 166);
             panel1.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -88,13 +90,13 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.44444F));
             tableLayoutPanel2.Controls.Add(licenciaLb, 0, 0);
             tableLayoutPanel2.Controls.Add(licenciaCb, 1, 0);
-            tableLayoutPanel2.Location = new Point(480, 28);
+            tableLayoutPanel2.Location = new Point(604, 24);
             tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(197, 24);
+            tableLayoutPanel2.Size = new Size(211, 31);
             tableLayoutPanel2.TabIndex = 14;
             // 
             // licenciaLb
@@ -109,109 +111,11 @@
             // licenciaCb
             // 
             licenciaCb.FormattingEnabled = true;
-            licenciaCb.Location = new Point(73, 2);
+            licenciaCb.Location = new Point(78, 2);
             licenciaCb.Margin = new Padding(3, 2, 3, 2);
             licenciaCb.Name = "licenciaCb";
             licenciaCb.Size = new Size(121, 23);
             licenciaCb.TabIndex = 29;
-            // 
-            // limpiarBtn
-            // 
-            limpiarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            limpiarBtn.IconColor = Color.Black;
-            limpiarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            limpiarBtn.Location = new Point(598, 103);
-            limpiarBtn.Margin = new Padding(3, 2, 3, 2);
-            limpiarBtn.Name = "limpiarBtn";
-            limpiarBtn.Size = new Size(79, 16);
-            limpiarBtn.TabIndex = 13;
-            limpiarBtn.Text = "Limpiar datos";
-            limpiarBtn.UseVisualStyleBackColor = true;
-            limpiarBtn.Click += limpiarBtn_Click;
-            // 
-            // infoLb
-            // 
-            infoLb.AutoSize = true;
-            infoLb.Location = new Point(48, 7);
-            infoLb.Name = "infoLb";
-            infoLb.Size = new Size(108, 15);
-            infoLb.TabIndex = 6;
-            infoLb.Text = "DATOS ASISTENCIA";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(10, 7);
-            label11.Name = "label11";
-            label11.Size = new Size(0, 15);
-            label11.TabIndex = 5;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(EliminarBtn);
-            panel2.Controls.Add(actualizarBtn);
-            panel2.Controls.Add(ingresarBtn);
-            panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(624, 119);
-            panel2.Margin = new Padding(3, 2, 3, 2);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(95, 219);
-            panel2.TabIndex = 4;
-            // 
-            // EliminarBtn
-            // 
-            EliminarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            EliminarBtn.IconColor = Color.Black;
-            EliminarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            EliminarBtn.Location = new Point(24, 100);
-            EliminarBtn.Margin = new Padding(3, 2, 3, 2);
-            EliminarBtn.Name = "EliminarBtn";
-            EliminarBtn.Size = new Size(72, 16);
-            EliminarBtn.TabIndex = 12;
-            EliminarBtn.Text = "Eliminar";
-            EliminarBtn.UseVisualStyleBackColor = true;
-            EliminarBtn.Click += EliminarBtn_Click;
-            // 
-            // actualizarBtn
-            // 
-            actualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            actualizarBtn.IconColor = Color.Black;
-            actualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            actualizarBtn.Location = new Point(24, 79);
-            actualizarBtn.Margin = new Padding(3, 2, 3, 2);
-            actualizarBtn.Name = "actualizarBtn";
-            actualizarBtn.Size = new Size(72, 18);
-            actualizarBtn.TabIndex = 11;
-            actualizarBtn.Text = "Actualizar";
-            actualizarBtn.UseVisualStyleBackColor = true;
-            actualizarBtn.Click += actualizarBtn_Click;
-            // 
-            // ingresarBtn
-            // 
-            ingresarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            ingresarBtn.IconColor = Color.Black;
-            ingresarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ingresarBtn.Location = new Point(24, 55);
-            ingresarBtn.Margin = new Padding(3, 2, 3, 2);
-            ingresarBtn.Name = "ingresarBtn";
-            ingresarBtn.Size = new Size(72, 21);
-            ingresarBtn.TabIndex = 9;
-            ingresarBtn.Text = "Ingresar";
-            ingresarBtn.UseVisualStyleBackColor = true;
-            ingresarBtn.Click += ingresarBtn_Click;
-            // 
-            // iconButton2
-            // 
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(53, 202);
-            iconButton2.Margin = new Padding(3, 2, 3, 2);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(82, 22);
-            iconButton2.TabIndex = 10;
-            iconButton2.Text = "Buscar";
-            iconButton2.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -232,7 +136,7 @@
             tableLayoutPanel1.Controls.Add(horaEntraDtp, 1, 3);
             tableLayoutPanel1.Controls.Add(horaSaliDtp, 1, 4);
             tableLayoutPanel1.Controls.Add(asisLb, 0, 0);
-            tableLayoutPanel1.Location = new Point(10, 28);
+            tableLayoutPanel1.Location = new Point(48, 24);
             tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
@@ -247,12 +151,12 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel1.Size = new Size(444, 97);
+            tableLayoutPanel1.Size = new Size(529, 129);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // idAsisTxt
             // 
-            idAsisTxt.Location = new Point(225, 2);
+            idAsisTxt.Location = new Point(267, 2);
             idAsisTxt.Margin = new Padding(3, 2, 3, 2);
             idAsisTxt.Name = "idAsisTxt";
             idAsisTxt.ReadOnly = true;
@@ -262,7 +166,7 @@
             // empleLb
             // 
             empleLb.AutoSize = true;
-            empleLb.Location = new Point(3, 19);
+            empleLb.Location = new Point(3, 25);
             empleLb.Name = "empleLb";
             empleLb.Size = new Size(60, 15);
             empleLb.TabIndex = 18;
@@ -271,7 +175,7 @@
             // fecLb
             // 
             fecLb.AutoSize = true;
-            fecLb.Location = new Point(3, 38);
+            fecLb.Location = new Point(3, 50);
             fecLb.Name = "fecLb";
             fecLb.Size = new Size(94, 15);
             fecLb.TabIndex = 20;
@@ -280,7 +184,7 @@
             // entradaLb
             // 
             entradaLb.AutoSize = true;
-            entradaLb.Location = new Point(3, 57);
+            entradaLb.Location = new Point(3, 75);
             entradaLb.Name = "entradaLb";
             entradaLb.Size = new Size(92, 15);
             entradaLb.TabIndex = 22;
@@ -289,7 +193,7 @@
             // salidaLb
             // 
             salidaLb.AutoSize = true;
-            salidaLb.Location = new Point(3, 76);
+            salidaLb.Location = new Point(3, 100);
             salidaLb.Name = "salidaLb";
             salidaLb.Size = new Size(82, 15);
             salidaLb.TabIndex = 24;
@@ -298,7 +202,7 @@
             // empleCb
             // 
             empleCb.FormattingEnabled = true;
-            empleCb.Location = new Point(225, 21);
+            empleCb.Location = new Point(267, 27);
             empleCb.Margin = new Padding(3, 2, 3, 2);
             empleCb.Name = "empleCb";
             empleCb.Size = new Size(216, 23);
@@ -307,7 +211,7 @@
             // fecAsisDtp
             // 
             fecAsisDtp.Format = DateTimePickerFormat.Short;
-            fecAsisDtp.Location = new Point(225, 40);
+            fecAsisDtp.Location = new Point(267, 52);
             fecAsisDtp.Margin = new Padding(3, 2, 3, 2);
             fecAsisDtp.Name = "fecAsisDtp";
             fecAsisDtp.Size = new Size(216, 23);
@@ -316,7 +220,7 @@
             // horaEntraDtp
             // 
             horaEntraDtp.Format = DateTimePickerFormat.Time;
-            horaEntraDtp.Location = new Point(225, 59);
+            horaEntraDtp.Location = new Point(267, 77);
             horaEntraDtp.Margin = new Padding(3, 2, 3, 2);
             horaEntraDtp.Name = "horaEntraDtp";
             horaEntraDtp.Size = new Size(216, 23);
@@ -325,7 +229,7 @@
             // horaSaliDtp
             // 
             horaSaliDtp.Format = DateTimePickerFormat.Time;
-            horaSaliDtp.Location = new Point(225, 78);
+            horaSaliDtp.Location = new Point(267, 102);
             horaSaliDtp.Margin = new Padding(3, 2, 3, 2);
             horaSaliDtp.Name = "horaSaliDtp";
             horaSaliDtp.Size = new Size(216, 23);
@@ -339,6 +243,105 @@
             asisLb.Size = new Size(74, 15);
             asisLb.TabIndex = 7;
             asisLb.Text = "ID Asistencia";
+            // 
+            // limpiarBtn
+            // 
+            limpiarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            limpiarBtn.IconColor = Color.Black;
+            limpiarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            limpiarBtn.Location = new Point(630, 126);
+            limpiarBtn.Margin = new Padding(3, 2, 3, 2);
+            limpiarBtn.Name = "limpiarBtn";
+            limpiarBtn.Size = new Size(102, 21);
+            limpiarBtn.TabIndex = 13;
+            limpiarBtn.Text = "Limpiar datos";
+            limpiarBtn.UseVisualStyleBackColor = true;
+            limpiarBtn.Click += limpiarBtn_Click;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(EliminarBtn);
+            panel2.Controls.Add(iconButton2);
+            panel2.Controls.Add(actualizarBtn);
+            panel2.Controls.Add(ingresarBtn);
+            panel2.Dock = DockStyle.Right;
+            panel2.Location = new Point(1064, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(95, 166);
+            panel2.TabIndex = 4;
+            // 
+            // EliminarBtn
+            // 
+            EliminarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            EliminarBtn.IconColor = Color.Black;
+            EliminarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            EliminarBtn.Location = new Point(11, 92);
+            EliminarBtn.Margin = new Padding(3, 2, 3, 2);
+            EliminarBtn.Name = "EliminarBtn";
+            EliminarBtn.Size = new Size(72, 29);
+            EliminarBtn.TabIndex = 12;
+            EliminarBtn.Text = "Eliminar";
+            EliminarBtn.UseVisualStyleBackColor = true;
+            EliminarBtn.Click += EliminarBtn_Click;
+            // 
+            // iconButton2
+            // 
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconButton2.IconColor = Color.Black;
+            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton2.Location = new Point(11, 126);
+            iconButton2.Margin = new Padding(3, 2, 3, 2);
+            iconButton2.Name = "iconButton2";
+            iconButton2.Size = new Size(72, 22);
+            iconButton2.TabIndex = 10;
+            iconButton2.Text = "Buscar";
+            iconButton2.UseVisualStyleBackColor = true;
+            // 
+            // actualizarBtn
+            // 
+            actualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            actualizarBtn.IconColor = Color.Black;
+            actualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            actualizarBtn.Location = new Point(11, 61);
+            actualizarBtn.Margin = new Padding(3, 2, 3, 2);
+            actualizarBtn.Name = "actualizarBtn";
+            actualizarBtn.Size = new Size(72, 28);
+            actualizarBtn.TabIndex = 11;
+            actualizarBtn.Text = "Actualizar";
+            actualizarBtn.UseVisualStyleBackColor = true;
+            actualizarBtn.Click += actualizarBtn_Click;
+            // 
+            // ingresarBtn
+            // 
+            ingresarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            ingresarBtn.IconColor = Color.Black;
+            ingresarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ingresarBtn.Location = new Point(11, 29);
+            ingresarBtn.Margin = new Padding(3, 2, 3, 2);
+            ingresarBtn.Name = "ingresarBtn";
+            ingresarBtn.Size = new Size(72, 28);
+            ingresarBtn.TabIndex = 9;
+            ingresarBtn.Text = "Ingresar";
+            ingresarBtn.UseVisualStyleBackColor = true;
+            ingresarBtn.Click += ingresarBtn_Click;
+            // 
+            // infoLb
+            // 
+            infoLb.AutoSize = true;
+            infoLb.Location = new Point(48, 7);
+            infoLb.Name = "infoLb";
+            infoLb.Size = new Size(108, 15);
+            infoLb.TabIndex = 6;
+            infoLb.Text = "DATOS ASISTENCIA";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(10, 7);
+            label11.Name = "label11";
+            label11.Size = new Size(0, 15);
+            label11.TabIndex = 5;
             // 
             // asistenciasDgv
             // 
@@ -366,7 +369,7 @@
             asistenciasDgv.Margin = new Padding(3, 2, 3, 2);
             asistenciasDgv.Name = "asistenciasDgv";
             asistenciasDgv.RowHeadersWidth = 51;
-            asistenciasDgv.Size = new Size(618, 105);
+            asistenciasDgv.Size = new Size(1153, 82);
             asistenciasDgv.TabIndex = 8;
             asistenciasDgv.CellClick += asistenciasDgv_CellClick;
             // 
@@ -374,10 +377,10 @@
             // 
             inasisDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             inasisDgv.Dock = DockStyle.Fill;
-            inasisDgv.Location = new Point(3, 111);
+            inasisDgv.Location = new Point(3, 88);
             inasisDgv.Margin = new Padding(3, 2, 3, 2);
             inasisDgv.Name = "inasisDgv";
-            inasisDgv.Size = new Size(618, 106);
+            inasisDgv.Size = new Size(1153, 82);
             inasisDgv.TabIndex = 9;
             // 
             // tableLayoutPanel3
@@ -387,24 +390,21 @@
             tableLayoutPanel3.Controls.Add(asistenciasDgv, 0, 0);
             tableLayoutPanel3.Controls.Add(inasisDgv, 0, 1);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(0, 119);
+            tableLayoutPanel3.Location = new Point(0, 166);
             tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(624, 219);
+            tableLayoutPanel3.Size = new Size(1159, 172);
             tableLayoutPanel3.TabIndex = 10;
             // 
             // F4Asistencias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(719, 338);
+            ClientSize = new Size(1159, 338);
             Controls.Add(tableLayoutPanel3);
-            Controls.Add(iconButton2);
-            Controls.Add(panel2);
-            Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "F4Asistencias";
@@ -414,9 +414,9 @@
             panel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
-            panel2.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)asistenciasDgv).EndInit();
             ((System.ComponentModel.ISupportInitialize)asistenciasFormDTOBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)inasisDgv).EndInit();
