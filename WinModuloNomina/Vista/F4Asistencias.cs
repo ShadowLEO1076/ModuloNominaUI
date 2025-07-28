@@ -32,6 +32,7 @@ namespace WinModuloNomina.Vista
         {
             await CargarAsistencias();
             await CargarEmpleados();
+            await CargarInasistencias();
             //inicia así para que no se pueda actualizar nada
             actualizarBtn.Enabled = false;
             EliminarBtn.Enabled = false;
@@ -165,6 +166,22 @@ namespace WinModuloNomina.Vista
             fecAsisDtp.Value = DateTime.Today;
         }
 
+        public async Task CargarInasistencias()
+        {
+            try
+            {
+                var busq = await _api.GetAsync<List<InasistenciasFormDTO>>("InasistenciasControlador/ObtenerTodasActivasInasistenciasFormDTO");
+
+                inasisDgv.DataSource = busq;
+                inasisDgv.Columns["Remunerable"].ReadOnly = true;
+                inasisDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Error al cargar las asistencias");
+            }
+        }
+
         public async Task CargarAsistencias()
         {
             try
@@ -217,6 +234,6 @@ namespace WinModuloNomina.Vista
             {
                 MessageBox.Show("Error al insertar asistencia, verifique que los datos sean correctos");
             }
-}
+        }
     }
 }

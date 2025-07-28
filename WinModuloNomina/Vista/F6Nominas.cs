@@ -30,14 +30,19 @@ namespace WinModuloNomina.Vista
         {
             await CargarNominasActivosAsync();
             await CargarEmpleadosIngresoAuto();
-
             //carga de datos solo para la comboBox del comboBox de año en IngresoAuto y el NumericUpDown
-
             CargarMesesIngresoAuto();
+            //elementos que no quiero esté disponibles al inicio. Sino solo elegir un dato del datagridview
+            actualizarBtn.Enabled = false;
+            eliminarBtn.Enabled = false;
+            salManTxt.Enabled = false;
+            boniManTxt.Enabled = false;
+            fecEmiDtp.Enabled = false;
+            descManTxt.Enabled = false;
             //el numerico muestra el año actual, sin embargo si puede modififcarse.
             anioNud.Minimum = DateTime.Now.Year;
             anioNud.Value = DateTime.Now.Year;
-            anioNud.Maximum = DateTime.Now.Year;
+            anioNud.Maximum = DateTime.Now.Year; 
         }
 
         private void nominasActivasDgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -56,6 +61,20 @@ namespace WinModuloNomina.Vista
                     fecEmiDtp.Value = nominaSeleccionada.FechaEmision.ToDateTime(TimeOnly.MinValue);
                     boniManTxt.Text = nominaSeleccionada.Bonificaciones.ToString();
                 }
+
+                insertarBtn.Enabled = false;
+                actualizarBtn.Enabled = true;
+                eliminarBtn.Enabled = true;
+            }
+        }
+
+        private void nominasActivasDgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var col = nominasActivasDgv.Columns["SalarioNeto"];
+            if (col != null)
+            {
+                col.DefaultCellStyle.Format = "N2"; // mostrar solo 2 decimales
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
         }
 
@@ -63,14 +82,35 @@ namespace WinModuloNomina.Vista
         {
             try
             {
+                var empleadoSeleccionado = empleAutoCb.SelectedItem as Empleados;
+
+                if (empleadoSeleccionado == null)
+                {
+                    MessageBox.Show("Debe seleccionar un empleado.");
+                    return;
+                }
+
+                if(anioNud.Value != DateTime.Now.Year)
+                {
+                    MessageBox.Show("El año de la nómina debe ser el actual.");
+                    return;
+                }
+
+                if (mesAutoCb.SelectedIndex != DateTime.Now.Month)
+                {
+                    MessageBox.Show("El mes de la nómina debe ser el actual.");
+                    return;
+                }
 
                 BusquedaDTO nuevoDato = new BusquedaDTO
                 {
-                    
-                    
+                    CedulaEmpleado = empleadoSeleccionado.Cedula,
+                    anio = int.Parse(anioNud.Value.ToString()),
+                    mes = mesAutoCb.SelectedIndex + 1
+
                 };
 
-                var verificacion = _api.PostAsync<NominasDTO>("NominasControlador/ObtenerNominaPorEmpleadoMesAnioAsync", nuevoDato);
+                var verificacion = await _api.PostAsync<NominasDTO>("NominasControlador/ObtenerNominaPorEmpleadoMesAnioAsync", nuevoDato);
 
                 if (verificacion != null)
                 {
@@ -104,6 +144,7 @@ namespace WinModuloNomina.Vista
             {
                 var datos = await _api.GetAsync<List<NominasDTO>>("NominasControlador/ObtenerTodosActivosAsync");
                 nominasActivasDgv.DataSource = datos;
+
                 nominasActivasDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
@@ -126,22 +167,5 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show($"Error al cargar empleados.");
             }
         }
-
-        // a cambiar cuando toque el ingreso automático
-        public async Task CargarEmpleadosIngresoManual()
-        {
-            try 
-            {
-                var datos = await _api.GetAsync<List<Empleados>>("EmpleadosControlador/ObtenerTodosActivosAsync");
-                empleAutoCb.DataSource = datos;
-                empleAutoCb.ValueMember = "IdEmpleado";
-                empleAutoCb.DisplayMember = "Cedula";
-            }
-            catch 
-            {
-                MessageBox.Show($"Error al cargar empleados.");
-            }
-        } 
-       
     }
 }

@@ -333,6 +333,7 @@ namespace WinModuloNomina.Vista
             {
                 var empleados = await _api.GetAsync<List<Empleados>>("EmpleadosControlador/ObtenerTodosActivosAsync");
                 empleadosDgv.DataSource = empleados;
+                empleadosDgv.Columns["Estado"].ReadOnly = true;
                 empleadosDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
