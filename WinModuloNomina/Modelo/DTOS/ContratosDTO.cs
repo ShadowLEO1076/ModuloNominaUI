@@ -6,26 +6,25 @@ using System.Collections.Generic;
 
 namespace Infraestructura.AccesoDatos;
 
-public partial class Contratos
+public partial class ContratosDTO
 {
+    
+
     public int IdContrato { get; set; }
-
     public int EmpleadoId { get; set; }
-
-    public int TipoId { get; set; }
-
-    public DateOnly FechaInicio { get; set; }
-
+    public string CedulaEmpleado { get; set; }
+    public string NombreCompletoEmpleado { get; set; }
+    public string TipoContrato { get; set; }
+    public string DescripcionTipoContrato { get; set; }
+    public DateOnly? FechaInicio { get; set; }
     public DateOnly? FechaFin { get; set; }
-
     public decimal Salario { get; set; }
-
-    public string Estado { get; set; }
 
     public DateTime FechaCreacion { get; set; }
 
-    public DateTime? FechaModificacion { get; set; }
-
+    public DateTime FechaModificacion { get; set; } 
     public int? HorasJornada { get; set; }
+    public string Estado { get; set; }
+  
 
 }

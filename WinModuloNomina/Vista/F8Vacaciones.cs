@@ -34,9 +34,10 @@ namespace WinModuloNomina.Vista
                 ApiUrl = ConfigurationManager.AppSettings["APIBaseUrl"];
                 _apimodulonomina = new APIModuloNomina(ApiUrl);
 
+
                 this.Load += F8Vacaciones_Load;
                 txtBuscar2.TextChanged += txtBuscar2_TextChanged;
-                dgvSolicitudes.CellClick += dgvSolicitudes_CellContentClick;
+                dgvSolicitudes.CellClick += dgvSolicitudes_CellClick;
 
                 txtIdSVacacion.Enabled = false;
                 txtidAprovacion.Enabled = false;
@@ -89,8 +90,8 @@ namespace WinModuloNomina.Vista
             {
                 await CargarVacaciones();
                 await CargarEmpleadosEnComboBox();
-                CargarComboBoxEstado();
-                ConfigurarGestionFechas();
+                await CargarComboBoxEstado();
+                await ConfigurarGestionFechas();
             }
             catch (Exception ex)
             {
@@ -98,48 +99,39 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        private void ConfigurarGestionFechas()
+        private async Task ConfigurarGestionFechas()
         {
             try
             {
                 dateInicio.Format = DateTimePickerFormat.Custom;
-                dateInicio.CustomFormat = "yyyy-MM-dd";
+                dateInicio.CustomFormat = "dd-MM-yyyy";
                 dateFin.Format = DateTimePickerFormat.Custom;
-                dateFin.CustomFormat = "yyyy-MM-dd";
+                dateFin.CustomFormat = "dd-MM-yyyy";
 
                 dateInicio.MinDate = DateTime.Today;
                 dateFin.MinDate = DateTime.Today;
 
                 dateInicio.ValueChanged += (s, ev) =>
                 {
-                    try
+                    if (dateFin.Value < dateInicio.Value)
                     {
-                        if (dateFin.Value < dateInicio.Value)
-                        {
-                            dateFin.Value = dateInicio.Value.AddDays(1);
-                        }
-                        CalcularDiasSolicitados();
+                        dateFin.Value = dateInicio.Value.AddDays(1);
                     }
-                    catch (Exception ex)
-                    {
-                        MostrarError("Error al cambiar fecha de inicio", ex, false);
-                    }
+                    CalcularDiasSolicitados();
+
+
+
+
                 };
 
                 dateFin.ValueChanged += (s, ev) =>
                 {
-                    try
+                    if (dateInicio.Value > dateFin.Value)
                     {
-                        if (dateInicio.Value > dateFin.Value)
-                        {
-                            dateInicio.Value = dateFin.Value.AddDays(-1);
-                        }
-                        CalcularDiasSolicitados();
+                        dateInicio.Value = dateFin.Value.AddDays(-1);
                     }
-                    catch (Exception ex)
-                    {
-                        MostrarError("Error al cambiar fecha de fin", ex, false);
-                    }
+                    CalcularDiasSolicitados();
+
                 };
 
                 txtDiasSolicitados.Enabled = false;
@@ -149,7 +141,6 @@ namespace WinModuloNomina.Vista
                 MostrarError("Error al configurar las fechas", ex);
             }
         }
-
         private void CalcularDiasSolicitados()
         {
             try
@@ -165,7 +156,6 @@ namespace WinModuloNomina.Vista
                 MostrarError("Error al calcular días solicitados", ex, false);
             }
         }
-
         public async Task CargarVacaciones()
         {
             try
@@ -199,8 +189,7 @@ namespace WinModuloNomina.Vista
                 MostrarError("Error al cargar las vacaciones", ex);
             }
         }
-
-        private void CargarComboBoxEstado()
+        private async Task CargarComboBoxEstado()
         {
             try
             {
@@ -215,7 +204,6 @@ namespace WinModuloNomina.Vista
                 MostrarError("Error al cargar estados", ex);
             }
         }
-
         public async Task CargarEmpleadosEnComboBox()
         {
             try
@@ -239,7 +227,6 @@ namespace WinModuloNomina.Vista
                 MostrarError("Error al cargar empleados", ex);
             }
         }
-
         private void txtBuscar2_TextChanged(object sender, EventArgs e)
         {
             try
@@ -264,7 +251,7 @@ namespace WinModuloNomina.Vista
                 MostrarError("Error al buscar", ex, false);
             }
         }
-        private void dataRevisionV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataRevisionV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verifica que el click no fue en encabezado o fuera de rango
             if (e.RowIndex < 0 || e.RowIndex >= dataRevisionV.Rows.Count)
@@ -272,7 +259,6 @@ namespace WinModuloNomina.Vista
                 txtidAprovacion.Text = string.Empty;
                 return;
             }
-
             try
             {
                 // Obtener la fila seleccionada de forma segura
@@ -328,11 +314,7 @@ namespace WinModuloNomina.Vista
                 MostrarError("Error inesperado al seleccionar revisión", ex, false);
             }
         }
-
-
-
-
-        private void dgvSolicitudes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvSolicitudes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.RowIndex >= dgvSolicitudes.Rows.Count) return;
 
@@ -363,20 +345,17 @@ namespace WinModuloNomina.Vista
                 MostrarError("Error al seleccionar solicitud", ex, false);
             }
         }
-
         // Métodos auxiliares para dividir la funcionalidad
         private void UnsubscribeDateEvents()
         {
             dateInicio.ValueChanged -= dateInicio_ValueChanged;
             dateFin.ValueChanged -= dateFin_ValueChanged;
         }
-
         private void SubscribeDateEvents()
         {
             dateInicio.ValueChanged += dateInicio_ValueChanged;
             dateFin.ValueChanged += dateFin_ValueChanged;
         }
-
         private void LoadBasicData(DataRow dataRow)
         {
             txtIdSVacacion.Text = dataRow["IdSolicitud"]?.ToString();
@@ -384,13 +363,11 @@ namespace WinModuloNomina.Vista
             txtDiasSolicitados.Text = dataRow["DiasSolicitados"]?.ToString();
             cbxEstado.Text = dataRow["Estado"]?.ToString();
         }
-
         private void LoadAndValidateDates(DataRow dataRow)
         {
             LoadAndValidateDate(dataRow, "FechaInicio", dateInicio, "inicio");
             LoadAndValidateDate(dataRow, "FechaFin", dateFin, "fin");
         }
-
         private void LoadAndValidateDate(DataRow dataRow, string columnName, DateTimePicker picker, string tipoFecha)
         {
             if (DateTime.TryParse(dataRow[columnName]?.ToString(), out DateTime fecha))
@@ -411,13 +388,11 @@ namespace WinModuloNomina.Vista
                 }
             }
         }
-
         private void ShowDateAdjustmentMessage(DateTime fecha, string tipoFecha, string comparacion)
         {
             MessageBox.Show($"La fecha de {tipoFecha} ({fecha:dd/MM/yyyy}) es {comparacion} a la permitida. Se ajustó automáticamente.",
                           "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void HighlightSelectedRow(DataGridViewRow selectedRow)
         {
             foreach (DataGridViewRow row in dgvSolicitudes.SelectedRows)
@@ -425,10 +400,6 @@ namespace WinModuloNomina.Vista
                 row.DefaultCellStyle.BackColor = Color.LightBlue;
             }
         }
-
-
-
-
         private void dateInicio_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -444,7 +415,6 @@ namespace WinModuloNomina.Vista
                 MostrarError("Error al cambiar fecha de inicio", ex, false);
             }
         }
-
         private void dateFin_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -461,9 +431,12 @@ namespace WinModuloNomina.Vista
             }
         }
 
+        //CRUD BASICO
         private async void btnCrear_Click(object sender, EventArgs e)
         {
+
             if (!ValidarFormulario(true)) return;
+
 
             // Crear solicitud de vacaciones
             var nuevaSolicitud = new SolicitudVacaciones
@@ -476,29 +449,50 @@ namespace WinModuloNomina.Vista
                 FechaCreacion = DateTime.Now.Date
             };
 
-            // Enviar solicitud
-            var solicitudCreada = await _apimodulonomina.PostAsync<SolicitudVacaciones>(
+
+            var nuevaSolicitud2 = new SolicitudVacaciones
+            {
+                EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
+                FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
+                FechaFin = DateOnly.FromDateTime(dateFin.Value),
+                DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
+                Estado = "Pendiente",
+                FechaCreacion = DateTime.Now.Date
+
+            };
+
+
+            if (UsuarioSesion.EsAdministrador == true)
+            {
+                var solicitudCreada = await _apimodulonomina.PostAsync<SolicitudVacaciones>(
                 "SolicitudVacacionesControlador/InsertarSolicitudVacaciones",
                 nuevaSolicitud);
-            await Task.Delay(5000);
-
-            // Si es aprobada, crear aprobación automática
-            if (nuevaSolicitud.Estado == "Aprobado")
-            {
-                // metodo para esperar 5 segundos antes de continuar 
-
-
-                var aprobacion = new AprobacionVacaciones
+                await Task.Delay(500);
+                // Si es aprobada, crear aprobación automática
+                if (nuevaSolicitud.Estado == "Aprobado" && UsuarioSesion.EsAdministrador == true)
                 {
-                    SolicitudId = solicitudCreada.IdSolicitud,
-                    FechaAprobacion = DateTime.Now.Date,
-                    UsuarioAprobador = UsuarioSesion.Cedula
-                };
+                    // metodo para esperar 5 segundos antes de continuar 
 
-                await _apimodulonomina.PostAsync<AprobacionVacaciones>(
-                    "AprovacionVacacionesControlador/InsertarAprobacionVacaciones",
-                    aprobacion);
+
+                    var aprobacion = new AprobacionVacaciones
+                    {
+                        SolicitudId = solicitudCreada.IdSolicitud,
+                        FechaAprobacion = DateTime.Now.Date,
+                        UsuarioAprobador = UsuarioSesion.Cedula
+                    };
+
+                    await _apimodulonomina.PostAsync<AprobacionVacaciones>(
+                        "AprovacionVacacionesControlador/InsertarAprobacionVacaciones",
+                        aprobacion);
+                }
             }
+            else if (UsuarioSesion.EsAdministrador == false)
+            {
+                await _apimodulonomina.PostAsync<SolicitudVacaciones>(
+                "SolicitudVacacionesControlador/InsertarSolicitudVacaciones",
+                nuevaSolicitud2);
+            }
+
 
             // Actualizar interfaz
             LimpiarFormulario();
@@ -614,18 +608,55 @@ namespace WinModuloNomina.Vista
         }
         private async void btnEditar_Click(object sender, EventArgs e)
         {
+
             try
             {
-                if (!ValidarFormulario(true)) return;
-
                 int idSolicitud = int.Parse(txtIdSVacacion.Text);
                 string nuevoEstado = cbxEstado.Text;
                 string estadoAnterior = "";
+                var solicitudActual = await _apimodulonomina.GetAsync<SolicitudVacaciones>(
+                        $"SolicitudVacacionesControlador/BuscarPorId/{idSolicitud}");
+                estadoAnterior = solicitudActual?.Estado ?? "";
+                var solicitud = new SolicitudVacaciones
+                {
+                    IdSolicitud = idSolicitud,
+                    EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
+                    FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
+                    FechaFin = DateOnly.FromDateTime(dateFin.Value),
+                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
+                    Estado = nuevoEstado,
+                    FechaCreacion = solicitudActual?.FechaCreacion ?? DateTime.Now.Date
+                };
+                var solicitud2 = new SolicitudVacaciones
+                {
+                    IdSolicitud = idSolicitud,
+                    EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
+                    FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
+                    FechaFin = DateOnly.FromDateTime(dateFin.Value),
+                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
+                    Estado = "Pendiente",
+                    FechaCreacion = solicitudActual?.FechaCreacion ?? DateTime.Now.Date
+
+                };
+                var solicitud3 = new SolicitudVacaciones
+                {
+                    IdSolicitud = idSolicitud,
+                    EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
+                    FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
+                    FechaFin = DateOnly.FromDateTime(dateFin.Value),
+                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
+                    Estado = "Rechazado",
+                    FechaCreacion = solicitudActual?.FechaCreacion ?? DateTime.Now.Date
+
+                };
+                if (!ValidarFormulario(true)) return;
+
+                /*int idSolicitud = int.Parse(txtIdSVacacion.Text);
+                string nuevoEstado = cbxEstado.Text;
+                string estadoAnterior = "";*/
 
                 // Obtener estado actual
-                var solicitudActual = await _apimodulonomina.GetAsync<SolicitudVacaciones>(
-                    $"SolicitudVacacionesControlador/BuscarPorId/{idSolicitud}");
-                estadoAnterior = solicitudActual?.Estado ?? "";
+
 
                 // Validar cambio de estado a "Aprobado"
                 if (nuevoEstado == "Aprobado" && !UsuarioSesion.EsAdministrador)
@@ -638,20 +669,9 @@ namespace WinModuloNomina.Vista
                 }
 
                 // Actualizar la solicitud
-                var solicitud = new SolicitudVacaciones
-                {
-                    IdSolicitud = idSolicitud,
-                    EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
-                    FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
-                    FechaFin = DateOnly.FromDateTime(dateFin.Value),
-                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
-                    Estado = nuevoEstado,
-                    FechaCreacion = solicitudActual?.FechaCreacion ?? DateTime.Now.Date
-                };
 
-                await _apimodulonomina.PutAsync<SolicitudVacaciones>(
-                    "SolicitudVacacionesControlador/ActualizarSolicitudVacaciones",
-                    solicitud);
+
+
                 // 1. Obtener la fila seleccionada
                 if (dgvSolicitudes.CurrentRow == null)
                 {
@@ -679,13 +699,14 @@ namespace WinModuloNomina.Vista
                     };
                     string json = JsonConvert.SerializeObject(aprobacion);
                     await _apimodulonomina.PostAsync<AprobacionVacaciones>("AprovacionVacacionesControlador/InsertarAprobacionVacaciones", aprobacion);
+                    await _apimodulonomina.PutAsync<SolicitudVacaciones>("SolicitudVacacionesControlador/ActualizarSolicitudVacaciones", solicitud);
 
                 }
                 else if (nuevoEstado == "Rechazado")
                 {
                     if (string.IsNullOrWhiteSpace(txtidAprovacion.Text))
                     {
-                        MessageBox.Show("Seleccione una aprobación para eliminar",
+                        MessageBox.Show("Clik en el id a eliminar en la tabla de aprovados",
                                       "Validación",
                                       MessageBoxButtons.OK,
                                       MessageBoxIcon.Warning);
@@ -712,6 +733,7 @@ namespace WinModuloNomina.Vista
 
                     // Eliminar usando el ID directamente en la URL
                     await _apimodulonomina.DeleteAsync($"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
+                    await _apimodulonomina.PutAsync<SolicitudVacaciones>("SolicitudVacacionesControlador/ActualizarSolicitudVacaciones", solicitud3);
                 }
                 else if (nuevoEstado == "Pendiente")
                 {
@@ -744,6 +766,7 @@ namespace WinModuloNomina.Vista
 
                     // Eliminar usando el ID directamente en la URL
                     await _apimodulonomina.DeleteAsync($"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
+                    await _apimodulonomina.PutAsync<SolicitudVacaciones>("SolicitudVacacionesControlador/ActualizarSolicitudVacaciones", solicitud2);
                 }
                 else
                 {
@@ -762,8 +785,11 @@ namespace WinModuloNomina.Vista
 
         private async void btnEliminarA_Click(object sender, EventArgs e)
         {
+
+
             try
             {
+
                 // Validar que el campo no esté vacío
                 if (string.IsNullOrWhiteSpace(txtidAprovacion.Text))
                 {
@@ -804,6 +830,11 @@ namespace WinModuloNomina.Vista
             {
                 await CargarVacaciones(); // Actualizar la vista siempre
             }
+        }
+
+        private void dgvSolicitudes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

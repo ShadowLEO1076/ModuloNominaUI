@@ -43,9 +43,9 @@
             montoLb = new Label();
             descripcionLb = new Label();
             descripcionTxt = new TextBox();
-            tipoTxt = new ComboBox();
             tipoLb = new Label();
             montoTxt = new NumericUpDown();
+            tipoTxt = new ComboBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel2 = new Panel();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -157,9 +157,9 @@
             tableLayoutPanel1.Controls.Add(montoLb, 0, 4);
             tableLayoutPanel1.Controls.Add(descripcionLb, 0, 3);
             tableLayoutPanel1.Controls.Add(descripcionTxt, 1, 3);
-            tableLayoutPanel1.Controls.Add(tipoTxt, 1, 2);
             tableLayoutPanel1.Controls.Add(tipoLb, 0, 2);
             tableLayoutPanel1.Controls.Add(montoTxt, 1, 4);
+            tableLayoutPanel1.Controls.Add(tipoTxt, 1, 2);
             tableLayoutPanel1.Location = new Point(3, 52);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 6;
@@ -259,16 +259,6 @@
             descripcionTxt.Size = new Size(268, 27);
             descripcionTxt.TabIndex = 16;
             // 
-            // tipoTxt
-            // 
-            tipoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tipoTxt.FormattingEnabled = true;
-            tipoTxt.Location = new Point(120, 69);
-            tipoTxt.Name = "tipoTxt";
-            tipoTxt.Size = new Size(268, 28);
-            tipoTxt.TabIndex = 27;
-            tipoTxt.SelectedIndexChanged += tipoTxt_SelectedIndexChanged;
-            // 
             // tipoLb
             // 
             tipoLb.Anchor = AnchorStyles.Left;
@@ -286,6 +276,16 @@
             montoTxt.Name = "montoTxt";
             montoTxt.Size = new Size(268, 27);
             montoTxt.TabIndex = 30;
+            // 
+            // tipoTxt
+            // 
+            tipoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tipoTxt.FormattingEnabled = true;
+            tipoTxt.Location = new Point(120, 69);
+            tipoTxt.Name = "tipoTxt";
+            tipoTxt.Size = new Size(268, 28);
+            tipoTxt.TabIndex = 27;
+            tipoTxt.SelectedIndexChanged += tipoTxt_SelectedIndexChanged;
             // 
             // tableLayoutPanel2
             // 

@@ -82,7 +82,7 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        private void OpenChildForm(Form childForm, string title)
+        private async void OpenChildForm(Form childForm, string title)
         {
             // Cerrar el formulario activo si existe
             if (activeForm != null)
@@ -104,7 +104,12 @@ namespace WinModuloNomina.Vista
 
             // Mostrar el formulario
             childForm.BringToFront();
-            childForm.Show();
+            await Task.Delay(500);
+            this.BeginInvoke((Action)(() =>
+            {
+                childForm.Show();
+            }));
+
         }
 
         #endregion

@@ -53,7 +53,6 @@
             estadoCheckbox = new CheckBox();
             generoCb = new ComboBox();
             limpiarBtn = new Button();
-
             panel1 = new Panel();
             panel2 = new Panel();
             txtBuscar = new TextBox();
@@ -61,15 +60,12 @@
             buscarBtn = new FontAwesome.Sharp.IconButton();
             editarBtn = new FontAwesome.Sharp.IconButton();
             crearBtn = new FontAwesome.Sharp.IconButton();
-
             empleadosDgv = new DataGridView();
             empleadosBindingSource = new BindingSource(components);
             panel3 = new Panel();
             presentLb = new Label();
-
             tablaEmpleados = new TableLayoutPanel();
             tablaEmpleados.SuspendLayout();
-
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)empleadosDgv).BeginInit();
@@ -77,91 +73,6 @@
             panel3.SuspendLayout();
             SuspendLayout();
             // 
-    // panel1
-            // 
-            panel1.Controls.Add(panel2);
-            panel1.Controls.Add(tablaEmpleados);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1081, 192);
-            panel1.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            panel2.Anchor = AnchorStyles.Right;
-            panel2.Controls.Add(txtBuscar);
-            panel2.Controls.Add(borrarBtn);
-            panel2.Controls.Add(buscarBtn);
-            panel2.Controls.Add(editarBtn);
-            panel2.Controls.Add(crearBtn);
-            panel2.Location = new Point(945, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(135, 189);
-            panel2.TabIndex = 4;
-            // 
-            // txtBuscar
-            // 
-            txtBuscar.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtBuscar.Location = new Point(5, 16);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.PlaceholderText = "Cedula a buscar";
-            txtBuscar.Size = new Size(127, 27);
-            txtBuscar.TabIndex = 32;
-            // 
-            // borrarBtn
-            // 
-            borrarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            borrarBtn.IconColor = Color.Black;
-            borrarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            borrarBtn.Location = new Point(29, 153);
-            borrarBtn.Name = "borrarBtn";
-            borrarBtn.Size = new Size(94, 29);
-            borrarBtn.TabIndex = 12;
-            borrarBtn.Text = "Borrar";
-            borrarBtn.UseVisualStyleBackColor = true;
-            borrarBtn.Visible = false;
-            // 
-            // buscarBtn
-            // 
-            buscarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            buscarBtn.IconColor = Color.Black;
-            buscarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            buscarBtn.Location = new Point(29, 55);
-            buscarBtn.Name = "buscarBtn";
-            buscarBtn.Size = new Size(94, 29);
-            buscarBtn.TabIndex = 10;
-            buscarBtn.Text = "Buscar";
-            buscarBtn.UseVisualStyleBackColor = true;
-            buscarBtn.Click += buscarBtn_Click;
-            // 
-            // editarBtn
-            // 
-            editarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            editarBtn.IconColor = Color.Black;
-            editarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            editarBtn.Location = new Point(29, 119);
-            editarBtn.Name = "editarBtn";
-            editarBtn.Size = new Size(94, 29);
-            editarBtn.TabIndex = 11;
-            editarBtn.Text = "Editar";
-            editarBtn.UseVisualStyleBackColor = true;
-            editarBtn.Click += editarBtn_Click;
-            // 
-            // crearBtn
-            // 
-            crearBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            crearBtn.IconColor = Color.Black;
-            crearBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            crearBtn.Location = new Point(29, 87);
-            crearBtn.Name = "crearBtn";
-            crearBtn.Size = new Size(94, 29);
-            crearBtn.TabIndex = 9;
-            crearBtn.Text = "Crear";
-            crearBtn.UseVisualStyleBackColor = true;
-            crearBtn.Click += crearBtn_Click;
-            // 
-
             // tablaEmpleados
             // 
             tablaEmpleados.Anchor = AnchorStyles.Left | AnchorStyles.Right;
@@ -203,13 +114,13 @@
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tablaEmpleados.Size = new Size(925, 163);
+            tablaEmpleados.Size = new Size(1039, 163);
             tablaEmpleados.TabIndex = 3;
             // 
             // fecIngresoDtp
             // 
             fecIngresoDtp.Format = DateTimePickerFormat.Short;
-            fecIngresoDtp.Location = new Point(795, 44);
+            fecIngresoDtp.Location = new Point(908, 44);
             fecIngresoDtp.Margin = new Padding(3, 4, 3, 4);
             fecIngresoDtp.Name = "fecIngresoDtp";
             fecIngresoDtp.Size = new Size(109, 27);
@@ -218,9 +129,9 @@
             // telfTxt
             // 
             telfTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            telfTxt.Location = new Point(795, 6);
+            telfTxt.Location = new Point(908, 6);
             telfTxt.Name = "telfTxt";
-            telfTxt.Size = new Size(127, 27);
+            telfTxt.Size = new Size(128, 27);
             telfTxt.TabIndex = 29;
             // 
             // apellidosLb
@@ -235,9 +146,9 @@
             // fechaNacLb
             // 
             fechaNacLb.AutoSize = true;
-            fechaNacLb.Location = new Point(310, 80);
+            fechaNacLb.Location = new Point(362, 80);
             fechaNacLb.Name = "fechaNacLb";
-            fechaNacLb.Size = new Size(86, 40);
+            fechaNacLb.Size = new Size(128, 20);
             fechaNacLb.TabIndex = 21;
             fechaNacLb.Text = "Fecha Nacimiento";
             // 
@@ -253,7 +164,7 @@
             // correoLb
             // 
             correoLb.AutoSize = true;
-            correoLb.Location = new Point(310, 40);
+            correoLb.Location = new Point(362, 40);
             correoLb.Name = "correoLb";
             correoLb.Size = new Size(54, 20);
             correoLb.TabIndex = 19;
@@ -280,40 +191,40 @@
             // idEmplTxt
             // 
             idEmplTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            idEmplTxt.Location = new Point(125, 6);
+            idEmplTxt.Location = new Point(146, 6);
             idEmplTxt.Name = "idEmplTxt";
             idEmplTxt.ReadOnly = true;
-            idEmplTxt.Size = new Size(179, 27);
+            idEmplTxt.Size = new Size(210, 27);
             idEmplTxt.TabIndex = 7;
             // 
             // correoTxt
             // 
             correoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            correoTxt.Location = new Point(443, 46);
+            correoTxt.Location = new Point(517, 46);
             correoTxt.Name = "correoTxt";
-            correoTxt.Size = new Size(226, 27);
+            correoTxt.Size = new Size(265, 27);
             correoTxt.TabIndex = 13;
             // 
             // nombresTxt
             // 
             nombresTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            nombresTxt.Location = new Point(125, 86);
+            nombresTxt.Location = new Point(146, 86);
             nombresTxt.Name = "nombresTxt";
-            nombresTxt.Size = new Size(179, 27);
+            nombresTxt.Size = new Size(210, 27);
             nombresTxt.TabIndex = 15;
             // 
             // apellidosTxt
             // 
             apellidosTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            apellidosTxt.Location = new Point(125, 128);
+            apellidosTxt.Location = new Point(146, 128);
             apellidosTxt.Name = "apellidosTxt";
-            apellidosTxt.Size = new Size(179, 27);
+            apellidosTxt.Size = new Size(210, 27);
             apellidosTxt.TabIndex = 16;
             // 
             // cedulaLb
             // 
             cedulaLb.AutoSize = true;
-            cedulaLb.Location = new Point(310, 0);
+            cedulaLb.Location = new Point(362, 0);
             cedulaLb.Name = "cedulaLb";
             cedulaLb.Size = new Size(55, 20);
             cedulaLb.TabIndex = 17;
@@ -322,15 +233,15 @@
             // cedulaTxt
             // 
             cedulaTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            cedulaTxt.Location = new Point(443, 6);
+            cedulaTxt.Location = new Point(517, 6);
             cedulaTxt.Name = "cedulaTxt";
-            cedulaTxt.Size = new Size(226, 27);
+            cedulaTxt.Size = new Size(265, 27);
             cedulaTxt.TabIndex = 10;
             // 
             // telefonoLb
             // 
             telefonoLb.AutoSize = true;
-            telefonoLb.Location = new Point(675, 0);
+            telefonoLb.Location = new Point(788, 0);
             telefonoLb.Name = "telefonoLb";
             telefonoLb.Size = new Size(67, 20);
             telefonoLb.TabIndex = 24;
@@ -339,7 +250,7 @@
             // generoLb
             // 
             generoLb.AutoSize = true;
-            generoLb.Location = new Point(310, 120);
+            generoLb.Location = new Point(362, 120);
             generoLb.Name = "generoLb";
             generoLb.Size = new Size(57, 20);
             generoLb.TabIndex = 23;
@@ -348,7 +259,7 @@
             // fechaIngresoLb
             // 
             fechaIngresoLb.AutoSize = true;
-            fechaIngresoLb.Location = new Point(675, 40);
+            fechaIngresoLb.Location = new Point(788, 40);
             fechaIngresoLb.Name = "fechaIngresoLb";
             fechaIngresoLb.Size = new Size(100, 20);
             fechaIngresoLb.TabIndex = 25;
@@ -357,7 +268,7 @@
             // estadoLb
             // 
             estadoLb.AutoSize = true;
-            estadoLb.Location = new Point(675, 80);
+            estadoLb.Location = new Point(788, 80);
             estadoLb.Name = "estadoLb";
             estadoLb.Size = new Size(54, 20);
             estadoLb.TabIndex = 26;
@@ -367,20 +278,16 @@
             // 
             puestosCb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             puestosCb.FormattingEnabled = true;
-            puestosCb.Location = new Point(125, 44);
+            puestosCb.Location = new Point(146, 46);
             puestosCb.Margin = new Padding(3, 4, 3, 4);
             puestosCb.Name = "puestosCb";
-
-            puestosCb.Size = new Size(162, 23);
-
-            puestosCb.Size = new Size(174, 28);
-
+            puestosCb.Size = new Size(210, 28);
             puestosCb.TabIndex = 27;
             // 
             // fechaNacDtp
             // 
             fechaNacDtp.Format = DateTimePickerFormat.Short;
-            fechaNacDtp.Location = new Point(443, 84);
+            fechaNacDtp.Location = new Point(517, 84);
             fechaNacDtp.Margin = new Padding(3, 4, 3, 4);
             fechaNacDtp.Name = "fechaNacDtp";
             fechaNacDtp.Size = new Size(221, 27);
@@ -389,7 +296,7 @@
             // estadoCheckbox
             // 
             estadoCheckbox.AutoSize = true;
-            estadoCheckbox.Location = new Point(795, 84);
+            estadoCheckbox.Location = new Point(908, 84);
             estadoCheckbox.Margin = new Padding(3, 4, 3, 4);
             estadoCheckbox.Name = "estadoCheckbox";
             estadoCheckbox.Size = new Size(18, 17);
@@ -399,7 +306,7 @@
             // generoCb
             // 
             generoCb.FormattingEnabled = true;
-            generoCb.Location = new Point(443, 124);
+            generoCb.Location = new Point(517, 124);
             generoCb.Margin = new Padding(3, 4, 3, 4);
             generoCb.Name = "generoCb";
             generoCb.Size = new Size(226, 28);
@@ -407,22 +314,15 @@
             // 
             // limpiarBtn
             // 
-
-            limpiarBtn.Location = new Point(718, 93);
-            limpiarBtn.Name = "limpiarBtn";
-            limpiarBtn.Size = new Size(109, 23);
-
-            limpiarBtn.Location = new Point(795, 124);
+            limpiarBtn.Location = new Point(908, 124);
             limpiarBtn.Margin = new Padding(3, 4, 3, 4);
             limpiarBtn.Name = "limpiarBtn";
             limpiarBtn.Size = new Size(125, 31);
-
             limpiarBtn.TabIndex = 34;
             limpiarBtn.Text = "Limpiar datos";
             limpiarBtn.UseVisualStyleBackColor = true;
             limpiarBtn.Click += limpiarBtn_Click;
             // 
-
             // panel1
             // 
             panel1.Controls.Add(panel2);
@@ -431,7 +331,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(967, 144);
+            panel1.Size = new Size(1081, 144);
             panel1.TabIndex = 2;
             // 
             // panel2
@@ -442,7 +342,7 @@
             panel2.Controls.Add(buscarBtn);
             panel2.Controls.Add(editarBtn);
             panel2.Controls.Add(crearBtn);
-            panel2.Location = new Point(848, 0);
+            panel2.Location = new Point(962, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(118, 142);
@@ -455,7 +355,7 @@
             txtBuscar.Margin = new Padding(3, 2, 3, 2);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.PlaceholderText = "Cedula a buscar";
-            txtBuscar.Size = new Size(112, 23);
+            txtBuscar.Size = new Size(112, 27);
             txtBuscar.TabIndex = 32;
             // 
             // borrarBtn
@@ -517,22 +417,12 @@
             // empleadosDgv
             // 
             empleadosDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            empleadosDgv.Dock = DockStyle.Top;
-            empleadosDgv.Location = new Point(0, 180);
+            empleadosDgv.Dock = DockStyle.Fill;
+            empleadosDgv.Location = new Point(0, 211);
             empleadosDgv.Margin = new Padding(3, 2, 3, 2);
             empleadosDgv.Name = "empleadosDgv";
             empleadosDgv.RowHeadersWidth = 51;
-            empleadosDgv.Size = new Size(967, 127);
-
-            // empleadosDgv
-            // 
-            empleadosDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            empleadosDgv.Dock = DockStyle.Fill;
-            empleadosDgv.Location = new Point(0, 240);
-            empleadosDgv.Name = "empleadosDgv";
-            empleadosDgv.RowHeadersWidth = 51;
-            empleadosDgv.Size = new Size(1081, 292);
-
+            empleadosDgv.Size = new Size(1081, 321);
             empleadosDgv.TabIndex = 8;
             empleadosDgv.CellClick += empleadosDgv_CellClick;
             // 
@@ -540,28 +430,20 @@
             // 
             panel3.Controls.Add(presentLb);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 192);
+            panel3.Location = new Point(0, 144);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1081, 48);
+            panel3.Size = new Size(1081, 67);
             panel3.TabIndex = 9;
             // 
             // presentLb
             // 
             presentLb.AutoSize = true;
-
-            presentLb.Location = new Point(3, 19);
-            presentLb.Name = "presentLb";
-            presentLb.Size = new Size(107, 15);
-            presentLb.TabIndex = 10;
-            presentLb.Text = "Empleados Activos";
-            presentLb.TextAlign = ContentAlignment.TopCenter;
-
             presentLb.Location = new Point(534, 8);
             presentLb.Name = "presentLb";
             presentLb.Size = new Size(83, 20);
             presentLb.TabIndex = 10;
             presentLb.Text = "Empleados";
-
+            presentLb.TextAlign = ContentAlignment.TopCenter;
             // 
             // F2Empleados
             // 
