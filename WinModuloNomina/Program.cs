@@ -19,8 +19,8 @@ namespace WinModuloNomina
             //Application.Run(new LoginForm());
             //Application.Run(new LoginForm());
 
-            Application.Run(new LoginForm());
-
+            //Application.Run(new LoginForm());
+            Application.Run(new MenuPrincipal());
 
         }
     }
