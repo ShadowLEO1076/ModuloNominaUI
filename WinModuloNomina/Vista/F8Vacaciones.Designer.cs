@@ -50,11 +50,24 @@ namespace WinModuloNomina.Vista
             txtidAprovacion = new TextBox();
             btnEliminarA = new FontAwesome.Sharp.IconButton();
             dataRevisionV = new DataGridView();
+            dataGridViewTextBoxColumn24 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn25 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn26 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn27 = new DataGridViewTextBoxColumn();
             aprobacionVacacionesBindingSource = new BindingSource(components);
-            solicitudVacacionDTOBindingSource = new BindingSource(components);
             tableLayoutPanel4 = new TableLayoutPanel();
             btnBorrar = new FontAwesome.Sharp.IconButton();
             dgvSolicitudes = new Zuby.ADGV.AdvancedDataGridView();
+            dataGridViewTextBoxColumn15 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn16 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn17 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn18 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn19 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn20 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn21 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn22 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn23 = new DataGridViewTextBoxColumn();
+            solicitudVacacionDTOBindingSource1 = new BindingSource(components);
             panel2 = new Panel();
             label1 = new Label();
             panel3 = new Panel();
@@ -64,9 +77,9 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataRevisionV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)aprobacionVacacionesBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)solicitudVacacionDTOBindingSource).BeginInit();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSolicitudes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)solicitudVacacionDTOBindingSource1).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -308,6 +321,7 @@ namespace WinModuloNomina.Vista
             dataRevisionV.AutoGenerateColumns = false;
             dataRevisionV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataRevisionV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataRevisionV.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn24, dataGridViewTextBoxColumn25, dataGridViewTextBoxColumn26, dataGridViewTextBoxColumn27 });
             dataRevisionV.DataSource = aprobacionVacacionesBindingSource;
             dataRevisionV.Location = new Point(430, 107);
             dataRevisionV.Margin = new Padding(3, 2, 3, 2);
@@ -316,6 +330,38 @@ namespace WinModuloNomina.Vista
             dataRevisionV.Size = new Size(546, 121);
             dataRevisionV.TabIndex = 14;
             dataRevisionV.CellContentClick += dataRevisionV_CellClick;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            dataGridViewTextBoxColumn24.DataPropertyName = "IdAprobacion";
+            dataGridViewTextBoxColumn24.HeaderText = "IdAprobacion";
+            dataGridViewTextBoxColumn24.MinimumWidth = 6;
+            dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            dataGridViewTextBoxColumn25.DataPropertyName = "SolicitudId";
+            dataGridViewTextBoxColumn25.HeaderText = "SolicitudId";
+            dataGridViewTextBoxColumn25.MinimumWidth = 6;
+            dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            dataGridViewTextBoxColumn26.DataPropertyName = "FechaAprobacion";
+            dataGridViewTextBoxColumn26.HeaderText = "FechaAprobacion";
+            dataGridViewTextBoxColumn26.MinimumWidth = 6;
+            dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            dataGridViewTextBoxColumn27.DataPropertyName = "UsuarioAprobador";
+            dataGridViewTextBoxColumn27.HeaderText = "UsuarioAprobador";
+            dataGridViewTextBoxColumn27.MinimumWidth = 6;
+            dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            // 
+            // aprobacionVacacionesBindingSource
+            // 
+            aprobacionVacacionesBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.AprobacionVacaciones);
             // 
             // tableLayoutPanel4
             // 
@@ -363,7 +409,8 @@ namespace WinModuloNomina.Vista
             dgvSolicitudes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
             dgvSolicitudes.BackgroundColor = Color.Gainsboro;
             dgvSolicitudes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSolicitudes.DataSource = solicitudVacacionDTOBindingSource;
+            dgvSolicitudes.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn15, dataGridViewTextBoxColumn16, dataGridViewTextBoxColumn17, dataGridViewTextBoxColumn18, dataGridViewTextBoxColumn19, dataGridViewTextBoxColumn20, dataGridViewTextBoxColumn21, dataGridViewTextBoxColumn22, dataGridViewTextBoxColumn23 });
+            dgvSolicitudes.DataSource = solicitudVacacionDTOBindingSource1;
             dgvSolicitudes.FilterAndSortEnabled = true;
             dgvSolicitudes.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
             dgvSolicitudes.Location = new Point(40, 330);
@@ -372,10 +419,90 @@ namespace WinModuloNomina.Vista
             dgvSolicitudes.Name = "dgvSolicitudes";
             dgvSolicitudes.RightToLeft = RightToLeft.No;
             dgvSolicitudes.RowHeadersWidth = 51;
+
             dgvSolicitudes.Size = new Size(937, 124);
+
+            dgvSolicitudes.Size = new Size(1069, 165);
+
             dgvSolicitudes.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             dgvSolicitudes.TabIndex = 20;
             dgvSolicitudes.CellContentClick += dgvSolicitudes_CellContentClick;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            dataGridViewTextBoxColumn15.DataPropertyName = "IdSolicitud";
+            dataGridViewTextBoxColumn15.HeaderText = "IdSolicitud";
+            dataGridViewTextBoxColumn15.MinimumWidth = 24;
+            dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            dataGridViewTextBoxColumn15.SortMode = DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            dataGridViewTextBoxColumn16.DataPropertyName = "IdEmpleado";
+            dataGridViewTextBoxColumn16.HeaderText = "IdEmpleado";
+            dataGridViewTextBoxColumn16.MinimumWidth = 24;
+            dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            dataGridViewTextBoxColumn16.SortMode = DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            dataGridViewTextBoxColumn17.DataPropertyName = "NombreCompleto";
+            dataGridViewTextBoxColumn17.HeaderText = "NombreCompleto";
+            dataGridViewTextBoxColumn17.MinimumWidth = 24;
+            dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            dataGridViewTextBoxColumn17.SortMode = DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            dataGridViewTextBoxColumn18.DataPropertyName = "Cedula";
+            dataGridViewTextBoxColumn18.HeaderText = "Cedula";
+            dataGridViewTextBoxColumn18.MinimumWidth = 24;
+            dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            dataGridViewTextBoxColumn18.SortMode = DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            dataGridViewTextBoxColumn19.DataPropertyName = "FechaInicio";
+            dataGridViewTextBoxColumn19.HeaderText = "FechaInicio";
+            dataGridViewTextBoxColumn19.MinimumWidth = 24;
+            dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            dataGridViewTextBoxColumn19.SortMode = DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            dataGridViewTextBoxColumn20.DataPropertyName = "FechaFin";
+            dataGridViewTextBoxColumn20.HeaderText = "FechaFin";
+            dataGridViewTextBoxColumn20.MinimumWidth = 24;
+            dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            dataGridViewTextBoxColumn20.SortMode = DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            dataGridViewTextBoxColumn21.DataPropertyName = "DiasSolicitados";
+            dataGridViewTextBoxColumn21.HeaderText = "DiasSolicitados";
+            dataGridViewTextBoxColumn21.MinimumWidth = 24;
+            dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            dataGridViewTextBoxColumn21.SortMode = DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            dataGridViewTextBoxColumn22.DataPropertyName = "Estado";
+            dataGridViewTextBoxColumn22.HeaderText = "Estado";
+            dataGridViewTextBoxColumn22.MinimumWidth = 24;
+            dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            dataGridViewTextBoxColumn22.SortMode = DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            dataGridViewTextBoxColumn23.DataPropertyName = "FechaCreacion";
+            dataGridViewTextBoxColumn23.HeaderText = "FechaCreacion";
+            dataGridViewTextBoxColumn23.MinimumWidth = 24;
+            dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            dataGridViewTextBoxColumn23.SortMode = DataGridViewColumnSortMode.Programmatic;
+            // 
+            // solicitudVacacionDTOBindingSource1
+            // 
+            solicitudVacacionDTOBindingSource1.DataSource = typeof(SolicitudVacacionDTO);
             // 
             // panel2
             // 
@@ -451,7 +578,12 @@ namespace WinModuloNomina.Vista
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+
             ClientSize = new Size(1021, 452);
+
+            BackColor = Color.White;
+            ClientSize = new Size(1167, 603);
+
             Controls.Add(panel4);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel3);
@@ -469,10 +601,10 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataRevisionV).EndInit();
             ((System.ComponentModel.ISupportInitialize)aprobacionVacacionesBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)solicitudVacacionDTOBindingSource).EndInit();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSolicitudes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)solicitudVacacionDTOBindingSource1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
@@ -522,8 +654,6 @@ namespace WinModuloNomina.Vista
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private BindingSource aprobacionVacacionesBindingSource;
-        private BindingSource solicitudVacacionDTOBindingSource;
         private Zuby.ADGV.AdvancedDataGridView dgvSolicitudes;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -544,5 +674,20 @@ namespace WinModuloNomina.Vista
         private Label label7;
         private Label label9;
         private Panel panel4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        private BindingSource aprobacionVacacionesBindingSource;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private BindingSource solicitudVacacionDTOBindingSource1;
     }
 }
