@@ -316,7 +316,8 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             asistenciasDgv.DefaultCellStyle = dataGridViewCellStyle2;
-            asistenciasDgv.Location = new Point(0, 179);
+            asistenciasDgv.Dock = DockStyle.Top;
+            asistenciasDgv.Location = new Point(0, 175);
             asistenciasDgv.Margin = new Padding(3, 2, 3, 2);
             asistenciasDgv.Name = "asistenciasDgv";
             asistenciasDgv.RowHeadersWidth = 51;

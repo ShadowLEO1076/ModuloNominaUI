@@ -104,7 +104,7 @@ namespace WinModuloNomina.Vista
 
             if (existente != null)
             {
-                MessageBox.Show("Ya existe un empleado con esta cédula.");
+                MessageBox.Show("Actualmente ya existe un empleado ingresado con esta cédula.");
                 return;
             }
 

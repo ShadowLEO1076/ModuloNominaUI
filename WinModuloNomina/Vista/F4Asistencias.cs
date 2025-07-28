@@ -104,7 +104,7 @@ namespace WinModuloNomina.Vista
                 }
 
                 actualizarBtn.Enabled = true;
-                EliminarBtn.Enabled = true
+                EliminarBtn.Enabled = true;
                 ingresarBtn.Enabled = false;
                 empleCb.Enabled = false;
                 fecAsisDtp.Enabled = false;
@@ -198,7 +198,8 @@ namespace WinModuloNomina.Vista
         private async void EliminarBtn_Click(object sender, EventArgs e)
         {
             // no se elimina, solo se cambia su estado a false.
-            try{ 
+            try
+            { 
             var asistencia = new Asistencias
             {
                 IdAsistencia = int.Parse(idAsisTxt.Text),
@@ -210,7 +211,7 @@ namespace WinModuloNomina.Vista
             };
 
             await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
-            await CargarAsistencias();
+                await CargarAsistencias();
             }
             catch
             {

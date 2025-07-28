@@ -67,9 +67,10 @@
             btnBorrar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnBorrar.IconColor = Color.Black;
             btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBorrar.Location = new Point(7, 116);
+            btnBorrar.Location = new Point(6, 87);
+            btnBorrar.Margin = new Padding(3, 2, 3, 2);
             btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(94, 29);
+            btnBorrar.Size = new Size(82, 22);
             btnBorrar.TabIndex = 20;
             btnBorrar.Text = "Borrar";
             btnBorrar.UseVisualStyleBackColor = true;
@@ -79,9 +80,10 @@
             btnEditar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEditar.Location = new Point(7, 81);
+            btnEditar.Location = new Point(6, 61);
+            btnEditar.Margin = new Padding(3, 2, 3, 2);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(94, 29);
+            btnEditar.Size = new Size(82, 22);
             btnEditar.TabIndex = 19;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
@@ -91,9 +93,10 @@
             btnBuscar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnBuscar.IconColor = Color.Black;
             btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBuscar.Location = new Point(7, 45);
+            btnBuscar.Location = new Point(6, 34);
+            btnBuscar.Margin = new Padding(3, 2, 3, 2);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(94, 29);
+            btnBuscar.Size = new Size(82, 22);
             btnBuscar.TabIndex = 18;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -103,9 +106,10 @@
             btnCrear.IconChar = FontAwesome.Sharp.IconChar.None;
             btnCrear.IconColor = Color.Black;
             btnCrear.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCrear.Location = new Point(7, 11);
+            btnCrear.Location = new Point(6, 8);
+            btnCrear.Margin = new Padding(3, 2, 3, 2);
             btnCrear.Name = "btnCrear";
-            btnCrear.Size = new Size(94, 29);
+            btnCrear.Size = new Size(82, 22);
             btnCrear.TabIndex = 17;
             btnCrear.Text = "Crear";
             btnCrear.UseVisualStyleBackColor = true;
@@ -114,10 +118,11 @@
             // dgvDescuentos
             // 
             dgvDescuentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDescuentos.Location = new Point(370, 230);
+            dgvDescuentos.Location = new Point(324, 172);
+            dgvDescuentos.Margin = new Padding(3, 2, 3, 2);
             dgvDescuentos.Name = "dgvDescuentos";
             dgvDescuentos.RowHeadersWidth = 51;
-            dgvDescuentos.Size = new Size(339, 229);
+            dgvDescuentos.Size = new Size(297, 172);
             dgvDescuentos.TabIndex = 16;
             dgvDescuentos.CellContentClick += dgvDescuentos_CellContentClick;
             // 
@@ -128,9 +133,10 @@
             panel2.Controls.Add(btnCrear);
             panel2.Controls.Add(btnBuscar);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(640, 0);
+            panel2.Location = new Point(560, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(114, 195);
+            panel2.Size = new Size(100, 146);
             panel2.TabIndex = 15;
             // 
             // panel1
@@ -139,8 +145,9 @@
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(754, 195);
+            panel1.Size = new Size(660, 146);
             panel1.TabIndex = 13;
             // 
             // tableLayoutPanel1
@@ -170,7 +177,8 @@
             tableLayoutPanel1.Controls.Add(textBox4, 1, 0);
             tableLayoutPanel1.Controls.Add(idEmpleadoLb, 2, 0);
             tableLayoutPanel1.Controls.Add(idEmpleadoCb, 3, 0);
-            tableLayoutPanel1.Location = new Point(27, 11);
+            tableLayoutPanel1.Location = new Point(24, 8);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
@@ -178,24 +186,24 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.Size = new Size(606, 184);
+            tableLayoutPanel1.Size = new Size(530, 138);
             tableLayoutPanel1.TabIndex = 17;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(305, 144);
+            label10.Location = new Point(267, 108);
             label10.Name = "label10";
-            label10.Size = new Size(58, 20);
+            label10.Size = new Size(44, 15);
             label10.TabIndex = 25;
             label10.Text = "label10";
             // 
             // fechaLb
             // 
             fechaLb.AutoSize = true;
-            fechaLb.Location = new Point(3, 144);
+            fechaLb.Location = new Point(3, 108);
             fechaLb.Name = "fechaLb";
-            fechaLb.Size = new Size(47, 20);
+            fechaLb.Size = new Size(38, 15);
             fechaLb.TabIndex = 24;
             fechaLb.Text = "Fecha";
             // 
@@ -204,157 +212,162 @@
             idDescuentosTxt.AutoSize = true;
             idDescuentosTxt.Location = new Point(3, 0);
             idDescuentosTxt.Name = "idDescuentosTxt";
-            idDescuentosTxt.Size = new Size(102, 20);
+            idDescuentosTxt.Size = new Size(81, 15);
             idDescuentosTxt.TabIndex = 17;
             idDescuentosTxt.Text = "Id Descuentos";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(305, 108);
+            label8.Location = new Point(267, 81);
             label8.Name = "label8";
-            label8.Size = new Size(50, 20);
+            label8.Size = new Size(38, 15);
             label8.TabIndex = 23;
             label8.Text = "label8";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(305, 72);
+            label6.Location = new Point(267, 54);
             label6.Name = "label6";
-            label6.Size = new Size(50, 20);
+            label6.Size = new Size(38, 15);
             label6.TabIndex = 21;
             label6.Text = "label6";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(305, 36);
+            label4.Location = new Point(267, 27);
             label4.Name = "label4";
-            label4.Size = new Size(50, 20);
+            label4.Size = new Size(38, 15);
             label4.TabIndex = 19;
             label4.Text = "label4";
             // 
             // descripcionTxt
             // 
-            descripcionTxt.Location = new Point(154, 75);
+            descripcionTxt.Location = new Point(135, 56);
+            descripcionTxt.Margin = new Padding(3, 2, 3, 2);
             descripcionTxt.Name = "descripcionTxt";
-            descripcionTxt.Size = new Size(143, 27);
+            descripcionTxt.Size = new Size(126, 23);
             descripcionTxt.TabIndex = 16;
             // 
             // tipoTxt
             // 
-            tipoTxt.Location = new Point(154, 39);
+            tipoTxt.Location = new Point(135, 29);
+            tipoTxt.Margin = new Padding(3, 2, 3, 2);
             tipoTxt.Name = "tipoTxt";
-            tipoTxt.Size = new Size(143, 27);
+            tipoTxt.Size = new Size(126, 23);
             tipoTxt.TabIndex = 12;
             // 
             // montoTxt
             // 
-            montoTxt.Location = new Point(154, 111);
+            montoTxt.Location = new Point(135, 83);
+            montoTxt.Margin = new Padding(3, 2, 3, 2);
             montoTxt.Name = "montoTxt";
-            montoTxt.Size = new Size(143, 27);
+            montoTxt.Size = new Size(126, 23);
             montoTxt.TabIndex = 15;
             // 
             // textBox8
             // 
-            textBox8.Location = new Point(456, 75);
+            textBox8.Location = new Point(399, 56);
+            textBox8.Margin = new Padding(3, 2, 3, 2);
             textBox8.Name = "textBox8";
-            textBox8.Size = new Size(70, 27);
+            textBox8.Size = new Size(62, 23);
             textBox8.TabIndex = 14;
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(456, 39);
+            textBox7.Location = new Point(399, 29);
+            textBox7.Margin = new Padding(3, 2, 3, 2);
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(70, 27);
+            textBox7.Size = new Size(62, 23);
             textBox7.TabIndex = 13;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(456, 111);
+            textBox3.Location = new Point(399, 83);
+            textBox3.Margin = new Padding(3, 2, 3, 2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(70, 27);
+            textBox3.Size = new Size(62, 23);
             textBox3.TabIndex = 9;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(456, 147);
+            textBox2.Location = new Point(399, 110);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(70, 27);
+            textBox2.Size = new Size(62, 23);
             textBox2.TabIndex = 8;
             // 
             // montoLb
             // 
             montoLb.AutoSize = true;
-            montoLb.Location = new Point(3, 108);
+            montoLb.Location = new Point(3, 81);
             montoLb.Name = "montoLb";
-            montoLb.Size = new Size(53, 20);
+            montoLb.Size = new Size(43, 15);
             montoLb.TabIndex = 20;
             montoLb.Text = "Monto";
             // 
             // tipoLb
             // 
             tipoLb.AutoSize = true;
-            tipoLb.Location = new Point(3, 36);
+            tipoLb.Location = new Point(3, 27);
             tipoLb.Name = "tipoLb";
-            tipoLb.Size = new Size(39, 20);
+            tipoLb.Size = new Size(30, 15);
             tipoLb.TabIndex = 18;
             tipoLb.Text = "Tipo";
             // 
             // descripcionLb
             // 
             descripcionLb.AutoSize = true;
-            descripcionLb.Location = new Point(3, 72);
+            descripcionLb.Location = new Point(3, 54);
             descripcionLb.Name = "descripcionLb";
-            descripcionLb.Size = new Size(87, 20);
+            descripcionLb.Size = new Size(69, 15);
             descripcionLb.TabIndex = 22;
             descripcionLb.Text = "Descripcion";
             // 
             // fechaDTP
             // 
             fechaDTP.Format = DateTimePickerFormat.Short;
-            fechaDTP.Location = new Point(154, 148);
-            fechaDTP.Margin = new Padding(3, 4, 3, 4);
+            fechaDTP.Location = new Point(135, 111);
             fechaDTP.Name = "fechaDTP";
-            fechaDTP.Size = new Size(143, 27);
+            fechaDTP.Size = new Size(126, 23);
             fechaDTP.TabIndex = 26;
             fechaDTP.Value = new DateTime(2025, 7, 21, 20, 56, 31, 0);
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(154, 3);
+            textBox4.Location = new Point(135, 2);
+            textBox4.Margin = new Padding(3, 2, 3, 2);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(143, 27);
+            textBox4.Size = new Size(126, 23);
             textBox4.TabIndex = 10;
             // 
             // idEmpleadoLb
             // 
             idEmpleadoLb.AutoSize = true;
-            idEmpleadoLb.Location = new Point(305, 0);
+            idEmpleadoLb.Location = new Point(267, 0);
             idEmpleadoLb.Name = "idEmpleadoLb";
-            idEmpleadoLb.Size = new Size(96, 20);
+            idEmpleadoLb.Size = new Size(74, 15);
             idEmpleadoLb.TabIndex = 7;
             idEmpleadoLb.Text = "ID Empleado";
             // 
             // idEmpleadoCb
             // 
             idEmpleadoCb.FormattingEnabled = true;
-            idEmpleadoCb.Location = new Point(456, 4);
-            idEmpleadoCb.Margin = new Padding(3, 4, 3, 4);
+            idEmpleadoCb.Location = new Point(399, 3);
             idEmpleadoCb.Name = "idEmpleadoCb";
-            idEmpleadoCb.Size = new Size(138, 28);
+            idEmpleadoCb.Size = new Size(121, 23);
             idEmpleadoCb.TabIndex = 27;
             // 
             // F5Descuentos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(754, 600);
+            ClientSize = new Size(660, 450);
             Controls.Add(dgvDescuentos);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "F5Descuentos";
             Text = "F5Descuentos";
             Load += F5Descuentos_Load;
