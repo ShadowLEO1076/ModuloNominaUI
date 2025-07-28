@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             licenciaLb = new Label();
@@ -54,18 +52,18 @@
             ingresarBtn = new FontAwesome.Sharp.IconButton();
             infoLb = new Label();
             label11 = new Label();
-            asistenciasDgv = new DataGridView();
             asistenciasFormDTOBindingSource = new BindingSource(components);
             inasisDgv = new DataGridView();
             tableLayoutPanel3 = new TableLayoutPanel();
+            asistenciasDgv = new DataGridView();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)asistenciasDgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)asistenciasFormDTOBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)inasisDgv).BeginInit();
             tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)asistenciasDgv).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -343,61 +341,42 @@
             label11.Size = new Size(0, 15);
             label11.TabIndex = 5;
             // 
-            // asistenciasDgv
-            // 
-            asistenciasDgv.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            asistenciasDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            asistenciasDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            asistenciasDgv.DataSource = asistenciasFormDTOBindingSource;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            asistenciasDgv.DefaultCellStyle = dataGridViewCellStyle2;
-            asistenciasDgv.Dock = DockStyle.Fill;
-            asistenciasDgv.Location = new Point(3, 2);
-            asistenciasDgv.Margin = new Padding(3, 2, 3, 2);
-            asistenciasDgv.Name = "asistenciasDgv";
-            asistenciasDgv.RowHeadersWidth = 51;
-            asistenciasDgv.Size = new Size(1153, 82);
-            asistenciasDgv.TabIndex = 8;
-            asistenciasDgv.CellClick += asistenciasDgv_CellClick;
-            // 
             // inasisDgv
             // 
             inasisDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             inasisDgv.Dock = DockStyle.Fill;
-            inasisDgv.Location = new Point(3, 88);
+            inasisDgv.Location = new Point(3, 91);
             inasisDgv.Margin = new Padding(3, 2, 3, 2);
             inasisDgv.Name = "inasisDgv";
-            inasisDgv.Size = new Size(1153, 82);
+            inasisDgv.Size = new Size(1153, 79);
             inasisDgv.TabIndex = 9;
             // 
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 1;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Controls.Add(asistenciasDgv, 0, 0);
             tableLayoutPanel3.Controls.Add(inasisDgv, 0, 1);
+            tableLayoutPanel3.Controls.Add(asistenciasDgv, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(0, 166);
             tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 51.7441864F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 48.2558136F));
             tableLayoutPanel3.Size = new Size(1159, 172);
             tableLayoutPanel3.TabIndex = 10;
+            // 
+            // asistenciasDgv
+            // 
+            asistenciasDgv.AutoGenerateColumns = false;
+            asistenciasDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            asistenciasDgv.DataSource = asistenciasFormDTOBindingSource;
+            asistenciasDgv.Dock = DockStyle.Fill;
+            asistenciasDgv.Location = new Point(3, 3);
+            asistenciasDgv.Name = "asistenciasDgv";
+            asistenciasDgv.Size = new Size(1153, 83);
+            asistenciasDgv.TabIndex = 10;
             // 
             // F4Asistencias
             // 
@@ -417,10 +396,10 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)asistenciasDgv).EndInit();
             ((System.ComponentModel.ISupportInitialize)asistenciasFormDTOBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)inasisDgv).EndInit();
             tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)asistenciasDgv).EndInit();
             ResumeLayout(false);
         }
 
@@ -428,7 +407,6 @@
 
         private Panel panel1;
         private Panel panel2;
-        private DataGridView asistenciasDgv;
         private FontAwesome.Sharp.IconButton EliminarBtn;
         private FontAwesome.Sharp.IconButton actualizarBtn;
         private FontAwesome.Sharp.IconButton iconButton2;
@@ -460,5 +438,6 @@
         private ComboBox licenciaCb;
         private DataGridView inasisDgv;
         private TableLayoutPanel tableLayoutPanel3;
+        private DataGridView asistenciasDgv;
     }
 }

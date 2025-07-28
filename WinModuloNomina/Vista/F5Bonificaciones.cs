@@ -264,7 +264,5 @@ namespace WinModuloNomina.Vista
             // Todo OK
             e.Handled = false;
         }
-
-        
     }
 }

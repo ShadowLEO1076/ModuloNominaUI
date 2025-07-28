@@ -115,6 +115,7 @@ namespace WinModuloNomina.Vista
             limpiarBtn.TabIndex = 12;
             limpiarBtn.Text = "Limpiar datos";
             limpiarBtn.UseVisualStyleBackColor = true;
+            limpiarBtn.Click += limpiarBtn_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -316,6 +317,7 @@ namespace WinModuloNomina.Vista
             eliminarBtn.TabIndex = 12;
             eliminarBtn.Text = "Eliminar";
             eliminarBtn.UseVisualStyleBackColor = true;
+            eliminarBtn.Click += eliminarBtn_Click;
             // 
             // insertarBtn
             // 
@@ -343,6 +345,7 @@ namespace WinModuloNomina.Vista
             actualizarBtn.TabIndex = 11;
             actualizarBtn.Text = "Actualizar";
             actualizarBtn.UseVisualStyleBackColor = true;
+            actualizarBtn.Click += actualizarBtn_Click;
             // 
             // nominasActivasDgv
             // 

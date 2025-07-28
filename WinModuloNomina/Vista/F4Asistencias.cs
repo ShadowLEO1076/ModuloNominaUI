@@ -174,6 +174,9 @@ namespace WinModuloNomina.Vista
 
                 inasisDgv.DataSource = busq;
                 inasisDgv.Columns["Remunerable"].ReadOnly = true;
+                //esto obliga a que se generen las columnas. ME SALVÓ
+                asistenciasDgv.AutoGenerateColumns = true;
+                asistenciasDgv.AutoResizeColumns();
                 inasisDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
@@ -189,6 +192,7 @@ namespace WinModuloNomina.Vista
                 var busq = await _api.GetAsync<List<AsistenciasFormDTO>>("AsistenciasControlador/ObtenerTodasActivasAsistenciasFormDTO");
 
                 asistenciasDgv.DataSource = busq;
+                asistenciasDgv.AutoResizeColumns();
                 asistenciasDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch

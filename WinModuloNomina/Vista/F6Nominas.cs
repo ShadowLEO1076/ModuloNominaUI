@@ -30,6 +30,9 @@ namespace WinModuloNomina.Vista
         {
             await CargarNominasActivosAsync();
             await CargarEmpleadosIngresoAuto();
+            this.descManTxt.KeyPress += SoloNumerosDecimal_KeyPress;
+            this.boniManTxt.KeyPress += SoloNumerosDecimal_KeyPress;
+            this.salManTxt.KeyPress += SoloNumerosDecimal_KeyPress;
             //carga de datos solo para la comboBox del comboBox de año en IngresoAuto y el NumericUpDown
             CargarMesesIngresoAuto();
             //elementos que no quiero esté disponibles al inicio. Sino solo elegir un dato del datagridview
@@ -42,7 +45,7 @@ namespace WinModuloNomina.Vista
             //el numerico muestra el año actual, sin embargo si puede modififcarse.
             anioNud.Minimum = DateTime.Now.Year;
             anioNud.Value = DateTime.Now.Year;
-            anioNud.Maximum = DateTime.Now.Year; 
+            anioNud.Maximum = DateTime.Now.Year;
         }
 
         private void nominasActivasDgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -60,11 +63,20 @@ namespace WinModuloNomina.Vista
                     salManTxt.Text = nominaSeleccionada.Salario.ToString();
                     fecEmiDtp.Value = nominaSeleccionada.FechaEmision.ToDateTime(TimeOnly.MinValue);
                     boniManTxt.Text = nominaSeleccionada.Bonificaciones.ToString();
+                    descManTxt.Text = nominaSeleccionada.Descuentos.ToString();
                 }
 
                 insertarBtn.Enabled = false;
                 actualizarBtn.Enabled = true;
                 eliminarBtn.Enabled = true;
+                // datos a editar y qué datos no se pueden editar
+                empleAutoCb.Enabled = false;
+                mesAutoCb.Enabled = false;
+                anioNud.Enabled = false;
+                fecEmiDtp.Enabled = false;
+                salManTxt.Enabled = true;
+                boniManTxt.Enabled = true;
+                descManTxt.Enabled = true;
             }
         }
 
@@ -90,13 +102,13 @@ namespace WinModuloNomina.Vista
                     return;
                 }
 
-                if(anioNud.Value != DateTime.Now.Year)
+                if (anioNud.Value != DateTime.Now.Year)
                 {
                     MessageBox.Show("El año de la nómina debe ser el actual.");
                     return;
                 }
 
-                if (mesAutoCb.SelectedIndex != DateTime.Now.Month)
+                if (mesAutoCb.SelectedIndex + 1 != DateTime.Now.Month)
                 {
                     MessageBox.Show("El mes de la nómina debe ser el actual.");
                     return;
@@ -127,16 +139,102 @@ namespace WinModuloNomina.Vista
             }
         }
 
+        private async void actualizarBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Nominas dato = new Nominas
+                {
+                    IdNomina = int.Parse(idNomTxt.Text),
+                    EmpleadoId = int.Parse(empleAutoCb.SelectedValue.ToString()),
+                    Anio = short.Parse(anioNud.Value.ToString()),
+                    Mes = (byte)(mesAutoCb.SelectedIndex + 1),
+                    Bonificaciones = decimal.Parse(boniManTxt.Text),
+                    Descuentos = decimal.Parse(descManTxt.Text),
+                    SalarioBase = decimal.Parse(salManTxt.Text),
+                    Estado = true,
+                    FechaEmision = DateOnly.FromDateTime(fecEmiDtp.Value),
+                };
+
+                await _api.PutAsync<Nominas>("NominasControlador/ActualizarAsync", dato);
+                await CargarNominasActivosAsync();
+            }
+            catch
+            {
+                MessageBox.Show("Error al ingresar nómina automáticamente.");
+            }
+        }
+
+
+        private async void eliminarBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Nominas dato = new Nominas
+                {
+                    IdNomina = int.Parse(idNomTxt.Text),
+                    EmpleadoId = int.Parse(empleAutoCb.SelectedValue.ToString()),
+                    Anio = short.Parse(anioNud.Value.ToString()),
+                    Mes = (byte)(mesAutoCb.SelectedIndex + 1),
+                    Bonificaciones = decimal.Parse(boniManTxt.Text),
+                    Descuentos = decimal.Parse(descManTxt.Text),
+                    SalarioBase = decimal.Parse(salManTxt.Text),
+                    Estado = false,
+                    FechaEmision = DateOnly.FromDateTime(fecEmiDtp.Value),
+                };
+
+                await _api.PutAsync<Nominas>("NominasControlador/ActualizarAsync", dato);
+                await CargarNominasActivosAsync();
+            }
+            catch
+            {
+                MessageBox.Show("Error al ingresar nómina automáticamente.");
+            }
+        }
+
+        private void limpiarBtn_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                idNomTxt.Clear();
+                empleAutoCb.SelectedIndex = -1;
+                anioNud.Value = DateTime.Now.Year;
+                mesAutoCb.SelectedIndex = -1;
+                salManTxt.Clear();
+                fecEmiDtp.Value = DateTime.Now;
+                boniManTxt.Clear();
+                descManTxt.Clear();
+                //
+                insertarBtn.Enabled = true;
+                actualizarBtn.Enabled = false;
+                eliminarBtn.Enabled = false;
+                // datos a editar y qué datos no se pueden editar
+                empleAutoCb.Enabled = true;
+                mesAutoCb.Enabled = true;
+                anioNud.Enabled = true;
+                fecEmiDtp.Enabled = false;
+                salManTxt.Enabled = false;
+                boniManTxt.Enabled = false;
+                descManTxt.Enabled = false;
+            }
+            catch 
+            {
+                MessageBox.Show("Error al limpiar los datos.");
+            }
+        }
+
         //codigo que no tiene que ver con la forma
 
-     
+
 
         public void CargarMesesIngresoAuto()
         {
             mesAutoCb.DataSource = System.Globalization.CultureInfo.CurrentCulture
                   .DateTimeFormat.MonthNames.Where(m => !string.IsNullOrEmpty(m)).ToList();
-            
-            
+
+
         }
         public async Task CargarNominasActivosAsync()
         {
@@ -166,6 +264,44 @@ namespace WinModuloNomina.Vista
             {
                 MessageBox.Show($"Error al cargar empleados.");
             }
+        }
+
+        public void SoloNumerosDecimal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox textBox = sender as TextBox; //referente que se usa en textbox
+
+            // Permitir teclas de control como borrado y retroceso
+            if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+                return;
+            }
+
+            // Permitir solo uso de comas, pues lños puntos no crean decimales.
+            if (e.KeyChar == ',')
+            {
+                // si ya existe una coma, no poder crear otras
+                if (textBox.Text.Contains(","))
+                {
+                    e.Handled = true;
+                    return;
+                }
+                else
+                {
+                    e.Handled = false;
+                    return;
+                }
+            }
+
+            // Permitir solo números (0-9)
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // Todo OK
+            e.Handled = false;
         }
     }
 }
