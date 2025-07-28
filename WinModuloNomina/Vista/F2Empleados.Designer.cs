@@ -56,7 +56,6 @@
             panel1 = new Panel();
             panel2 = new Panel();
             txtBuscar = new TextBox();
-            borrarBtn = new FontAwesome.Sharp.IconButton();
             buscarBtn = new FontAwesome.Sharp.IconButton();
             editarBtn = new FontAwesome.Sharp.IconButton();
             crearBtn = new FontAwesome.Sharp.IconButton();
@@ -65,6 +64,8 @@
             panel3 = new Panel();
             presentLb = new Label();
             empleadoDTOBindingSource = new BindingSource(components);
+            tableLayoutPanel1 = new TableLayoutPanel();
+            empleadosInacDgv = new DataGridView();
             tablaEmpleados = new TableLayoutPanel();
             tablaEmpleados.SuspendLayout();
             panel1.SuspendLayout();
@@ -73,6 +74,8 @@
             ((System.ComponentModel.ISupportInitialize)empleadosBindingSource).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)empleadoDTOBindingSource).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)empleadosInacDgv).BeginInit();
             SuspendLayout();
             // 
             // tablaEmpleados
@@ -346,7 +349,6 @@
             // panel2
             // 
             panel2.Controls.Add(txtBuscar);
-            panel2.Controls.Add(borrarBtn);
             panel2.Controls.Add(buscarBtn);
             panel2.Controls.Add(editarBtn);
             panel2.Controls.Add(crearBtn);
@@ -366,20 +368,6 @@
             txtBuscar.PlaceholderText = "Cedula a buscar";
             txtBuscar.Size = new Size(112, 23);
             txtBuscar.TabIndex = 32;
-            // 
-            // borrarBtn
-            // 
-            borrarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            borrarBtn.IconColor = Color.Black;
-            borrarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            borrarBtn.Location = new Point(28, 115);
-            borrarBtn.Margin = new Padding(3, 2, 3, 2);
-            borrarBtn.Name = "borrarBtn";
-            borrarBtn.Size = new Size(72, 25);
-            borrarBtn.TabIndex = 12;
-            borrarBtn.Text = "Borrar";
-            borrarBtn.UseVisualStyleBackColor = true;
-            borrarBtn.Visible = false;
             // 
             // buscarBtn
             // 
@@ -405,7 +393,7 @@
             editarBtn.Name = "editarBtn";
             editarBtn.Size = new Size(72, 25);
             editarBtn.TabIndex = 11;
-            editarBtn.Text = "Editar";
+            editarBtn.Text = "Actualizar";
             editarBtn.UseVisualStyleBackColor = true;
             editarBtn.Click += editarBtn_Click;
             // 
@@ -427,11 +415,11 @@
             // 
             empleadosDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             empleadosDgv.Dock = DockStyle.Fill;
-            empleadosDgv.Location = new Point(0, 184);
+            empleadosDgv.Location = new Point(3, 2);
             empleadosDgv.Margin = new Padding(3, 2, 3, 2);
             empleadosDgv.Name = "empleadosDgv";
             empleadosDgv.RowHeadersWidth = 51;
-            empleadosDgv.Size = new Size(946, 215);
+            empleadosDgv.Size = new Size(940, 103);
             empleadosDgv.TabIndex = 8;
             empleadosDgv.CellClick += empleadosDgv_CellClick;
             // 
@@ -459,12 +447,38 @@
             // 
             empleadoDTOBindingSource.DataSource = typeof(Modelo.DTOS.EmpleadoDTO);
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(empleadosInacDgv, 0, 1);
+            tableLayoutPanel1.Controls.Add(empleadosDgv, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 184);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(946, 215);
+            tableLayoutPanel1.TabIndex = 11;
+            // 
+            // empleadosInacDgv
+            // 
+            empleadosInacDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            empleadosInacDgv.Dock = DockStyle.Fill;
+            empleadosInacDgv.Location = new Point(3, 109);
+            empleadosInacDgv.Margin = new Padding(3, 2, 3, 2);
+            empleadosInacDgv.Name = "empleadosInacDgv";
+            empleadosInacDgv.RowHeadersWidth = 51;
+            empleadosInacDgv.Size = new Size(940, 104);
+            empleadosInacDgv.TabIndex = 9;
+            // 
             // F2Empleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(946, 399);
-            Controls.Add(empleadosDgv);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
@@ -481,6 +495,8 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)empleadoDTOBindingSource).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)empleadosInacDgv).EndInit();
             ResumeLayout(false);
         }
 
@@ -504,7 +520,6 @@
         private TextBox correoTxt;
         private Panel panel2;
         private DataGridView empleadosDgv;
-        private FontAwesome.Sharp.IconButton borrarBtn;
         private FontAwesome.Sharp.IconButton editarBtn;
         private FontAwesome.Sharp.IconButton buscarBtn;
         private FontAwesome.Sharp.IconButton crearBtn;
@@ -536,5 +551,7 @@
         private ComboBox generoCb;
         private Button limpiarBtn;
         private BindingSource empleadoDTOBindingSource;
+        private TableLayoutPanel tableLayoutPanel1;
+        private DataGridView empleadosInacDgv;
     }
 }

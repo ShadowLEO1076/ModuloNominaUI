@@ -47,6 +47,8 @@ namespace WinModuloNomina.Vista
             btnVacaciones = new FontAwesome.Sharp.IconButton();
             panelEscritorio = new Panel();
             label3 = new Label();
+            panel1 = new Panel();
+            panel4 = new Panel();
             panelLogo2.SuspendLayout();
             panel3.SuspendLayout();
             panelMenu.SuspendLayout();
@@ -64,11 +66,11 @@ namespace WinModuloNomina.Vista
             btnMenu.IconColor = Color.WhiteSmoke;
             btnMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMenu.Location = new Point(6, -3);
+            btnMenu.Location = new Point(0, 0);
             btnMenu.Margin = new Padding(0);
             btnMenu.Name = "btnMenu";
             btnMenu.Padding = new Padding(5, 0, 0, 0);
-            btnMenu.Size = new Size(211, 80);
+            btnMenu.Size = new Size(211, 100);
             btnMenu.TabIndex = 2;
             btnMenu.TextAlign = ContentAlignment.MiddleLeft;
             btnMenu.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -83,7 +85,7 @@ namespace WinModuloNomina.Vista
             panelLogo2.Dock = DockStyle.Top;
             panelLogo2.Location = new Point(235, 0);
             panelLogo2.Name = "panelLogo2";
-            panelLogo2.Size = new Size(948, 80);
+            panelLogo2.Size = new Size(948, 100);
             panelLogo2.TabIndex = 4;
             // 
             // labelTitulo
@@ -92,7 +94,7 @@ namespace WinModuloNomina.Vista
             labelTitulo.AutoSize = true;
             labelTitulo.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTitulo.ForeColor = Color.White;
-            labelTitulo.Location = new Point(375, 28);
+            labelTitulo.Location = new Point(375, 38);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(159, 20);
             labelTitulo.TabIndex = 5;
@@ -104,7 +106,7 @@ namespace WinModuloNomina.Vista
             panel3.Dock = DockStyle.Left;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(98, 80);
+            panel3.Size = new Size(98, 100);
             panel3.TabIndex = 5;
             // 
             // btnCerrar
@@ -115,7 +117,7 @@ namespace WinModuloNomina.Vista
             btnCerrar.IconChar = FontAwesome.Sharp.IconChar.DoorOpen;
             btnCerrar.IconColor = Color.WhiteSmoke;
             btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCerrar.Location = new Point(6, 10);
+            btnCerrar.Location = new Point(6, 20);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(85, 60);
             btnCerrar.TabIndex = 4;
@@ -127,7 +129,7 @@ namespace WinModuloNomina.Vista
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(84, 25);
+            label2.Location = new Point(87, 35);
             label2.Name = "label2";
             label2.Size = new Size(57, 18);
             label2.TabIndex = 6;
@@ -147,9 +149,10 @@ namespace WinModuloNomina.Vista
             panelMenu.Controls.Add(btnNomina);
             panelMenu.Controls.Add(btnVacaciones);
             panelMenu.Dock = DockStyle.Left;
+            panelMenu.ForeColor = Color.Black;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(235, 696);
+            panelMenu.Size = new Size(235, 706);
             panelMenu.TabIndex = 3;
             // 
             // panel2
@@ -159,7 +162,7 @@ namespace WinModuloNomina.Vista
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(217, 77);
+            panel2.Size = new Size(217, 97);
             panel2.TabIndex = 0;
             // 
             // btnPuestos
@@ -173,7 +176,7 @@ namespace WinModuloNomina.Vista
             btnPuestos.IconColor = Color.WhiteSmoke;
             btnPuestos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnPuestos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPuestos.Location = new Point(0, 83);
+            btnPuestos.Location = new Point(0, 103);
             btnPuestos.Margin = new Padding(0);
             btnPuestos.Name = "btnPuestos";
             btnPuestos.Padding = new Padding(14, 0, 0, 0);
@@ -196,7 +199,7 @@ namespace WinModuloNomina.Vista
             btnEmpleados.IconColor = Color.WhiteSmoke;
             btnEmpleados.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEmpleados.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmpleados.Location = new Point(0, 143);
+            btnEmpleados.Location = new Point(0, 163);
             btnEmpleados.Margin = new Padding(0);
             btnEmpleados.Name = "btnEmpleados";
             btnEmpleados.Padding = new Padding(14, 0, 0, 0);
@@ -219,7 +222,7 @@ namespace WinModuloNomina.Vista
             btnContratos.IconColor = Color.WhiteSmoke;
             btnContratos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnContratos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnContratos.Location = new Point(0, 203);
+            btnContratos.Location = new Point(0, 223);
             btnContratos.Margin = new Padding(0);
             btnContratos.Name = "btnContratos";
             btnContratos.Padding = new Padding(14, 0, 0, 0);
@@ -242,7 +245,7 @@ namespace WinModuloNomina.Vista
             btnAsistencias.IconColor = Color.WhiteSmoke;
             btnAsistencias.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAsistencias.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAsistencias.Location = new Point(0, 263);
+            btnAsistencias.Location = new Point(0, 283);
             btnAsistencias.Margin = new Padding(0);
             btnAsistencias.Name = "btnAsistencias";
             btnAsistencias.Padding = new Padding(14, 0, 0, 0);
@@ -265,7 +268,7 @@ namespace WinModuloNomina.Vista
             btnBonos.IconColor = Color.WhiteSmoke;
             btnBonos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBonos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBonos.Location = new Point(0, 323);
+            btnBonos.Location = new Point(0, 343);
             btnBonos.Margin = new Padding(0);
             btnBonos.Name = "btnBonos";
             btnBonos.Padding = new Padding(14, 0, 0, 0);
@@ -288,7 +291,7 @@ namespace WinModuloNomina.Vista
             btnDescuentos.IconColor = Color.WhiteSmoke;
             btnDescuentos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDescuentos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDescuentos.Location = new Point(0, 383);
+            btnDescuentos.Location = new Point(0, 403);
             btnDescuentos.Margin = new Padding(0);
             btnDescuentos.Name = "btnDescuentos";
             btnDescuentos.Padding = new Padding(14, 0, 0, 0);
@@ -311,7 +314,7 @@ namespace WinModuloNomina.Vista
             btnNomina.IconColor = Color.WhiteSmoke;
             btnNomina.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnNomina.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNomina.Location = new Point(0, 443);
+            btnNomina.Location = new Point(0, 463);
             btnNomina.Margin = new Padding(0);
             btnNomina.Name = "btnNomina";
             btnNomina.Padding = new Padding(14, 0, 0, 0);
@@ -334,7 +337,7 @@ namespace WinModuloNomina.Vista
             btnVacaciones.IconColor = Color.WhiteSmoke;
             btnVacaciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnVacaciones.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVacaciones.Location = new Point(0, 503);
+            btnVacaciones.Location = new Point(0, 523);
             btnVacaciones.Margin = new Padding(0);
             btnVacaciones.Name = "btnVacaciones";
             btnVacaciones.Padding = new Padding(14, 0, 0, 0);
@@ -348,25 +351,44 @@ namespace WinModuloNomina.Vista
             // 
             // panelEscritorio
             // 
-            panelEscritorio.BackColor = Color.LightSteelBlue;
+            panelEscritorio.BackColor = SystemColors.Menu;
             panelEscritorio.Controls.Add(label3);
             panelEscritorio.Dock = DockStyle.Fill;
-            panelEscritorio.Location = new Point(235, 80);
+            panelEscritorio.Location = new Point(235, 100);
             panelEscritorio.Name = "panelEscritorio";
-            panelEscritorio.Size = new Size(948, 616);
+            panelEscritorio.Size = new Size(948, 586);
             panelEscritorio.TabIndex = 5;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Gainsboro;
-            label3.Location = new Point(233, 243);
+            label3.Location = new Point(233, 228);
             label3.Name = "label3";
             label3.Size = new Size(509, 69);
             label3.TabIndex = 0;
             label3.Text = "DR. SOLUTIONS";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.HotTrack;
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(235, 686);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(948, 20);
+            panel1.TabIndex = 6;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = SystemColors.HotTrack;
+            panel4.Dock = DockStyle.Right;
+            panel4.Location = new Point(1163, 100);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(20, 586);
+            panel4.TabIndex = 7;
             // 
             // MenuPrincipal
             // 
@@ -374,8 +396,10 @@ namespace WinModuloNomina.Vista
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(1183, 696);
+            ClientSize = new Size(1183, 706);
+            Controls.Add(panel4);
             Controls.Add(panelEscritorio);
+            Controls.Add(panel1);
             Controls.Add(panelLogo2);
             Controls.Add(panelMenu);
             Name = "MenuPrincipal";
@@ -419,5 +443,7 @@ namespace WinModuloNomina.Vista
         private FontAwesome.Sharp.IconButton btnVacaciones;
         private Panel panelEscritorio;
         private Label label3;
+        private Panel panel1;
+        private Panel panel4;
     }
 }

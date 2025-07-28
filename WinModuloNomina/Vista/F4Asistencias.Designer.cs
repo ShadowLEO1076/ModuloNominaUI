@@ -263,10 +263,10 @@
             panel2.Controls.Add(actualizarBtn);
             panel2.Controls.Add(ingresarBtn);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(1064, 0);
+            panel2.Location = new Point(1035, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(95, 166);
+            panel2.Size = new Size(124, 166);
             panel2.TabIndex = 4;
             // 
             // EliminarBtn
@@ -274,7 +274,7 @@
             EliminarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             EliminarBtn.IconColor = Color.Black;
             EliminarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            EliminarBtn.Location = new Point(11, 92);
+            EliminarBtn.Location = new Point(27, 92);
             EliminarBtn.Margin = new Padding(3, 2, 3, 2);
             EliminarBtn.Name = "EliminarBtn";
             EliminarBtn.Size = new Size(72, 29);
@@ -288,7 +288,7 @@
             iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButton2.IconColor = Color.Black;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(11, 126);
+            iconButton2.Location = new Point(27, 126);
             iconButton2.Margin = new Padding(3, 2, 3, 2);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(72, 22);
@@ -301,7 +301,7 @@
             actualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             actualizarBtn.IconColor = Color.Black;
             actualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            actualizarBtn.Location = new Point(11, 61);
+            actualizarBtn.Location = new Point(27, 61);
             actualizarBtn.Margin = new Padding(3, 2, 3, 2);
             actualizarBtn.Name = "actualizarBtn";
             actualizarBtn.Size = new Size(72, 28);
@@ -315,7 +315,7 @@
             ingresarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             ingresarBtn.IconColor = Color.Black;
             ingresarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ingresarBtn.Location = new Point(11, 29);
+            ingresarBtn.Location = new Point(27, 29);
             ingresarBtn.Margin = new Padding(3, 2, 3, 2);
             ingresarBtn.Name = "ingresarBtn";
             ingresarBtn.Size = new Size(72, 28);
