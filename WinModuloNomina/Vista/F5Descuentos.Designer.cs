@@ -51,25 +51,16 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             panel1 = new Panel();
             label1 = new Label();
-            panel4 = new Panel();
-            dgvInasistencias = new Zuby.ADGV.AdvancedDataGridView();
-            idInasistenciaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            empleadoIdDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            licenciaIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            inasistenciasBindingSource = new BindingSource(components);
+            tableLayoutPanel4 = new TableLayoutPanel();
             panel3 = new Panel();
-            label2 = new Label();
+            btnAsistencias = new FontAwesome.Sharp.IconButton();
+            btnInacistencias = new FontAwesome.Sharp.IconButton();
+            panelAuxiliar = new Panel();
+            inasistenciasBindingSource = new BindingSource(components);
             panel5 = new Panel();
             textBox1 = new TextBox();
             label3 = new Label();
             dgvDescuentos = new Zuby.ADGV.AdvancedDataGridView();
-            idDescuentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            empleadoIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            tipoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            montoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descuentosBindingSource = new BindingSource(components);
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)montoTxt).BeginInit();
@@ -77,10 +68,9 @@
             panel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             panel1.SuspendLayout();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvInasistencias).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)inasistenciasBindingSource).BeginInit();
+            tableLayoutPanel4.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)inasistenciasBindingSource).BeginInit();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDescuentos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)descuentosBindingSource).BeginInit();
@@ -88,29 +78,45 @@
             // 
             // btnBorrar
             // 
+            btnBorrar.BackColor = Color.Silver;
             btnBorrar.Dock = DockStyle.Fill;
-            btnBorrar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnBorrar.FlatAppearance.BorderSize = 0;
+            btnBorrar.FlatStyle = FlatStyle.Flat;
+            btnBorrar.IconChar = FontAwesome.Sharp.IconChar.Trash;
             btnBorrar.IconColor = Color.Black;
             btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBorrar.Location = new Point(261, 3);
+            btnBorrar.IconSize = 40;
+            btnBorrar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBorrar.Location = new Point(293, 3);
             btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(124, 51);
+            btnBorrar.Padding = new Padding(12, 0, 0, 0);
+            btnBorrar.Size = new Size(141, 51);
             btnBorrar.TabIndex = 20;
-            btnBorrar.Text = "Borrar";
-            btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.Text = "Eliminar";
+            btnBorrar.TextAlign = ContentAlignment.MiddleLeft;
+            btnBorrar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnBorrar.UseVisualStyleBackColor = false;
             // 
             // btnEditar
             // 
+            btnEditar.BackColor = Color.Silver;
             btnEditar.Dock = DockStyle.Fill;
-            btnEditar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnEditar.FlatAppearance.BorderSize = 0;
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.IconChar = FontAwesome.Sharp.IconChar.FilePen;
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEditar.Location = new Point(132, 3);
+            btnEditar.IconSize = 40;
+            btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEditar.Location = new Point(148, 3);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(123, 51);
+            btnEditar.Padding = new Padding(12, 0, 0, 0);
+            btnEditar.Size = new Size(139, 51);
             btnEditar.TabIndex = 19;
-            btnEditar.Text = "Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Text = "Actualizar";
+            btnEditar.TextAlign = ContentAlignment.MiddleLeft;
+            btnEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEditar.UseVisualStyleBackColor = false;
             // 
             // btnBuscar
             // 
@@ -121,7 +127,7 @@
             btnBuscar.IconColor = Color.Black;
             btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBuscar.IconSize = 40;
-            btnBuscar.Location = new Point(732, 3);
+            btnBuscar.Location = new Point(871, 3);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(60, 39);
             btnBuscar.TabIndex = 18;
@@ -129,16 +135,24 @@
             // 
             // btnCrear
             // 
+            btnCrear.BackColor = Color.Silver;
             btnCrear.Dock = DockStyle.Fill;
-            btnCrear.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCrear.FlatAppearance.BorderSize = 0;
+            btnCrear.FlatStyle = FlatStyle.Flat;
+            btnCrear.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
             btnCrear.IconColor = Color.Black;
             btnCrear.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCrear.IconSize = 40;
+            btnCrear.ImageAlign = ContentAlignment.MiddleLeft;
             btnCrear.Location = new Point(3, 3);
             btnCrear.Name = "btnCrear";
-            btnCrear.Size = new Size(123, 51);
+            btnCrear.Padding = new Padding(12, 0, 0, 0);
+            btnCrear.Size = new Size(139, 51);
             btnCrear.TabIndex = 17;
             btnCrear.Text = "Crear";
-            btnCrear.UseVisualStyleBackColor = true;
+            btnCrear.TextAlign = ContentAlignment.MiddleLeft;
+            btnCrear.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCrear.UseVisualStyleBackColor = false;
             btnCrear.Click += btnCrear_Click;
             // 
             // tableLayoutPanel1
@@ -168,16 +182,16 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-            tableLayoutPanel1.Size = new Size(391, 203);
+            tableLayoutPanel1.Size = new Size(440, 203);
             tableLayoutPanel1.TabIndex = 17;
             // 
             // idEmpleadoCb
             // 
             idEmpleadoCb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             idEmpleadoCb.FormattingEnabled = true;
-            idEmpleadoCb.Location = new Point(120, 36);
+            idEmpleadoCb.Location = new Point(135, 36);
             idEmpleadoCb.Name = "idEmpleadoCb";
-            idEmpleadoCb.Size = new Size(268, 28);
+            idEmpleadoCb.Size = new Size(302, 28);
             idEmpleadoCb.TabIndex = 29;
             // 
             // label4
@@ -203,10 +217,10 @@
             // textBox4
             // 
             textBox4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.Location = new Point(120, 3);
+            textBox4.Location = new Point(135, 3);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(268, 27);
+            textBox4.Size = new Size(302, 27);
             textBox4.TabIndex = 10;
             // 
             // fechaLb
@@ -223,10 +237,10 @@
             // 
             fechaDTP.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             fechaDTP.Format = DateTimePickerFormat.Short;
-            fechaDTP.Location = new Point(120, 170);
+            fechaDTP.Location = new Point(135, 170);
             fechaDTP.Margin = new Padding(3, 4, 3, 4);
             fechaDTP.Name = "fechaDTP";
-            fechaDTP.Size = new Size(268, 27);
+            fechaDTP.Size = new Size(302, 27);
             fechaDTP.TabIndex = 26;
             fechaDTP.Value = new DateTime(2025, 7, 21, 20, 56, 31, 0);
             // 
@@ -253,9 +267,9 @@
             // descripcionTxt
             // 
             descripcionTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            descripcionTxt.Location = new Point(120, 102);
+            descripcionTxt.Location = new Point(135, 102);
             descripcionTxt.Name = "descripcionTxt";
-            descripcionTxt.Size = new Size(268, 27);
+            descripcionTxt.Size = new Size(302, 27);
             descripcionTxt.TabIndex = 16;
             // 
             // tipoLb
@@ -271,18 +285,18 @@
             // montoTxt
             // 
             montoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            montoTxt.Location = new Point(120, 135);
+            montoTxt.Location = new Point(135, 135);
             montoTxt.Name = "montoTxt";
-            montoTxt.Size = new Size(268, 27);
+            montoTxt.Size = new Size(302, 27);
             montoTxt.TabIndex = 30;
             // 
             // tipoTxt
             // 
             tipoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tipoTxt.FormattingEnabled = true;
-            tipoTxt.Location = new Point(120, 69);
+            tipoTxt.Location = new Point(135, 69);
             tipoTxt.Name = "tipoTxt";
-            tipoTxt.Size = new Size(268, 28);
+            tipoTxt.Size = new Size(302, 28);
             tipoTxt.TabIndex = 27;
             tipoTxt.SelectedIndexChanged += tipoTxt_SelectedIndexChanged;
             // 
@@ -290,16 +304,16 @@
             // 
             tableLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 49.4382F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.5618F));
             tableLayoutPanel2.Controls.Add(panel2, 0, 0);
-            tableLayoutPanel2.Controls.Add(panel4, 1, 0);
+            tableLayoutPanel2.Controls.Add(tableLayoutPanel4, 1, 0);
             tableLayoutPanel2.Location = new Point(12, 12);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(801, 329);
+            tableLayoutPanel2.Size = new Size(910, 328);
             tableLayoutPanel2.TabIndex = 22;
             // 
             // panel2
@@ -310,7 +324,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(394, 323);
+            panel2.Size = new Size(443, 322);
             panel2.TabIndex = 23;
             // 
             // tableLayoutPanel3
@@ -327,7 +341,7 @@
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(388, 57);
+            tableLayoutPanel3.Size = new Size(437, 57);
             tableLayoutPanel3.TabIndex = 23;
             // 
             // panel1
@@ -337,7 +351,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(394, 45);
+            panel1.Size = new Size(443, 45);
             panel1.TabIndex = 22;
             // 
             // label1
@@ -346,98 +360,80 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(123, 12);
+            label1.Location = new Point(147, 12);
             label1.Name = "label1";
             label1.Size = new Size(167, 18);
             label1.TabIndex = 0;
             label1.Text = "Registro Descuentos";
             // 
-            // panel4
+            // tableLayoutPanel4
             // 
-            panel4.Controls.Add(dgvInasistencias);
-            panel4.Controls.Add(panel3);
-            panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(403, 3);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(395, 323);
-            panel4.TabIndex = 26;
-            // 
-            // dgvInasistencias
-            // 
-            dgvInasistencias.AutoGenerateColumns = false;
-            dgvInasistencias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvInasistencias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInasistencias.Columns.AddRange(new DataGridViewColumn[] { idInasistenciaDataGridViewTextBoxColumn, empleadoIdDataGridViewTextBoxColumn1, licenciaIdDataGridViewTextBoxColumn, fechaDataGridViewTextBoxColumn1 });
-            dgvInasistencias.DataSource = inasistenciasBindingSource;
-            dgvInasistencias.Dock = DockStyle.Fill;
-            dgvInasistencias.FilterAndSortEnabled = true;
-            dgvInasistencias.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            dgvInasistencias.Location = new Point(0, 45);
-            dgvInasistencias.MaxFilterButtonImageHeight = 23;
-            dgvInasistencias.Name = "dgvInasistencias";
-            dgvInasistencias.RightToLeft = RightToLeft.No;
-            dgvInasistencias.RowHeadersWidth = 51;
-            dgvInasistencias.Size = new Size(395, 278);
-            dgvInasistencias.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            dgvInasistencias.TabIndex = 26;
-            // 
-            // idInasistenciaDataGridViewTextBoxColumn
-            // 
-            idInasistenciaDataGridViewTextBoxColumn.DataPropertyName = "IdInasistencia";
-            idInasistenciaDataGridViewTextBoxColumn.HeaderText = "IdInasistencia";
-            idInasistenciaDataGridViewTextBoxColumn.MinimumWidth = 24;
-            idInasistenciaDataGridViewTextBoxColumn.Name = "idInasistenciaDataGridViewTextBoxColumn";
-            idInasistenciaDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // empleadoIdDataGridViewTextBoxColumn1
-            // 
-            empleadoIdDataGridViewTextBoxColumn1.DataPropertyName = "EmpleadoId";
-            empleadoIdDataGridViewTextBoxColumn1.HeaderText = "EmpleadoId";
-            empleadoIdDataGridViewTextBoxColumn1.MinimumWidth = 24;
-            empleadoIdDataGridViewTextBoxColumn1.Name = "empleadoIdDataGridViewTextBoxColumn1";
-            empleadoIdDataGridViewTextBoxColumn1.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // licenciaIdDataGridViewTextBoxColumn
-            // 
-            licenciaIdDataGridViewTextBoxColumn.DataPropertyName = "LicenciaId";
-            licenciaIdDataGridViewTextBoxColumn.HeaderText = "LicenciaId";
-            licenciaIdDataGridViewTextBoxColumn.MinimumWidth = 24;
-            licenciaIdDataGridViewTextBoxColumn.Name = "licenciaIdDataGridViewTextBoxColumn";
-            licenciaIdDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // fechaDataGridViewTextBoxColumn1
-            // 
-            fechaDataGridViewTextBoxColumn1.DataPropertyName = "Fecha";
-            fechaDataGridViewTextBoxColumn1.HeaderText = "Fecha";
-            fechaDataGridViewTextBoxColumn1.MinimumWidth = 24;
-            fechaDataGridViewTextBoxColumn1.Name = "fechaDataGridViewTextBoxColumn1";
-            fechaDataGridViewTextBoxColumn1.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // inasistenciasBindingSource
-            // 
-            inasistenciasBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.Inasistencias);
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Controls.Add(panel3, 0, 0);
+            tableLayoutPanel4.Controls.Add(panelAuxiliar, 0, 1);
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(452, 3);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 83.3333359F));
+            tableLayoutPanel4.Size = new Size(455, 322);
+            tableLayoutPanel4.TabIndex = 24;
             // 
             // panel3
             // 
             panel3.BackColor = SystemColors.Highlight;
-            panel3.Controls.Add(label2);
+            panel3.Controls.Add(btnAsistencias);
+            panel3.Controls.Add(btnInacistencias);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 0);
+            panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(395, 45);
-            panel3.TabIndex = 25;
+            panel3.Size = new Size(449, 47);
+            panel3.TabIndex = 23;
             // 
-            // label2
+            // btnAsistencias
             // 
-            label2.Anchor = AnchorStyles.None;
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(99, 12);
-            label2.Name = "label2";
-            label2.Size = new Size(195, 18);
-            label2.TabIndex = 1;
-            label2.Text = "Inasistencias sin licencia";
+            btnAsistencias.IconChar = FontAwesome.Sharp.IconChar.Tools;
+            btnAsistencias.IconColor = Color.Black;
+            btnAsistencias.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAsistencias.IconSize = 40;
+            btnAsistencias.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAsistencias.Location = new Point(297, 3);
+            btnAsistencias.Name = "btnAsistencias";
+            btnAsistencias.Padding = new Padding(12, 0, 0, 0);
+            btnAsistencias.Size = new Size(149, 41);
+            btnAsistencias.TabIndex = 1;
+            btnAsistencias.Text = "Licencias";
+            btnAsistencias.TextAlign = ContentAlignment.MiddleLeft;
+            btnAsistencias.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAsistencias.UseVisualStyleBackColor = true;
+            // 
+            // btnInacistencias
+            // 
+            btnInacistencias.IconChar = FontAwesome.Sharp.IconChar.Check;
+            btnInacistencias.IconColor = Color.Black;
+            btnInacistencias.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnInacistencias.IconSize = 40;
+            btnInacistencias.ImageAlign = ContentAlignment.MiddleLeft;
+            btnInacistencias.Location = new Point(143, 3);
+            btnInacistencias.Name = "btnInacistencias";
+            btnInacistencias.Padding = new Padding(8, 0, 0, 0);
+            btnInacistencias.Size = new Size(148, 41);
+            btnInacistencias.TabIndex = 0;
+            btnInacistencias.Text = "Inacistencias";
+            btnInacistencias.TextAlign = ContentAlignment.MiddleLeft;
+            btnInacistencias.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnInacistencias.UseVisualStyleBackColor = true;
+            btnInacistencias.Click += btnInacistencias_Click;
+            // 
+            // panelAuxiliar
+            // 
+            panelAuxiliar.Dock = DockStyle.Fill;
+            panelAuxiliar.Location = new Point(3, 56);
+            panelAuxiliar.Name = "panelAuxiliar";
+            panelAuxiliar.Size = new Size(449, 263);
+            panelAuxiliar.TabIndex = 24;
             // 
             // panel5
             // 
@@ -446,15 +442,15 @@
             panel5.Controls.Add(textBox1);
             panel5.Controls.Add(btnBuscar);
             panel5.Controls.Add(label3);
-            panel5.Location = new Point(12, 360);
+            panel5.Location = new Point(-1, 358);
             panel5.Name = "panel5";
-            panel5.Size = new Size(795, 45);
+            panel5.Size = new Size(934, 45);
             panel5.TabIndex = 23;
             // 
             // textBox1
             // 
             textBox1.Anchor = AnchorStyles.Right;
-            textBox1.Location = new Point(610, 9);
+            textBox1.Location = new Point(749, 9);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(127, 27);
             textBox1.TabIndex = 26;
@@ -465,7 +461,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(318, 15);
+            label3.Location = new Point(351, 13);
             label3.Name = "label3";
             label3.Size = new Size(194, 18);
             label3.TabIndex = 19;
@@ -477,76 +473,23 @@
             dgvDescuentos.AutoGenerateColumns = false;
             dgvDescuentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDescuentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDescuentos.Columns.AddRange(new DataGridViewColumn[] { idDescuentoDataGridViewTextBoxColumn, empleadoIdDataGridViewTextBoxColumn, tipoDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, montoDataGridViewTextBoxColumn, fechaDataGridViewTextBoxColumn });
             dgvDescuentos.DataSource = descuentosBindingSource;
             dgvDescuentos.FilterAndSortEnabled = true;
             dgvDescuentos.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            dgvDescuentos.Location = new Point(12, 411);
+            dgvDescuentos.Location = new Point(-1, 400);
             dgvDescuentos.MaxFilterButtonImageHeight = 23;
             dgvDescuentos.Name = "dgvDescuentos";
             dgvDescuentos.RightToLeft = RightToLeft.No;
             dgvDescuentos.RowHeadersWidth = 51;
-            dgvDescuentos.Size = new Size(795, 237);
+            dgvDescuentos.Size = new Size(931, 238);
             dgvDescuentos.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             dgvDescuentos.TabIndex = 25;
-            // 
-            // idDescuentoDataGridViewTextBoxColumn
-            // 
-            idDescuentoDataGridViewTextBoxColumn.DataPropertyName = "IdDescuento";
-            idDescuentoDataGridViewTextBoxColumn.HeaderText = "IdDescuento";
-            idDescuentoDataGridViewTextBoxColumn.MinimumWidth = 24;
-            idDescuentoDataGridViewTextBoxColumn.Name = "idDescuentoDataGridViewTextBoxColumn";
-            idDescuentoDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // empleadoIdDataGridViewTextBoxColumn
-            // 
-            empleadoIdDataGridViewTextBoxColumn.DataPropertyName = "EmpleadoId";
-            empleadoIdDataGridViewTextBoxColumn.HeaderText = "EmpleadoId";
-            empleadoIdDataGridViewTextBoxColumn.MinimumWidth = 24;
-            empleadoIdDataGridViewTextBoxColumn.Name = "empleadoIdDataGridViewTextBoxColumn";
-            empleadoIdDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // tipoDataGridViewTextBoxColumn
-            // 
-            tipoDataGridViewTextBoxColumn.DataPropertyName = "Tipo";
-            tipoDataGridViewTextBoxColumn.HeaderText = "Tipo";
-            tipoDataGridViewTextBoxColumn.MinimumWidth = 24;
-            tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
-            tipoDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            descripcionDataGridViewTextBoxColumn.MinimumWidth = 24;
-            descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            descripcionDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // montoDataGridViewTextBoxColumn
-            // 
-            montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
-            montoDataGridViewTextBoxColumn.HeaderText = "Monto";
-            montoDataGridViewTextBoxColumn.MinimumWidth = 24;
-            montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
-            montoDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // fechaDataGridViewTextBoxColumn
-            // 
-            fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-            fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
-            fechaDataGridViewTextBoxColumn.MinimumWidth = 24;
-            fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
-            fechaDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // descuentosBindingSource
-            // 
-            descuentosBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.Descuentos);
             // 
             // F5Descuentos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(822, 640);
+            ClientSize = new Size(931, 640);
             Controls.Add(dgvDescuentos);
             Controls.Add(panel5);
             Controls.Add(tableLayoutPanel2);
@@ -562,11 +505,9 @@
             tableLayoutPanel3.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvInasistencias).EndInit();
-            ((System.ComponentModel.ISupportInitialize)inasistenciasBindingSource).EndInit();
+            tableLayoutPanel4.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)inasistenciasBindingSource).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDescuentos).EndInit();
@@ -592,8 +533,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel2;
         private Panel panel1;
-        private Panel panel4;
-        private Panel panel3;
         private TableLayoutPanel tableLayoutPanel3;
         private Panel panel5;
         private Zuby.ADGV.AdvancedDataGridView dgvDescuentos;
@@ -606,17 +545,16 @@
         private DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
         private BindingSource descuentosBindingSource;
         private Label label1;
-        private Label label2;
-        private Zuby.ADGV.AdvancedDataGridView dgvInasistencias;
         private Label label3;
         private TextBox textBox1;
         private ComboBox tipoTxt;
         private ComboBox idEmpleadoCb;
         private Label label4;
         private NumericUpDown montoTxt;
-        private DataGridViewTextBoxColumn idInasistenciaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn empleadoIdDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn licenciaIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn1;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Panel panel3;
+        private FontAwesome.Sharp.IconButton btnAsistencias;
+        private FontAwesome.Sharp.IconButton btnInacistencias;
+        private Panel panelAuxiliar;
     }
 }

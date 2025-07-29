@@ -17,13 +17,16 @@ namespace WinModuloNomina.Vista
     {
         private readonly APIModuloNomina _api;
         private string _apiUrl;
+        private Form activeForm;
         public F5Descuentos()
         {
             InitializeComponent();
             _apiUrl = ConfigurationManager.AppSettings["APIBaseUrl"];
             _api = new APIModuloNomina(_apiUrl);
             this.Load += F5Descuentos_Load;
+
         }
+       
 
         public async Task CargarEmpleados()
         {
@@ -59,8 +62,8 @@ namespace WinModuloNomina.Vista
             await Task.CompletedTask;
 
         }
-       
-       
+
+
         private async void tipoTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
             string seleccion = tipoTxt.SelectedItem?.ToString();
@@ -72,8 +75,8 @@ namespace WinModuloNomina.Vista
             }
             else if (seleccion == "Inasistencias")
             {
-            
-                montoTxt.Value = 0 ;
+
+                montoTxt.Value = 0;
                 montoTxt.Enabled = false;
             }
             else if (seleccion == "Falla Operativa")
@@ -83,7 +86,7 @@ namespace WinModuloNomina.Vista
             }
 
         }
-       
+
 
         public async Task CargarDescuentos()
         {
@@ -98,26 +101,15 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show($"Error al cargar los descuentos: {ex.Message}");
             }
         }
-        public async Task CargarInasistencias()
-        {
-            try
-            {
-                var inacistencia = await _api.GetAsync<List<Inasistencias>>("InasistenciasControlador/ObtenerTodosAsync");
-                dgvInasistencias.DataSource = inacistencia;
-                dgvInasistencias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar los descuentos: {ex.Message}");
-            }
-        }
+       
 
         private async void F5Descuentos_Load(object sender, EventArgs e)
         {
             await CargarDescuentos();
             await CargarEmpleados();
             await CargarDescuentosTipo();
-            await CargarInasistencias();
+            await CargarDescuentos();
+            
         }
 
         private void dgvDescuentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -151,6 +143,69 @@ namespace WinModuloNomina.Vista
 
         }
 
-       
+
+
+        private  async void OpenChildForm(Form ChildForm)
+        {
+            try
+            {
+                // Verificar si el nuevo formulario ya está abierto
+                if (activeForm != null && activeForm.GetType() == ChildForm.GetType() && !activeForm.IsDisposed)
+                {
+                    activeForm.BringToFront();
+                    return;
+                }
+
+                // Cerrar el formulario activo si existe y no es el formulario principal
+                if (activeForm != null && activeForm != this && !activeForm.IsDisposed)
+                {
+                    activeForm.Close();
+                    // Esperar un poco para que se cierre correctamente
+                    await Task.Delay(100);
+                }
+
+                // Configurar el nuevo formulario
+                activeForm = ChildForm;
+                ChildForm.TopLevel = false;
+                ChildForm.FormBorderStyle = FormBorderStyle.None;
+                ChildForm.Dock = DockStyle.Fill;
+
+                // Limpiar controles existentes
+                panelAuxiliar.Controls.Clear();
+
+                panelAuxiliar.Controls.Add(ChildForm);
+                panelAuxiliar.Tag = ChildForm;
+
+
+
+                // Mostrar el formulario
+                ChildForm.BringToFront();
+
+                // Pequeña animación opcional
+                ChildForm.Opacity = 0;
+                ChildForm.Show();
+
+                for (int i = 0; i < 10; i++)
+                {
+                    await Task.Delay(20);
+                    ChildForm.Opacity += 0.1;
+                }
+                ChildForm.Opacity = 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir el formulario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnInacistencias_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new F9Inasistencias());
+        }
+
+
+
+
+
+
     }
 }
