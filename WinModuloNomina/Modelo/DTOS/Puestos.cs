@@ -13,5 +13,7 @@ public partial class Puestos
     public string Nombre { get; set; }
 
     public decimal SalarioBase { get; set; }
- 
+
+    public bool? Estado { get; set; }
+
 }

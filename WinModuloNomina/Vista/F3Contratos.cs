@@ -773,3 +773,5 @@ namespace WinModuloNomina.Vista
 }
 
 
+
+

@@ -122,7 +122,7 @@
             btnEditar.Location = new Point(148, 3);
             btnEditar.Name = "btnEditar";
             btnEditar.Padding = new Padding(12, 0, 0, 0);
-            btnEditar.Size = new Size(139, 40);
+            btnEditar.Size = new Size(139, 51);
             btnEditar.TabIndex = 19;
             btnEditar.Text = "Actualizar";
             btnEditar.TextAlign = ContentAlignment.MiddleLeft;
@@ -140,7 +140,7 @@
             btnBuscar.IconSize = 40;
             btnBuscar.Location = new Point(871, 0);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(60, 39);
+            btnBuscar.Size = new Size(52, 29);
             btnBuscar.TabIndex = 18;
             btnBuscar.UseVisualStyleBackColor = true;
             // 
@@ -303,7 +303,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(3, 38);
             label4.Name = "label4";
-            label4.Size = new Size(77, 20);
+            label4.Size = new Size(60, 15);
             label4.TabIndex = 28;
             label4.Text = "Empleado";
             // 
@@ -311,9 +311,9 @@
             // 
             idDescuentosTxt.Anchor = AnchorStyles.Left;
             idDescuentosTxt.AutoSize = true;
-            idDescuentosTxt.Location = new Point(3, 6);
+            idDescuentosTxt.Location = new Point(3, 5);
             idDescuentosTxt.Name = "idDescuentosTxt";
-            idDescuentosTxt.Size = new Size(102, 20);
+            idDescuentosTxt.Size = new Size(81, 15);
             idDescuentosTxt.TabIndex = 17;
             idDescuentosTxt.Text = "Id Descuentos";
             // 
@@ -370,7 +370,7 @@
             fechaLb.AutoSize = true;
             fechaLb.Location = new Point(3, 134);
             fechaLb.Name = "fechaLb";
-            fechaLb.Size = new Size(103, 20);
+            fechaLb.Size = new Size(83, 15);
             fechaLb.TabIndex = 24;
             fechaLb.Text = "Fecha Emision";
             // 
@@ -420,7 +420,7 @@
             montoLb.AutoSize = true;
             montoLb.Location = new Point(3, 296);
             montoLb.Name = "montoLb";
-            montoLb.Size = new Size(53, 20);
+            montoLb.Size = new Size(43, 15);
             montoLb.TabIndex = 20;
             montoLb.Text = "Monto";
             // 
@@ -454,7 +454,8 @@
             panel2.Controls.Add(panel1);
             panel2.Controls.Add(tableLayoutPanel1);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 3);
+            panel2.Location = new Point(3, 2);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(443, 428);
             panel2.TabIndex = 23;
@@ -482,6 +483,7 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(443, 45);
             panel1.TabIndex = 22;
@@ -494,7 +496,7 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(135, 12);
             label1.Name = "label1";
-            label1.Size = new Size(167, 18);
+            label1.Size = new Size(140, 15);
             label1.TabIndex = 0;
             label1.Text = "Registro Descuentos";
             // 
@@ -586,7 +588,7 @@
             textBox1.Anchor = AnchorStyles.Right;
             textBox1.Location = new Point(749, 6);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(127, 27);
+            textBox1.Size = new Size(112, 23);
             textBox1.TabIndex = 26;
             // 
             // label3
@@ -597,7 +599,7 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(368, 6);
             label3.Name = "label3";
-            label3.Size = new Size(194, 18);
+            label3.Size = new Size(163, 15);
             label3.TabIndex = 19;
             label3.Text = "Descuentos Registrados";
             // 
@@ -621,13 +623,12 @@
             // 
             // F5Descuentos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(931, 640);
             Controls.Add(dgvDescuentos);
             Controls.Add(panel5);
             Controls.Add(tableLayoutPanel2);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "F5Descuentos";
             Text = "F5Descuentos";
             Load += F5Descuentos_Load;

@@ -118,10 +118,9 @@
             btnCrearContrato.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCrearContrato.IconSize = 40;
             btnCrearContrato.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCrearContrato.Location = new Point(3, 4);
-            btnCrearContrato.Margin = new Padding(3, 4, 3, 4);
+            btnCrearContrato.Location = new Point(3, 3);
             btnCrearContrato.Name = "btnCrearContrato";
-            btnCrearContrato.Size = new Size(137, 46);
+            btnCrearContrato.Size = new Size(119, 34);
             btnCrearContrato.TabIndex = 9;
             btnCrearContrato.Text = "Crear";
             btnCrearContrato.TextAlign = ContentAlignment.MiddleLeft;
@@ -140,10 +139,9 @@
             btnEditarContrato.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditarContrato.IconSize = 40;
             btnEditarContrato.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditarContrato.Location = new Point(146, 4);
-            btnEditarContrato.Margin = new Padding(3, 4, 3, 4);
+            btnEditarContrato.Location = new Point(128, 3);
             btnEditarContrato.Name = "btnEditarContrato";
-            btnEditarContrato.Size = new Size(137, 46);
+            btnEditarContrato.Size = new Size(119, 34);
             btnEditarContrato.TabIndex = 11;
             btnEditarContrato.Text = "Actualizar";
             btnEditarContrato.TextAlign = ContentAlignment.MiddleLeft;
@@ -162,10 +160,9 @@
             btnBorrarContrato.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBorrarContrato.IconSize = 35;
             btnBorrarContrato.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBorrarContrato.Location = new Point(289, 4);
-            btnBorrarContrato.Margin = new Padding(3, 4, 3, 4);
+            btnBorrarContrato.Location = new Point(253, 3);
             btnBorrarContrato.Name = "btnBorrarContrato";
-            btnBorrarContrato.Size = new Size(138, 46);
+            btnBorrarContrato.Size = new Size(120, 34);
             btnBorrarContrato.TabIndex = 12;
             btnBorrarContrato.Text = "Eliminar";
             btnBorrarContrato.TextAlign = ContentAlignment.MiddleLeft;
@@ -176,10 +173,9 @@
             // txtIdTipoContrato
             // 
             txtIdTipoContrato.Anchor = AnchorStyles.Right;
-            txtIdTipoContrato.Location = new Point(327, 8);
-            txtIdTipoContrato.Margin = new Padding(3, 4, 3, 4);
+            txtIdTipoContrato.Location = new Point(285, 6);
             txtIdTipoContrato.Name = "txtIdTipoContrato";
-            txtIdTipoContrato.Size = new Size(70, 27);
+            txtIdTipoContrato.Size = new Size(62, 23);
             txtIdTipoContrato.TabIndex = 7;
             // 
             // label5
@@ -187,19 +183,18 @@
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(153, 12);
+            label5.Location = new Point(134, 9);
             label5.Name = "label5";
-            label5.Size = new Size(100, 18);
+            label5.Size = new Size(80, 15);
             label5.TabIndex = 2;
             label5.Text = "CONTRATO";
             // 
             // txtBuscarContrato
             // 
             txtBuscarContrato.Anchor = AnchorStyles.Right;
-            txtBuscarContrato.Location = new Point(629, 12);
-            txtBuscarContrato.Margin = new Padding(3, 4, 3, 4);
+            txtBuscarContrato.Location = new Point(550, 9);
             txtBuscarContrato.Name = "txtBuscarContrato";
-            txtBuscarContrato.Size = new Size(161, 27);
+            txtBuscarContrato.Size = new Size(141, 23);
             txtBuscarContrato.TabIndex = 11;
             txtBuscarContrato.TextChanged += txtBuscarContrato_TextChanged;
             // 
@@ -212,10 +207,9 @@
             btnBuscarContrato.IconColor = Color.Black;
             btnBuscarContrato.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBuscarContrato.IconSize = 35;
-            btnBuscarContrato.Location = new Point(808, 8);
-            btnBuscarContrato.Margin = new Padding(3, 4, 3, 4);
+            btnBuscarContrato.Location = new Point(707, 6);
             btnBuscarContrato.Name = "btnBuscarContrato";
-            btnBuscarContrato.Size = new Size(44, 35);
+            btnBuscarContrato.Size = new Size(38, 26);
             btnBuscarContrato.TabIndex = 11;
             btnBuscarContrato.UseVisualStyleBackColor = true;
             // 
@@ -226,15 +220,17 @@
             panel5.Controls.Add(label5);
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 0);
+            panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(430, 45);
+            panel5.Size = new Size(376, 34);
             panel5.TabIndex = 10;
             // 
             // txtAuxE
             // 
-            txtAuxE.Location = new Point(343, 8);
+            txtAuxE.Location = new Point(300, 6);
+            txtAuxE.Margin = new Padding(3, 2, 3, 2);
             txtAuxE.Name = "txtAuxE";
-            txtAuxE.Size = new Size(70, 27);
+            txtAuxE.Size = new Size(62, 23);
             txtAuxE.TabIndex = 3;
             // 
             // panel4
@@ -244,8 +240,9 @@
             panel4.Controls.Add(label4);
             panel4.Controls.Add(txtIdTipoContrato);
             panel4.Location = new Point(0, 0);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(430, 45);
+            panel4.Size = new Size(375, 34);
             panel4.TabIndex = 11;
             // 
             // label4
@@ -254,9 +251,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(140, 12);
+            label4.Location = new Point(121, 9);
             label4.Name = "label4";
-            label4.Size = new Size(143, 18);
+            label4.Size = new Size(115, 15);
             label4.TabIndex = 16;
             label4.Text = "TIPO CONTRATO";
             // 
@@ -267,9 +264,10 @@
             panel3.Controls.Add(label2);
             panel3.Controls.Add(txtBuscarContrato);
             panel3.Controls.Add(btnBuscarContrato);
-            panel3.Location = new Point(50, 403);
+            panel3.Location = new Point(44, 302);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(872, 50);
+            panel3.Size = new Size(763, 38);
             panel3.TabIndex = 15;
             // 
             // label2
@@ -278,9 +276,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(340, 16);
+            label2.Location = new Point(298, 12);
             label2.Name = "label2";
-            label2.Size = new Size(199, 18);
+            label2.Size = new Size(162, 15);
             label2.TabIndex = 16;
             label2.Text = "RESUMEN CONTRATOS";
             // 
@@ -294,11 +292,12 @@
             tableLayoutPanel2.Controls.Add(btnEditarContrato, 1, 0);
             tableLayoutPanel2.Controls.Add(btnBorrarContrato, 2, 0);
             tableLayoutPanel2.Dock = DockStyle.Bottom;
-            tableLayoutPanel2.Location = new Point(0, 325);
+            tableLayoutPanel2.Location = new Point(0, 245);
+            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(430, 54);
+            tableLayoutPanel2.Size = new Size(376, 40);
             tableLayoutPanel2.TabIndex = 16;
             // 
             // panel1
@@ -307,9 +306,10 @@
             panel1.Controls.Add(panel5);
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(439, 3);
+            panel1.Location = new Point(384, 2);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(430, 379);
+            panel1.Size = new Size(376, 285);
             panel1.TabIndex = 17;
             // 
             // tableLayoutPanel3
@@ -334,8 +334,7 @@
             tableLayoutPanel3.Controls.Add(txtSalario, 1, 5);
             tableLayoutPanel3.Controls.Add(cbEmpleado, 1, 2);
             tableLayoutPanel3.Controls.Add(cbEstadoContrato, 1, 6);
-            tableLayoutPanel3.Location = new Point(0, 45);
-            tableLayoutPanel3.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel3.Location = new Point(0, 34);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 8;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
@@ -346,16 +345,16 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
-            tableLayoutPanel3.Size = new Size(430, 276);
+            tableLayoutPanel3.Size = new Size(376, 208);
             tableLayoutPanel3.TabIndex = 17;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Location = new Point(3, 7);
+            label1.Location = new Point(3, 5);
             label1.Name = "label1";
-            label1.Size = new Size(27, 20);
+            label1.Size = new Size(21, 15);
             label1.TabIndex = 30;
             label1.Text = "ID:";
             // 
@@ -363,66 +362,63 @@
             // 
             label15.Anchor = AnchorStyles.Left;
             label15.AutoSize = true;
-            label15.Location = new Point(3, 143);
+            label15.Location = new Point(3, 109);
             label15.Name = "label15";
-            label15.Size = new Size(45, 20);
+            label15.Size = new Size(38, 15);
             label15.TabIndex = 17;
             label15.Text = "F. Fin:";
             // 
             // dtpFechaFin
             // 
             dtpFechaFin.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            dtpFechaFin.Location = new Point(153, 140);
-            dtpFechaFin.Margin = new Padding(3, 4, 3, 4);
+            dtpFechaFin.Location = new Point(134, 107);
             dtpFechaFin.Name = "dtpFechaFin";
-            dtpFechaFin.Size = new Size(274, 27);
+            dtpFechaFin.Size = new Size(239, 23);
             dtpFechaFin.TabIndex = 29;
             // 
             // label10
             // 
             label10.Anchor = AnchorStyles.Left;
             label10.AutoSize = true;
-            label10.Location = new Point(3, 109);
+            label10.Location = new Point(3, 83);
             label10.Name = "label10";
-            label10.Size = new Size(58, 20);
+            label10.Size = new Size(48, 15);
             label10.TabIndex = 22;
             label10.Text = "F.Inicio:";
             // 
             // txtHorasJornada
             // 
             txtHorasJornada.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtHorasJornada.Location = new Point(153, 243);
-            txtHorasJornada.Margin = new Padding(3, 4, 3, 4);
+            txtHorasJornada.Location = new Point(134, 185);
             txtHorasJornada.Name = "txtHorasJornada";
-            txtHorasJornada.Size = new Size(274, 27);
+            txtHorasJornada.Size = new Size(239, 23);
             txtHorasJornada.TabIndex = 30;
             // 
             // label9
             // 
             label9.Anchor = AnchorStyles.Left;
             label9.AutoSize = true;
-            label9.Location = new Point(3, 247);
+            label9.Location = new Point(3, 187);
             label9.Name = "label9";
-            label9.Size = new Size(52, 20);
+            label9.Size = new Size(41, 15);
             label9.TabIndex = 23;
             label9.Text = "Horas ";
             // 
             // dtpFechaInicio
             // 
             dtpFechaInicio.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            dtpFechaInicio.Location = new Point(153, 106);
-            dtpFechaInicio.Margin = new Padding(3, 4, 3, 4);
+            dtpFechaInicio.Location = new Point(134, 81);
             dtpFechaInicio.Name = "dtpFechaInicio";
-            dtpFechaInicio.Size = new Size(274, 27);
+            dtpFechaInicio.Size = new Size(239, 23);
             dtpFechaInicio.TabIndex = 28;
             // 
             // label12
             // 
             label12.Anchor = AnchorStyles.Left;
             label12.AutoSize = true;
-            label12.Location = new Point(3, 75);
+            label12.Location = new Point(3, 57);
             label12.Name = "label12";
-            label12.Size = new Size(80, 20);
+            label12.Size = new Size(63, 15);
             label12.TabIndex = 20;
             label12.Text = "Empleado:";
             // 
@@ -430,9 +426,9 @@
             // 
             label14.Anchor = AnchorStyles.Left;
             label14.AutoSize = true;
-            label14.Location = new Point(3, 41);
+            label14.Location = new Point(3, 31);
             label14.Name = "label14";
-            label14.Size = new Size(42, 20);
+            label14.Size = new Size(33, 15);
             label14.TabIndex = 18;
             label14.Text = "Tipo:";
             // 
@@ -440,28 +436,26 @@
             // 
             cbTipoContrato.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbTipoContrato.FormattingEnabled = true;
-            cbTipoContrato.Location = new Point(153, 38);
-            cbTipoContrato.Margin = new Padding(3, 4, 3, 4);
+            cbTipoContrato.Location = new Point(134, 29);
             cbTipoContrato.Name = "cbTipoContrato";
-            cbTipoContrato.Size = new Size(274, 28);
+            cbTipoContrato.Size = new Size(239, 23);
             cbTipoContrato.TabIndex = 24;
             // 
             // txtIdContrato
             // 
             txtIdContrato.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtIdContrato.Location = new Point(153, 4);
-            txtIdContrato.Margin = new Padding(3, 4, 3, 4);
+            txtIdContrato.Location = new Point(134, 3);
             txtIdContrato.Name = "txtIdContrato";
-            txtIdContrato.Size = new Size(274, 27);
+            txtIdContrato.Size = new Size(239, 23);
             txtIdContrato.TabIndex = 7;
             // 
             // label13
             // 
             label13.Anchor = AnchorStyles.Left;
             label13.AutoSize = true;
-            label13.Location = new Point(3, 177);
+            label13.Location = new Point(3, 135);
             label13.Name = "label13";
-            label13.Size = new Size(58, 20);
+            label13.Size = new Size(45, 15);
             label13.TabIndex = 19;
             label13.Text = "Salario:";
             // 
@@ -469,29 +463,27 @@
             // 
             label11.Anchor = AnchorStyles.Left;
             label11.AutoSize = true;
-            label11.Location = new Point(3, 211);
+            label11.Location = new Point(3, 161);
             label11.Name = "label11";
-            label11.Size = new Size(57, 20);
+            label11.Size = new Size(45, 15);
             label11.TabIndex = 21;
             label11.Text = "Estado:";
             // 
             // txtSalario
             // 
             txtSalario.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtSalario.Location = new Point(153, 174);
-            txtSalario.Margin = new Padding(3, 4, 3, 4);
+            txtSalario.Location = new Point(134, 133);
             txtSalario.Name = "txtSalario";
-            txtSalario.Size = new Size(274, 27);
+            txtSalario.Size = new Size(239, 23);
             txtSalario.TabIndex = 13;
             // 
             // cbEmpleado
             // 
             cbEmpleado.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbEmpleado.FormattingEnabled = true;
-            cbEmpleado.Location = new Point(153, 72);
-            cbEmpleado.Margin = new Padding(3, 4, 3, 4);
+            cbEmpleado.Location = new Point(134, 55);
             cbEmpleado.Name = "cbEmpleado";
-            cbEmpleado.Size = new Size(274, 28);
+            cbEmpleado.Size = new Size(239, 23);
             cbEmpleado.TabIndex = 26;
             cbEmpleado.SelectedIndexChanged += cbJornadaTipo_SelectedIndexChanged;
             // 
@@ -499,10 +491,9 @@
             // 
             cbEstadoContrato.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbEstadoContrato.FormattingEnabled = true;
-            cbEstadoContrato.Location = new Point(153, 208);
-            cbEstadoContrato.Margin = new Padding(3, 4, 3, 4);
+            cbEstadoContrato.Location = new Point(134, 159);
             cbEstadoContrato.Name = "cbEstadoContrato";
-            cbEstadoContrato.Size = new Size(274, 28);
+            cbEstadoContrato.Size = new Size(239, 23);
             cbEstadoContrato.TabIndex = 25;
             // 
             // panel2
@@ -512,9 +503,10 @@
             panel2.Controls.Add(tableLayoutPanel1);
             panel2.Controls.Add(panel4);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 3);
+            panel2.Location = new Point(3, 2);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(430, 379);
+            panel2.Size = new Size(375, 285);
             panel2.TabIndex = 18;
             // 
             // dgvTipoContrato
@@ -525,11 +517,10 @@
             dgvTipoContrato.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTipoContrato.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9 });
             dgvTipoContrato.DataSource = contratosTipoBindingSource;
-            dgvTipoContrato.Location = new Point(11, 193);
-            dgvTipoContrato.Margin = new Padding(3, 4, 3, 4);
+            dgvTipoContrato.Location = new Point(10, 145);
             dgvTipoContrato.Name = "dgvTipoContrato";
             dgvTipoContrato.RowHeadersWidth = 51;
-            dgvTipoContrato.Size = new Size(413, 182);
+            dgvTipoContrato.Size = new Size(360, 137);
             dgvTipoContrato.TabIndex = 13;
             dgvTipoContrato.CellClick += dgvTipoContrato_CellClick;
             // 
@@ -568,11 +559,12 @@
             tableLayoutPanel5.Controls.Add(btnEliminarCT, 2, 0);
             tableLayoutPanel5.Controls.Add(btnCrearTipoC, 0, 0);
             tableLayoutPanel5.Controls.Add(btnEditarTipoC, 1, 0);
-            tableLayoutPanel5.Location = new Point(8, 138);
+            tableLayoutPanel5.Location = new Point(7, 104);
+            tableLayoutPanel5.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.Size = new Size(419, 51);
+            tableLayoutPanel5.Size = new Size(366, 38);
             tableLayoutPanel5.TabIndex = 20;
             // 
             // btnEliminarCT
@@ -586,10 +578,9 @@
             btnEliminarCT.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarCT.IconSize = 35;
             btnEliminarCT.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminarCT.Location = new Point(281, 4);
-            btnEliminarCT.Margin = new Padding(3, 4, 3, 4);
+            btnEliminarCT.Location = new Point(247, 3);
             btnEliminarCT.Name = "btnEliminarCT";
-            btnEliminarCT.Size = new Size(135, 43);
+            btnEliminarCT.Size = new Size(116, 32);
             btnEliminarCT.TabIndex = 33;
             btnEliminarCT.Text = "Eliminar";
             btnEliminarCT.TextAlign = ContentAlignment.MiddleLeft;
@@ -608,10 +599,9 @@
             btnCrearTipoC.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCrearTipoC.IconSize = 40;
             btnCrearTipoC.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCrearTipoC.Location = new Point(3, 4);
-            btnCrearTipoC.Margin = new Padding(3, 4, 3, 4);
+            btnCrearTipoC.Location = new Point(3, 3);
             btnCrearTipoC.Name = "btnCrearTipoC";
-            btnCrearTipoC.Size = new Size(133, 43);
+            btnCrearTipoC.Size = new Size(116, 32);
             btnCrearTipoC.TabIndex = 30;
             btnCrearTipoC.Text = "Crear";
             btnCrearTipoC.TextAlign = ContentAlignment.MiddleLeft;
@@ -630,10 +620,9 @@
             btnEditarTipoC.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditarTipoC.IconSize = 40;
             btnEditarTipoC.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditarTipoC.Location = new Point(142, 4);
-            btnEditarTipoC.Margin = new Padding(3, 4, 3, 4);
+            btnEditarTipoC.Location = new Point(125, 3);
             btnEditarTipoC.Name = "btnEditarTipoC";
-            btnEditarTipoC.Size = new Size(133, 43);
+            btnEditarTipoC.Size = new Size(116, 32);
             btnEditarTipoC.TabIndex = 32;
             btnEditarTipoC.Text = "Editar";
             btnEditarTipoC.TextAlign = ContentAlignment.MiddleLeft;
@@ -651,21 +640,22 @@
             tableLayoutPanel1.Controls.Add(cbJornadaTipo, 1, 0);
             tableLayoutPanel1.Controls.Add(label6, 0, 1);
             tableLayoutPanel1.Controls.Add(txtNombreTipo, 1, 1);
-            tableLayoutPanel1.Location = new Point(30, 45);
+            tableLayoutPanel1.Location = new Point(26, 34);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(400, 87);
+            tableLayoutPanel1.Size = new Size(349, 65);
             tableLayoutPanel1.TabIndex = 12;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Location = new Point(3, 11);
+            label3.Location = new Point(3, 8);
             label3.Name = "label3";
-            label3.Size = new Size(61, 20);
+            label3.Size = new Size(48, 15);
             label3.TabIndex = 18;
             label3.Text = "Jornada";
             // 
@@ -673,29 +663,27 @@
             // 
             cbJornadaTipo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbJornadaTipo.FormattingEnabled = true;
-            cbJornadaTipo.Location = new Point(136, 7);
-            cbJornadaTipo.Margin = new Padding(3, 4, 3, 4);
+            cbJornadaTipo.Location = new Point(119, 4);
             cbJornadaTipo.Name = "cbJornadaTipo";
-            cbJornadaTipo.Size = new Size(261, 28);
+            cbJornadaTipo.Size = new Size(227, 23);
             cbJornadaTipo.TabIndex = 22;
             // 
             // label6
             // 
             label6.Anchor = AnchorStyles.Left;
             label6.AutoSize = true;
-            label6.Location = new Point(3, 55);
+            label6.Location = new Point(3, 41);
             label6.Name = "label6";
-            label6.Size = new Size(87, 20);
+            label6.Size = new Size(69, 15);
             label6.TabIndex = 19;
             label6.Text = "Descripcion";
             // 
             // txtNombreTipo
             // 
             txtNombreTipo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtNombreTipo.Location = new Point(136, 51);
-            txtNombreTipo.Margin = new Padding(3, 4, 3, 4);
+            txtNombreTipo.Location = new Point(119, 37);
             txtNombreTipo.Name = "txtNombreTipo";
-            txtNombreTipo.Size = new Size(261, 27);
+            txtNombreTipo.Size = new Size(227, 23);
             txtNombreTipo.TabIndex = 21;
             // 
             // tableLayoutPanel4
@@ -706,11 +694,12 @@
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.Controls.Add(panel1, 1, 0);
             tableLayoutPanel4.Controls.Add(panel2, 0, 0);
-            tableLayoutPanel4.Location = new Point(50, 12);
+            tableLayoutPanel4.Location = new Point(44, 9);
+            tableLayoutPanel4.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(872, 385);
+            tableLayoutPanel4.Size = new Size(763, 289);
             tableLayoutPanel4.TabIndex = 19;
             // 
             // dgvHistorialContratos
@@ -723,13 +712,12 @@
             dgvHistorialContratos.DataSource = contratosDTOBindingSource;
             dgvHistorialContratos.FilterAndSortEnabled = true;
             dgvHistorialContratos.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            dgvHistorialContratos.Location = new Point(50, 460);
-            dgvHistorialContratos.Margin = new Padding(3, 4, 3, 4);
+            dgvHistorialContratos.Location = new Point(44, 345);
             dgvHistorialContratos.MaxFilterButtonImageHeight = 23;
             dgvHistorialContratos.Name = "dgvHistorialContratos";
             dgvHistorialContratos.RightToLeft = RightToLeft.No;
             dgvHistorialContratos.RowHeadersWidth = 51;
-            dgvHistorialContratos.Size = new Size(872, 171);
+            dgvHistorialContratos.Size = new Size(763, 128);
             dgvHistorialContratos.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             dgvHistorialContratos.TabIndex = 20;
             dgvHistorialContratos.CellClick += dgvHistorialContratos_CellClick;
@@ -828,12 +816,13 @@
             // 
             // F3Contratos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(960, 625);
+            ClientSize = new Size(840, 469);
             Controls.Add(dgvHistorialContratos);
             Controls.Add(tableLayoutPanel4);
             Controls.Add(panel3);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "F3Contratos";
             Text = "F3Contratos";
             Load += F3Contratos_Load;

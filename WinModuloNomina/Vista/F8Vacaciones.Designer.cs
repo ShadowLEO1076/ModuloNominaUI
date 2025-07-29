@@ -89,7 +89,7 @@ namespace WinModuloNomina.Vista
             txtBuscar2.Anchor = AnchorStyles.Right;
             txtBuscar2.Location = new Point(877, 8);
             txtBuscar2.Name = "txtBuscar2";
-            txtBuscar2.Size = new Size(177, 27);
+            txtBuscar2.Size = new Size(155, 23);
             txtBuscar2.TabIndex = 15;
             // 
             // btnBuscar
@@ -103,7 +103,7 @@ namespace WinModuloNomina.Vista
             btnBuscar.IconSize = 35;
             btnBuscar.Location = new Point(1060, -1);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(56, 45);
+            btnBuscar.Size = new Size(49, 34);
             btnBuscar.TabIndex = 10;
             btnBuscar.UseVisualStyleBackColor = true;
             // 
@@ -169,7 +169,8 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel1.Controls.Add(label6, 0, 4);
             tableLayoutPanel1.Controls.Add(cbxEstado, 1, 4);
             tableLayoutPanel1.Controls.Add(label3, 0, 0);
-            tableLayoutPanel1.Location = new Point(46, 85);
+            tableLayoutPanel1.Location = new Point(40, 64);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
@@ -193,9 +194,9 @@ namespace WinModuloNomina.Vista
             // 
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
-            label5.Location = new Point(3, 54);
+            label5.Location = new Point(3, 40);
             label5.Name = "label5";
-            label5.Size = new Size(111, 20);
+            label5.Size = new Size(89, 15);
             label5.TabIndex = 20;
             label5.Text = "Fecha de Inicio:";
             // 
@@ -214,9 +215,9 @@ namespace WinModuloNomina.Vista
             // 
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Location = new Point(3, 97);
+            label2.Location = new Point(3, 72);
             label2.Name = "label2";
-            label2.Size = new Size(94, 20);
+            label2.Size = new Size(76, 15);
             label2.TabIndex = 17;
             label2.Text = "Fecha de Fin:";
             // 
@@ -235,9 +236,9 @@ namespace WinModuloNomina.Vista
             // 
             label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
-            label4.Location = new Point(3, 140);
+            label4.Location = new Point(3, 104);
             label4.Name = "label4";
-            label4.Size = new Size(118, 20);
+            label4.Size = new Size(92, 15);
             label4.TabIndex = 19;
             label4.Text = "Dias Solicitados:";
             // 
@@ -253,9 +254,9 @@ namespace WinModuloNomina.Vista
             // 
             label6.Anchor = AnchorStyles.Left;
             label6.AutoSize = true;
-            label6.Location = new Point(3, 185);
+            label6.Location = new Point(3, 138);
             label6.Name = "label6";
-            label6.Size = new Size(119, 20);
+            label6.Size = new Size(94, 15);
             label6.TabIndex = 21;
             label6.Text = "Estado Solicitud:";
             // 
@@ -305,7 +306,7 @@ namespace WinModuloNomina.Vista
             dataRevisionV.Location = new Point(457, 143);
             dataRevisionV.Name = "dataRevisionV";
             dataRevisionV.RowHeadersWidth = 51;
-            dataRevisionV.Size = new Size(624, 161);
+            dataRevisionV.Size = new Size(546, 121);
             dataRevisionV.TabIndex = 14;
             dataRevisionV.CellClick += dataRevisionV_CellClick;
             // 
@@ -497,9 +498,9 @@ namespace WinModuloNomina.Vista
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(203, 14);
+            label1.Location = new Point(178, 10);
             label1.Name = "label1";
-            label1.Size = new Size(218, 20);
+            label1.Size = new Size(182, 17);
             label1.TabIndex = 16;
             label1.Text = "RESUMEN APROVADAS";
             // 
@@ -523,7 +524,7 @@ namespace WinModuloNomina.Vista
             label7.ForeColor = Color.White;
             label7.Location = new Point(464, 13);
             label7.Name = "label7";
-            label7.Size = new Size(227, 20);
+            label7.Size = new Size(189, 17);
             label7.TabIndex = 17;
             label7.Text = "RESUMEN SOLICITUDES";
             // 
@@ -535,7 +536,7 @@ namespace WinModuloNomina.Vista
             label9.ForeColor = Color.White;
             label9.Location = new Point(99, 13);
             label9.Name = "label9";
-            label9.Size = new Size(176, 20);
+            label9.Size = new Size(147, 17);
             label9.TabIndex = 33;
             label9.Text = "DATOS SOLICITUD";
             // 
@@ -544,15 +545,19 @@ namespace WinModuloNomina.Vista
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel4.BackColor = SystemColors.Highlight;
             panel4.Controls.Add(label9);
-            panel4.Location = new Point(46, 34);
+            panel4.Location = new Point(40, 26);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
             panel4.Size = new Size(370, 45);
             panel4.TabIndex = 31;
             // 
             // F8Vacaciones
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+
+            ClientSize = new Size(1021, 452);
+
             BackColor = Color.White;
             ClientSize = new Size(1132, 638);
             Controls.Add(panel4);
@@ -563,6 +568,7 @@ namespace WinModuloNomina.Vista
             Controls.Add(tableLayoutPanel4);
             Controls.Add(dgvSolicitudes);
             Controls.Add(dataRevisionV);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "F8Vacaciones";
             Text = "F8Vacaciones";
             Load += F8Vacaciones_Load;

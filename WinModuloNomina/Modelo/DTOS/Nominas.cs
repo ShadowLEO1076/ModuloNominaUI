@@ -23,5 +23,7 @@ public partial class Nominas
 
     public DateOnly FechaEmision { get; set; }
 
-  
+    public bool? Estado { get; set; }
+
+
 }

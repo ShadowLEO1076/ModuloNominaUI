@@ -10,7 +10,7 @@ public partial class Empleados
 {
     public int IdEmpleado { get; set; }
 
-    public string NombreCompleto { get; set; }
+   // public string NombreCompleto { get; set; }
 
     public int PuestoId { get; set; }
 

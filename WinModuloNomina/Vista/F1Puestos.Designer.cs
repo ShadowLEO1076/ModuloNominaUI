@@ -45,6 +45,8 @@
             txtNombrePuesto = new TextBox();
             txtSalarioPuesto = new TextBox();
             dgvPuestos = new DataGridView();
+
+            btnBuscar = new FontAwesome.Sharp.IconButton();
             panel3.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -53,6 +55,13 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(btnBuscar);
+            panel3.Controls.Add(txtBuscar);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 177);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(742, 45);
+            panel3.Size = new Size(748, 45);
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = SystemColors.Highlight;
             panel3.Controls.Add(label2);
@@ -105,11 +114,18 @@
             panel1.Controls.Add(label1);
             panel1.Location = new Point(147, 22);
             panel1.Name = "panel1";
+            panel1.Size = new Size(742, 177);
+            panel1.Size = new Size(748, 177);
             panel1.Size = new Size(627, 45);
             panel1.TabIndex = 1;
             // 
-            // label1
+            // txtBuscar
             // 
+            txtBuscar.Anchor = AnchorStyles.Left;
+            txtBuscar.Location = new Point(91, 12);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(162, 27);
+            txtBuscar.TabIndex = 8;
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -129,6 +145,8 @@
             btnCrear.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
             btnCrear.IconColor = Color.Black;
             btnCrear.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCrear.Location = new Point(117, 29);
+            btnCrear.Location = new Point(24, 71);
             btnCrear.IconSize = 40;
             btnCrear.ImageAlign = ContentAlignment.MiddleLeft;
             btnCrear.Location = new Point(471, 3);
@@ -151,6 +169,8 @@
             btnBorrar.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
             btnBorrar.IconColor = Color.Black;
             btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBorrar.Location = new Point(117, 121);
+            btnBorrar.Location = new Point(148, 119);
             btnBorrar.IconSize = 40;
             btnBorrar.ImageAlign = ContentAlignment.MiddleLeft;
             btnBorrar.Location = new Point(471, 111);
@@ -173,6 +193,8 @@
             btnEditar.IconChar = FontAwesome.Sharp.IconChar.Newspaper;
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEditar.Location = new Point(117, 75);
+            btnEditar.Location = new Point(148, 72);
             btnEditar.IconSize = 40;
             btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditar.Location = new Point(471, 57);
@@ -188,6 +210,16 @@
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Controls.Add(lbl, 0, 2);
+            tableLayoutPanel1.Controls.Add(lbl2, 0, 1);
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 4;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -201,6 +233,8 @@
             tableLayoutPanel1.Controls.Add(lbl2, 0, 1);
             tableLayoutPanel1.Controls.Add(lbl, 0, 2);
             tableLayoutPanel1.Controls.Add(txtIdPuesto, 1, 0);
+            tableLayoutPanel1.Location = new Point(53, 16);
+            tableLayoutPanel1.Location = new Point(29, 16);
             tableLayoutPanel1.Controls.Add(txtNombrePuesto, 1, 1);
             tableLayoutPanel1.Controls.Add(txtSalarioPuesto, 1, 2);
             tableLayoutPanel1.Location = new Point(147, 73);
@@ -209,6 +243,34 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Size = new Size(432, 138);
+            tableLayoutPanel1.Size = new Size(446, 138);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
+            // lbl
+            // 
+            lbl.Anchor = AnchorStyles.Right;
+            lbl.AutoSize = true;
+            lbl.Location = new Point(12, 105);
+            lbl.Name = "lbl";
+            lbl.Size = new Size(93, 20);
+            lbl.Location = new Point(12, 95);
+            lbl.Name = "lbl";
+            lbl.Size = new Size(59, 40);
+            lbl.TabIndex = 20;
+            lbl.Text = "Salario Base:";
+            // 
+            // lbl2
+            // 
+            lbl2.Anchor = AnchorStyles.Right;
+            lbl2.AutoSize = true;
+            lbl2.Location = new Point(38, 59);
+            lbl2.Location = new Point(4, 59);
+            lbl2.Name = "lbl2";
+            lbl2.Size = new Size(67, 20);
+            lbl2.TabIndex = 18;
+            lbl2.Text = "Nombre:";
+            // 
             tableLayoutPanel1.Size = new Size(627, 163);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -216,6 +278,8 @@
             // 
             lbl3.Anchor = AnchorStyles.Left;
             lbl3.AutoSize = true;
+            lbl3.Location = new Point(78, 13);
+            lbl3.Location = new Point(44, 13);
             lbl3.Location = new Point(3, 17);
             lbl3.Name = "lbl3";
             lbl3.Size = new Size(100, 20);
@@ -224,6 +288,14 @@
             // 
             // lbl2
             // 
+            txtSalarioPuesto.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtSalarioPuesto.Location = new Point(111, 101);
+            txtSalarioPuesto.Name = "txtSalarioPuesto";
+            txtSalarioPuesto.Size = new Size(318, 27);
+            txtSalarioPuesto.Location = new Point(77, 101);
+            txtSalarioPuesto.Name = "txtSalarioPuesto";
+            txtSalarioPuesto.Size = new Size(217, 27);
+            txtSalarioPuesto.TabIndex = 16;
             lbl2.Anchor = AnchorStyles.Left;
             lbl2.AutoSize = true;
             lbl2.Location = new Point(3, 71);
@@ -234,6 +306,14 @@
             // 
             // lbl
             // 
+            txtNombrePuesto.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtNombrePuesto.Location = new Point(111, 55);
+            txtNombrePuesto.Name = "txtNombrePuesto";
+            txtNombrePuesto.Size = new Size(318, 27);
+            txtNombrePuesto.Location = new Point(77, 55);
+            txtNombrePuesto.Name = "txtNombrePuesto";
+            txtNombrePuesto.Size = new Size(217, 27);
+            txtNombrePuesto.TabIndex = 12;
             lbl.Anchor = AnchorStyles.Left;
             lbl.AutoSize = true;
             lbl.Location = new Point(3, 125);
@@ -245,6 +325,10 @@
             // txtIdPuesto
             // 
             txtIdPuesto.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtIdPuesto.Location = new Point(111, 9);
+            txtIdPuesto.Name = "txtIdPuesto";
+            txtIdPuesto.Size = new Size(318, 27);
+            txtIdPuesto.Location = new Point(77, 9);
             txtIdPuesto.Location = new Point(159, 13);
             txtIdPuesto.Name = "txtIdPuesto";
             txtIdPuesto.Size = new Size(150, 27);
@@ -274,6 +358,26 @@
             dgvPuestos.Location = new Point(147, 315);
             dgvPuestos.Name = "dgvPuestos";
             dgvPuestos.RowHeadersWidth = 51;
+            dgvPuestos.Size = new Size(742, 193);
+            dgvPuestos.Size = new Size(748, 160);
+            dgvPuestos.TabIndex = 9;
+            dgvPuestos.CellContentClick += dgvPuestos_CellContentClick_1;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Anchor = AnchorStyles.Right;
+            btnBuscar.FlatAppearance.BorderSize = 0;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.IconChar = FontAwesome.Sharp.IconChar.Search;
+            btnBuscar.IconColor = Color.Black;
+            btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBuscar.IconSize = 35;
+            btnBuscar.Location = new Point(29, 10);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(56, 32);
+            btnBuscar.TabIndex = 11;
+            btnBuscar.UseVisualStyleBackColor = true;
+            // 
             dgvPuestos.Size = new Size(627, 361);
             dgvPuestos.TabIndex = 9;
             dgvPuestos.CellContentClick += dgvPuestos_CellContentClick_1;
@@ -283,6 +387,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(742, 415);
+            ClientSize = new Size(748, 382);
             ClientSize = new Size(915, 679);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(dgvPuestos);

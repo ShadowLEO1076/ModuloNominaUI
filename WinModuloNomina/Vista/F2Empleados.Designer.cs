@@ -56,7 +56,6 @@
             panel1 = new Panel();
             panel2 = new Panel();
             txtBuscar = new TextBox();
-            borrarBtn = new FontAwesome.Sharp.IconButton();
             buscarBtn = new FontAwesome.Sharp.IconButton();
             editarBtn = new FontAwesome.Sharp.IconButton();
             crearBtn = new FontAwesome.Sharp.IconButton();
@@ -64,6 +63,9 @@
             empleadosBindingSource = new BindingSource(components);
             panel3 = new Panel();
             presentLb = new Label();
+            empleadoDTOBindingSource = new BindingSource(components);
+            tableLayoutPanel1 = new TableLayoutPanel();
+            empleadosInacDgv = new DataGridView();
             tablaEmpleados = new TableLayoutPanel();
             tablaEmpleados.SuspendLayout();
             panel1.SuspendLayout();
@@ -71,6 +73,9 @@
             ((System.ComponentModel.ISupportInitialize)empleadosDgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)empleadosBindingSource).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)empleadoDTOBindingSource).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)empleadosInacDgv).BeginInit();
             SuspendLayout();
             // 
             // tablaEmpleados
@@ -82,8 +87,8 @@
             tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.5526733F));
             tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.7730961F));
             tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.52188F));
-            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
-            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 131F));
+            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 105F));
+            tablaEmpleados.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 116F));
             tablaEmpleados.Controls.Add(fecIngresoDtp, 5, 1);
             tablaEmpleados.Controls.Add(telfTxt, 5, 0);
             tablaEmpleados.Controls.Add(apellidosLb, 0, 3);
@@ -107,40 +112,50 @@
             tablaEmpleados.Controls.Add(estadoCheckbox, 5, 2);
             tablaEmpleados.Controls.Add(generoCb, 3, 3);
             tablaEmpleados.Controls.Add(limpiarBtn, 5, 3);
+
             tablaEmpleados.Location = new Point(14, 33);
+
             tablaEmpleados.Name = "tablaEmpleados";
             tablaEmpleados.RowCount = 4;
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+
             tablaEmpleados.Size = new Size(910, 188);
+
             tablaEmpleados.TabIndex = 3;
             // 
             // fecIngresoDtp
             // 
             fecIngresoDtp.Format = DateTimePickerFormat.Short;
+
             fecIngresoDtp.Location = new Point(780, 51);
+
             fecIngresoDtp.Margin = new Padding(3, 4, 3, 4);
             fecIngresoDtp.Name = "fecIngresoDtp";
-            fecIngresoDtp.Size = new Size(109, 27);
+            fecIngresoDtp.Size = new Size(96, 23);
             fecIngresoDtp.TabIndex = 31;
             // 
             // telfTxt
             // 
             telfTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+
             telfTxt.Location = new Point(780, 10);
             telfTxt.Name = "telfTxt";
             telfTxt.Size = new Size(127, 27);
+
             telfTxt.TabIndex = 29;
             // 
             // apellidosLb
             // 
             apellidosLb.Anchor = AnchorStyles.Left;
             apellidosLb.AutoSize = true;
+
             apellidosLb.Location = new Point(3, 154);
+
             apellidosLb.Name = "apellidosLb";
-            apellidosLb.Size = new Size(72, 20);
+            apellidosLb.Size = new Size(56, 15);
             apellidosLb.TabIndex = 22;
             apellidosLb.Text = "Apellidos";
             // 
@@ -148,9 +163,11 @@
             // 
             fechaNacLb.Anchor = AnchorStyles.Left;
             fechaNacLb.AutoSize = true;
+
             fechaNacLb.Location = new Point(303, 97);
             fechaNacLb.Name = "fechaNacLb";
             fechaNacLb.Size = new Size(86, 40);
+
             fechaNacLb.TabIndex = 21;
             fechaNacLb.Text = "Fecha Nacimiento";
             // 
@@ -158,9 +175,11 @@
             // 
             nombresLb.Anchor = AnchorStyles.Left;
             nombresLb.AutoSize = true;
+
             nombresLb.Location = new Point(3, 107);
+
             nombresLb.Name = "nombresLb";
-            nombresLb.Size = new Size(70, 20);
+            nombresLb.Size = new Size(56, 15);
             nombresLb.TabIndex = 20;
             nombresLb.Text = "Nombres";
             // 
@@ -168,9 +187,11 @@
             // 
             correoLb.Anchor = AnchorStyles.Left;
             correoLb.AutoSize = true;
+
             correoLb.Location = new Point(303, 60);
+
             correoLb.Name = "correoLb";
-            correoLb.Size = new Size(54, 20);
+            correoLb.Size = new Size(43, 15);
             correoLb.TabIndex = 19;
             correoLb.Text = "Correo";
             // 
@@ -178,9 +199,11 @@
             // 
             idPuestosLb.Anchor = AnchorStyles.Left;
             idPuestosLb.AutoSize = true;
+
             idPuestosLb.Location = new Point(3, 60);
+
             idPuestosLb.Name = "idPuestosLb";
-            idPuestosLb.Size = new Size(59, 20);
+            idPuestosLb.Size = new Size(48, 15);
             idPuestosLb.TabIndex = 18;
             idPuestosLb.Text = "Puestos";
             // 
@@ -190,17 +213,19 @@
             IdEmpleadoLb.AutoSize = true;
             IdEmpleadoLb.Location = new Point(3, 13);
             IdEmpleadoLb.Name = "IdEmpleadoLb";
-            IdEmpleadoLb.Size = new Size(94, 20);
+            IdEmpleadoLb.Size = new Size(73, 15);
             IdEmpleadoLb.TabIndex = 7;
             IdEmpleadoLb.Text = "Id Empleado";
             // 
             // idEmplTxt
             // 
             idEmplTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+
             idEmplTxt.Location = new Point(122, 10);
             idEmplTxt.Name = "idEmplTxt";
             idEmplTxt.ReadOnly = true;
             idEmplTxt.Size = new Size(175, 27);
+
             idEmplTxt.TabIndex = 7;
             // 
             // correoTxt
@@ -209,49 +234,60 @@
             correoTxt.Location = new Point(433, 57);
             correoTxt.Name = "correoTxt";
             correoTxt.Size = new Size(221, 27);
+
             correoTxt.TabIndex = 13;
             // 
             // nombresTxt
             // 
             nombresTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+
             nombresTxt.Location = new Point(122, 104);
             nombresTxt.Name = "nombresTxt";
             nombresTxt.Size = new Size(175, 27);
+
             nombresTxt.TabIndex = 15;
             // 
             // apellidosTxt
             // 
             apellidosTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+
             apellidosTxt.Location = new Point(122, 151);
             apellidosTxt.Name = "apellidosTxt";
             apellidosTxt.Size = new Size(175, 27);
+
             apellidosTxt.TabIndex = 16;
             // 
             // cedulaLb
             // 
             cedulaLb.Anchor = AnchorStyles.Left;
             cedulaLb.AutoSize = true;
+
             cedulaLb.Location = new Point(303, 13);
+
             cedulaLb.Name = "cedulaLb";
-            cedulaLb.Size = new Size(55, 20);
+            cedulaLb.Size = new Size(44, 15);
             cedulaLb.TabIndex = 17;
             cedulaLb.Text = "Cedula";
             // 
             // cedulaTxt
             // 
             cedulaTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+
             cedulaTxt.Location = new Point(433, 10);
             cedulaTxt.Name = "cedulaTxt";
             cedulaTxt.Size = new Size(221, 27);
+
             cedulaTxt.TabIndex = 10;
             // 
             // telefonoLb
             // 
             telefonoLb.Anchor = AnchorStyles.Left;
             telefonoLb.AutoSize = true;
+
             telefonoLb.Location = new Point(660, 13);
+
             telefonoLb.Name = "telefonoLb";
-            telefonoLb.Size = new Size(67, 20);
+            telefonoLb.Size = new Size(52, 15);
             telefonoLb.TabIndex = 24;
             telefonoLb.Text = "Teléfono";
             // 
@@ -259,9 +295,11 @@
             // 
             generoLb.Anchor = AnchorStyles.Left;
             generoLb.AutoSize = true;
+
             generoLb.Location = new Point(303, 154);
+
             generoLb.Name = "generoLb";
-            generoLb.Size = new Size(57, 20);
+            generoLb.Size = new Size(45, 15);
             generoLb.TabIndex = 23;
             generoLb.Text = "Género";
             // 
@@ -269,9 +307,11 @@
             // 
             fechaIngresoLb.Anchor = AnchorStyles.Left;
             fechaIngresoLb.AutoSize = true;
+
             fechaIngresoLb.Location = new Point(660, 60);
+
             fechaIngresoLb.Name = "fechaIngresoLb";
-            fechaIngresoLb.Size = new Size(100, 20);
+            fechaIngresoLb.Size = new Size(80, 15);
             fechaIngresoLb.TabIndex = 25;
             fechaIngresoLb.Text = "Fecha Ingreso";
             // 
@@ -279,9 +319,10 @@
             // 
             estadoLb.Anchor = AnchorStyles.Left;
             estadoLb.AutoSize = true;
+
             estadoLb.Location = new Point(660, 107);
             estadoLb.Name = "estadoLb";
-            estadoLb.Size = new Size(54, 20);
+            estadoLb.Size = new Size(42, 15);
             estadoLb.TabIndex = 26;
             estadoLb.Text = "Estado";
             // 
@@ -301,7 +342,7 @@
             fechaNacDtp.Location = new Point(433, 98);
             fechaNacDtp.Margin = new Padding(3, 4, 3, 4);
             fechaNacDtp.Name = "fechaNacDtp";
-            fechaNacDtp.Size = new Size(221, 27);
+            fechaNacDtp.Size = new Size(184, 23);
             fechaNacDtp.TabIndex = 28;
             // 
             // estadoCheckbox
@@ -310,7 +351,7 @@
             estadoCheckbox.Location = new Point(780, 98);
             estadoCheckbox.Margin = new Padding(3, 4, 3, 4);
             estadoCheckbox.Name = "estadoCheckbox";
-            estadoCheckbox.Size = new Size(18, 17);
+            estadoCheckbox.Size = new Size(15, 14);
             estadoCheckbox.TabIndex = 32;
             estadoCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -328,7 +369,7 @@
             limpiarBtn.Location = new Point(780, 145);
             limpiarBtn.Margin = new Padding(3, 4, 3, 4);
             limpiarBtn.Name = "limpiarBtn";
-            limpiarBtn.Size = new Size(125, 31);
+            limpiarBtn.Size = new Size(113, 25);
             limpiarBtn.TabIndex = 34;
             limpiarBtn.Text = "Limpiar datos";
             limpiarBtn.UseVisualStyleBackColor = true;
@@ -347,9 +388,8 @@
             // 
             // panel2
             // 
-            panel2.Anchor = AnchorStyles.Right;
             panel2.Controls.Add(txtBuscar);
-            panel2.Controls.Add(borrarBtn);
+            panel2.Controls.Add(buscarBtn);
             panel2.Controls.Add(editarBtn);
             panel2.Controls.Add(buscarBtn);
             panel2.Controls.Add(crearBtn);
@@ -368,22 +408,7 @@
             txtBuscar.PlaceholderText = "Cedula a buscar";
             txtBuscar.Size = new Size(130, 27);
             txtBuscar.TabIndex = 32;
-            // 
-            // borrarBtn
-            // 
-            borrarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            borrarBtn.IconColor = Color.Black;
-            borrarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            borrarBtn.Location = new Point(14, 152);
-            borrarBtn.Margin = new Padding(3, 2, 3, 2);
-            borrarBtn.Name = "borrarBtn";
-            borrarBtn.Size = new Size(111, 33);
-            borrarBtn.TabIndex = 12;
-            borrarBtn.Text = "Borrar";
-            borrarBtn.UseVisualStyleBackColor = true;
-            borrarBtn.Visible = false;
-            // 
-            // buscarBtn
+             // buscarBtn
             // 
             buscarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             buscarBtn.IconColor = Color.Black;
@@ -407,7 +432,7 @@
             editarBtn.Name = "editarBtn";
             editarBtn.Size = new Size(111, 33);
             editarBtn.TabIndex = 11;
-            editarBtn.Text = "Editar";
+            editarBtn.Text = "Actualizar";
             editarBtn.UseVisualStyleBackColor = true;
             editarBtn.Click += editarBtn_Click;
             // 
@@ -459,14 +484,46 @@
             presentLb.Text = "EMPLEADOS";
             presentLb.TextAlign = ContentAlignment.TopCenter;
             // 
+            // empleadoDTOBindingSource
+            // 
+            empleadoDTOBindingSource.DataSource = typeof(Modelo.DTOS.EmpleadoDTO);
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(empleadosInacDgv, 0, 1);
+            tableLayoutPanel1.Controls.Add(empleadosDgv, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 184);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(946, 215);
+            tableLayoutPanel1.TabIndex = 11;
+            // 
+            // empleadosInacDgv
+            // 
+            empleadosInacDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            empleadosInacDgv.Dock = DockStyle.Fill;
+            empleadosInacDgv.Location = new Point(3, 109);
+            empleadosInacDgv.Margin = new Padding(3, 2, 3, 2);
+            empleadosInacDgv.Name = "empleadosInacDgv";
+            empleadosInacDgv.RowHeadersWidth = 51;
+            empleadosInacDgv.Size = new Size(940, 104);
+            empleadosInacDgv.TabIndex = 9;
+            empleadosInacDgv.CellClick += empleadosInacDgv_CellClick;
+            // 
             // F2Empleados
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1081, 532);
-            Controls.Add(empleadosDgv);
+            ClientSize = new Size(946, 399);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(panel3);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "F2Empleados";
             Text = "F2Empleados";
             Load += F2Empleados_Load;
@@ -479,6 +536,9 @@
             ((System.ComponentModel.ISupportInitialize)empleadosBindingSource).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)empleadoDTOBindingSource).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)empleadosInacDgv).EndInit();
             ResumeLayout(false);
         }
 
@@ -502,7 +562,6 @@
         private TextBox correoTxt;
         private Panel panel2;
         private DataGridView empleadosDgv;
-        private FontAwesome.Sharp.IconButton borrarBtn;
         private FontAwesome.Sharp.IconButton editarBtn;
         private FontAwesome.Sharp.IconButton buscarBtn;
         private FontAwesome.Sharp.IconButton crearBtn;
@@ -533,5 +592,8 @@
         private CheckBox estadoCheckbox;
         private ComboBox generoCb;
         private Button limpiarBtn;
+        private BindingSource empleadoDTOBindingSource;
+        private TableLayoutPanel tableLayoutPanel1;
+        private DataGridView empleadosInacDgv;
     }
 }

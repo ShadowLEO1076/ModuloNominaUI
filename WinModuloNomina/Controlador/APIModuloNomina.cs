@@ -112,14 +112,16 @@ namespace WinModuloNomina.Controlador
             }
         }
 
-        /*public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
+
+        //lo mismo del get de arriba.
+        public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
         {
             var respuesta = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");
             respuesta.EnsureSuccessStatusCode();
             var contenido = await respuesta.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(contenido);
 
-        }*/
+        }
 
     } 
 }
