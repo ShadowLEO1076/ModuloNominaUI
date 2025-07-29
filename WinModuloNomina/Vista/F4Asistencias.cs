@@ -33,7 +33,10 @@ namespace WinModuloNomina.Vista
             await CargarAsistencias();
             await CargarEmpleados();
             await CargarInasistencias();
+            await CargarLicencias();
+            CargarRegistros();
             //inicia así para que no se pueda actualizar nada
+            registroCb.SelectedIndex = 0;
             actualizarBtn.Enabled = false;
             EliminarBtn.Enabled = false;
             horaEntraDtp.Format = DateTimePickerFormat.Time;
@@ -44,43 +47,103 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                //verificar horas
-                if (TimeOnly.FromDateTime(horaSaliDtp.Value) <= TimeOnly.FromDateTime(horaEntraDtp.Value))
+                if (registroCb.SelectedItem.ToString() == "Asistencia")
                 {
-                    MessageBox.Show("La hora de salida de la asistencia no puede ser menor o igual a la hora de entrada.");
-                    return;
+                    //verificar que el día ingresado no sea mayor al actual
+                    if (DateOnly.FromDateTime(fecAsisDtp.Value) > DateOnly.FromDateTime(DateTime.Now))
+                    {
+                        MessageBox.Show("La fecha del registro debe ser la de hoy.");
+                        return;
+                    }
+                    //verificar horas
+                    if (TimeOnly.FromDateTime(horaSaliDtp.Value) <= TimeOnly.FromDateTime(horaEntraDtp.Value))
+                    {
+                        MessageBox.Show("La hora de salida de la asistencia no puede ser menor o igual a la hora de entrada.");
+                        return;
+                    }
+
+                    var veri = new VerificarAsisInasisDTO
+                    {
+                        idEmpleado = int.Parse(empleCb.SelectedValue.ToString()),
+                        fechaVerificacion = DateOnly.FromDateTime(fecAsisDtp.Value),
+                    };
+
+                    //se verifica si la entidad que se quiere ingresar no existe con anterioridad
+                    var verificacionAsis = await _api.PostAsync<VerificarAsisInasisDTO>("AsistenciasControlador/BuscarPorIdYFechaAsync", veri);
+
+                    if (verificacionAsis != null)
+                    {
+                        MessageBox.Show("El usuario ingresado ya posee una asistencia este día. No se puede volver a añadir otra.");
+                        return;
+                    }
+                    //verificar si no existe el mismo ingreso en inasistencias
+                    var verificacionInasis = await _api.PostAsync<VerificarAsisInasisDTO>("InasistenciasControlador/BuscarPorIdYFechaAsync", veri);
+                    if (verificacionInasis != null)
+                    {
+                        MessageBox.Show("El usuario ingresado ya posee una inasistencia este día. No se puede volver a añadir otra.");
+                        return;
+                    }
+
+                    var asistencia = new Asistencias
+                    {
+                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
+                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
+                        HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
+                        HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
+                        Estado = true
+                    };
+
+                    await _api.PostAsync<Asistencias>("AsistenciasControlador/AgregarAsync", asistencia);
+                    await CargarAsistencias();
+                    await CargarInasistencias();
                 }
-
-                var veri = new VerificarAsisInasisDTO
+                else if (registroCb.SelectedItem.ToString() == "Inasistencia")
                 {
-                    idEmpleado = int.Parse(empleCb.SelectedValue.ToString()),
-                    fechaVerificacion = DateOnly.FromDateTime(fecAsisDtp.Value),
-                };
+                    //verificar día
+                    if (DateOnly.FromDateTime(fecAsisDtp.Value) > DateOnly.FromDateTime(DateTime.Now))
+                    {
+                        MessageBox.Show("La fecha del registro debe ser la de hoy.");
+                        return;
+                    }
+                    var veri = new VerificarAsisInasisDTO
+                    {
+                        idEmpleado = int.Parse(empleCb.SelectedValue.ToString()),
+                        fechaVerificacion = DateOnly.FromDateTime(fecAsisDtp.Value),
+                    };
 
-                //se verifica si la entidad que se quiere ingresar no existe con anterioridad
-                var verificacion = await _api.PostAsync<VerificarAsisInasisDTO>("AsistenciasControlador/BuscarPorIdYFechaAsync", veri);
+                    //se verifica si la entidad que se quiere ingresar no existe con anterioridad
+                    var verificacionAsis = await _api.PostAsync<VerificarAsisInasisDTO>("AsistenciasControlador/BuscarPorIdYFechaAsync", veri);
 
-                if (verificacion != null)
-                {
-                    MessageBox.Show("El usuario ingresado ya posee una asistencia este día. No se puede volver a añadir otra.");
-                    return;
+                    if (verificacionAsis != null)
+                    {
+                        MessageBox.Show("El usuario ingresado ya posee una asistencia este día. No se puede volver a añadir otra.");
+                        return;
+                    }
+                    //verificar si no existe el mismo ingreso en inasistencias
+                    var verificacionInasis = await _api.PostAsync<VerificarAsisInasisDTO>("InasistenciasControlador/BuscarPorIdYFechaAsync", veri);
+                    if (verificacionInasis != null)
+                    {
+                        MessageBox.Show("El usuario ingresado ya posee una inasistencia este día. No se puede volver a añadir otra.");
+                        return;
+                    }
+
+                    var inasistencia = new Inasistencias
+                    {
+                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
+                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
+                        LicenciaId = int.Parse(licenciaCb.SelectedValue.ToString()),
+                        DiasContados = 1,
+                        Estado = true
+                    };
+
+                    await _api.PostAsync<Inasistencias>("InasistenciasControlador/AgregarAsync", inasistencia);
+                    await CargarAsistencias();
+                    await CargarInasistencias();
                 }
-
-                var asistencia = new Asistencias
-                {
-                    EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                    Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                    HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
-                    HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
-                    Estado = true
-                };
-
-                await _api.PostAsync<Asistencias>("AsistenciasControlador/AgregarAsync", asistencia);
-                await CargarAsistencias();
             }
             catch
             {
-                MessageBox.Show("Error al insertar asistencia, verifique que los datos sean correctos");
+                MessageBox.Show("Error al insertar el registro, verifique que los datos sean correctos");
             }
 
         }
@@ -111,11 +174,46 @@ namespace WinModuloNomina.Vista
                 fecAsisDtp.Enabled = false;
 
                 await CargarAsistencias();
+                await CargarInasistencias();
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocurrió un error al cargar la asistencia : favor editar los datos.");
+            }
+        }
+
+        private async void inasisDgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < inasisDgv.Rows.Count)
+                {
+                    var inasistenciasSeleccionadas = inasisDgv.Rows[e.RowIndex].DataBoundItem as InasistenciasFormDTO;
+
+                    if (inasistenciasSeleccionadas != null)
+                    {
+                        idAsisTxt.Text = inasistenciasSeleccionadas.IdInasistencias.ToString();
+                        empleCb.SelectedValue = inasistenciasSeleccionadas.EmpleadoId;
+                        fecAsisDtp.Value = inasistenciasSeleccionadas.Fecha.ToDateTime(TimeOnly.MinValue);
+                        licenciaCb.SelectedValue = inasistenciasSeleccionadas.LicenciaId;
+                    }
+
+                }
+
+                actualizarBtn.Enabled = true;
+                EliminarBtn.Enabled = true;
+                ingresarBtn.Enabled = false;
+                empleCb.Enabled = false;
+                fecAsisDtp.Enabled = false;
+
+                await CargarAsistencias();
+                await CargarInasistencias();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al cargar la inasistencia : favor editar los datos.");
             }
         }
 
@@ -125,26 +223,57 @@ namespace WinModuloNomina.Vista
             {
                 //gracias al método de ClickCell solo podemos actualizar datos. Para recuperar otras opciones, debemos usar el
                 //botón limpiar datos
-                var asistencia = new Asistencias
+                if (registroCb.SelectedItem.ToString() == "Asistencia")
                 {
-                    IdAsistencia = int.Parse(idAsisTxt.Text),
-                    EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                    Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                    HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
-                    HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
-                    Estado = true
-                };
+                    //verificar que el día ingresado no sea mayor al actual
+                    
+                    //verificar horas
+                    if (TimeOnly.FromDateTime(horaSaliDtp.Value) <= TimeOnly.FromDateTime(horaEntraDtp.Value))
+                    {
+                        MessageBox.Show("La hora de salida de la asistencia no puede ser menor o igual a la hora de entrada.");
+                        return;
+                    }
 
-                await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
-                await CargarAsistencias();
+                    var asistencia = new Asistencias
+                    {
+                        IdAsistencia = int.Parse(idAsisTxt.Text),
+                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
+                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
+                        HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
+                        HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
+                        Estado = true
+                    };
+
+                    await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
+                    await CargarAsistencias();
+                    await CargarAsistencias();
+                    await CargarInasistencias();
+                }
+                else if (registroCb.SelectedItem.ToString() == "Inasistencia")
+                {
+                   
+                    
+                    var inasistencia = new Inasistencias
+                    {
+                        IdInasistencia = int.Parse(idAsisTxt.Text),
+                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
+                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
+                        LicenciaId = int.Parse(licenciaCb.SelectedValue.ToString()),
+                        DiasContados = 1,
+                        Estado = true
+                    };
+
+                    await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
+                    await CargarAsistencias();
+                    await CargarInasistencias();
+                }
             }
             catch
             {
-                MessageBox.Show("Error al insertar asistencia, verifique que los datos sean correctos");
+                MessageBox.Show("Error al actualizar registro, verifique que los datos sean correctos");
             }
 
         }
-
 
         private void limpiarBtn_Click(object sender, EventArgs e)
         {
@@ -156,13 +285,72 @@ namespace WinModuloNomina.Vista
             fecAsisDtp.Enabled = true;
         }
 
+        private async void EliminarBtn_Click(object sender, EventArgs e)
+        {
+            // no se elimina, solo se cambia su estado a false.
+            try
+            {
+                if (registroCb.SelectedItem.ToString() == "Asistencia")
+                {
+                    //verificar que el día ingresado no sea mayor al actual
+
+                    //verificar horas
+                    if (TimeOnly.FromDateTime(horaSaliDtp.Value) <= TimeOnly.FromDateTime(horaEntraDtp.Value))
+                    {
+                        MessageBox.Show("La hora de salida de la asistencia no puede ser menor o igual a la hora de entrada.");
+                        return;
+                    }
+
+                    var asistencia = new Asistencias
+                    {
+                        IdAsistencia = int.Parse(idAsisTxt.Text),
+                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
+                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
+                        HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
+                        HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
+                        Estado = false
+                    };
+
+                    await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
+                    await CargarAsistencias();
+                    await CargarInasistencias();
+                }
+                else if (registroCb.SelectedItem.ToString() == "Inasistencia")
+                {
+
+
+                    var inasistencia = new Inasistencias
+                    {
+                        IdInasistencia = int.Parse(idAsisTxt.Text),
+                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
+                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
+                        LicenciaId = int.Parse(licenciaCb.SelectedValue.ToString()),
+                        DiasContados = 1,
+                        Estado = false
+                    };
+
+                    await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
+                    await CargarAsistencias();
+                    await CargarInasistencias();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error al eliminar registro, verifique que los datos sean correctos");
+            }
+        }
+
+
         //código reutilizable
         public void LimpiarInfo()
         {
             idAsisTxt.Clear();
             empleCb.SelectedIndex = -1;
+            licenciaCb.SelectedIndex = -1;
+            registroCb.SelectedIndex = -1;
 
-            // Restaurar fechas a valores por defecto
+            horaEntraDtp.Value = DateTime.Today;
+            horaSaliDtp.Value = DateTime.Today;
             fecAsisDtp.Value = DateTime.Today;
         }
 
@@ -216,30 +404,51 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        private async void EliminarBtn_Click(object sender, EventArgs e)
+
+        public async Task CargarLicencias()
         {
-            // no se elimina, solo se cambia su estado a false.
             try
             {
-                var asistencia = new Asistencias
-                {
-                    IdAsistencia = int.Parse(idAsisTxt.Text),
-                    EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                    Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                    HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
-                    HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
-                    Estado = false
-                };
-
-                await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
-                await CargarAsistencias();
+                var datos = await _api.GetAsync<List<Licencias>>("LicenciaControlador/ObtenerTodosAsync");
+                licenciaCb.DataSource = datos;
+                licenciaCb.ValueMember = "IdLicencia";
+                licenciaCb.DisplayMember = "Nombre";
             }
             catch
             {
-                MessageBox.Show("Error al insertar asistencia, verifique que los datos sean correctos");
+                MessageBox.Show($"Error al cargar Licencias");
             }
         }
 
-      
+        private List<String> TiposRegistros = new List<string>
+        { "Asistencia",
+          "Inasistencia"
+        };
+
+        public void CargarRegistros()
+        {
+            registroCb.DataSource = TiposRegistros;
+        }
+
+        private void registroCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var tipo = registroCb.SelectedItem as string;
+
+            if (string.IsNullOrWhiteSpace(tipo)) return;
+
+            if (tipo == "Asistencia")
+            {
+                horaEntraDtp.Enabled = true;
+                horaSaliDtp.Enabled = true;
+                licenciaCb.Enabled = false;
+            }
+            else if (tipo == "Inasistencia")
+            {
+                horaEntraDtp.Enabled = false;
+                horaSaliDtp.Enabled = false;
+                licenciaCb.Enabled = true;
+            }
+        }
     }
 }

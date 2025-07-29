@@ -30,6 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            registroLb = new Label();
+            registroCb = new ComboBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             licenciaLb = new Label();
             licenciaCb = new ComboBox();
@@ -57,6 +60,7 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             asistenciasDgv = new DataGridView();
             panel1.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -68,6 +72,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(tableLayoutPanel4);
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Controls.Add(limpiarBtn);
@@ -81,6 +86,38 @@
             panel1.Size = new Size(1159, 166);
             panel1.TabIndex = 2;
             // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(registroLb, 0, 0);
+            tableLayoutPanel4.Controls.Add(registroCb, 0, 1);
+            tableLayoutPanel4.Location = new Point(16, 36);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 46.42857F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 53.57143F));
+            tableLayoutPanel4.Size = new Size(170, 56);
+            tableLayoutPanel4.TabIndex = 15;
+            // 
+            // registroLb
+            // 
+            registroLb.AutoSize = true;
+            registroLb.Location = new Point(3, 0);
+            registroLb.Name = "registroLb";
+            registroLb.Size = new Size(69, 15);
+            registroLb.TabIndex = 0;
+            registroLb.Text = "Registro de:";
+            // 
+            // registroCb
+            // 
+            registroCb.FormattingEnabled = true;
+            registroCb.Location = new Point(3, 29);
+            registroCb.Name = "registroCb";
+            registroCb.Size = new Size(164, 23);
+            registroCb.TabIndex = 1;
+            registroCb.SelectedIndexChanged += registroCb_SelectedIndexChanged;
+            // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
@@ -88,7 +125,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.44444F));
             tableLayoutPanel2.Controls.Add(licenciaLb, 0, 0);
             tableLayoutPanel2.Controls.Add(licenciaCb, 1, 0);
-            tableLayoutPanel2.Location = new Point(604, 24);
+            tableLayoutPanel2.Location = new Point(720, 31);
             tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
@@ -134,7 +171,7 @@
             tableLayoutPanel1.Controls.Add(horaEntraDtp, 1, 3);
             tableLayoutPanel1.Controls.Add(horaSaliDtp, 1, 4);
             tableLayoutPanel1.Controls.Add(asisLb, 0, 0);
-            tableLayoutPanel1.Location = new Point(48, 24);
+            tableLayoutPanel1.Location = new Point(250, 29);
             tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
@@ -149,12 +186,12 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel1.Size = new Size(529, 129);
+            tableLayoutPanel1.Size = new Size(450, 124);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // idAsisTxt
             // 
-            idAsisTxt.Location = new Point(267, 2);
+            idAsisTxt.Location = new Point(228, 2);
             idAsisTxt.Margin = new Padding(3, 2, 3, 2);
             idAsisTxt.Name = "idAsisTxt";
             idAsisTxt.ReadOnly = true;
@@ -164,7 +201,7 @@
             // empleLb
             // 
             empleLb.AutoSize = true;
-            empleLb.Location = new Point(3, 25);
+            empleLb.Location = new Point(3, 24);
             empleLb.Name = "empleLb";
             empleLb.Size = new Size(60, 15);
             empleLb.TabIndex = 18;
@@ -173,7 +210,7 @@
             // fecLb
             // 
             fecLb.AutoSize = true;
-            fecLb.Location = new Point(3, 50);
+            fecLb.Location = new Point(3, 48);
             fecLb.Name = "fecLb";
             fecLb.Size = new Size(94, 15);
             fecLb.TabIndex = 20;
@@ -182,7 +219,7 @@
             // entradaLb
             // 
             entradaLb.AutoSize = true;
-            entradaLb.Location = new Point(3, 75);
+            entradaLb.Location = new Point(3, 72);
             entradaLb.Name = "entradaLb";
             entradaLb.Size = new Size(92, 15);
             entradaLb.TabIndex = 22;
@@ -191,7 +228,7 @@
             // salidaLb
             // 
             salidaLb.AutoSize = true;
-            salidaLb.Location = new Point(3, 100);
+            salidaLb.Location = new Point(3, 96);
             salidaLb.Name = "salidaLb";
             salidaLb.Size = new Size(82, 15);
             salidaLb.TabIndex = 24;
@@ -200,7 +237,7 @@
             // empleCb
             // 
             empleCb.FormattingEnabled = true;
-            empleCb.Location = new Point(267, 27);
+            empleCb.Location = new Point(228, 26);
             empleCb.Margin = new Padding(3, 2, 3, 2);
             empleCb.Name = "empleCb";
             empleCb.Size = new Size(216, 23);
@@ -209,7 +246,7 @@
             // fecAsisDtp
             // 
             fecAsisDtp.Format = DateTimePickerFormat.Short;
-            fecAsisDtp.Location = new Point(267, 52);
+            fecAsisDtp.Location = new Point(228, 50);
             fecAsisDtp.Margin = new Padding(3, 2, 3, 2);
             fecAsisDtp.Name = "fecAsisDtp";
             fecAsisDtp.Size = new Size(216, 23);
@@ -218,7 +255,7 @@
             // horaEntraDtp
             // 
             horaEntraDtp.Format = DateTimePickerFormat.Time;
-            horaEntraDtp.Location = new Point(267, 77);
+            horaEntraDtp.Location = new Point(228, 74);
             horaEntraDtp.Margin = new Padding(3, 2, 3, 2);
             horaEntraDtp.Name = "horaEntraDtp";
             horaEntraDtp.Size = new Size(216, 23);
@@ -227,7 +264,7 @@
             // horaSaliDtp
             // 
             horaSaliDtp.Format = DateTimePickerFormat.Time;
-            horaSaliDtp.Location = new Point(267, 102);
+            horaSaliDtp.Location = new Point(228, 98);
             horaSaliDtp.Margin = new Padding(3, 2, 3, 2);
             horaSaliDtp.Name = "horaSaliDtp";
             horaSaliDtp.Size = new Size(216, 23);
@@ -247,7 +284,7 @@
             limpiarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             limpiarBtn.IconColor = Color.Black;
             limpiarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            limpiarBtn.Location = new Point(630, 126);
+            limpiarBtn.Location = new Point(829, 132);
             limpiarBtn.Margin = new Padding(3, 2, 3, 2);
             limpiarBtn.Name = "limpiarBtn";
             limpiarBtn.Size = new Size(102, 21);
@@ -327,11 +364,11 @@
             // infoLb
             // 
             infoLb.AutoSize = true;
-            infoLb.Location = new Point(48, 7);
+            infoLb.Location = new Point(16, 9);
             infoLb.Name = "infoLb";
-            infoLb.Size = new Size(108, 15);
+            infoLb.Size = new Size(144, 15);
             infoLb.TabIndex = 6;
-            infoLb.Text = "DATOS ASISTENCIA";
+            infoLb.Text = "CONTROL DE ASISTENCIA";
             // 
             // label11
             // 
@@ -350,6 +387,7 @@
             inasisDgv.Name = "inasisDgv";
             inasisDgv.Size = new Size(1153, 79);
             inasisDgv.TabIndex = 9;
+            inasisDgv.CellClick += inasisDgv_CellClick;
             // 
             // tableLayoutPanel3
             // 
@@ -377,6 +415,7 @@
             asistenciasDgv.Name = "asistenciasDgv";
             asistenciasDgv.Size = new Size(1153, 83);
             asistenciasDgv.TabIndex = 10;
+            asistenciasDgv.CellClick += asistenciasDgv_CellClick;
             // 
             // F4Asistencias
             // 
@@ -391,6 +430,8 @@
             Load += F4Asistencias_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel4.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
@@ -439,5 +480,8 @@
         private DataGridView inasisDgv;
         private TableLayoutPanel tableLayoutPanel3;
         private DataGridView asistenciasDgv;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Label registroLb;
+        private ComboBox registroCb;
     }
 }

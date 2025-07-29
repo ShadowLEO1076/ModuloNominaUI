@@ -30,6 +30,7 @@ namespace WinModuloNomina.Vista
         private async void F2Empleados_Load(object sender, EventArgs e)
         {
             await CargarEmpleados();
+            await CargarEmpleadosInactivos();
             await CargarPuesto();
             CargarGenero();
             //limitacíon de caracteres, los métodos están al final del todo
@@ -52,8 +53,8 @@ namespace WinModuloNomina.Vista
         private async void crearBtn_Click(object sender, EventArgs e)
         {
             var empleado = new Empleados();
-            
-            
+
+
             //validación de campos lleno
             if
             (string.IsNullOrWhiteSpace(nombresTxt.Text) || string.IsNullOrWhiteSpace(apellidosTxt.Text) || string.IsNullOrEmpty(cedulaTxt.Text)
@@ -130,6 +131,48 @@ namespace WinModuloNomina.Vista
             await CargarEmpleados();
         }
 
+        private void empleadosInacDgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < empleadosInacDgv.Rows.Count)
+                {
+                    var empleadoSeleccionado = empleadosInacDgv.Rows[e.RowIndex].DataBoundItem as Empleados;
+
+                    if (empleadoSeleccionado != null)
+                    {
+                        idEmplTxt.Text = empleadoSeleccionado.IdEmpleado.ToString();
+                        nombresTxt.Text = empleadoSeleccionado.Nombres;
+                        apellidosTxt.Text = empleadoSeleccionado.Apellidos;
+                        cedulaTxt.Text = empleadoSeleccionado.Cedula;
+                        correoTxt.Text = empleadoSeleccionado.Correo;
+                        fecIngresoDtp.Value = empleadoSeleccionado.FechaIngreso.ToDateTime(TimeOnly.MinValue);
+
+                        if (_generos.ContainsValue(empleadoSeleccionado.Genero))
+                        {
+                            generoCb.SelectedValue = empleadoSeleccionado.Genero;
+                        }
+                        else
+                        {
+                            generoCb.SelectedIndex = -1;
+                        }
+
+                        telfTxt.Text = empleadoSeleccionado.Telefono;
+                        fechaNacDtp.Value = empleadoSeleccionado.FechaNacimiento.ToDateTime(TimeOnly.MinValue);
+                        puestosCb.SelectedValue = empleadoSeleccionado.PuestoId;
+                        estadoCheckbox.Checked = empleadoSeleccionado.Estado;
+                    }
+
+                    editarBtn.Enabled = true;
+                    crearBtn.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al cargar el empleado: favor editar los datos.");
+            }
+        }
+
         private void empleadosDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -148,13 +191,13 @@ namespace WinModuloNomina.Vista
                         fecIngresoDtp.Value = empleadoSeleccionado.FechaIngreso.ToDateTime(TimeOnly.MinValue);
 
                         if (_generos.ContainsValue(empleadoSeleccionado.Genero))
-                          {
+                        {
                             generoCb.SelectedValue = empleadoSeleccionado.Genero;
-                          }
+                        }
                         else
-                          {
+                        {
                             generoCb.SelectedIndex = -1;
-                          }
+                        }
 
                         telfTxt.Text = empleadoSeleccionado.Telefono;
                         fechaNacDtp.Value = empleadoSeleccionado.FechaNacimiento.ToDateTime(TimeOnly.MinValue);
@@ -319,14 +362,28 @@ namespace WinModuloNomina.Vista
 
         public void CargarGenero()
         {
-
-
             generoCb.DataSource = new BindingSource(_generos, null);
 
             generoCb.DisplayMember = "Key";
             generoCb.ValueMember = "Value";
             generoCb.SelectedIndex = -1;
         }
+
+        public async Task CargarEmpleadosInactivos()
+        {
+            try
+            {
+                var empleados = await _api.GetAsync<List<Empleados>>("EmpleadosControlador/ObtenerTodosInactivosAsync");
+                empleadosInacDgv.DataSource = empleados;
+                empleadosDgv.Columns["Estado"].ReadOnly = true;
+                empleadosDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los datos : {ex.Message}");
+            }
+        }
+
         public async Task CargarEmpleados()
         {
             try
@@ -375,6 +432,8 @@ namespace WinModuloNomina.Vista
             }
 
         }
+
+       
     }
 }
 

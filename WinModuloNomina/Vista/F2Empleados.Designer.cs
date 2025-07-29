@@ -472,6 +472,7 @@
             empleadosInacDgv.RowHeadersWidth = 51;
             empleadosInacDgv.Size = new Size(940, 104);
             empleadosInacDgv.TabIndex = 9;
+            empleadosInacDgv.CellClick += empleadosInacDgv_CellClick;
             // 
             // F2Empleados
             // 
