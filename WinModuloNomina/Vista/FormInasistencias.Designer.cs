@@ -1,6 +1,6 @@
 ﻿namespace WinModuloNomina.Vista
 {
-    partial class Inasistencias
+    partial class FormInasistencias
     {
         /// <summary>
         /// Required designer variable.

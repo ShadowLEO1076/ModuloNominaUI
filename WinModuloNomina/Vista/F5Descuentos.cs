@@ -102,7 +102,7 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                var inacistencia = await _api.GetAsync<List<Inasistencias>>("InasistenciasControlador/ObtenerTodosAsync");
+                var inacistencia = await _api.GetAsync<List<FormInasistencias>>("InasistenciasControlador/ObtenerTodosAsync");
                 dgvInasistencias.DataSource = inacistencia;
                 dgvInasistencias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }

@@ -104,7 +104,7 @@
             // 
             // licenciasBindingSource
             // 
-            licenciasBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.Licencias);
+            licenciasBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.LicenciasDTO);
             // 
             // idLicenciaDataGridViewTextBoxColumn
             // 

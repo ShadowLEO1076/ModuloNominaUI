@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinModuloNomina.Vista
 {
-    public partial class Inasistencias : Form
+    public partial class FormInasistencias : Form
     {
-        public Inasistencias()
+        public FormInasistencias()
         {
             InitializeComponent();
         }

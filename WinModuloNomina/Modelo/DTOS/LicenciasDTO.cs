@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Infraestructura.AccesoDatos;
 
-public partial class Licencias
+public partial class LicenciasDTO
 {
     public int IdLicencia { get; set; }
 

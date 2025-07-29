@@ -136,7 +136,7 @@ namespace WinModuloNomina.Vista
                         Estado = true
                     };
 
-                    await _api.PostAsync<Inasistencias>("InasistenciasControlador/AgregarAsync", inasistencia);
+                    await _api.PostAsync<FormInasistencias>("InasistenciasControlador/AgregarAsync", inasistencia);
                     await CargarAsistencias();
                     await CargarInasistencias();
                 }
@@ -246,7 +246,6 @@ namespace WinModuloNomina.Vista
 
                     await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
                     await CargarAsistencias();
-                    await CargarAsistencias();
                     await CargarInasistencias();
                 }
                 else if (registroCb.SelectedItem.ToString() == "Inasistencia")
@@ -263,7 +262,7 @@ namespace WinModuloNomina.Vista
                         Estado = true
                     };
 
-                    await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
+                    await _api.PutAsync<FormInasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
                     await CargarAsistencias();
                     await CargarInasistencias();
                 }
@@ -329,7 +328,7 @@ namespace WinModuloNomina.Vista
                         Estado = false
                     };
 
-                    await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
+                    await _api.PutAsync<FormInasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
                     await CargarAsistencias();
                     await CargarInasistencias();
                 }
@@ -409,7 +408,7 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                var datos = await _api.GetAsync<List<Licencias>>("LicenciaControlador/ObtenerTodosAsync");
+                var datos = await _api.GetAsync<List<LicenciasDTO>>("LicenciaControlador/ObtenerTodosAsync");
                 licenciaCb.DataSource = datos;
                 licenciaCb.ValueMember = "IdLicencia";
                 licenciaCb.DisplayMember = "Nombre";
