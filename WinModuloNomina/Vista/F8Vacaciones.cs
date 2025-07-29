@@ -58,7 +58,8 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al inicializar el formulario", ex);
+                MessageBox.Show("ERROR AL INICIAR EL FORMULARIO", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -88,14 +89,15 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                await CargarVacaciones();
+                
                 await CargarEmpleadosEnComboBox();
                 await CargarComboBoxEstado();
                 await ConfigurarGestionFechas();
+                await CargarVacaciones();
             }
             catch (Exception ex)
             {
-                MostrarError("Error al cargar los datos iniciales", ex);
+                MessageBox.Show("ERROR AL CARGAR LOS DATOS ADICIONALES");
             }
         }
 
@@ -138,7 +140,7 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al configurar las fechas", ex);
+                MessageBox.Show("ERROR AL CONFIGURAR FECHAS"); ;
             }
         }
         private void CalcularDiasSolicitados()
@@ -153,14 +155,14 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al calcular días solicitados", ex, false);
+                MessageBox.Show("ERROR AL CALCULAR LOS DIAS SOLICITADOS");
             }
         }
         public async Task CargarVacaciones()
         {
             try
             {
-                var solicitudes = await _apimodulonomina.ObtenerResumenSolicitudesVacaciones<List<SolicitudVacacionDTO>>("SolicitudVacacionesControlador/ObtenerResumenSolicitudes");
+                var solicitudes = await _apimodulonomina.GetAsync<List<SolicitudVacacionDTO>>("SolicitudVacacionesControlador/ObtenerResumenSolicitudes");
 
                 // Convertir a DataTable
                 DataTable dtSolicitudes = ToDataTable(solicitudes);
@@ -174,7 +176,7 @@ namespace WinModuloNomina.Vista
                 }
 
                 // Cargar las otras grids (sin cambios)
-                var aprovados = await _apimodulonomina.GetAsync<List<EmpleadosVacacionesTotales>>("EmpleadoVacacionesTotalesControlador/resumen-vacaciones");
+                //var aprovados = await _apimodulonomina.GetAsync<List<EmpleadosVacacionesTotales>>("EmpleadoVacacionesTotalesControlador/resumen-vacaciones");
                 var revisiones = await _apimodulonomina.GetAsync<List<AprobacionVacaciones>>("AprovacionVacacionesControlador/ListarAprobacionesVacaciones");
 
                 //dgvAprovados.DataSource = aprovados;
@@ -186,7 +188,7 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al cargar las vacaciones", ex);
+                MessageBox.Show("ERROR AL CARGAR LAS VACACIONES");
             }
         }
         private async Task CargarComboBoxEstado()
@@ -201,7 +203,7 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al cargar estados", ex);
+                MessageBox.Show("ERROR AL CARGAR LOS ESTADOS");
             }
         }
         public async Task CargarEmpleadosEnComboBox()
@@ -224,7 +226,7 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al cargar empleados", ex);
+                MessageBox.Show("ERROR AL CARGAR LOS EMPLEADOS");
             }
         }
         private void txtBuscar2_TextChanged(object sender, EventArgs e)
@@ -248,7 +250,7 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al buscar", ex, false);
+                MessageBox.Show("ERROR AL BUSCAR");
             }
         }
         private void dataRevisionV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -301,17 +303,17 @@ namespace WinModuloNomina.Vista
             catch (ArgumentOutOfRangeException argEx)
             {
                 txtidAprovacion.Text = string.Empty;
-                MostrarError("Error de rango al seleccionar revisión", argEx, false);
+                MessageBox.Show("ERROR DEL RRANGO AL SELECCIONAR REVISION");
             }
             catch (NullReferenceException nullEx)
             {
                 txtidAprovacion.Text = string.Empty;
-                MostrarError("Referencia nula al seleccionar revisión", nullEx, false);
+                MessageBox.Show("REFERENCIA NULA AL SELECCIONAR REVISION");
             }
             catch (Exception ex)
             {
                 txtidAprovacion.Text = string.Empty;
-                MostrarError("Error inesperado al seleccionar revisión", ex, false);
+                MessageBox.Show("ERROR INESPERADO AL SELECCIONAR REVISION");
             }
         }
         private void dgvSolicitudes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -342,7 +344,7 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al seleccionar solicitud", ex, false);
+                MessageBox.Show("ERROR AL SELECCIONAR LA SOLICITUD");
             }
         }
         // Métodos auxiliares para dividir la funcionalidad
@@ -390,8 +392,8 @@ namespace WinModuloNomina.Vista
         }
         private void ShowDateAdjustmentMessage(DateTime fecha, string tipoFecha, string comparacion)
         {
-            MessageBox.Show($"La fecha de {tipoFecha} ({fecha:dd/MM/yyyy}) es {comparacion} a la permitida. Se ajustó automáticamente.",
-                          "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            /*MessageBox.Show($"La fecha de {tipoFecha} ({fecha:dd/MM/yyyy}) es {comparacion} a la permitida. Se ajustó automáticamente.",
+                          "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
         }
         private void HighlightSelectedRow(DataGridViewRow selectedRow)
         {
@@ -412,7 +414,7 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al cambiar fecha de inicio", ex, false);
+                MessageBox.Show("ERROR AL CAMBIAR FECHA DE INICIO");
             }
         }
         private void dateFin_ValueChanged(object sender, EventArgs e)
@@ -427,7 +429,7 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al cambiar fecha de fin", ex, false);
+                MessageBox.Show("ERROR AL CAMBIAR FECHA DE FIN");
             }
         }
 
@@ -559,11 +561,11 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al limpiar formulario", ex, false);
+                MessageBox.Show("ERROR AL LIMPIAR EL FORMULARIO");
             }
         }
 
-        private void MostrarError(string mensaje, Exception ex, bool esCritico = true)
+        /*private void MostrarError(string mensaje, Exception ex, bool esCritico = true)
         {
             string mensajeCompleto = $"{mensaje}: {ex.Message}";
 
@@ -578,36 +580,64 @@ namespace WinModuloNomina.Vista
 
             // Loggear el error (podrías implementar un sistema de logging aquí)
             Console.WriteLine($"{DateTime.Now}: {mensajeCompleto}\n{ex.StackTrace}");
-        }
+        }*/
 
         private async void btnBorrar_Click(object sender, EventArgs e)
         {
             try
             {
-                try
+                if (!UsuarioSesion.EsAdministrador)
                 {
-                    int idsolicitud = int.Parse(txtIdSVacacion.Text);
-                    await _apimodulonomina.DeleteAsync($"SolicitudVacacionesControlador/EliminarSolicitudVacaciones/{idsolicitud}");
-                    MessageBox.Show("solicitud eliminado exitosamente.");
+                    MessageBox.Show("Solo el administrador puede aprobar solicitudes",
+                                  "Permiso denegado",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Warning);
+                    return;
+                }
+                
 
-                }
-                catch (Exception ex)
+
+
+                int idsolicitud = int.Parse(txtIdSVacacion.Text);
+                string nuevoEstado = cbxEstado.Text;
+                string estadoAnterior = "";
+                var solicitudActual = await _apimodulonomina.GetAsync<SolicitudVacaciones>($"SolicitudVacacionesControlador/BuscarPorId/{idsolicitud}");
+                estadoAnterior = solicitudActual?.Estado ?? "";
+                var solicitud4 = new SolicitudVacaciones
                 {
-                    MessageBox.Show($"Error al eliminar el solicitud: {ex.Message}");
+                    IdSolicitud = idsolicitud,
+                    EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
+                    FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
+                    FechaFin = DateOnly.FromDateTime(dateFin.Value),
+                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
+                    Estado = "Rechazado",
+                    FechaCreacion = solicitudActual?.FechaCreacion ?? DateTime.Now.Date
+                };
+                await _apimodulonomina.PutAsync<SolicitudVacaciones>("SolicitudVacacionesControlador/ActualizarSolicitudVacaciones", solicitud4);
+                if (!int.TryParse(txtidAprovacion.Text.Trim(), out int idaprovacion))
+                {
+                    MessageBox.Show("El ID de aprobación no es válido",
+                                  "Error",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error);
+                    return;
                 }
+                await _apimodulonomina.DeleteAsync($"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
+                MessageBox.Show("solicitud eliminado exitosamente.");
                 await CargarVacaciones();
 
 
             }
             catch (Exception ex)
             {
-                MostrarError("Error al eliminar solicitud", ex);
+                MessageBox.Show("ERROR AL ELIMINAR LA SOLICITUD");
             }
 
 
         }
         private async void btnEditar_Click(object sender, EventArgs e)
         {
+            
 
             try
             {
@@ -779,11 +809,11 @@ namespace WinModuloNomina.Vista
             }
             catch (Exception ex)
             {
-                MostrarError("Error al editar solicitud aca", ex);
+                MessageBox.Show("ERROR AL EDITAR LA SOLICITUD");
             }
         }
 
-        private async void btnEliminarA_Click(object sender, EventArgs e)
+        /*private async void btnEliminarA_Click(object sender, EventArgs e)
         {
 
 
@@ -804,7 +834,7 @@ namespace WinModuloNomina.Vista
                 if (!int.TryParse(txtidAprovacion.Text.Trim(), out int idaprovacion))
                 {
                     MessageBox.Show("El ID de aprobación no es válido",
-                                  "Error",
+                                  "Error Seleccione en la tabla",
                                   MessageBoxButtons.OK,
                                   MessageBoxIcon.Error);
                     return;
@@ -820,17 +850,49 @@ namespace WinModuloNomina.Vista
 
                 // Eliminar usando el ID directamente en la URL
                 await _apimodulonomina.DeleteAsync($"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
+                if (!UsuarioSesion.EsAdministrador)
+                {
+                    MessageBox.Show("Solo el administrador puede aprobar solicitudes",
+                                  "Permiso denegado",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Warning);
+                    return;
+                }
+       
+
+                int idsolicitud = int.Parse(txtIdSVacacion.Text);
+                string nuevoEstado = cbxEstado.Text;
+                string estadoAnterior = "";
+                var solicitudActual = await _apimodulonomina.GetAsync<SolicitudVacaciones>($"SolicitudVacacionesControlador/BuscarPorId/{idsolicitud}");
+                estadoAnterior = solicitudActual?.Estado ?? "";
+                var solicitud5 = new SolicitudVacaciones
+                {
+                    IdSolicitud = idsolicitud,
+                    EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
+                    FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
+                    FechaFin = DateOnly.FromDateTime(dateFin.Value),
+                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
+                    Estado = "Pendiente",
+                    FechaCreacion = solicitudActual?.FechaCreacion ?? DateTime.Now.Date
+                };
+
+                await _apimodulonomina.PutAsync<SolicitudVacaciones>("SolicitudVacacionesControlador/ActualizarSolicitudVacaciones", solicitud5);
+                MessageBox.Show("solicitud eliminado exitosamente.");
+
+
+                await CargarVacaciones();
+
 
             }
             catch (Exception ex)
             {
-                MostrarError("Error al eliminar aprobación", ex);
+                MessageBox.Show("ERROR AL ELIMINAR APROVACION");
             }
             finally
             {
                 await CargarVacaciones(); // Actualizar la vista siempre
             }
-        }
+        }*/
 
         private void dgvSolicitudes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

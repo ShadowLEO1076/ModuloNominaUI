@@ -122,7 +122,7 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                var contratos = await _apimodulonomina.ObtenerResumenSolicitudesVacaciones<List<ContratosDTO>>("ContratosControlador/ObtenerContratosCompletos");
+                var contratos = await _apimodulonomina.GetAsync<List<ContratosDTO>>("ContratosControlador/ObtenerContratosCompletos");
 
                 // Convertir a DataTable
                 DataTable dtContratos = ToDataTable(contratos);
@@ -679,19 +679,26 @@ namespace WinModuloNomina.Vista
 
         private async void btnBorrarContrato_Click(object sender, EventArgs e)
         {
+            // Validar cambio de estado a "Finalizado" si no es administrador
+          
+            if (!UsuarioSesion.EsAdministrador)
+            {
+                MessageBox.Show("Solo el administrador puede finalizar contratos", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (string.IsNullOrWhiteSpace(txtIdContrato.Text))
             {
-                MessageBox.Show("Seleccione un contrato para editar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un contrato para Finalizar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Validar campos obligatorios
-            if (cbEmpleado.SelectedItem == null || cbTipoContrato.SelectedItem == null ||
+            /*if (cbEmpleado.SelectedItem == null || cbTipoContrato.SelectedItem == null ||
                 string.IsNullOrWhiteSpace(txtSalario.Text) || string.IsNullOrWhiteSpace(cbEstadoContrato.Text))
             {
                 MessageBox.Show("Complete todos los campos obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
+            }*/
 
             // Convertir el ID a entero de forma segura
             if (!int.TryParse(txtIdContrato.Text.Trim(), out int idContrato))
@@ -700,13 +707,7 @@ namespace WinModuloNomina.Vista
                 return;
             }
 
-            // Validar cambio de estado a "Finalizado" si no es administrador
-            string nuevoEstado = cbEstadoContrato.Text;
-            if (nuevoEstado == "Finalizado" && !UsuarioSesion.EsAdministrador)
-            {
-                MessageBox.Show("Solo el administrador puede finalizar contratos", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            
 
             // Obtener el contrato actual para mantener datos de creación
             var contratoActual = await _apimodulonomina.GetAsync<Contratos>($"ContratosControlador/BuscarPorId/{idContrato}");

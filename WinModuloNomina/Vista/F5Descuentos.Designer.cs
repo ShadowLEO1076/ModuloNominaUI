@@ -57,7 +57,6 @@
             empleadoIdDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             licenciaIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fechaDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            diasContadosDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             inasistenciasBindingSource = new BindingSource(components);
             panel3 = new Panel();
             label2 = new Label();
@@ -382,7 +381,7 @@
             dgvInasistencias.AutoGenerateColumns = false;
             dgvInasistencias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvInasistencias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInasistencias.Columns.AddRange(new DataGridViewColumn[] { idInasistenciaDataGridViewTextBoxColumn, empleadoIdDataGridViewTextBoxColumn1, licenciaIdDataGridViewTextBoxColumn, fechaDataGridViewTextBoxColumn1, diasContadosDataGridViewTextBoxColumn });
+            dgvInasistencias.Columns.AddRange(new DataGridViewColumn[] { idInasistenciaDataGridViewTextBoxColumn, empleadoIdDataGridViewTextBoxColumn1, licenciaIdDataGridViewTextBoxColumn, fechaDataGridViewTextBoxColumn1 });
             dgvInasistencias.DataSource = inasistenciasBindingSource;
             dgvInasistencias.Dock = DockStyle.Fill;
             dgvInasistencias.FilterAndSortEnabled = true;
@@ -428,14 +427,6 @@
             fechaDataGridViewTextBoxColumn1.MinimumWidth = 24;
             fechaDataGridViewTextBoxColumn1.Name = "fechaDataGridViewTextBoxColumn1";
             fechaDataGridViewTextBoxColumn1.SortMode = DataGridViewColumnSortMode.Programmatic;
-            // 
-            // diasContadosDataGridViewTextBoxColumn
-            // 
-            diasContadosDataGridViewTextBoxColumn.DataPropertyName = "DiasContados";
-            diasContadosDataGridViewTextBoxColumn.HeaderText = "DiasContados";
-            diasContadosDataGridViewTextBoxColumn.MinimumWidth = 24;
-            diasContadosDataGridViewTextBoxColumn.Name = "diasContadosDataGridViewTextBoxColumn";
-            diasContadosDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             // 
             // inasistenciasBindingSource
             // 
@@ -635,16 +626,15 @@
         private Label label1;
         private Label label2;
         private Zuby.ADGV.AdvancedDataGridView dgvInasistencias;
-        private DataGridViewTextBoxColumn idInasistenciaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn empleadoIdDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn licenciaIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn diasContadosDataGridViewTextBoxColumn;
         private Label label3;
         private TextBox textBox1;
         private ComboBox tipoTxt;
         private ComboBox idEmpleadoCb;
         private Label label4;
         private NumericUpDown montoTxt;
+        private DataGridViewTextBoxColumn idInasistenciaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn empleadoIdDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn licenciaIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn1;
     }
 }

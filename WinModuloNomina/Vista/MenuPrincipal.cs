@@ -33,7 +33,7 @@ namespace WinModuloNomina.Vista
         {
             InitializeComponent();
             random = new Random();
-            panelMenu.Width = 77;
+            panelMenu.Width = 230;
 
             // Configuración inicial
             labelTitulo.Text = "HOME S.NOMINA";
@@ -84,32 +84,56 @@ namespace WinModuloNomina.Vista
 
         private async void OpenChildForm(Form childForm, string title)
         {
-            // Cerrar el formulario activo si existe
-            if (activeForm != null)
+            try
             {
-                activeForm.Close();
-            }
+                // Verificar si el nuevo formulario ya está abierto
+                if (activeForm != null && activeForm.GetType() == childForm.GetType() && !activeForm.IsDisposed)
+                {
+                    activeForm.BringToFront();
+                    return;
+                }
 
-            // Configurar el nuevo formulario
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            panelEscritorio.Controls.Add(childForm);
-            panelEscritorio.Tag = childForm;
+                // Cerrar el formulario activo si existe y no es el formulario principal
+                if (activeForm != null && activeForm != this && !activeForm.IsDisposed)
+                {
+                    activeForm.Close();
+                    // Esperar un poco para que se cierre correctamente
+                    await Task.Delay(100);
+                }
 
-            // Actualizar el título
-            labelTitulo.Text = title;
-            //labelTitulo.ForeColor = iconDefaultColor;
+                // Configurar el nuevo formulario
+                activeForm = childForm;
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
 
-            // Mostrar el formulario
-            childForm.BringToFront();
-            await Task.Delay(500);
-            this.BeginInvoke((Action)(() =>
-            {
+                // Limpiar controles existentes
+                panelEscritorio.Controls.Clear();
+
+                panelEscritorio.Controls.Add(childForm);
+                panelEscritorio.Tag = childForm;
+
+                // Actualizar el título
+                labelTitulo.Text = title;
+
+                // Mostrar el formulario
+                childForm.BringToFront();
+
+                // Pequeña animación opcional
+                childForm.Opacity = 0;
                 childForm.Show();
-            }));
 
+                for (int i = 0; i < 10; i++)
+                {
+                    await Task.Delay(20);
+                    childForm.Opacity += 0.1;
+                }
+                childForm.Opacity = 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir el formulario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #endregion
