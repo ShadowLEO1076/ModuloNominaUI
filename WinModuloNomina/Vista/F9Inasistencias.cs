@@ -59,23 +59,23 @@ namespace WinModuloNomina.Vista
         private DataTable ToDataTable<T>(IEnumerable<T> data)
         {
             PropertyDescriptorCollection props = TypeDescriptor.GetProperties(typeof(T));
-            DataTable table2 = new DataTable();
+            DataTable table = new DataTable();
 
             foreach (PropertyDescriptor prop in props)
             {
-                table2.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
             }
 
             foreach (T item in data)
             {
-                DataRow row = table2.NewRow();
+                DataRow row = table.NewRow();
                 foreach (PropertyDescriptor prop in props)
                 {
                     row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
                 }
-                table2.Rows.Add(row);
+                table.Rows.Add(row);
             }
-            return table2;
+            return table;
         }
 
         public async Task CargarInasistencias()
@@ -83,12 +83,12 @@ namespace WinModuloNomina.Vista
 
             try
             {
-                var inacistencia = await _apimodulonomina.GetAsync<List<InasistenciasFormDTO>>("InasistenciasControlador/ObtenerTodasActivasInasistenciasFormDTO/");
+                var inacistencia = await _apimodulonomina.GetAsync<List<InasistenciasFormDTO>>("InasistenciasControlador/ObtenerTodasActivasInasistenciasFormDTO");
 
                 // Convertir a DataTable
                 DataTable dtInacistencias = ToDataTable(inacistencia);
                 bindingSource2.DataSource = dtInacistencias;
-                //bindingSource1.Filter = "Remunerable = 'False'";
+                bindingSource2.Filter = "Remunerable = 'False'";
                 dgvInasistenciasL.DataSource = bindingSource2;
 
                 // Configurar modo de orden para cada columna
