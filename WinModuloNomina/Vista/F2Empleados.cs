@@ -101,11 +101,21 @@ namespace WinModuloNomina.Vista
                 return;
             }
 
+            //verificación de empleado ya existente
             var existente = await _api.GetAsync<Empleados>($"EmpleadosControlador/ObtenerEmpleadoPorCedula/{cedulaTxt.Text}");
 
             if (existente != null)
             {
                 MessageBox.Show("Actualmente ya existe un empleado ingresado con esta cédula.");
+                return;
+            }
+
+            
+            // Verificar si la cédula ya está registrada
+            var correoExiste = await _api.GetAsync<bool>($"EmpleadosControlador/VerificarCorreoElectronico/{correoTxt.Text}");
+            if (correoExiste != null && correoExiste == true)
+            {
+                MessageBox.Show("Este correo electrónico ya está registrado en otro empleado.");
                 return;
             }
 
