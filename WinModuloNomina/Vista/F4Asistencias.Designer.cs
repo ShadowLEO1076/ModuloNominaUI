@@ -30,6 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            nomEmpleLb2 = new Label();
+            nombreEmpleadoLbl = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
             registroLb = new Label();
             registroCb = new ComboBox();
@@ -37,7 +39,6 @@
             licenciaLb = new Label();
             licenciaCb = new ComboBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            idAsisTxt = new TextBox();
             empleLb = new Label();
             fecLb = new Label();
             entradaLb = new Label();
@@ -47,6 +48,7 @@
             horaEntraDtp = new DateTimePicker();
             horaSaliDtp = new DateTimePicker();
             asisLb = new Label();
+            idAsisTxt = new TextBox();
             limpiarBtn = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
             EliminarBtn = new FontAwesome.Sharp.IconButton();
@@ -72,6 +74,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(nomEmpleLb2);
+            panel1.Controls.Add(nombreEmpleadoLbl);
             panel1.Controls.Add(tableLayoutPanel4);
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Controls.Add(tableLayoutPanel1);
@@ -85,6 +89,24 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1159, 166);
             panel1.TabIndex = 2;
+            // 
+            // nomEmpleLb2
+            // 
+            nomEmpleLb2.AutoSize = true;
+            nomEmpleLb2.Location = new Point(252, 19);
+            nomEmpleLb2.Name = "nomEmpleLb2";
+            nomEmpleLb2.Size = new Size(107, 15);
+            nomEmpleLb2.TabIndex = 17;
+            nomEmpleLb2.Text = "Nombre Empleado";
+            nomEmpleLb2.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // nombreEmpleadoLbl
+            // 
+            nombreEmpleadoLbl.AutoSize = true;
+            nombreEmpleadoLbl.Location = new Point(477, 21);
+            nombreEmpleadoLbl.Name = "nombreEmpleadoLbl";
+            nombreEmpleadoLbl.Size = new Size(0, 15);
+            nombreEmpleadoLbl.TabIndex = 16;
             // 
             // tableLayoutPanel4
             // 
@@ -161,7 +183,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.2201271F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.77988F));
-            tableLayoutPanel1.Controls.Add(idAsisTxt, 1, 0);
             tableLayoutPanel1.Controls.Add(empleLb, 0, 1);
             tableLayoutPanel1.Controls.Add(fecLb, 0, 2);
             tableLayoutPanel1.Controls.Add(entradaLb, 0, 3);
@@ -171,7 +192,8 @@
             tableLayoutPanel1.Controls.Add(horaEntraDtp, 1, 3);
             tableLayoutPanel1.Controls.Add(horaSaliDtp, 1, 4);
             tableLayoutPanel1.Controls.Add(asisLb, 0, 0);
-            tableLayoutPanel1.Location = new Point(250, 29);
+            tableLayoutPanel1.Controls.Add(idAsisTxt, 1, 0);
+            tableLayoutPanel1.Location = new Point(249, 36);
             tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
@@ -188,15 +210,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tableLayoutPanel1.Size = new Size(450, 124);
             tableLayoutPanel1.TabIndex = 3;
-            // 
-            // idAsisTxt
-            // 
-            idAsisTxt.Location = new Point(228, 2);
-            idAsisTxt.Margin = new Padding(3, 2, 3, 2);
-            idAsisTxt.Name = "idAsisTxt";
-            idAsisTxt.ReadOnly = true;
-            idAsisTxt.Size = new Size(216, 23);
-            idAsisTxt.TabIndex = 7;
             // 
             // empleLb
             // 
@@ -242,6 +255,7 @@
             empleCb.Name = "empleCb";
             empleCb.Size = new Size(216, 23);
             empleCb.TabIndex = 25;
+            empleCb.SelectedIndexChanged += EmpleCb_SelectedIndexChanged;
             // 
             // fecAsisDtp
             // 
@@ -278,6 +292,15 @@
             asisLb.Size = new Size(74, 15);
             asisLb.TabIndex = 7;
             asisLb.Text = "ID Asistencia";
+            // 
+            // idAsisTxt
+            // 
+            idAsisTxt.Location = new Point(228, 2);
+            idAsisTxt.Margin = new Padding(3, 2, 3, 2);
+            idAsisTxt.Name = "idAsisTxt";
+            idAsisTxt.ReadOnly = true;
+            idAsisTxt.Size = new Size(216, 23);
+            idAsisTxt.TabIndex = 7;
             // 
             // limpiarBtn
             // 
@@ -483,5 +506,7 @@
         private TableLayoutPanel tableLayoutPanel4;
         private Label registroLb;
         private ComboBox registroCb;
+        private Label nomEmpleLb2;
+        private Label nombreEmpleadoLbl;
     }
 }

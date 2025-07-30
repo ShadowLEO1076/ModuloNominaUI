@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -36,12 +37,18 @@ namespace WinModuloNomina.Vista
             await CargarLicencias();
             CargarRegistros();
             //inicia así para que no se pueda actualizar nada
+            empleCb.SelectedIndex = -1;
+            nombreEmpleadoLbl.Text = "Seleccione un empleado";
             registroCb.SelectedIndex = 0;
+            horaEntraDtp.Enabled = false;
+            horaSaliDtp.Enabled = false;
             actualizarBtn.Enabled = false;
             EliminarBtn.Enabled = false;
             horaEntraDtp.Format = DateTimePickerFormat.Time;
             horaSaliDtp.Format = DateTimePickerFormat.Time;
             fecAsisDtp.Value = DateTime.Now;
+            horaEntraDtp.Value = DateTime.Now;
+            horaSaliDtp.Value = DateTime.Now;
         }
         private async void ingresarBtn_Click(object sender, EventArgs e)
         {
@@ -206,6 +213,7 @@ namespace WinModuloNomina.Vista
                 ingresarBtn.Enabled = false;
                 empleCb.Enabled = false;
                 fecAsisDtp.Enabled = false;
+                horaSaliDtp.Enabled = false;
 
                 await CargarAsistencias();
                 await CargarInasistencias();
@@ -336,6 +344,43 @@ namespace WinModuloNomina.Vista
             catch
             {
                 MessageBox.Show("Error al eliminar registro, verifique que los datos sean correctos");
+            }
+        }
+
+        private async void EmpleCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (empleCb.SelectedIndex == -1)
+                    return;
+
+                    if (empleCb.SelectedItem is Empleados emp)
+                    {
+                        string empleCedula = emp.Cedula;
+
+                        var contrato = await _api.GetAsync<Contratos>($"ContratosControlador/ObtenerContratoActivoPorCedulaAsync/{empleCedula}");
+
+                        if (contrato == null)
+                        {
+                            MessageBox.Show("El empleado no tiene contrato activo.");
+                            return;
+                        }
+
+                        double HoraJorDecimales = (double)contrato.HorasJornada;
+
+                        DateTime horaEntrada = DateTime.Now;
+                        DateTime horaSalida = horaEntrada.AddHours(HoraJorDecimales);
+
+                        horaEntraDtp.Value = horaEntrada;
+                        horaSaliDtp.Value = horaSalida;
+
+                        nombreEmpleadoLbl.Text = $"{emp.Nombres} {emp.Apellidos}";
+                    }
+                
+            }
+            catch
+            {
+                MessageBox.Show("Error al cargar de empleados.");
             }
         }
 

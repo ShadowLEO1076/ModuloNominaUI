@@ -54,6 +54,7 @@
             generoCb = new ComboBox();
             limpiarBtn = new Button();
             panel1 = new Panel();
+            label1 = new Label();
             panel2 = new Panel();
             txtBuscar = new TextBox();
             editarBtn = new FontAwesome.Sharp.IconButton();
@@ -112,7 +113,7 @@
             tablaEmpleados.Controls.Add(estadoCheckbox, 5, 2);
             tablaEmpleados.Controls.Add(generoCb, 3, 3);
             tablaEmpleados.Controls.Add(limpiarBtn, 5, 3);
-            tablaEmpleados.Location = new Point(18, 93);
+            tablaEmpleados.Location = new Point(39, 63);
             tablaEmpleados.Name = "tablaEmpleados";
             tablaEmpleados.RowCount = 4;
             tablaEmpleados.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
@@ -341,6 +342,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(tablaEmpleados);
             panel1.Dock = DockStyle.Top;
@@ -350,8 +352,18 @@
             panel1.Size = new Size(1093, 234);
             panel1.TabIndex = 2;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(39, 35);
+            label1.Name = "label1";
+            label1.Size = new Size(140, 15);
+            label1.TabIndex = 5;
+            label1.Text = "REGISTRO DE EMPLEADO";
+            // 
             // panel2
             // 
+            panel2.AutoSize = true;
             panel2.Controls.Add(txtBuscar);
             panel2.Controls.Add(editarBtn);
             panel2.Controls.Add(buscarBtn);
@@ -560,5 +572,6 @@
         private BindingSource empleadoDTOBindingSource;
         private TableLayoutPanel tableLayoutPanel1;
         private DataGridView empleadosInacDgv;
+        private Label label1;
     }
 }
