@@ -225,9 +225,17 @@ namespace WinModuloNomina.Vista
             }
         }
 
+        public void empleAutoCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (empleAutoCb.SelectedIndex == -1) return;
+
+            if(empleAutoCb.SelectedItem is Empleados emple)
+            {
+                empleNomLb1.Text = $"{emple.Nombres} {emple.Apellidos}";
+            }
+        }
+
         //codigo que no tiene que ver con la forma
-
-
 
         public void CargarMesesIngresoAuto()
         {

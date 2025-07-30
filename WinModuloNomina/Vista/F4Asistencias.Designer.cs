@@ -30,13 +30,13 @@
         {
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
-            nomEmpleLb2 = new Label();
-            nombreEmpleadoLbl = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
             registroLb = new Label();
             registroCb = new ComboBox();
             tableLayoutPanel2 = new TableLayoutPanel();
+            nomEmpleLb2 = new Label();
             licenciaLb = new Label();
+            nombreEmpleadoLbl = new Label();
             licenciaCb = new ComboBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             empleLb = new Label();
@@ -74,8 +74,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(nomEmpleLb2);
-            panel1.Controls.Add(nombreEmpleadoLbl);
             panel1.Controls.Add(tableLayoutPanel4);
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Controls.Add(tableLayoutPanel1);
@@ -89,24 +87,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1159, 166);
             panel1.TabIndex = 2;
-            // 
-            // nomEmpleLb2
-            // 
-            nomEmpleLb2.AutoSize = true;
-            nomEmpleLb2.Location = new Point(252, 19);
-            nomEmpleLb2.Name = "nomEmpleLb2";
-            nomEmpleLb2.Size = new Size(107, 15);
-            nomEmpleLb2.TabIndex = 17;
-            nomEmpleLb2.Text = "Nombre Empleado";
-            nomEmpleLb2.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // nombreEmpleadoLbl
-            // 
-            nombreEmpleadoLbl.AutoSize = true;
-            nombreEmpleadoLbl.Location = new Point(477, 21);
-            nombreEmpleadoLbl.Name = "nombreEmpleadoLbl";
-            nombreEmpleadoLbl.Size = new Size(0, 15);
-            nombreEmpleadoLbl.TabIndex = 16;
             // 
             // tableLayoutPanel4
             // 
@@ -143,18 +123,31 @@
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.5555573F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.44444F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 43.61702F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 56.38298F));
+            tableLayoutPanel2.Controls.Add(nomEmpleLb2, 0, 1);
             tableLayoutPanel2.Controls.Add(licenciaLb, 0, 0);
+            tableLayoutPanel2.Controls.Add(nombreEmpleadoLbl, 1, 1);
             tableLayoutPanel2.Controls.Add(licenciaCb, 1, 0);
-            tableLayoutPanel2.Location = new Point(720, 31);
+            tableLayoutPanel2.Location = new Point(718, 36);
             tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 23F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(211, 31);
+            tableLayoutPanel2.Size = new Size(282, 54);
             tableLayoutPanel2.TabIndex = 14;
+            // 
+            // nomEmpleLb2
+            // 
+            nomEmpleLb2.AutoSize = true;
+            nomEmpleLb2.Location = new Point(3, 31);
+            nomEmpleLb2.Name = "nomEmpleLb2";
+            nomEmpleLb2.Size = new Size(107, 15);
+            nomEmpleLb2.TabIndex = 17;
+            nomEmpleLb2.Text = "Nombre Empleado";
+            nomEmpleLb2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // licenciaLb
             // 
@@ -165,13 +158,21 @@
             licenciaLb.TabIndex = 29;
             licenciaLb.Text = "ID Licencia";
             // 
+            // nombreEmpleadoLbl
+            // 
+            nombreEmpleadoLbl.AutoSize = true;
+            nombreEmpleadoLbl.Location = new Point(126, 31);
+            nombreEmpleadoLbl.Name = "nombreEmpleadoLbl";
+            nombreEmpleadoLbl.Size = new Size(0, 15);
+            nombreEmpleadoLbl.TabIndex = 16;
+            // 
             // licenciaCb
             // 
             licenciaCb.FormattingEnabled = true;
-            licenciaCb.Location = new Point(78, 2);
+            licenciaCb.Location = new Point(126, 2);
             licenciaCb.Margin = new Padding(3, 2, 3, 2);
             licenciaCb.Name = "licenciaCb";
-            licenciaCb.Size = new Size(121, 23);
+            licenciaCb.Size = new Size(153, 23);
             licenciaCb.TabIndex = 29;
             // 
             // tableLayoutPanel1
@@ -216,9 +217,9 @@
             empleLb.AutoSize = true;
             empleLb.Location = new Point(3, 24);
             empleLb.Name = "empleLb";
-            empleLb.Size = new Size(60, 15);
+            empleLb.Size = new Size(100, 15);
             empleLb.TabIndex = 18;
-            empleLb.Text = "Empleado";
+            empleLb.Text = "Cédula Empleado";
             // 
             // fecLb
             // 
@@ -318,15 +319,16 @@
             // 
             // panel2
             // 
+            panel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel2.Controls.Add(EliminarBtn);
             panel2.Controls.Add(iconButton2);
             panel2.Controls.Add(actualizarBtn);
             panel2.Controls.Add(ingresarBtn);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(1035, 0);
+            panel2.Location = new Point(1043, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(124, 166);
+            panel2.Size = new Size(116, 166);
             panel2.TabIndex = 4;
             // 
             // EliminarBtn
@@ -334,7 +336,7 @@
             EliminarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             EliminarBtn.IconColor = Color.Black;
             EliminarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            EliminarBtn.Location = new Point(27, 92);
+            EliminarBtn.Location = new Point(16, 97);
             EliminarBtn.Margin = new Padding(3, 2, 3, 2);
             EliminarBtn.Name = "EliminarBtn";
             EliminarBtn.Size = new Size(72, 29);
@@ -348,20 +350,21 @@
             iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButton2.IconColor = Color.Black;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(27, 126);
+            iconButton2.Location = new Point(16, 136);
             iconButton2.Margin = new Padding(3, 2, 3, 2);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(72, 22);
             iconButton2.TabIndex = 10;
             iconButton2.Text = "Buscar";
             iconButton2.UseVisualStyleBackColor = true;
+            iconButton2.Visible = false;
             // 
             // actualizarBtn
             // 
             actualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             actualizarBtn.IconColor = Color.Black;
             actualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            actualizarBtn.Location = new Point(27, 61);
+            actualizarBtn.Location = new Point(16, 65);
             actualizarBtn.Margin = new Padding(3, 2, 3, 2);
             actualizarBtn.Name = "actualizarBtn";
             actualizarBtn.Size = new Size(72, 28);
@@ -375,7 +378,7 @@
             ingresarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             ingresarBtn.IconColor = Color.Black;
             ingresarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ingresarBtn.Location = new Point(27, 29);
+            ingresarBtn.Location = new Point(16, 34);
             ingresarBtn.Margin = new Padding(3, 2, 3, 2);
             ingresarBtn.Name = "ingresarBtn";
             ingresarBtn.Size = new Size(72, 28);
@@ -387,7 +390,7 @@
             // infoLb
             // 
             infoLb.AutoSize = true;
-            infoLb.Location = new Point(16, 9);
+            infoLb.Location = new Point(16, 18);
             infoLb.Name = "infoLb";
             infoLb.Size = new Size(144, 15);
             infoLb.TabIndex = 6;

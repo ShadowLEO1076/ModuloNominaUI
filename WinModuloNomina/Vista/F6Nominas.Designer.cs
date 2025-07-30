@@ -32,6 +32,8 @@ namespace WinModuloNomina.Vista
         {
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            empleNomLb1 = new Label();
+            empleNombrePresen = new Label();
             nominasIngeManuLb = new Label();
             limpiarBtn = new FontAwesome.Sharp.IconButton();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -82,6 +84,8 @@ namespace WinModuloNomina.Vista
             // panel1
             // 
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panel1.Controls.Add(empleNomLb1);
+            panel1.Controls.Add(empleNombrePresen);
             panel1.Controls.Add(nominasIngeManuLb);
             panel1.Controls.Add(limpiarBtn);
             panel1.Controls.Add(tableLayoutPanel1);
@@ -92,6 +96,23 @@ namespace WinModuloNomina.Vista
             panel1.Name = "panel1";
             panel1.Size = new Size(1114, 178);
             panel1.TabIndex = 2;
+            // 
+            // empleNomLb1
+            // 
+            empleNomLb1.AutoSize = true;
+            empleNomLb1.Location = new Point(791, 38);
+            empleNomLb1.Name = "empleNomLb1";
+            empleNomLb1.Size = new Size(0, 15);
+            empleNomLb1.TabIndex = 14;
+            // 
+            // empleNombrePresen
+            // 
+            empleNombrePresen.AutoSize = true;
+            empleNombrePresen.Location = new Point(662, 38);
+            empleNombrePresen.Name = "empleNombrePresen";
+            empleNombrePresen.Size = new Size(107, 15);
+            empleNombrePresen.TabIndex = 13;
+            empleNombrePresen.Text = "Nombre Empleado";
             // 
             // nominasIngeManuLb
             // 
@@ -108,7 +129,7 @@ namespace WinModuloNomina.Vista
             limpiarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             limpiarBtn.IconColor = Color.Black;
             limpiarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            limpiarBtn.Location = new Point(614, 112);
+            limpiarBtn.Location = new Point(742, 126);
             limpiarBtn.Margin = new Padding(3, 2, 3, 2);
             limpiarBtn.Name = "limpiarBtn";
             limpiarBtn.Size = new Size(163, 26);
@@ -119,6 +140,7 @@ namespace WinModuloNomina.Vista
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.AutoSize = true;
             tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutPanel1.ColumnCount = 4;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
@@ -141,7 +163,7 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel1.Controls.Add(mesAutoCb, 3, 1);
             tableLayoutPanel1.Controls.Add(anioNud, 1, 1);
             tableLayoutPanel1.Controls.Add(fecEmiDtp, 3, 2);
-            tableLayoutPanel1.Location = new Point(12, 23);
+            tableLayoutPanel1.Location = new Point(66, 38);
             tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
@@ -149,7 +171,7 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(566, 115);
+            tableLayoutPanel1.Size = new Size(592, 114);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // nominaLb
@@ -194,9 +216,9 @@ namespace WinModuloNomina.Vista
             idEmpleadoLb.AutoSize = true;
             idEmpleadoLb.Location = new Point(222, 0);
             idEmpleadoLb.Name = "idEmpleadoLb";
-            idEmpleadoLb.Size = new Size(60, 15);
+            idEmpleadoLb.Size = new Size(122, 15);
             idEmpleadoLb.TabIndex = 18;
-            idEmpleadoLb.Text = "Empleado";
+            idEmpleadoLb.Text = "Cédula  del Empleado";
             // 
             // salManTxt
             // 
@@ -255,7 +277,7 @@ namespace WinModuloNomina.Vista
             // descManTxt
             // 
             descManTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            descManTxt.Location = new Point(327, 89);
+            descManTxt.Location = new Point(350, 89);
             descManTxt.Margin = new Padding(3, 2, 3, 2);
             descManTxt.Name = "descManTxt";
             descManTxt.Size = new Size(239, 23);
@@ -264,15 +286,16 @@ namespace WinModuloNomina.Vista
             // empleAutoCb
             // 
             empleAutoCb.FormattingEnabled = true;
-            empleAutoCb.Location = new Point(327, 3);
+            empleAutoCb.Location = new Point(350, 3);
             empleAutoCb.Name = "empleAutoCb";
             empleAutoCb.Size = new Size(239, 23);
             empleAutoCb.TabIndex = 27;
+            empleAutoCb.SelectedIndexChanged += empleAutoCb_SelectedIndexChanged;
             // 
             // mesAutoCb
             // 
             mesAutoCb.FormattingEnabled = true;
-            mesAutoCb.Location = new Point(327, 32);
+            mesAutoCb.Location = new Point(350, 32);
             mesAutoCb.Name = "mesAutoCb";
             mesAutoCb.Size = new Size(239, 23);
             mesAutoCb.TabIndex = 28;
@@ -287,22 +310,21 @@ namespace WinModuloNomina.Vista
             // fecEmiDtp
             // 
             fecEmiDtp.Format = DateTimePickerFormat.Short;
-            fecEmiDtp.Location = new Point(327, 61);
+            fecEmiDtp.Location = new Point(350, 61);
             fecEmiDtp.Name = "fecEmiDtp";
             fecEmiDtp.Size = new Size(239, 23);
             fecEmiDtp.TabIndex = 30;
             // 
             // panel2
             // 
-            panel2.AutoSize = true;
             panel2.Controls.Add(eliminarBtn);
             panel2.Controls.Add(insertarBtn);
             panel2.Controls.Add(actualizarBtn);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(1017, 0);
+            panel2.Location = new Point(976, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(97, 178);
+            panel2.Size = new Size(138, 178);
             panel2.TabIndex = 4;
             // 
             // eliminarBtn
@@ -310,7 +332,7 @@ namespace WinModuloNomina.Vista
             eliminarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             eliminarBtn.IconColor = Color.Black;
             eliminarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            eliminarBtn.Location = new Point(12, 100);
+            eliminarBtn.Location = new Point(33, 131);
             eliminarBtn.Margin = new Padding(3, 2, 3, 2);
             eliminarBtn.Name = "eliminarBtn";
             eliminarBtn.Size = new Size(82, 22);
@@ -324,7 +346,7 @@ namespace WinModuloNomina.Vista
             insertarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             insertarBtn.IconColor = Color.Black;
             insertarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            insertarBtn.Location = new Point(12, 48);
+            insertarBtn.Location = new Point(33, 70);
             insertarBtn.Margin = new Padding(3, 2, 3, 2);
             insertarBtn.Name = "insertarBtn";
             insertarBtn.Size = new Size(82, 22);
@@ -338,7 +360,7 @@ namespace WinModuloNomina.Vista
             actualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             actualizarBtn.IconColor = Color.Black;
             actualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            actualizarBtn.Location = new Point(12, 74);
+            actualizarBtn.Location = new Point(33, 102);
             actualizarBtn.Margin = new Padding(3, 2, 3, 2);
             actualizarBtn.Name = "actualizarBtn";
             actualizarBtn.Size = new Size(82, 22);
@@ -351,6 +373,7 @@ namespace WinModuloNomina.Vista
             // 
             nominasActivasDgv.AutoGenerateColumns = false;
             nominasActivasDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            nominasActivasDgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             nominasActivasDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             nominasActivasDgv.Columns.AddRange(new DataGridViewColumn[] { idNominaDataGridViewTextBoxColumn, idEmpleadoDataGridViewTextBoxColumn, nombresApellidosDataGridViewTextBoxColumn, cedulaDataGridViewTextBoxColumn, salarioDataGridViewTextBoxColumn, horasJornadaDataGridViewTextBoxColumn, bonificacionesDataGridViewTextBoxColumn, descuentosDataGridViewTextBoxColumn, mesDataGridViewTextBoxColumn, anioDataGridViewTextBoxColumn, salarioNetoDataGridViewTextBoxColumn });
             nominasActivasDgv.DataSource = nominasDTOBindingSource;
@@ -533,5 +556,7 @@ namespace WinModuloNomina.Vista
         private DataGridViewTextBoxColumn anioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salarioNetoDataGridViewTextBoxColumn;
         private FontAwesome.Sharp.IconButton eliminarBtn;
+        private Label empleNomLb1;
+        private Label empleNombrePresen;
     }
 }

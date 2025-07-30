@@ -234,7 +234,7 @@ namespace WinModuloNomina.Vista
                 if (registroCb.SelectedItem.ToString() == "Asistencia")
                 {
                     //verificar que el día ingresado no sea mayor al actual
-                    
+
                     //verificar horas
                     if (TimeOnly.FromDateTime(horaSaliDtp.Value) <= TimeOnly.FromDateTime(horaEntraDtp.Value))
                     {
@@ -258,8 +258,8 @@ namespace WinModuloNomina.Vista
                 }
                 else if (registroCb.SelectedItem.ToString() == "Inasistencia")
                 {
-                   
-                    
+
+
                     var inasistencia = new Inasistencias
                     {
                         IdInasistencia = int.Parse(idAsisTxt.Text),
@@ -354,29 +354,29 @@ namespace WinModuloNomina.Vista
                 if (empleCb.SelectedIndex == -1)
                     return;
 
-                    if (empleCb.SelectedItem is Empleados emp)
+                if (empleCb.SelectedItem is Empleados emp)
+                {
+                    string empleCedula = emp.Cedula;
+
+                    var contrato = await _api.GetAsync<Contratos>($"ContratosControlador/ObtenerContratoActivoPorCedulaAsync/{empleCedula}");
+
+                    if (contrato == null)
                     {
-                        string empleCedula = emp.Cedula;
-
-                        var contrato = await _api.GetAsync<Contratos>($"ContratosControlador/ObtenerContratoActivoPorCedulaAsync/{empleCedula}");
-
-                        if (contrato == null)
-                        {
-                            MessageBox.Show("El empleado no tiene contrato activo.");
-                            return;
-                        }
-
-                        double HoraJorDecimales = (double)contrato.HorasJornada;
-
-                        DateTime horaEntrada = DateTime.Now;
-                        DateTime horaSalida = horaEntrada.AddHours(HoraJorDecimales);
-
-                        horaEntraDtp.Value = horaEntrada;
-                        horaSaliDtp.Value = horaSalida;
-
-                        nombreEmpleadoLbl.Text = $"{emp.Nombres} {emp.Apellidos}";
+                        MessageBox.Show("El empleado no tiene contrato activo.");
+                        return;
                     }
-                
+
+                    double HoraJorDecimales = (double)contrato.HorasJornada;
+
+                    DateTime horaEntrada = DateTime.Now;
+                    DateTime horaSalida = horaEntrada.AddHours(HoraJorDecimales);
+
+                    horaEntraDtp.Value = horaEntrada;
+                    horaSaliDtp.Value = horaSalida;
+
+                    nombreEmpleadoLbl.Text = $"{emp.Nombres} {emp.Apellidos}";
+                }
+
             }
             catch
             {
@@ -494,5 +494,7 @@ namespace WinModuloNomina.Vista
                 licenciaCb.Enabled = true;
             }
         }
+
+       
     }
 }
