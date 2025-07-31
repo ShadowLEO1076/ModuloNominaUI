@@ -72,6 +72,7 @@
             idInasistenciasDataGridViewTextBoxColumn.HeaderText = "IdInasistencias";
             idInasistenciasDataGridViewTextBoxColumn.MinimumWidth = 24;
             idInasistenciasDataGridViewTextBoxColumn.Name = "idInasistenciasDataGridViewTextBoxColumn";
+            idInasistenciasDataGridViewTextBoxColumn.ReadOnly = true;
             idInasistenciasDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             idInasistenciasDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -81,6 +82,7 @@
             empleadoIdDataGridViewTextBoxColumn.HeaderText = "EmpleadoId";
             empleadoIdDataGridViewTextBoxColumn.MinimumWidth = 24;
             empleadoIdDataGridViewTextBoxColumn.Name = "empleadoIdDataGridViewTextBoxColumn";
+            empleadoIdDataGridViewTextBoxColumn.ReadOnly = true;
             empleadoIdDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             empleadoIdDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -90,6 +92,7 @@
             nombresApellidosDataGridViewTextBoxColumn.HeaderText = "NombresApellidos";
             nombresApellidosDataGridViewTextBoxColumn.MinimumWidth = 24;
             nombresApellidosDataGridViewTextBoxColumn.Name = "nombresApellidosDataGridViewTextBoxColumn";
+            nombresApellidosDataGridViewTextBoxColumn.ReadOnly = true;
             nombresApellidosDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             nombresApellidosDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -99,6 +102,7 @@
             cedulaDataGridViewTextBoxColumn.HeaderText = "Cedula";
             cedulaDataGridViewTextBoxColumn.MinimumWidth = 24;
             cedulaDataGridViewTextBoxColumn.Name = "cedulaDataGridViewTextBoxColumn";
+            cedulaDataGridViewTextBoxColumn.ReadOnly = true;
             cedulaDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             cedulaDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -108,6 +112,7 @@
             fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
             fechaDataGridViewTextBoxColumn.MinimumWidth = 24;
             fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
+            fechaDataGridViewTextBoxColumn.ReadOnly = true;
             fechaDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             fechaDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -117,6 +122,7 @@
             estadoDataGridViewTextBoxColumn.HeaderText = "Estado";
             estadoDataGridViewTextBoxColumn.MinimumWidth = 24;
             estadoDataGridViewTextBoxColumn.Name = "estadoDataGridViewTextBoxColumn";
+            estadoDataGridViewTextBoxColumn.ReadOnly = true;
             estadoDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             estadoDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -126,6 +132,7 @@
             licenciaIdDataGridViewTextBoxColumn.HeaderText = "LicenciaId";
             licenciaIdDataGridViewTextBoxColumn.MinimumWidth = 24;
             licenciaIdDataGridViewTextBoxColumn.Name = "licenciaIdDataGridViewTextBoxColumn";
+            licenciaIdDataGridViewTextBoxColumn.ReadOnly = true;
             licenciaIdDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             licenciaIdDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -135,6 +142,7 @@
             nombreLicenciaDataGridViewTextBoxColumn.HeaderText = "NombreLicencia";
             nombreLicenciaDataGridViewTextBoxColumn.MinimumWidth = 24;
             nombreLicenciaDataGridViewTextBoxColumn.Name = "nombreLicenciaDataGridViewTextBoxColumn";
+            nombreLicenciaDataGridViewTextBoxColumn.ReadOnly = true;
             nombreLicenciaDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             nombreLicenciaDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -144,6 +152,7 @@
             remunerableDataGridViewCheckBoxColumn.HeaderText = "Remunerable";
             remunerableDataGridViewCheckBoxColumn.MinimumWidth = 24;
             remunerableDataGridViewCheckBoxColumn.Name = "remunerableDataGridViewCheckBoxColumn";
+            remunerableDataGridViewCheckBoxColumn.ReadOnly = true;
             remunerableDataGridViewCheckBoxColumn.SortMode = DataGridViewColumnSortMode.Programmatic;
             remunerableDataGridViewCheckBoxColumn.Width = 125;
             // 
@@ -165,6 +174,7 @@
         #endregion
 
         private Zuby.ADGV.AdvancedDataGridView dgvInasistenciasL;
+        private BindingSource inasistenciasFormDTOBindingSource;
         private DataGridViewTextBoxColumn idInasistenciasDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn empleadoIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombresApellidosDataGridViewTextBoxColumn;
@@ -174,6 +184,5 @@
         private DataGridViewTextBoxColumn licenciaIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreLicenciaDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn remunerableDataGridViewCheckBoxColumn;
-        private BindingSource inasistenciasFormDTOBindingSource;
     }
 }

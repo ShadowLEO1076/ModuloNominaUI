@@ -20,4 +20,6 @@ public partial class Descuentos
 
     public DateOnly Fecha { get; set; }
 
+    public bool? Estado { get; set; }
+
 }

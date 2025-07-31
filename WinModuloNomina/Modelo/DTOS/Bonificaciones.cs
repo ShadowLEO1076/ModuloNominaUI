@@ -20,4 +20,6 @@ public partial class Bonificaciones
 
     public DateOnly Fecha { get; set; }
 
+    public bool? Estado { get; set; }
+
 }

@@ -19,7 +19,7 @@ namespace WinModuloNomina
             //Application.Run(new LoginForm());
             //Application.Run(new LoginForm());
 
-            Application.Run(new MenuPrincipal());
+            Application.Run(new LoginForm());
 
 
         }
