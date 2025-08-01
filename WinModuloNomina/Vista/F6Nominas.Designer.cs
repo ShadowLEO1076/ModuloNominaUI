@@ -92,9 +92,8 @@ namespace WinModuloNomina.Vista
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1114, 178);
+            panel1.Size = new Size(825, 215);
             panel1.TabIndex = 2;
             // 
             // empleNomLb1
@@ -117,9 +116,9 @@ namespace WinModuloNomina.Vista
             // nominasIngeManuLb
             // 
             nominasIngeManuLb.AutoSize = true;
-            nominasIngeManuLb.Location = new Point(12, 6);
+            nominasIngeManuLb.Location = new Point(14, 8);
             nominasIngeManuLb.Name = "nominasIngeManuLb";
-            nominasIngeManuLb.Size = new Size(111, 15);
+            nominasIngeManuLb.Size = new Size(186, 20);
             nominasIngeManuLb.TabIndex = 11;
             nominasIngeManuLb.Text = "DATOS DE NOMINA";
             nominasIngeManuLb.TextAlign = ContentAlignment.TopCenter;
@@ -163,15 +162,14 @@ namespace WinModuloNomina.Vista
             tableLayoutPanel1.Controls.Add(mesAutoCb, 3, 1);
             tableLayoutPanel1.Controls.Add(anioNud, 1, 1);
             tableLayoutPanel1.Controls.Add(fecEmiDtp, 3, 2);
-            tableLayoutPanel1.Location = new Point(66, 38);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel1.Location = new Point(14, 31);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(592, 114);
+            tableLayoutPanel1.Size = new Size(647, 153);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // nominaLb
@@ -179,98 +177,95 @@ namespace WinModuloNomina.Vista
             nominaLb.AutoSize = true;
             nominaLb.Location = new Point(3, 0);
             nominaLb.Name = "nominaLb";
-            nominaLb.Size = new Size(64, 15);
+            nominaLb.Size = new Size(81, 20);
             nominaLb.TabIndex = 7;
             nominaLb.Text = "ID Nomina";
             // 
             // idNomTxt
             // 
             idNomTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            idNomTxt.Location = new Point(93, 3);
-            idNomTxt.Margin = new Padding(3, 2, 3, 2);
+            idNomTxt.Location = new Point(114, 4);
             idNomTxt.Name = "idNomTxt";
             idNomTxt.ReadOnly = true;
-            idNomTxt.Size = new Size(123, 23);
+            idNomTxt.Size = new Size(140, 27);
             idNomTxt.TabIndex = 7;
             // 
             // anioLb
             // 
             anioLb.AutoSize = true;
-            anioLb.Location = new Point(3, 29);
+            anioLb.Location = new Point(3, 36);
             anioLb.Name = "anioLb";
-            anioLb.Size = new Size(29, 15);
+            anioLb.Size = new Size(36, 20);
             anioLb.TabIndex = 22;
             anioLb.Text = "Año";
             // 
             // mesLb
             // 
             mesLb.AutoSize = true;
-            mesLb.Location = new Point(222, 29);
+            mesLb.Location = new Point(260, 36);
             mesLb.Name = "mesLb";
-            mesLb.Size = new Size(29, 15);
+            mesLb.Size = new Size(36, 20);
             mesLb.TabIndex = 20;
             mesLb.Text = "Mes";
             // 
             // idEmpleadoLb
             // 
             idEmpleadoLb.AutoSize = true;
-            idEmpleadoLb.Location = new Point(222, 0);
+            idEmpleadoLb.Location = new Point(260, 0);
             idEmpleadoLb.Name = "idEmpleadoLb";
-            idEmpleadoLb.Size = new Size(122, 15);
+            idEmpleadoLb.Size = new Size(77, 20);
             idEmpleadoLb.TabIndex = 18;
             idEmpleadoLb.Text = "Cédula  del Empleado";
             // 
             // salManTxt
             // 
             salManTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            salManTxt.Location = new Point(93, 61);
-            salManTxt.Margin = new Padding(3, 2, 3, 2);
+            salManTxt.Location = new Point(114, 76);
             salManTxt.Name = "salManTxt";
-            salManTxt.Size = new Size(123, 23);
+            salManTxt.Size = new Size(140, 27);
             salManTxt.TabIndex = 26;
             // 
             // boniManTxt
             // 
             boniManTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            boniManTxt.Location = new Point(93, 89);
-            boniManTxt.Margin = new Padding(3, 2, 3, 2);
+            boniManTxt.Location = new Point(114, 116);
             boniManTxt.Name = "boniManTxt";
-            boniManTxt.Size = new Size(123, 23);
+            boniManTxt.Size = new Size(140, 27);
             boniManTxt.TabIndex = 15;
             // 
             // salarioLb
             // 
             salarioLb.AutoSize = true;
-            salarioLb.Location = new Point(3, 58);
+            salarioLb.Location = new Point(3, 72);
             salarioLb.Name = "salarioLb";
-            salarioLb.Size = new Size(74, 15);
+            salarioLb.Size = new Size(95, 20);
             salarioLb.TabIndex = 24;
             salarioLb.Text = "Salario Bruto";
             // 
             // bonificacionesLb
             // 
             bonificacionesLb.AutoSize = true;
-            bonificacionesLb.Location = new Point(3, 87);
+            bonificacionesLb.Location = new Point(3, 107);
             bonificacionesLb.Name = "bonificacionesLb";
-            bonificacionesLb.Size = new Size(84, 15);
+            bonificacionesLb.Size = new Size(105, 20);
             bonificacionesLb.TabIndex = 17;
             bonificacionesLb.Text = "Bonificaciones";
             // 
             // fecEmisionLb
             // 
             fecEmisionLb.AutoSize = true;
-            fecEmisionLb.Location = new Point(222, 58);
+            fecEmisionLb.Location = new Point(260, 72);
             fecEmisionLb.Name = "fecEmisionLb";
-            fecEmisionLb.Size = new Size(99, 15);
+            fecEmisionLb.Size = new Size(124, 20);
             fecEmisionLb.TabIndex = 25;
             fecEmisionLb.Text = "Fecha de emisión";
             // 
             // descuentosLb
             // 
             descuentosLb.AutoSize = true;
-            descuentosLb.Location = new Point(222, 87);
+            descuentosLb.Location = new Point(260, 107);
             descuentosLb.Name = "descuentosLb";
-            descuentosLb.Size = new Size(68, 15);
+            descuentosLb.Size = new Size(85, 20);
             descuentosLb.TabIndex = 19;
             descuentosLb.Text = "Descuentos";
             // 
@@ -288,7 +283,7 @@ namespace WinModuloNomina.Vista
             empleAutoCb.FormattingEnabled = true;
             empleAutoCb.Location = new Point(350, 3);
             empleAutoCb.Name = "empleAutoCb";
-            empleAutoCb.Size = new Size(239, 23);
+            empleAutoCb.Size = new Size(273, 28);
             empleAutoCb.TabIndex = 27;
             empleAutoCb.SelectedIndexChanged += empleAutoCb_SelectedIndexChanged;
             // 
@@ -297,14 +292,15 @@ namespace WinModuloNomina.Vista
             mesAutoCb.FormattingEnabled = true;
             mesAutoCb.Location = new Point(350, 32);
             mesAutoCb.Name = "mesAutoCb";
-            mesAutoCb.Size = new Size(239, 23);
+            mesAutoCb.Size = new Size(273, 28);
             mesAutoCb.TabIndex = 28;
             // 
             // anioNud
             // 
-            anioNud.Location = new Point(93, 32);
+            anioNud.Location = new Point(114, 40);
+            anioNud.Margin = new Padding(3, 4, 3, 4);
             anioNud.Name = "anioNud";
-            anioNud.Size = new Size(120, 23);
+            anioNud.Size = new Size(137, 27);
             anioNud.TabIndex = 29;
             // 
             // fecEmiDtp
@@ -312,7 +308,7 @@ namespace WinModuloNomina.Vista
             fecEmiDtp.Format = DateTimePickerFormat.Short;
             fecEmiDtp.Location = new Point(350, 61);
             fecEmiDtp.Name = "fecEmiDtp";
-            fecEmiDtp.Size = new Size(239, 23);
+            fecEmiDtp.Size = new Size(273, 27);
             fecEmiDtp.TabIndex = 30;
             // 
             // panel2
@@ -349,7 +345,7 @@ namespace WinModuloNomina.Vista
             insertarBtn.Location = new Point(33, 70);
             insertarBtn.Margin = new Padding(3, 2, 3, 2);
             insertarBtn.Name = "insertarBtn";
-            insertarBtn.Size = new Size(82, 22);
+            insertarBtn.Size = new Size(94, 29);
             insertarBtn.TabIndex = 9;
             insertarBtn.Text = "Insertar";
             insertarBtn.UseVisualStyleBackColor = true;
@@ -391,71 +387,81 @@ namespace WinModuloNomina.Vista
             // 
             idNominaDataGridViewTextBoxColumn.DataPropertyName = "IdNomina";
             idNominaDataGridViewTextBoxColumn.HeaderText = "ID Nomina";
+            idNominaDataGridViewTextBoxColumn.MinimumWidth = 6;
             idNominaDataGridViewTextBoxColumn.Name = "idNominaDataGridViewTextBoxColumn";
-            idNominaDataGridViewTextBoxColumn.Width = 82;
+            idNominaDataGridViewTextBoxColumn.Width = 101;
             // 
             // idEmpleadoDataGridViewTextBoxColumn
             // 
             idEmpleadoDataGridViewTextBoxColumn.DataPropertyName = "IdEmpleado";
             idEmpleadoDataGridViewTextBoxColumn.HeaderText = "ID Empleado";
+            idEmpleadoDataGridViewTextBoxColumn.MinimumWidth = 6;
             idEmpleadoDataGridViewTextBoxColumn.Name = "idEmpleadoDataGridViewTextBoxColumn";
-            idEmpleadoDataGridViewTextBoxColumn.Width = 91;
+            idEmpleadoDataGridViewTextBoxColumn.Width = 115;
             // 
             // nombresApellidosDataGridViewTextBoxColumn
             // 
             nombresApellidosDataGridViewTextBoxColumn.DataPropertyName = "NombresApellidos";
             nombresApellidosDataGridViewTextBoxColumn.HeaderText = "Nombres y Apellidos";
+            nombresApellidosDataGridViewTextBoxColumn.MinimumWidth = 6;
             nombresApellidosDataGridViewTextBoxColumn.Name = "nombresApellidosDataGridViewTextBoxColumn";
-            nombresApellidosDataGridViewTextBoxColumn.Width = 130;
+            nombresApellidosDataGridViewTextBoxColumn.Width = 162;
             // 
             // cedulaDataGridViewTextBoxColumn
             // 
             cedulaDataGridViewTextBoxColumn.DataPropertyName = "Cedula";
             cedulaDataGridViewTextBoxColumn.HeaderText = "Cedula";
+            cedulaDataGridViewTextBoxColumn.MinimumWidth = 6;
             cedulaDataGridViewTextBoxColumn.Name = "cedulaDataGridViewTextBoxColumn";
-            cedulaDataGridViewTextBoxColumn.Width = 69;
+            cedulaDataGridViewTextBoxColumn.Width = 84;
             // 
             // salarioDataGridViewTextBoxColumn
             // 
             salarioDataGridViewTextBoxColumn.DataPropertyName = "Salario";
             salarioDataGridViewTextBoxColumn.HeaderText = "Salario";
+            salarioDataGridViewTextBoxColumn.MinimumWidth = 6;
             salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
-            salarioDataGridViewTextBoxColumn.Width = 67;
+            salarioDataGridViewTextBoxColumn.Width = 84;
             // 
             // horasJornadaDataGridViewTextBoxColumn
             // 
             horasJornadaDataGridViewTextBoxColumn.DataPropertyName = "HorasJornada";
             horasJornadaDataGridViewTextBoxColumn.HeaderText = "Horas Jornada";
+            horasJornadaDataGridViewTextBoxColumn.MinimumWidth = 6;
             horasJornadaDataGridViewTextBoxColumn.Name = "horasJornadaDataGridViewTextBoxColumn";
-            horasJornadaDataGridViewTextBoxColumn.Width = 98;
+            horasJornadaDataGridViewTextBoxColumn.Width = 122;
             // 
             // bonificacionesDataGridViewTextBoxColumn
             // 
             bonificacionesDataGridViewTextBoxColumn.DataPropertyName = "Bonificaciones";
             bonificacionesDataGridViewTextBoxColumn.HeaderText = "Bonificaciones";
+            bonificacionesDataGridViewTextBoxColumn.MinimumWidth = 6;
             bonificacionesDataGridViewTextBoxColumn.Name = "bonificacionesDataGridViewTextBoxColumn";
-            bonificacionesDataGridViewTextBoxColumn.Width = 109;
+            bonificacionesDataGridViewTextBoxColumn.Width = 134;
             // 
             // descuentosDataGridViewTextBoxColumn
             // 
             descuentosDataGridViewTextBoxColumn.DataPropertyName = "Descuentos";
             descuentosDataGridViewTextBoxColumn.HeaderText = "Descuentos";
+            descuentosDataGridViewTextBoxColumn.MinimumWidth = 6;
             descuentosDataGridViewTextBoxColumn.Name = "descuentosDataGridViewTextBoxColumn";
-            descuentosDataGridViewTextBoxColumn.Width = 93;
+            descuentosDataGridViewTextBoxColumn.Width = 114;
             // 
             // mesDataGridViewTextBoxColumn
             // 
             mesDataGridViewTextBoxColumn.DataPropertyName = "Mes";
             mesDataGridViewTextBoxColumn.HeaderText = "Mes";
+            mesDataGridViewTextBoxColumn.MinimumWidth = 6;
             mesDataGridViewTextBoxColumn.Name = "mesDataGridViewTextBoxColumn";
-            mesDataGridViewTextBoxColumn.Width = 54;
+            mesDataGridViewTextBoxColumn.Width = 65;
             // 
             // anioDataGridViewTextBoxColumn
             // 
             anioDataGridViewTextBoxColumn.DataPropertyName = "Anio";
             anioDataGridViewTextBoxColumn.HeaderText = "Año";
+            anioDataGridViewTextBoxColumn.MinimumWidth = 6;
             anioDataGridViewTextBoxColumn.Name = "anioDataGridViewTextBoxColumn";
-            anioDataGridViewTextBoxColumn.Width = 54;
+            anioDataGridViewTextBoxColumn.Width = 65;
             // 
             // salarioNetoDataGridViewTextBoxColumn
             // 
@@ -482,22 +488,21 @@ namespace WinModuloNomina.Vista
             // presentLb
             // 
             presentLb.AutoSize = true;
-            presentLb.Location = new Point(3, 19);
+            presentLb.Location = new Point(3, 25);
             presentLb.Name = "presentLb";
-            presentLb.Size = new Size(96, 15);
+            presentLb.Size = new Size(119, 20);
             presentLb.TabIndex = 10;
             presentLb.Text = "Nominas Activas";
             presentLb.TextAlign = ContentAlignment.TopCenter;
             // 
             // F6Nominas
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1114, 311);
             Controls.Add(nominasActivasDgv);
             Controls.Add(panel3);
             Controls.Add(panel1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "F6Nominas";
             Text = "F6Nominas";
             Load += F6Nominas_Load;

@@ -17,4 +17,8 @@ namespace Aplicacion.DTO.DTOs
         public decimal Monto { get; set; }
         public DateOnly Fecha { get; set; }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 51ad7b3e42b5c88660cd43f67139b88a1a3f4e41

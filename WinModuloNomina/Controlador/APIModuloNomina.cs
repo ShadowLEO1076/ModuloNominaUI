@@ -111,19 +111,38 @@ namespace WinModuloNomina.Controlador
                 throw new Exception($"Error en la petición DELETE: {respuesta.StatusCode} - {contenido}");
             }
         }
+<<<<<<< HEAD
 
 
         //lo mismo del get de arriba.
         public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
+=======
+        // Post sin tipo genérico, útil cuando solo te importa el resultado HTTP
+        public async Task<HttpResponseMessage> PostAsync(string endpoint, object data)
+>>>>>>> 51ad7b3e42b5c88660cd43f67139b88a1a3f4e41
         {
-            var respuesta = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");
-            respuesta.EnsureSuccessStatusCode();
-            var contenido = await respuesta.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(contenido);
-
+            try
+            {
+                var json = JsonConvert.SerializeObject(data);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var respuesta = await _httpClient.PostAsync($"{_baseUrl}/{endpoint}", content);
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error en PostAsync simple: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
         }
 
-    } 
+<<<<<<< HEAD
+        }
+=======
+>>>>>>> 51ad7b3e42b5c88660cd43f67139b88a1a3f4e41
+
+
+
+    }
 }
 /*
         public async Task<T> EliminarAsyn<T>(string endpoint)
@@ -137,13 +156,20 @@ namespace WinModuloNomina.Controlador
 
 
 
+/*public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
+        {
+            var respuesta = await _httpClient.GetAsync($"{_baseUrl}/{endpoint}");
+            respuesta.EnsureSuccessStatusCode();
+            var contenido = await respuesta.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(contenido);
+
+        }*/
 
 
 
 
 
 
-} 
 
 
 

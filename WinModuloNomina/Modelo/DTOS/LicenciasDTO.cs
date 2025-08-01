@@ -13,5 +13,5 @@ public partial class LicenciasDTO
     public string Nombre { get; set; }
 
     public bool Remunerable { get; set; }
-   
+
 }

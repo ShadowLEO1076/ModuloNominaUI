@@ -335,10 +335,10 @@
             panel2.Controls.Add(insertarBtn);
             panel2.Controls.Add(btnBuscar);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(1151, 0);
+            panel2.Location = new Point(676, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(132, 237);
+            panel2.Size = new Size(124, 146);
             panel2.TabIndex = 15;
             // 
             // eliminarBtn
@@ -346,7 +346,7 @@
             eliminarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             eliminarBtn.IconColor = Color.Black;
             eliminarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            eliminarBtn.Location = new Point(21, 159);
+            eliminarBtn.Location = new Point(30, 106);
             eliminarBtn.Margin = new Padding(3, 2, 3, 2);
             eliminarBtn.Name = "eliminarBtn";
             eliminarBtn.Size = new Size(82, 22);
@@ -410,16 +410,10 @@
             ((System.ComponentModel.ISupportInitialize)bonificacionesDgv).EndInit();
             ((System.ComponentModel.ISupportInitialize)bonificacionesFormDTOBindingSource).EndInit();
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             panel2.ResumeLayout(false);
             ResumeLayout(false);
-        }
-
-        private void EmpleCb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion
@@ -434,6 +428,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Label idBoniLb;
         private TextBox descripcionTxt;
+        private TextBox tipoTxt;
         private Label tipoLb;
         private Label descripcionLb;
         private TextBox idBoniTxt;

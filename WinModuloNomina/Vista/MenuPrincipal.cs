@@ -33,7 +33,7 @@ namespace WinModuloNomina.Vista
         {
             InitializeComponent();
             random = new Random();
-            panelMenu.Width = 230;
+            panelMenu.Width = 10;
 
             // Configuración inicial
             labelTitulo.Text = "HOME S.NOMINA";
@@ -140,7 +140,7 @@ namespace WinModuloNomina.Vista
 
         #region Eventos de los botones
 
-        private void btnMenu_Click(object sender, EventArgs e)
+       /* private void btnMenu_Click(object sender, EventArgs e)
         {
             if (sliderExpand)
             {
@@ -154,7 +154,7 @@ namespace WinModuloNomina.Vista
                 btnMenu.IconChar = IconChar.Times;
                 sliderExpand = true;
             }
-        }
+        }*/
 
 
         private void btnPuestos_Click_1(object sender, EventArgs e)
@@ -261,7 +261,7 @@ namespace WinModuloNomina.Vista
         */
         #endregion
 
-        private void label2_Click(object sender, EventArgs e)
+        /*private void label2_Click(object sender, EventArgs e)
         {
             if (sliderExpand)
             {
@@ -275,7 +275,7 @@ namespace WinModuloNomina.Vista
                 btnMenu.IconChar = IconChar.Times;
                 sliderExpand = true;
             }
-        }
+        }*/
     }
 }
 

@@ -37,18 +37,12 @@ namespace WinModuloNomina.Vista
             await CargarLicencias();
             CargarRegistros();
             //inicia así para que no se pueda actualizar nada
-            empleCb.SelectedIndex = -1;
-            nombreEmpleadoLbl.Text = "Seleccione un empleado";
             registroCb.SelectedIndex = 0;
-            horaEntraDtp.Enabled = false;
-            horaSaliDtp.Enabled = false;
             actualizarBtn.Enabled = false;
             EliminarBtn.Enabled = false;
             horaEntraDtp.Format = DateTimePickerFormat.Time;
             horaSaliDtp.Format = DateTimePickerFormat.Time;
             fecAsisDtp.Value = DateTime.Now;
-            horaEntraDtp.Value = DateTime.Now;
-            horaSaliDtp.Value = DateTime.Now;
         }
         private async void ingresarBtn_Click(object sender, EventArgs e)
         {
@@ -143,7 +137,7 @@ namespace WinModuloNomina.Vista
                         Estado = true
                     };
 
-                    await _api.PostAsync<FormInasistencias>("InasistenciasControlador/AgregarAsync", inasistencia);
+                    await _api.PostAsync<InasistenciasFormDTO>("InasistenciasControlador/AgregarAsync", inasistencia);
                     await CargarAsistencias();
                     await CargarInasistencias();
                 }
@@ -213,7 +207,6 @@ namespace WinModuloNomina.Vista
                 ingresarBtn.Enabled = false;
                 empleCb.Enabled = false;
                 fecAsisDtp.Enabled = false;
-                horaSaliDtp.Enabled = false;
 
                 await CargarAsistencias();
                 await CargarInasistencias();
@@ -270,7 +263,7 @@ namespace WinModuloNomina.Vista
                         Estado = true
                     };
 
-                    await _api.PutAsync<FormInasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
+                    await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
                     await CargarAsistencias();
                     await CargarInasistencias();
                 }
@@ -336,7 +329,7 @@ namespace WinModuloNomina.Vista
                         Estado = false
                     };
 
-                    await _api.PutAsync<FormInasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
+                    await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
                     await CargarAsistencias();
                     await CargarInasistencias();
                 }
@@ -346,6 +339,7 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Error al eliminar registro, verifique que los datos sean correctos");
             }
         }
+
 
         private async void EmpleCb_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -374,7 +368,7 @@ namespace WinModuloNomina.Vista
                     horaEntraDtp.Value = horaEntrada;
                     horaSaliDtp.Value = horaSalida;
 
-                    nombreEmpleadoLbl.Text = $"{emp.Nombres} {emp.Apellidos}";
+                    empleLb.Text = $"{emp.Nombres} {emp.Apellidos}";
                 }
 
             }
@@ -383,7 +377,6 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Error al cargar de empleados.");
             }
         }
-
 
         //código reutilizable
         public void LimpiarInfo()
@@ -495,6 +488,5 @@ namespace WinModuloNomina.Vista
             }
         }
 
-       
     }
 }

@@ -500,9 +500,9 @@ namespace WinModuloNomina.Vista
             label1.ForeColor = Color.White;
             label1.Location = new Point(178, 10);
             label1.Name = "label1";
-            label1.Size = new Size(182, 17);
+            label1.Size = new Size(219, 20);
             label1.TabIndex = 16;
-            label1.Text = "RESUMEN APROVADAS";
+            label1.Text = "RESUMEN APROBADAS";
             // 
             // panel3
             // 

@@ -18,6 +18,6 @@ public partial class Inasistencias
 
     public int DiasContados { get; set; }
 
-    public bool? Estado { get; set; }
+    public bool? Estado {  get; set; }
 
 }

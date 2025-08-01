@@ -18,6 +18,6 @@ public partial class Asistencias
 
     public TimeOnly? HoraSalida { get; set; }
 
-    public bool? Estado { get; set; }
+    public bool? Estado {  get; set; }
 
 }

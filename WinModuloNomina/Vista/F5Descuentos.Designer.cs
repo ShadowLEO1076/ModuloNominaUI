@@ -60,6 +60,7 @@
             panel2 = new Panel();
             tableLayoutPanel3 = new TableLayoutPanel();
             panel1 = new Panel();
+            txtEstado = new TextBox();
             label1 = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
             panel3 = new Panel();
@@ -68,7 +69,7 @@
             panelAuxiliar = new Panel();
             inasistenciasBindingSource = new BindingSource(components);
             panel5 = new Panel();
-            textBox1 = new TextBox();
+            txtBuscarD = new TextBox();
             label3 = new Label();
             dgvDescuentos = new Zuby.ADGV.AdvancedDataGridView();
             descuentosBindingSource = new BindingSource(components);
@@ -107,6 +108,7 @@
             btnBorrar.TextAlign = ContentAlignment.MiddleLeft;
             btnBorrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBorrar.UseVisualStyleBackColor = false;
+            btnBorrar.Click += btnBorrar_Click;
             // 
             // btnEditar
             // 
@@ -128,6 +130,7 @@
             btnEditar.TextAlign = ContentAlignment.MiddleLeft;
             btnEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnBuscar
             // 
@@ -480,6 +483,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.Highlight;
+            panel1.Controls.Add(txtEstado);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -487,6 +491,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(443, 45);
             panel1.TabIndex = 22;
+            // 
+            // txtEstado
+            // 
+            txtEstado.Anchor = AnchorStyles.Right;
+            txtEstado.Location = new Point(335, 12);
+            txtEstado.Name = "txtEstado";
+            txtEstado.Size = new Size(102, 27);
+            txtEstado.TabIndex = 1;
             // 
             // label1
             // 
@@ -543,6 +555,7 @@
             btnAsistencias.TextAlign = ContentAlignment.MiddleLeft;
             btnAsistencias.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAsistencias.UseVisualStyleBackColor = true;
+            btnAsistencias.Click += btnAsistencias_Click;
             // 
             // btnInacistencias
             // 
@@ -575,7 +588,7 @@
             // 
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel5.BackColor = SystemColors.Highlight;
-            panel5.Controls.Add(textBox1);
+            panel5.Controls.Add(txtBuscarD);
             panel5.Controls.Add(btnBuscar);
             panel5.Controls.Add(label3);
             panel5.Location = new Point(-1, 452);
@@ -583,13 +596,21 @@
             panel5.Size = new Size(934, 39);
             panel5.TabIndex = 23;
             // 
-            // textBox1
+            // txtBuscarD
             // 
+<<<<<<< HEAD
             textBox1.Anchor = AnchorStyles.Right;
             textBox1.Location = new Point(749, 6);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(112, 23);
             textBox1.TabIndex = 26;
+=======
+            txtBuscarD.Anchor = AnchorStyles.Right;
+            txtBuscarD.Location = new Point(749, 6);
+            txtBuscarD.Name = "txtBuscarD";
+            txtBuscarD.Size = new Size(127, 27);
+            txtBuscarD.TabIndex = 26;
+>>>>>>> 51ad7b3e42b5c88660cd43f67139b88a1a3f4e41
             // 
             // label3
             // 
@@ -620,6 +641,7 @@
             dgvDescuentos.Size = new Size(931, 151);
             dgvDescuentos.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             dgvDescuentos.TabIndex = 25;
+            dgvDescuentos.CellClick += dgvDescuentos_CellClick;
             // 
             // F5Descuentos
             // 
@@ -630,7 +652,7 @@
             Controls.Add(panel5);
             Controls.Add(tableLayoutPanel2);
             Name = "F5Descuentos";
-            Text = "F5Descuentos";
+            Text = " ";
             Load += F5Descuentos_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -680,10 +702,9 @@
         private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
-        private BindingSource descuentosBindingSource;
         private Label label1;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox txtBuscarD;
         private ComboBox tipoTxt;
         private ComboBox idEmpleadoCb;
         private Label label4;
@@ -703,5 +724,15 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private Panel panel7;
         private TextBox montoTxt;
+        private TextBox textBox1;
+        private TextBox txtEstado;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn estadoDataGridViewTextBoxColumn;
+        private BindingSource descuentosBindingSource;
     }
 }
