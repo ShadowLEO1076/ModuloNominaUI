@@ -175,10 +175,10 @@ namespace WinModuloNomina.Vista
             OpenChildForm(new F3Contratos(), "GESTIÓN DE CONTRATOS");
         }
 
-        private void btnAsistencias_Click(object sender, EventArgs e)
+        private void btnAsistencias_Click(object sender, EventArgs e) //cambiar cuando tenga el menú
         {
             ActivateButton(sender);
-            OpenChildForm(new F4Asistencias(), "GESTIÓN DE ASISTENCIAS");
+            OpenChildForm(new F4AsistenciasMenu(), "GESTIÓN DE ASISTENCIAS");
         }
 
         private void btnBonos_Click(object sender, EventArgs e)

@@ -35,9 +35,9 @@
             label3 = new Label();
             panel38 = new Panel();
             btnHistorico = new FontAwesome.Sharp.IconButton();
-            btnContratoG = new FontAwesome.Sharp.IconButton();
-            btnTipos = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
+            btnTipos = new FontAwesome.Sharp.IconButton();
+            btnContratoG = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)contratosTipoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)contratosDTOBindingSource).BeginInit();
             panelMostrar.SuspendLayout();
@@ -62,7 +62,7 @@
             label3.ForeColor = Color.Gainsboro;
             label3.Location = new Point(77, 246);
             label3.Name = "label3";
-            label3.Size = new Size(509, 69);
+            label3.Size = new Size(410, 55);
             label3.TabIndex = 1;
             label3.Text = "DR. SOLUTIONS";
             // 
@@ -103,29 +103,14 @@
             btnHistorico.UseVisualStyleBackColor = false;
             btnHistorico.Click += btnHistorico_Click;
             // 
-            // btnContratoG
+            // panel1
             // 
-            btnContratoG.BackColor = Color.Transparent;
-            btnContratoG.FlatAppearance.BorderSize = 0;
-            btnContratoG.FlatStyle = FlatStyle.Flat;
-            btnContratoG.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
-            btnContratoG.ForeColor = Color.WhiteSmoke;
-            btnContratoG.IconChar = FontAwesome.Sharp.IconChar.FeatherPointed;
-            btnContratoG.IconColor = Color.WhiteSmoke;
-            btnContratoG.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnContratoG.IconSize = 30;
-            btnContratoG.ImageAlign = ContentAlignment.MiddleLeft;
-            btnContratoG.Location = new Point(0, 95);
-            btnContratoG.Margin = new Padding(0);
-            btnContratoG.Name = "btnContratoG";
-            btnContratoG.Padding = new Padding(14, 0, 0, 0);
-            btnContratoG.Size = new Size(181, 60);
-            btnContratoG.TabIndex = 7;
-            btnContratoG.Text = "  Contratos";
-            btnContratoG.TextAlign = ContentAlignment.MiddleLeft;
-            btnContratoG.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnContratoG.UseVisualStyleBackColor = false;
-            btnContratoG.Click += btnContratoG_Click;
+            panel1.BackColor = Color.FromArgb(64, 64, 64);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 593);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(181, 30);
+            panel1.TabIndex = 0;
             // 
             // btnTipos
             // 
@@ -151,14 +136,29 @@
             btnTipos.UseVisualStyleBackColor = false;
             btnTipos.Click += btnTipos_Click;
             // 
-            // panel1
+            // btnContratoG
             // 
-            panel1.BackColor = Color.FromArgb(64, 64, 64);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 593);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(181, 30);
-            panel1.TabIndex = 0;
+            btnContratoG.BackColor = Color.Transparent;
+            btnContratoG.FlatAppearance.BorderSize = 0;
+            btnContratoG.FlatStyle = FlatStyle.Flat;
+            btnContratoG.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
+            btnContratoG.ForeColor = Color.WhiteSmoke;
+            btnContratoG.IconChar = FontAwesome.Sharp.IconChar.FeatherPointed;
+            btnContratoG.IconColor = Color.WhiteSmoke;
+            btnContratoG.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnContratoG.IconSize = 30;
+            btnContratoG.ImageAlign = ContentAlignment.MiddleLeft;
+            btnContratoG.Location = new Point(0, 95);
+            btnContratoG.Margin = new Padding(0);
+            btnContratoG.Name = "btnContratoG";
+            btnContratoG.Padding = new Padding(14, 0, 0, 0);
+            btnContratoG.Size = new Size(181, 60);
+            btnContratoG.TabIndex = 7;
+            btnContratoG.Text = "  Contratos";
+            btnContratoG.TextAlign = ContentAlignment.MiddleLeft;
+            btnContratoG.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnContratoG.UseVisualStyleBackColor = false;
+            btnContratoG.Click += btnContratoG_Click;
             // 
             // F3Contratos
             // 

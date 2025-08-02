@@ -598,19 +598,11 @@
             // 
             // txtBuscarD
             // 
-<<<<<<< HEAD
-            textBox1.Anchor = AnchorStyles.Right;
-            textBox1.Location = new Point(749, 6);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(112, 23);
-            textBox1.TabIndex = 26;
-=======
             txtBuscarD.Anchor = AnchorStyles.Right;
             txtBuscarD.Location = new Point(749, 6);
             txtBuscarD.Name = "txtBuscarD";
             txtBuscarD.Size = new Size(127, 27);
             txtBuscarD.TabIndex = 26;
->>>>>>> 51ad7b3e42b5c88660cd43f67139b88a1a3f4e41
             // 
             // label3
             // 

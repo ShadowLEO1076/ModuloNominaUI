@@ -31,9 +31,7 @@ namespace WinModuloNomina.Vista
 
         private async void F4Asistencias_Load(object sender, EventArgs e)
         {
-            await CargarAsistencias();
             await CargarEmpleados();
-            await CargarInasistencias();
             await CargarLicencias();
             CargarRegistros();
             //inicia así para que no se pueda actualizar nada
@@ -95,8 +93,6 @@ namespace WinModuloNomina.Vista
                     };
 
                     await _api.PostAsync<Asistencias>("AsistenciasControlador/AgregarAsync", asistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
                 }
                 else if (registroCb.SelectedItem.ToString() == "Inasistencia")
                 {
@@ -138,8 +134,6 @@ namespace WinModuloNomina.Vista
                     };
 
                     await _api.PostAsync<InasistenciasFormDTO>("InasistenciasControlador/AgregarAsync", inasistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
                 }
             }
             catch
@@ -153,9 +147,9 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                if (e.RowIndex >= 0 && e.RowIndex < asistenciasDgv.Rows.Count)
+                if (e.RowIndex >= 0 && e.RowIndex < empleadosDgv.Rows.Count)
                 {
-                    var asistenciasSeleccionado = asistenciasDgv.Rows[e.RowIndex].DataBoundItem as AsistenciasFormDTO;
+                    var asistenciasSeleccionado = empleadosDgv.Rows[e.RowIndex].DataBoundItem as AsistenciasFormDTO;
 
                     if (asistenciasSeleccionado != null)
                     {
@@ -174,8 +168,6 @@ namespace WinModuloNomina.Vista
                 empleCb.Enabled = false;
                 fecAsisDtp.Enabled = false;
 
-                await CargarAsistencias();
-                await CargarInasistencias();
 
             }
             catch (Exception ex)
@@ -184,39 +176,7 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        private async void inasisDgv_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0 && e.RowIndex < inasisDgv.Rows.Count)
-                {
-                    var inasistenciasSeleccionadas = inasisDgv.Rows[e.RowIndex].DataBoundItem as InasistenciasFormDTO;
-
-                    if (inasistenciasSeleccionadas != null)
-                    {
-                        idAsisTxt.Text = inasistenciasSeleccionadas.IdInasistencias.ToString();
-                        empleCb.SelectedValue = inasistenciasSeleccionadas.EmpleadoId;
-                        fecAsisDtp.Value = inasistenciasSeleccionadas.Fecha.ToDateTime(TimeOnly.MinValue);
-                        licenciaCb.SelectedValue = inasistenciasSeleccionadas.LicenciaId;
-                    }
-
-                }
-
-                actualizarBtn.Enabled = true;
-                EliminarBtn.Enabled = true;
-                ingresarBtn.Enabled = false;
-                empleCb.Enabled = false;
-                fecAsisDtp.Enabled = false;
-
-                await CargarAsistencias();
-                await CargarInasistencias();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al cargar la inasistencia : favor editar los datos.");
-            }
-        }
+        
 
         private async void actualizarBtn_Click(object sender, EventArgs e)
         {
@@ -246,8 +206,6 @@ namespace WinModuloNomina.Vista
                     };
 
                     await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
                 }
                 else if (registroCb.SelectedItem.ToString() == "Inasistencia")
                 {
@@ -264,8 +222,6 @@ namespace WinModuloNomina.Vista
                     };
 
                     await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
                 }
             }
             catch
@@ -312,8 +268,6 @@ namespace WinModuloNomina.Vista
                     };
 
                     await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
                 }
                 else if (registroCb.SelectedItem.ToString() == "Inasistencia")
                 {
@@ -330,8 +284,6 @@ namespace WinModuloNomina.Vista
                     };
 
                     await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
                 }
             }
             catch
@@ -378,7 +330,10 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        //código reutilizable
+        //código reutilizable --------------------------
+
+     
+
         public void LimpiarInfo()
         {
             idAsisTxt.Clear();
@@ -391,40 +346,7 @@ namespace WinModuloNomina.Vista
             fecAsisDtp.Value = DateTime.Today;
         }
 
-        public async Task CargarInasistencias()
-        {
-            try
-            {
-                var busq = await _api.GetAsync<List<InasistenciasFormDTO>>("InasistenciasControlador/ObtenerTodasActivasInasistenciasFormDTO");
-
-                inasisDgv.DataSource = busq;
-                inasisDgv.Columns["Remunerable"].ReadOnly = true;
-                //esto obliga a que se generen las columnas. ME SALVÓ
-                asistenciasDgv.AutoGenerateColumns = true;
-                asistenciasDgv.AutoResizeColumns();
-                inasisDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch
-            {
-                MessageBox.Show("Error al cargar las asistencias");
-            }
-        }
-
-        public async Task CargarAsistencias()
-        {
-            try
-            {
-                var busq = await _api.GetAsync<List<AsistenciasFormDTO>>("AsistenciasControlador/ObtenerTodasActivasAsistenciasFormDTO");
-
-                asistenciasDgv.DataSource = busq;
-                asistenciasDgv.AutoResizeColumns();
-                asistenciasDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch
-            {
-                MessageBox.Show("Error al cargar las asistencias");
-            }
-        }
+        
 
         public async Task CargarEmpleados()
         {
@@ -434,6 +356,9 @@ namespace WinModuloNomina.Vista
                 empleCb.DataSource = datos;
                 empleCb.ValueMember = "IdEmpleado";
                 empleCb.DisplayMember = "Cedula";
+
+                empleadosDgv.DataSource = datos;
+                empleadosDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
             {

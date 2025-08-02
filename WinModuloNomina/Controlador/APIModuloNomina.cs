@@ -111,15 +111,9 @@ namespace WinModuloNomina.Controlador
                 throw new Exception($"Error en la petición DELETE: {respuesta.StatusCode} - {contenido}");
             }
         }
-<<<<<<< HEAD
 
-
-        //lo mismo del get de arriba.
-        public async Task<T> ObtenerResumenSolicitudesVacaciones<T>(string endpoint)
-=======
         // Post sin tipo genérico, útil cuando solo te importa el resultado HTTP
         public async Task<HttpResponseMessage> PostAsync(string endpoint, object data)
->>>>>>> 51ad7b3e42b5c88660cd43f67139b88a1a3f4e41
         {
             try
             {
@@ -134,14 +128,6 @@ namespace WinModuloNomina.Controlador
                 throw;
             }
         }
-
-<<<<<<< HEAD
-        }
-=======
->>>>>>> 51ad7b3e42b5c88660cd43f67139b88a1a3f4e41
-
-
-
     }
 }
 /*
