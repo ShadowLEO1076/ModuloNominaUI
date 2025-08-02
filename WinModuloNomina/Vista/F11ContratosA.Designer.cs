@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel3 = new Panel();
+            btnHistorico = new FontAwesome.Sharp.IconButton();
             btnBuscarContrato = new FontAwesome.Sharp.IconButton();
             txtBuscarContrato = new TextBox();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -40,23 +41,21 @@
             txtIdContrato = new TextBox();
             cbEmpleado = new ComboBox();
             dtpFechaInicio = new DateTimePicker();
-            dtpFechaFin = new DateTimePicker();
-            txtSalario = new TextBox();
-            cbEstadoContrato = new ComboBox();
-            txtHorasJornada = new NumericUpDown();
             label15 = new Label();
-            label13 = new Label();
             label11 = new Label();
-            label9 = new Label();
+            cbEstadoContrato = new ComboBox();
+            label13 = new Label();
+            TimeSalida = new DateTimePicker();
+            label2 = new Label();
+            TimeEntrada = new DateTimePicker();
             tableLayoutPanel2 = new TableLayoutPanel();
             btnCrearContrato = new FontAwesome.Sharp.IconButton();
             btnEditarContrato = new FontAwesome.Sharp.IconButton();
             btnBorrarContrato = new FontAwesome.Sharp.IconButton();
             dgvHistorialContratos = new Zuby.ADGV.AdvancedDataGridView();
-            btnHistorico = new FontAwesome.Sharp.IconButton();
+            txtSalario = new TextBox();
             panel3.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)txtHorasJornada).BeginInit();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHistorialContratos).BeginInit();
             SuspendLayout();
@@ -74,6 +73,29 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(879, 255);
             panel3.TabIndex = 16;
+            // 
+            // btnHistorico
+            // 
+            btnHistorico.BackColor = Color.SandyBrown;
+            btnHistorico.FlatAppearance.BorderSize = 0;
+            btnHistorico.FlatStyle = FlatStyle.Flat;
+            btnHistorico.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnHistorico.ForeColor = Color.WhiteSmoke;
+            btnHistorico.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
+            btnHistorico.IconColor = Color.WhiteSmoke;
+            btnHistorico.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnHistorico.IconSize = 30;
+            btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHistorico.Location = new Point(12, 208);
+            btnHistorico.Name = "btnHistorico";
+            btnHistorico.Padding = new Padding(12, 0, 0, 0);
+            btnHistorico.Size = new Size(207, 40);
+            btnHistorico.TabIndex = 27;
+            btnHistorico.Text = "Guardar Historico";
+            btnHistorico.TextAlign = ContentAlignment.MiddleLeft;
+            btnHistorico.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnHistorico.UseVisualStyleBackColor = false;
+            btnHistorico.Click += btnHistorico_Click;
             // 
             // btnBuscarContrato
             // 
@@ -118,14 +140,14 @@
             tableLayoutPanel3.Controls.Add(txtIdContrato, 1, 0);
             tableLayoutPanel3.Controls.Add(cbEmpleado, 1, 2);
             tableLayoutPanel3.Controls.Add(dtpFechaInicio, 1, 3);
-            tableLayoutPanel3.Controls.Add(dtpFechaFin, 4, 0);
-            tableLayoutPanel3.Controls.Add(txtSalario, 4, 1);
-            tableLayoutPanel3.Controls.Add(cbEstadoContrato, 4, 2);
-            tableLayoutPanel3.Controls.Add(txtHorasJornada, 4, 3);
             tableLayoutPanel3.Controls.Add(label15, 3, 0);
-            tableLayoutPanel3.Controls.Add(label13, 3, 1);
-            tableLayoutPanel3.Controls.Add(label11, 3, 2);
-            tableLayoutPanel3.Controls.Add(label9, 3, 3);
+            tableLayoutPanel3.Controls.Add(label11, 3, 3);
+            tableLayoutPanel3.Controls.Add(cbEstadoContrato, 4, 3);
+            tableLayoutPanel3.Controls.Add(label13, 3, 2);
+            tableLayoutPanel3.Controls.Add(TimeSalida, 4, 1);
+            tableLayoutPanel3.Controls.Add(label2, 3, 1);
+            tableLayoutPanel3.Controls.Add(TimeEntrada, 4, 0);
+            tableLayoutPanel3.Controls.Add(txtSalario, 4, 2);
             tableLayoutPanel3.Location = new Point(12, 21);
             tableLayoutPanel3.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -215,82 +237,77 @@
             dtpFechaInicio.Size = new Size(171, 27);
             dtpFechaInicio.TabIndex = 28;
             // 
-            // dtpFechaFin
-            // 
-            dtpFechaFin.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            dtpFechaFin.Location = new Point(470, 9);
-            dtpFechaFin.Margin = new Padding(3, 4, 3, 4);
-            dtpFechaFin.Name = "dtpFechaFin";
-            dtpFechaFin.Size = new Size(173, 27);
-            dtpFechaFin.TabIndex = 29;
-            // 
-            // txtSalario
-            // 
-            txtSalario.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtSalario.Location = new Point(470, 54);
-            txtSalario.Margin = new Padding(3, 4, 3, 4);
-            txtSalario.Name = "txtSalario";
-            txtSalario.Size = new Size(173, 27);
-            txtSalario.TabIndex = 13;
-            // 
-            // cbEstadoContrato
-            // 
-            cbEstadoContrato.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            cbEstadoContrato.FormattingEnabled = true;
-            cbEstadoContrato.Location = new Point(470, 98);
-            cbEstadoContrato.Margin = new Padding(3, 4, 3, 4);
-            cbEstadoContrato.Name = "cbEstadoContrato";
-            cbEstadoContrato.Size = new Size(173, 28);
-            cbEstadoContrato.TabIndex = 25;
-            // 
-            // txtHorasJornada
-            // 
-            txtHorasJornada.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtHorasJornada.Location = new Point(470, 144);
-            txtHorasJornada.Margin = new Padding(3, 4, 3, 4);
-            txtHorasJornada.Name = "txtHorasJornada";
-            txtHorasJornada.Size = new Size(173, 27);
-            txtHorasJornada.TabIndex = 30;
-            // 
             // label15
             // 
             label15.Anchor = AnchorStyles.Left;
             label15.AutoSize = true;
-            label15.Location = new Point(357, 12);
+            label15.Location = new Point(357, 2);
             label15.Name = "label15";
-            label15.Size = new Size(45, 20);
+            label15.Size = new Size(67, 40);
             label15.TabIndex = 17;
-            label15.Text = "F. Fin:";
-            // 
-            // label13
-            // 
-            label13.Anchor = AnchorStyles.Left;
-            label13.AutoSize = true;
-            label13.Location = new Point(357, 57);
-            label13.Name = "label13";
-            label13.Size = new Size(58, 20);
-            label13.TabIndex = 19;
-            label13.Text = "Salario:";
+            label15.Text = "Hora de entrada";
             // 
             // label11
             // 
             label11.Anchor = AnchorStyles.Left;
             label11.AutoSize = true;
-            label11.Location = new Point(357, 102);
+            label11.Location = new Point(357, 147);
             label11.Name = "label11";
             label11.Size = new Size(57, 20);
             label11.TabIndex = 21;
             label11.Text = "Estado:";
             // 
-            // label9
+            // cbEstadoContrato
             // 
-            label9.Anchor = AnchorStyles.Left;
-            label9.AutoSize = true;
-            label9.Location = new Point(357, 147);
-            label9.Name = "label9";
-            label9.Size = new Size(52, 20);
-            label9.TabIndex = 23;
-            label9.Text = "Horas ";
+            cbEstadoContrato.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            cbEstadoContrato.FormattingEnabled = true;
+            cbEstadoContrato.Location = new Point(470, 143);
+            cbEstadoContrato.Margin = new Padding(3, 4, 3, 4);
+            cbEstadoContrato.Name = "cbEstadoContrato";
+            cbEstadoContrato.Size = new Size(173, 28);
+            cbEstadoContrato.TabIndex = 25;
+            // 
+            // label13
+            // 
+            label13.Anchor = AnchorStyles.Left;
+            label13.AutoSize = true;
+            label13.Location = new Point(357, 102);
+            label13.Name = "label13";
+            label13.Size = new Size(58, 20);
+            label13.TabIndex = 19;
+            label13.Text = "Salario:";
+            // 
+            // TimeSalida
+            // 
+            TimeSalida.Format = DateTimePickerFormat.Time;
+            TimeSalida.Location = new Point(470, 48);
+            TimeSalida.Name = "TimeSalida";
+            TimeSalida.RightToLeft = RightToLeft.No;
+            TimeSalida.ShowUpDown = true;
+            TimeSalida.Size = new Size(173, 27);
+            TimeSalida.TabIndex = 31;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Left;
+            label2.AutoSize = true;
+            label2.Location = new Point(357, 57);
+            label2.Name = "label2";
+            label2.Size = new Size(106, 20);
+            label2.TabIndex = 33;
+            label2.Text = "Hora de salida";
+            // 
+            // TimeEntrada
+            // 
+            TimeEntrada.AccessibleRole = AccessibleRole.MenuBar;
+            TimeEntrada.Checked = false;
+            TimeEntrada.Format = DateTimePickerFormat.Time;
+            TimeEntrada.ImeMode = ImeMode.NoControl;
+            TimeEntrada.Location = new Point(470, 3);
+            TimeEntrada.Name = "TimeEntrada";
+            TimeEntrada.ShowUpDown = true;
+            TimeEntrada.Size = new Size(173, 27);
+            TimeEntrada.TabIndex = 32;
             // 
             // tableLayoutPanel2
             // 
@@ -396,28 +413,12 @@
             dgvHistorialContratos.TabIndex = 22;
             dgvHistorialContratos.CellClick += dgvHistorialContratos_CellClick;
             // 
-            // btnHistorico
+            // txtSalario
             // 
-            btnHistorico.BackColor = Color.SandyBrown;
-            btnHistorico.FlatAppearance.BorderSize = 0;
-            btnHistorico.FlatStyle = FlatStyle.Flat;
-            btnHistorico.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHistorico.ForeColor = Color.WhiteSmoke;
-            btnHistorico.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
-            btnHistorico.IconColor = Color.WhiteSmoke;
-            btnHistorico.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnHistorico.IconSize = 30;
-            btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHistorico.Location = new Point(12, 208);
-            btnHistorico.Name = "btnHistorico";
-            btnHistorico.Padding = new Padding(12, 0, 0, 0);
-            btnHistorico.Size = new Size(207, 40);
-            btnHistorico.TabIndex = 27;
-            btnHistorico.Text = "Guardar Historico";
-            btnHistorico.TextAlign = ContentAlignment.MiddleLeft;
-            btnHistorico.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnHistorico.UseVisualStyleBackColor = false;
-            btnHistorico.Click += btnHistorico_Click;
+            txtSalario.Location = new Point(470, 93);
+            txtSalario.Name = "txtSalario";
+            txtSalario.Size = new Size(173, 27);
+            txtSalario.TabIndex = 34;
             // 
             // F11ContratosA
             // 
@@ -433,7 +434,6 @@
             panel3.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)txtHorasJornada).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvHistorialContratos).EndInit();
             ResumeLayout(false);
@@ -450,10 +450,7 @@
         private TableLayoutPanel tableLayoutPanel3;
         private Label label1;
         private Label label15;
-        private DateTimePicker dtpFechaFin;
         private Label label10;
-        private NumericUpDown txtHorasJornada;
-        private Label label9;
         private DateTimePicker dtpFechaInicio;
         private Label label12;
         private Label label14;
@@ -463,9 +460,12 @@
         private Label label11;
         private ComboBox cbEmpleado;
         private ComboBox cbEstadoContrato;
-        private TextBox txtSalario;
         private TextBox txtBuscarContrato;
         private FontAwesome.Sharp.IconButton btnBuscarContrato;
         private FontAwesome.Sharp.IconButton btnHistorico;
+        private DateTimePicker TimeSalida;
+        private DateTimePicker TimeEntrada;
+        private Label label2;
+        private TextBox txtSalario;
     }
 }

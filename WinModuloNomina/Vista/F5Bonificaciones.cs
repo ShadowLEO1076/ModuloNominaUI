@@ -33,6 +33,7 @@ namespace WinModuloNomina.Vista
         {
             await CargarBonificaciones();
             await CargarEmpleados();
+            CargarBonosTipos();
             this.montoTxt.KeyPress += SoloNumerosDecimal_KeyPress;
 
             actualizarBtn.Enabled = false;
@@ -46,7 +47,7 @@ namespace WinModuloNomina.Vista
 
             try
             {
-                if (string.IsNullOrWhiteSpace(tipoTxt.Text) || string.IsNullOrWhiteSpace(montoTxt.Text) || string.IsNullOrWhiteSpace(descripcionTxt.Text))
+                if (string.IsNullOrWhiteSpace(tipoCb.Text) || string.IsNullOrWhiteSpace(montoTxt.Text) || string.IsNullOrWhiteSpace(descripcionTxt.Text))
                 {
                     MessageBox.Show("Ingresar el tipo de bono, el motivo del bono y la cantidad.");
                     return;
@@ -58,7 +59,7 @@ namespace WinModuloNomina.Vista
                 var dato = new Bonificaciones
                 {
                     EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                    Tipo = tipoTxt.Text,
+                    Tipo = tipoCb.SelectedItem.ToString(),
                     Monto = decimal.Parse(montoTxt.Text),
                     Descripcion = descripcionTxt.Text,
                     Fecha = DateOnly.FromDateTime(fechaIngresoDtp.Value),
@@ -88,7 +89,7 @@ namespace WinModuloNomina.Vista
                     {
                         empleCb.SelectedValue = descuentosSelec.EmpleadoId;
                         idBoniTxt.Text = descuentosSelec.IdBonificaciones.ToString();
-                        tipoTxt.Text = descuentosSelec.Tipo;
+                        tipoCb.SelectedItem = descuentosSelec.Tipo;
                         descripcionTxt.Text = descuentosSelec.Descripcion;
                         montoTxt.Text = descuentosSelec.Monto.ToString();
                         fechaIngresoDtp.Value = descuentosSelec.Fecha.ToDateTime(TimeOnly.MinValue);
@@ -108,7 +109,7 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(tipoTxt.Text) || string.IsNullOrWhiteSpace(montoTxt.Text) || string.IsNullOrWhiteSpace(descripcionTxt.Text))
+                if (string.IsNullOrWhiteSpace(tipoCb.Text) || string.IsNullOrWhiteSpace(montoTxt.Text) || string.IsNullOrWhiteSpace(descripcionTxt.Text))
                 {
                     MessageBox.Show("Ingresar el tipo de bono, el motivo del bono y la cantidad.");
                     return;
@@ -121,7 +122,7 @@ namespace WinModuloNomina.Vista
                 {
                     IdBonificacion = int.Parse(idBoniTxt.Text),
                     EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                    Tipo = tipoTxt.Text,
+                    Tipo = tipoCb.SelectedValue.ToString(),
                     Monto = decimal.Parse(montoTxt.Text),
                     Descripcion = descripcionTxt.Text,
                     Fecha = DateOnly.FromDateTime(fechaIngresoDtp.Value),
@@ -143,7 +144,7 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(tipoTxt.Text) || string.IsNullOrWhiteSpace(montoTxt.Text) || string.IsNullOrWhiteSpace(descripcionTxt.Text))
+                if (string.IsNullOrWhiteSpace(tipoCb.Text) || string.IsNullOrWhiteSpace(montoTxt.Text) || string.IsNullOrWhiteSpace(descripcionTxt.Text))
                 {
                     MessageBox.Show("Ingresar el tipo de bono, el motivo del bono y la cantidad.");
                     return;
@@ -156,7 +157,7 @@ namespace WinModuloNomina.Vista
                 {
                     IdBonificacion = int.Parse(idBoniTxt.Text),
                     EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                    Tipo = tipoTxt.Text,
+                    Tipo = tipoCb.SelectedValue.ToString(),
                     Monto = decimal.Parse(montoTxt.Text),
                     Descripcion = descripcionTxt.Text,
                     Fecha = DateOnly.FromDateTime(fechaIngresoDtp.Value),
@@ -182,7 +183,7 @@ namespace WinModuloNomina.Vista
                 idBoniTxt.Clear();
                 descripcionTxt.Clear();
                 montoTxt.Clear();
-                tipoTxt.Clear();
+                tipoCb.SelectedIndex = -1;
                 empleCb.SelectedIndex = -1;
                 fechaIngresoDtp.Value = DateTime.Today;
 
@@ -195,7 +196,40 @@ namespace WinModuloNomina.Vista
             }
         }
 
+        public void empleCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (empleCb.SelectedIndex == -1) return;
+
+            if (empleCb.SelectedItem is Empleados emple)
+            {
+                empleLb.Text = $"{emple.Nombres} {emple.Apellidos}";
+            }
+        }
+
         //código necesario pero que no es del formulario
+
+        private List<string> bonosTipo = new List<String>
+        {
+            "Horas Extras",
+            "Por Objetivos",
+            "Por Productividad",
+        };
+
+        public void CargarBonosTipos()
+        {
+            try
+            {
+                tipoCb.DataSource = bonosTipo;
+
+                tipoCb.SelectedIndex = -1; // No seleccionado al cargar
+            }
+            catch
+            {
+                MessageBox.Show($"No se pueden cargar los tipos bonificaciones.");
+            }
+
+        }
+
         public async Task CargarBonificaciones()
         {
             try

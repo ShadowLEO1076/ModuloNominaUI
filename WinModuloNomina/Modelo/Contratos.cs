@@ -14,9 +14,11 @@ public partial class Contratos
 
     public int TipoId { get; set; }
 
-    public DateOnly? FechaInicio { get; set; }
+    public DateOnly FechaInicio { get; set; }
 
-    public DateOnly? FechaFin { get; set; }
+    public TimeOnly? JornadaHoraInicio { get; set; }
+
+    public TimeOnly? JornadaHoraFin { get; set; }
 
     public decimal Salario { get; set; }
 
@@ -26,6 +28,4 @@ public partial class Contratos
 
     public DateTime? FechaModificacion { get; set; }
 
-    public int? HorasJornada { get; set; }
-    
 }

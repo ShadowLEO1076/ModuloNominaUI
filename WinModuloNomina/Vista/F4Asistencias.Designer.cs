@@ -34,10 +34,11 @@
             registroLb = new Label();
             registroCb = new ComboBox();
             tableLayoutPanel2 = new TableLayoutPanel();
+            nomEmpleLb2 = new Label();
             licenciaLb = new Label();
+            nombreEmpleadoLbl = new Label();
             licenciaCb = new ComboBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            idAsisTxt = new TextBox();
             empleLb = new Label();
             fecLb = new Label();
             entradaLb = new Label();
@@ -47,6 +48,7 @@
             horaEntraDtp = new DateTimePicker();
             horaSaliDtp = new DateTimePicker();
             asisLb = new Label();
+            idAsisTxt = new TextBox();
             limpiarBtn = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
             EliminarBtn = new FontAwesome.Sharp.IconButton();
@@ -122,33 +124,54 @@
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.5555573F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.44444F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 43.61702F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 56.38298F));
+            tableLayoutPanel2.Controls.Add(nomEmpleLb2, 0, 1);
             tableLayoutPanel2.Controls.Add(licenciaLb, 0, 0);
+            tableLayoutPanel2.Controls.Add(nombreEmpleadoLbl, 1, 1);
             tableLayoutPanel2.Controls.Add(licenciaCb, 1, 0);
-            tableLayoutPanel2.Location = new Point(823, 41);
+            tableLayoutPanel2.Location = new Point(821, 48);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 31F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(241, 41);
+            tableLayoutPanel2.Size = new Size(322, 72);
             tableLayoutPanel2.TabIndex = 14;
+            // 
+            // nomEmpleLb2
+            // 
+            nomEmpleLb2.AutoSize = true;
+            nomEmpleLb2.Location = new Point(3, 41);
+            nomEmpleLb2.Name = "nomEmpleLb2";
+            nomEmpleLb2.Size = new Size(77, 31);
+            nomEmpleLb2.TabIndex = 17;
+            nomEmpleLb2.Text = "Nombre Empleado";
+            nomEmpleLb2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // licenciaLb
             // 
             licenciaLb.AutoSize = true;
             licenciaLb.Location = new Point(3, 0);
             licenciaLb.Name = "licenciaLb";
-            licenciaLb.Size = new Size(62, 40);
+            licenciaLb.Size = new Size(81, 20);
             licenciaLb.TabIndex = 29;
             licenciaLb.Text = "ID Licencia";
+            // 
+            // nombreEmpleadoLbl
+            // 
+            nombreEmpleadoLbl.AutoSize = true;
+            nombreEmpleadoLbl.Location = new Point(143, 41);
+            nombreEmpleadoLbl.Name = "nombreEmpleadoLbl";
+            nombreEmpleadoLbl.Size = new Size(0, 20);
+            nombreEmpleadoLbl.TabIndex = 16;
             // 
             // licenciaCb
             // 
             licenciaCb.FormattingEnabled = true;
-            licenciaCb.Location = new Point(88, 3);
+            licenciaCb.Location = new Point(143, 3);
             licenciaCb.Name = "licenciaCb";
-            licenciaCb.Size = new Size(138, 28);
+            licenciaCb.Size = new Size(174, 28);
             licenciaCb.TabIndex = 29;
             // 
             // tableLayoutPanel1
@@ -160,7 +183,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.2201271F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.77988F));
-            tableLayoutPanel1.Controls.Add(idAsisTxt, 1, 0);
             tableLayoutPanel1.Controls.Add(empleLb, 0, 1);
             tableLayoutPanel1.Controls.Add(fecLb, 0, 2);
             tableLayoutPanel1.Controls.Add(entradaLb, 0, 3);
@@ -170,7 +192,8 @@
             tableLayoutPanel1.Controls.Add(horaEntraDtp, 1, 3);
             tableLayoutPanel1.Controls.Add(horaSaliDtp, 1, 4);
             tableLayoutPanel1.Controls.Add(asisLb, 0, 0);
-            tableLayoutPanel1.Location = new Point(286, 39);
+            tableLayoutPanel1.Controls.Add(idAsisTxt, 1, 0);
+            tableLayoutPanel1.Location = new Point(285, 48);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
@@ -187,22 +210,14 @@
             tableLayoutPanel1.Size = new Size(514, 165);
             tableLayoutPanel1.TabIndex = 3;
             // 
-            // idAsisTxt
-            // 
-            idAsisTxt.Location = new Point(260, 3);
-            idAsisTxt.Name = "idAsisTxt";
-            idAsisTxt.ReadOnly = true;
-            idAsisTxt.Size = new Size(246, 27);
-            idAsisTxt.TabIndex = 7;
-            // 
             // empleLb
             // 
             empleLb.AutoSize = true;
             empleLb.Location = new Point(3, 33);
             empleLb.Name = "empleLb";
-            empleLb.Size = new Size(77, 20);
+            empleLb.Size = new Size(127, 20);
             empleLb.TabIndex = 18;
-            empleLb.Text = "Empleado";
+            empleLb.Text = "Cédula Empleado";
             // 
             // fecLb
             // 
@@ -238,6 +253,7 @@
             empleCb.Name = "empleCb";
             empleCb.Size = new Size(246, 28);
             empleCb.TabIndex = 25;
+           // empleCb.SelectedIndexChanged += EmpleCb_SelectedIndexChanged;
             // 
             // fecAsisDtp
             // 
@@ -272,6 +288,14 @@
             asisLb.TabIndex = 7;
             asisLb.Text = "ID Asistencia";
             // 
+            // idAsisTxt
+            // 
+            idAsisTxt.Location = new Point(260, 3);
+            idAsisTxt.Name = "idAsisTxt";
+            idAsisTxt.ReadOnly = true;
+            idAsisTxt.Size = new Size(246, 27);
+            idAsisTxt.TabIndex = 7;
+            // 
             // limpiarBtn
             // 
             limpiarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -287,14 +311,15 @@
             // 
             // panel2
             // 
+            panel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel2.Controls.Add(EliminarBtn);
             panel2.Controls.Add(iconButton2);
             panel2.Controls.Add(actualizarBtn);
             panel2.Controls.Add(ingresarBtn);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(1183, 0);
+            panel2.Location = new Point(1192, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(142, 221);
+            panel2.Size = new Size(133, 221);
             panel2.TabIndex = 4;
             // 
             // EliminarBtn
@@ -302,7 +327,7 @@
             EliminarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             EliminarBtn.IconColor = Color.Black;
             EliminarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            EliminarBtn.Location = new Point(31, 123);
+            EliminarBtn.Location = new Point(18, 129);
             EliminarBtn.Name = "EliminarBtn";
             EliminarBtn.Size = new Size(82, 39);
             EliminarBtn.TabIndex = 12;
@@ -315,19 +340,20 @@
             iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButton2.IconColor = Color.Black;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(31, 168);
+            iconButton2.Location = new Point(18, 181);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(82, 29);
             iconButton2.TabIndex = 10;
             iconButton2.Text = "Buscar";
             iconButton2.UseVisualStyleBackColor = true;
+            iconButton2.Visible = false;
             // 
             // actualizarBtn
             // 
             actualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             actualizarBtn.IconColor = Color.Black;
             actualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            actualizarBtn.Location = new Point(31, 81);
+            actualizarBtn.Location = new Point(18, 87);
             actualizarBtn.Name = "actualizarBtn";
             actualizarBtn.Size = new Size(82, 37);
             actualizarBtn.TabIndex = 11;
@@ -340,7 +366,7 @@
             ingresarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             ingresarBtn.IconColor = Color.Black;
             ingresarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ingresarBtn.Location = new Point(31, 39);
+            ingresarBtn.Location = new Point(18, 45);
             ingresarBtn.Name = "ingresarBtn";
             ingresarBtn.Size = new Size(82, 37);
             ingresarBtn.TabIndex = 9;
@@ -351,7 +377,7 @@
             // infoLb
             // 
             infoLb.AutoSize = true;
-            infoLb.Location = new Point(18, 12);
+            infoLb.Location = new Point(18, 24);
             infoLb.Name = "infoLb";
             infoLb.Size = new Size(182, 20);
             infoLb.TabIndex = 6;
@@ -470,5 +496,7 @@
         private TableLayoutPanel tableLayoutPanel4;
         private Label registroLb;
         private ComboBox registroCb;
+        private Label nomEmpleLb2;
+        private Label nombreEmpleadoLbl;
     }
 }

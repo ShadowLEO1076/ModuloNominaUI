@@ -37,6 +37,7 @@ namespace WinModuloNomina.Vista
                 this.Load += F11ContratosA_Load;
 
                 dgvHistorialContratos.CellClick += dgvHistorialContratos_CellClick;
+                cbEmpleado.SelectedIndexChanged += cbEmpleado_SelectedIndexChanged;
 
 
                 txtIdContrato.Enabled = false;
@@ -66,8 +67,6 @@ namespace WinModuloNomina.Vista
         }
         private async void CargarDatosIniciales()
         {
-            //await CargarJornadaTipo();
-            //await CargarTiposContrato();
             await CargarEmpleados();
             await CargarContratos();
             await ConfigurarGestionFechas();  // a borrar para demostracion de finalizados por defecto funciona aqui 
@@ -101,12 +100,7 @@ namespace WinModuloNomina.Vista
             {
                 dtpFechaInicio.Format = DateTimePickerFormat.Custom;
                 dtpFechaInicio.CustomFormat = "dd-MM-yyyy";
-                dtpFechaFin.Format = DateTimePickerFormat.Custom;
-                dtpFechaFin.CustomFormat = "dd-MM-yyyy";
-
                 dtpFechaInicio.MinDate = DateTime.Today;
-                dtpFechaFin.MinDate = DateTime.Today;
-
             }
             catch (Exception ex)
             {
@@ -148,20 +142,11 @@ namespace WinModuloNomina.Vista
                 var row = dgvHistorialContratos.Rows[e.RowIndex];
                 var dataRow = ((DataRowView)row.DataBoundItem)?.Row;
 
-                if (dataRow == null) return;
-
-                // Desactivar eventos temporalmente
-                UnsubscribeDateEvents();
-
+                if (dataRow == null) return;                
                 // Cargar datos básicos
                 LoadBasicData(dataRow);
-
                 // Cargar y validar fechas
-                LoadAndValidateDates(dataRow);
-
-                // Reactivar eventos
-                SubscribeDateEvents();
-
+                LoadAndValidateDates(dataRow);           
                 // Colorear fila seleccionada
                 HighlightSelectedRow(row);
             }
@@ -170,21 +155,7 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Error al seleccionar contrato");
             }
         }
-        private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dtpFechaFin.Value < dtpFechaInicio.Value)
-                {
-                    dtpFechaFin.Value = dtpFechaInicio.Value.AddDays(30);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cambiar fecha inicio");
-            }
-        }
+       
         private void ConfigurarEventos()
         {
             //cbJornadaTipo.SelectedIndexChanged += cbJornadaTipo_SelectedIndexChanged;
@@ -201,26 +172,7 @@ namespace WinModuloNomina.Vista
                     bindingSource1.Sort = dgvHistorialContratos.SortString;
             };
         }
-        private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dtpFechaInicio.Value > dtpFechaFin.Value)
-                {
-                    dtpFechaInicio.Value = dtpFechaFin.Value.AddDays(-1);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cambiar fecha fin");
-            }
-        }
-        private void UnsubscribeDateEvents()
-        {
-            dtpFechaInicio.ValueChanged -= dtpFechaInicio_ValueChanged;
-            dtpFechaFin.ValueChanged -= dtpFechaFin_ValueChanged;
-        }
+       
         private void LoadBasicData(DataRow dataRow)
         {
             txtIdContrato.Text = dataRow["IdContrato"]?.ToString();
@@ -229,13 +181,12 @@ namespace WinModuloNomina.Vista
             //txtAuxE.Text = dataRow["EmpleadoId"]?.ToString();
             txtSalario.Text = dataRow["Salario"]?.ToString();
             cbEstadoContrato.Text = dataRow["Estado"]?.ToString();
-            txtHorasJornada.Text = dataRow["HorasJornada"]?.ToString();
+          
 
         }
         private void LoadAndValidateDates(DataRow dataRow)
         {
             LoadAndValidateDate(dataRow, "FechaInicio", dtpFechaInicio, "inicio");
-            LoadAndValidateDate(dataRow, "FechaFin", dtpFechaFin, "fin");
         }
         private void LoadAndValidateDate(DataRow dataRow, string columnName, DateTimePicker picker, string tipoFecha)
         {
@@ -257,11 +208,7 @@ namespace WinModuloNomina.Vista
                 }
             }
         }
-        private void SubscribeDateEvents()
-        {
-            dtpFechaInicio.ValueChanged += dtpFechaInicio_ValueChanged;
-            dtpFechaFin.ValueChanged += dtpFechaFin_ValueChanged;
-        }
+       
         private void HighlightSelectedRow(DataGridViewRow selectedRow)
         {
             foreach (DataGridViewRow row in dgvHistorialContratos.SelectedRows)
@@ -302,17 +249,19 @@ namespace WinModuloNomina.Vista
                 txtHorasJornada.Enabled = true;
             }
         }*/
+        private List<EmpleadoConSalarioDTO> _empleadosCache = new List<EmpleadoConSalarioDTO>();
+
         private async Task CargarEmpleados()
         {
             try
             {
-                var empleados = await _apimodulonomina.GetAsync<List<Empleados>>("EmpleadoControlador/ListarEmpleados");
+                _empleadosCache = await _apimodulonomina.GetAsync<List<EmpleadoConSalarioDTO>>("EmpleadosControlador/ListarEmpleadosConSalario");
 
-                var listaParaCombo = empleados
+                var listaParaCombo = _empleadosCache
                     .Select(e => new
                     {
                         Id = e.IdEmpleado,
-                        NombreCompleto = $"{e.Nombres} {e.Apellidos}"
+                        NombreCompleto = $"{e.NombreCompleto} {e.NombrePuesto}"
                     })
                     .ToList();
 
@@ -325,6 +274,20 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("No se pudieron cargar los empleados: " + ex.Message);
             }
         }
+
+        private void cbEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbEmpleado.SelectedValue != null &&
+                int.TryParse(cbEmpleado.SelectedValue.ToString(), out int idEmpleado))
+            {
+                var empleado = _empleadosCache.FirstOrDefault(e => e.IdEmpleado == idEmpleado);
+                if (empleado != null)
+                {
+                    txtSalario.Text = empleado.SalarioBase.ToString("N2");
+                }
+            }
+        }
+
         private async Task cargarTipoCombo()
         {
             try
@@ -332,22 +295,40 @@ namespace WinModuloNomina.Vista
                 var tipos = await _apimodulonomina.GetAsync<List<ContratosTipo>>("ContratoTipoControlador/ListarTiposContratos");
 
                 var listaCombito = tipos
+                    .OrderByDescending(t => t.IdTipo) // Ordenar por IdTipo descendente
                     .Select(t => new
                     {
                         IdTipo = t.IdTipo,
-                        Nombre = $"{t.Jornada} {t.Nombre}"
+                        Nombre = $"{t.Jornada} {t.Nombre} {t.IdTipo}"
                     })
                     .ToList();
 
                 cbTipoContrato.DataSource = listaCombito;
                 cbTipoContrato.DisplayMember = "Nombre";
-                cbTipoContrato.ValueMember = "IdTipo"; // <-- este nombre debe coincidir con el de tu clase anónima
+                cbTipoContrato.ValueMember = "IdTipo";
             }
             catch (Exception ex)
             {
                 MessageBox.Show("No se pudieron cargar los tipos: " + ex.Message);
             }
         }
+
+     
+
+
+
+        // En el evento Leave del TextBox
+        private void txtSalario_Leave(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtSalario.Text, out decimal salario))
+            {
+                txtSalario.Text = salario.ToString("N2"); // Formato con 2 decimales
+            }
+        }
+
+
+
+
         private async Task CrearContrato()
         {
             try
@@ -359,13 +340,11 @@ namespace WinModuloNomina.Vista
                     return;
                 }
 
-                if (!decimal.TryParse(txtSalario.Text.Trim(), out decimal salario) ||
-                    !int.TryParse(txtHorasJornada.Text.Trim(), out int horasJornada))
+                if (!decimal.TryParse(txtSalario.Text.Trim(), out decimal salario))
                 {
                     MessageBox.Show("Salario u horas no válidas.");
                     return;
                 }
-
                 // Crear contrato
                 var nuevoContrato = new Contratos
                 {
@@ -373,14 +352,14 @@ namespace WinModuloNomina.Vista
                     EmpleadoId = int.Parse(cbEmpleado.SelectedValue.ToString()),
                     TipoId = int.Parse(cbTipoContrato.SelectedValue.ToString()),
                     FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value),
-                    FechaFin = DateOnly.FromDateTime(dtpFechaFin.Value),
+                    JornadaHoraInicio = TimeOnly.FromDateTime(TimeEntrada.Value),
+                    JornadaHoraFin = TimeOnly.FromDateTime(TimeSalida.Value),
                     Salario = decimal.Parse(txtSalario.Text.Trim()),
                     Estado = cbEstadoContrato.Text,
                     FechaCreacion = DateTime.Now.Date,
                     FechaModificacion = DateTime.Now.Date,
-                    HorasJornada = int.Parse(txtHorasJornada.Text.Trim())
+                    
                 };
-
                 // Insertar contrato usando PostAsync<T>
                 var contratoInsertado = await _apimodulonomina.PostAsync<Contratos>(
                     "ContratosControlador/InsertarContratos", nuevoContrato);
@@ -390,9 +369,6 @@ namespace WinModuloNomina.Vista
                     MessageBox.Show("No se pudo obtener el ID del contrato creado.");
                     return;
                 }
-
-
-
                 // Actualizar vista
                 await CargarContratos();
                 LimpiarControlesContrato();
@@ -456,50 +432,34 @@ namespace WinModuloNomina.Vista
                                                  MessageBoxButtons.YesNo,
                                                  MessageBoxIcon.Question);
 
-
-
-
-
-
-
-
-
-
                 if (confirmacion != DialogResult.Yes) return;
 
 
                 // Crear objeto con los datos actualizados
                 var contratoActualizado = new Contratos
                 {
+
                     IdContrato = idContrato,
                     EmpleadoId = int.Parse(cbEmpleado.SelectedValue.ToString()),
                     TipoId = int.Parse(cbTipoContrato.SelectedValue.ToString()),
                     FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value),
-                    FechaFin = DateOnly.FromDateTime(dtpFechaFin.Value),
+                    JornadaHoraInicio = TimeOnly.FromDateTime(TimeEntrada.Value),
+                    JornadaHoraFin = TimeOnly.FromDateTime(TimeSalida.Value),
                     Salario = decimal.Parse(txtSalario.Text.Trim()),
                     Estado = nuevoEstado,
                     FechaCreacion = contratoActual.FechaCreacion,
-                    FechaModificacion = DateTime.Now,
-                    HorasJornada = int.Parse(txtHorasJornada.Value.ToString())
+                    FechaModificacion = DateTime.Now
                 };
-
-
-
-
-                // Enviar la actualización al API
-                await _apimodulonomina.PutAsync<ContratosDTO>("ContratosControlador/ActualizarContratos", contratoActualizado);
-                MessageBox.Show("Contrato actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                await CargarContratos(); // Recargar la lista de contratos
-
-                //LimpiarControlesContrato(); // Limpiar los controles
-                // Crear histórico
-
+                await _apimodulonomina.PutAsync<Contratos>($"ContratosControlador/ActualizarContratos",contratoActualizado);
+                await CargarContratos();
 
 
 
 
 
             }
+
+
             catch (FormatException fex)
             {
                 MessageBox.Show($"Error de formato en los datos: {fex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -515,10 +475,10 @@ namespace WinModuloNomina.Vista
             cbTipoContrato.SelectedIndex = -1;
             cbEmpleado.SelectedIndex = -1;
             dtpFechaInicio.Value = DateTime.Now;
-            dtpFechaFin.Value = DateTime.Now.AddYears(1);
-            txtSalario.Clear();
+         
+            //txtSalario.Clear();////////////////////////////////////////////ojito
             cbEstadoContrato.SelectedIndex = 0;
-            txtHorasJornada.Value = 0;
+         
         }
 
 
@@ -588,12 +548,13 @@ namespace WinModuloNomina.Vista
                 EmpleadoId = int.Parse(cbEmpleado.SelectedValue.ToString()),
                 TipoId = int.Parse(cbTipoContrato.SelectedValue.ToString()),
                 FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value),
-                FechaFin = DateOnly.FromDateTime(dtpFechaFin.Value),
+                JornadaHoraInicio = TimeOnly.FromDateTime(TimeEntrada.Value),
+                JornadaHoraFin = TimeOnly.FromDateTime(TimeSalida.Value),
                 Salario = decimal.Parse(txtSalario.Text.Trim()),
                 Estado = "Finalizado",
                 FechaCreacion = contratoActual.FechaCreacion,
                 FechaModificacion = DateTime.Now,
-                HorasJornada = int.Parse(txtHorasJornada.Value.ToString())
+              
             };
 
 
@@ -619,13 +580,13 @@ namespace WinModuloNomina.Vista
                     MessageBox.Show("Debe seleccionar un empleado y un tipo de contrato.");
                     return;
                 }
-
-                if (!decimal.TryParse(txtSalario.Text.Trim(), out decimal salario) ||
-                    !int.TryParse(txtHorasJornada.Text.Trim(), out int horasJornada))
+                if(!UsuarioSesion.EsAdministrador)
                 {
-                    MessageBox.Show("Salario u horas no válidas.");
+                    MessageBox.Show("Debe ser administrador ");
                     return;
                 }
+
+                
 
                 var nuevoHistorico = new ContratosHistoricoDTO
                 {
@@ -634,14 +595,15 @@ namespace WinModuloNomina.Vista
                     EmpleadoId = int.Parse(cbEmpleado.SelectedValue.ToString()),
                     TipoId = int.Parse(cbTipoContrato.SelectedValue.ToString()),
                     FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value),
-                    FechaFin = DateOnly.FromDateTime(dtpFechaFin.Value),
+                    FechaFin = DateOnly.FromDateTime(DateTime.Now),
                     Salario = decimal.Parse(txtSalario.Text.Trim()),
                     Estado = "Finalizado",
                     FechaCreacion = DateTime.Now.Date,
                     FechaModificacion = DateTime.Now.Date,
-                    HorasJornada = int.Parse(txtHorasJornada.Text.Trim()),
                     UsuarioCambio = UsuarioSesion.Cedula,
-                    FechaRegistro = DateTime.Now.Date
+                    FechaRegistro = DateTime.Now.Date,
+                    JornadaHoraInicio = TimeOnly.FromDateTime(TimeEntrada.Value),
+                    JornadaHoraFin = TimeOnly.FromDateTime(TimeSalida.Value)
                 };
 
                 // Insertar contrato usando PostAsync<T>
