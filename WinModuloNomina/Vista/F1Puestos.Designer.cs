@@ -63,7 +63,7 @@
             panel3.Size = new Size(742, 45);
             panel3.Size = new Size(748, 45);
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel3.BackColor = SystemColors.Highlight;
+            panel3.BackColor = SystemColors.HotTrack;
             panel3.Controls.Add(label2);
             panel3.Controls.Add(btnBuscar);
             panel3.Controls.Add(txtBuscar);
@@ -110,7 +110,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = SystemColors.Highlight;
+            panel1.BackColor = SystemColors.HotTrack;
             panel1.Controls.Add(label1);
             panel1.Location = new Point(147, 22);
             panel1.Name = "panel1";
@@ -138,7 +138,7 @@
             // 
             // btnCrear
             // 
-            btnCrear.BackColor = Color.FromArgb(192, 255, 192);
+            btnCrear.BackColor = Color.RoyalBlue;
             btnCrear.Dock = DockStyle.Fill;
             btnCrear.FlatAppearance.BorderSize = 0;
             btnCrear.FlatStyle = FlatStyle.Flat;
@@ -162,7 +162,7 @@
             // 
             // btnBorrar
             // 
-            btnBorrar.BackColor = Color.FromArgb(255, 192, 192);
+            btnBorrar.BackColor = Color.IndianRed;
             btnBorrar.Dock = DockStyle.Fill;
             btnBorrar.FlatAppearance.BorderSize = 0;
             btnBorrar.FlatStyle = FlatStyle.Flat;
@@ -186,7 +186,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.BackColor = Color.FromArgb(192, 255, 255);
+            btnEditar.BackColor = Color.SteelBlue;
             btnEditar.Dock = DockStyle.Fill;
             btnEditar.FlatAppearance.BorderSize = 0;
             btnEditar.FlatStyle = FlatStyle.Flat;
@@ -386,9 +386,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(742, 415);
-            ClientSize = new Size(748, 382);
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(915, 679);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(dgvPuestos);

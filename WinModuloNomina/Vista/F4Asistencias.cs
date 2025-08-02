@@ -35,12 +35,17 @@ namespace WinModuloNomina.Vista
             await CargarLicencias();
             CargarRegistros();
             //inicia así para que no se pueda actualizar nada
+            empleCb.SelectedIndex = -1;
             registroCb.SelectedIndex = 0;
+            horaEntraDtp.Enabled = false;
+            horaSaliDtp.Enabled = false;
             actualizarBtn.Enabled = false;
             EliminarBtn.Enabled = false;
             horaEntraDtp.Format = DateTimePickerFormat.Time;
             horaSaliDtp.Format = DateTimePickerFormat.Time;
             fecAsisDtp.Value = DateTime.Now;
+            horaEntraDtp.Value = DateTime.Now;
+            horaSaliDtp.Value = DateTime.Now;
         }
         private async void ingresarBtn_Click(object sender, EventArgs e)
         {
@@ -176,7 +181,7 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        
+
 
         private async void actualizarBtn_Click(object sender, EventArgs e)
         {
@@ -222,6 +227,7 @@ namespace WinModuloNomina.Vista
                     };
 
                     await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
+
                 }
             }
             catch
@@ -284,6 +290,7 @@ namespace WinModuloNomina.Vista
                     };
 
                     await _api.PutAsync<Inasistencias>("InasistenciasControlador/ActualizarAsync", inasistencia);
+                    await _api.PutAsync<InasistenciasFormDTO>("InasistenciasControlador/ActualizarAsync", inasistencia);
                 }
             }
             catch
@@ -291,6 +298,43 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show("Error al eliminar registro, verifique que los datos sean correctos");
             }
         }
+
+        /*private async void EmpleCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (empleCb.SelectedIndex == -1)
+                    return;
+
+                if (empleCb.SelectedItem is Empleados emp)
+                {
+                    string empleCedula = emp.Cedula;
+
+                    var contrato = await _api.GetAsync<Contratos>($"ContratosControlador/ObtenerContratoActivoPorCedulaAsync/{empleCedula}");
+
+                    if (contrato == null)
+                    {
+                        MessageBox.Show("El empleado no tiene contrato activo.");
+                        return;
+                    }
+
+                    //double HoraJorDecimales = (double)contrato.HorasJornada;
+
+                    DateTime horaEntrada = DateTime.Now;
+                    DateTime horaSalida = horaEntrada.AddHours(HoraJorDecimales);
+
+                    horaEntraDtp.Value = horaEntrada;
+                    horaSaliDtp.Value = horaSalida;
+
+                    nombreEmpleadoLbl.Text = $"{emp.Nombres} {emp.Apellidos}";
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Error al cargar de empleados.");
+            }
+        }*/
 
 
         private async void EmpleCb_SelectedIndexChanged(object sender, EventArgs e)
@@ -312,13 +356,10 @@ namespace WinModuloNomina.Vista
                         return;
                     }
 
-                    double HoraJorDecimales = (double)contrato.HorasJornada;
 
                     DateTime horaEntrada = DateTime.Now;
-                    DateTime horaSalida = horaEntrada.AddHours(HoraJorDecimales);
 
                     horaEntraDtp.Value = horaEntrada;
-                    horaSaliDtp.Value = horaSalida;
 
                     empleLb.Text = $"{emp.Nombres} {emp.Apellidos}";
                 }
@@ -412,6 +453,5 @@ namespace WinModuloNomina.Vista
                 licenciaCb.Enabled = true;
             }
         }
-
     }
 }

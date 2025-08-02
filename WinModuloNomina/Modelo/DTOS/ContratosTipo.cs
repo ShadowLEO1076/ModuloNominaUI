@@ -14,4 +14,6 @@ public partial class ContratosTipo
 
     public string Nombre { get; set; }
 
+    public int? HorasJornada { get; set; } //?
+
 }

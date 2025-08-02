@@ -37,7 +37,6 @@
             licenciaLb = new Label();
             licenciaCb = new ComboBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            idAsisTxt = new TextBox();
             empleLb = new Label();
             fecLb = new Label();
             entradaLb = new Label();
@@ -47,6 +46,7 @@
             horaEntraDtp = new DateTimePicker();
             horaSaliDtp = new DateTimePicker();
             asisLb = new Label();
+            idAsisTxt = new TextBox();
             limpiarBtn = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
             EliminarBtn = new FontAwesome.Sharp.IconButton();
@@ -132,15 +132,16 @@
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.5555573F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.44444F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 43.61702F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 56.38298F));
             tableLayoutPanel2.Controls.Add(licenciaLb, 0, 0);
             tableLayoutPanel2.Controls.Add(licenciaCb, 1, 0);
             tableLayoutPanel2.Location = new Point(720, 31);
             tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 31F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Size = new Size(211, 31);
             tableLayoutPanel2.TabIndex = 14;
@@ -172,7 +173,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.2201271F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.77988F));
-            tableLayoutPanel1.Controls.Add(idAsisTxt, 1, 0);
             tableLayoutPanel1.Controls.Add(empleLb, 0, 1);
             tableLayoutPanel1.Controls.Add(fecLb, 0, 2);
             tableLayoutPanel1.Controls.Add(entradaLb, 0, 3);
@@ -216,7 +216,7 @@
             empleLb.Name = "empleLb";
             empleLb.Size = new Size(60, 15);
             empleLb.TabIndex = 18;
-            empleLb.Text = "Empleado";
+            empleLb.Text = "Cédula Empleado";
             // 
             // fecLb
             // 
@@ -253,6 +253,7 @@
             empleCb.Name = "empleCb";
             empleCb.Size = new Size(216, 23);
             empleCb.TabIndex = 25;
+           // empleCb.SelectedIndexChanged += EmpleCb_SelectedIndexChanged;
             // 
             // fecAsisDtp
             // 
@@ -290,6 +291,14 @@
             asisLb.TabIndex = 7;
             asisLb.Text = "ID Asistencia";
             // 
+            // idAsisTxt
+            // 
+            idAsisTxt.Location = new Point(260, 3);
+            idAsisTxt.Name = "idAsisTxt";
+            idAsisTxt.ReadOnly = true;
+            idAsisTxt.Size = new Size(246, 27);
+            idAsisTxt.TabIndex = 7;
+            // 
             // limpiarBtn
             // 
             limpiarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -306,6 +315,7 @@
             // 
             // panel2
             // 
+            panel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel2.Controls.Add(EliminarBtn);
             panel2.Controls.Add(iconButton2);
             panel2.Controls.Add(actualizarBtn);
@@ -343,6 +353,7 @@
             iconButton2.TabIndex = 10;
             iconButton2.Text = "Buscar";
             iconButton2.UseVisualStyleBackColor = true;
+            iconButton2.Visible = false;
             // 
             // actualizarBtn
             // 

@@ -8,7 +8,7 @@ namespace Infraestructura.AccesoDatos;
 
 public partial class Puestos
 {
-    public int IdPuesto { get; set; }
+    public int? IdPuesto { get; set; }
 
     public string Nombre { get; set; }
 

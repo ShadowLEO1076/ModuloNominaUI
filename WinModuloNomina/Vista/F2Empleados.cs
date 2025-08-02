@@ -110,7 +110,6 @@ namespace WinModuloNomina.Vista
                 return;
             }
 
-            
             // Verificar si la cédula ya está registrada
             var correoExiste = await _api.GetAsync<bool>($"EmpleadosControlador/VerificarCorreoElectronico/{correoTxt.Text}");
             if (correoExiste != null && correoExiste == true)
@@ -442,9 +441,5 @@ namespace WinModuloNomina.Vista
             }
 
         }
-
-       
     }
 }
-
-

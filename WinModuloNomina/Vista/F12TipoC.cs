@@ -25,6 +25,9 @@ namespace WinModuloNomina.Vista
                 string baseUrl = ConfigurationManager.AppSettings["APIBaseUrl"];
                 _apimodulonomina = new APIModuloNomina(baseUrl);
                 dgvTipoContrato.CellClick += dgvTipoContrato_CellClick;
+                cbJornadaTipo.SelectedIndexChanged += cbJornadaTipo_SelectedIndexChanged;
+
+                txtIdTipoContrato.Enabled = false;
 
                 this.Load += F12TipoC_Load;
 
@@ -58,12 +61,14 @@ namespace WinModuloNomina.Vista
             cbJornadaTipo.Items.Add("Tiempo Parcial");
             await Task.CompletedTask;
         }
+       
+
 
         private async Task CrearTipoContrato()
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtNombreTipo.Text) || string.IsNullOrWhiteSpace(cbJornadaTipo.Text))
+                if (string.IsNullOrWhiteSpace(txtNombreTipo.Text) || string.IsNullOrWhiteSpace(cbJornadaTipo.Text) || string.IsNullOrWhiteSpace(txtHorasLaborales.Text))
                 {
                     MessageBox.Show("Completa los campos de Tipo de Contrato.");
                     return;
@@ -72,7 +77,8 @@ namespace WinModuloNomina.Vista
                 var nuevoTipo = new ContratosTipo
                 {
                     Nombre = txtNombreTipo.Text,
-                    Jornada = cbJornadaTipo.Text
+                    Jornada = cbJornadaTipo.Text,
+                    HorasJornada = int.Parse(txtHorasLaborales.Text.Trim())
                 };
 
                 await _apimodulonomina.PostAsync<ContratosTipo>("ContratoTipoControlador/InsertarTipoContrato", nuevoTipo);
@@ -99,6 +105,7 @@ namespace WinModuloNomina.Vista
 
                 string jornadact = cbJornadaTipo.Text.Trim(); //nombrePuesto
                 string nombrect = txtNombreTipo.Text.Trim(); //salarioBaseText
+                int horasct = int.Parse(txtHorasLaborales.Text.Trim());
 
                 if (string.IsNullOrWhiteSpace(jornadact) || string.IsNullOrWhiteSpace(nombrect))
                 {
@@ -110,7 +117,8 @@ namespace WinModuloNomina.Vista
                 {
                     IdTipo = int.Parse(txtIdTipoContrato.Text),
                     Jornada = jornadact,
-                    Nombre = nombrect
+                    Nombre = nombrect,
+                    HorasJornada = horasct
                 };
 
                 try
@@ -130,18 +138,20 @@ namespace WinModuloNomina.Vista
             {
 
             }
+           
         }
         private async void F12TipoC_Load(object sender, EventArgs e)
         {
             await CargarTiposContratos();
             await CargarJornadaTipo();
+            
 
         }
         private void LimpiarControlesTipoContrato()
         {
             txtIdTipoContrato.Clear();
             txtNombreTipo.Clear();
-            cbJornadaTipo.SelectedIndex = -1;
+            cbJornadaTipo.SelectedIndex = 0;
 
         }
         private void dgvTipoContrato_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -156,16 +166,17 @@ namespace WinModuloNomina.Vista
                 var row = dgvTipoContrato.Rows[e.RowIndex];
 
                 // Validar valores nulos
-                txtIdTipoContrato.Text = row.Cells[0]?.Value?.ToString()?.Trim() ?? "";
-                txtNombreTipo.Text = row.Cells[2]?.Value?.ToString()?.Trim() ?? "";
+                txtIdTipoContrato.Text = row.Cells[0]?.Value?.ToString()?.Trim() ?? ""; // IdTipo
+                txtNombreTipo.Text = row.Cells[2]?.Value?.ToString()?.Trim() ?? "";     // Nombre
+                txtHorasLaborales.Text = row.Cells[3]?.Value?.ToString()?.Trim() ?? "";
 
+                // Configurar ComboBox de Jornada
                 // Configurar ComboBox de Jornada
                 string jornada = row.Cells[1]?.Value?.ToString()?.Trim() ?? "";
                 if (!string.IsNullOrEmpty(jornada))
                 {
-                    cbJornadaTipo.SelectedItem = jornada;
+                    cbJornadaTipo.SelectedIndex = cbJornadaTipo.FindStringExact(jornada);
                 }
-
                 // Resaltar fila
                 dgvTipoContrato.ClearSelection();
                 row.Selected = true;
@@ -175,14 +186,13 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
         private void LoadBasicData2(DataRow dataRowi)
         {
             txtIdTipoContrato.Text = dataRowi["IdTipo"]?.ToString();
             cbJornadaTipo.Text = dataRowi["Jornada"]?.ToString();
             txtNombreTipo.Text = dataRowi["Nombre"]?.ToString();
+            txtHorasLaborales.Text = dataRowi["HorasLaborales"]?.ToString();
         }
 
         private async void btnCrearTipoC_Click(object sender, EventArgs e)
@@ -219,5 +229,25 @@ namespace WinModuloNomina.Vista
             }
 
         }
+
+        private void cbJornadaTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbJornadaTipo.SelectedItem?.ToString())
+            {
+                case "Tiempo Completo":
+                    txtHorasLaborales.Text = "8";
+                    break;
+                case "Medio Tiempo":
+                    txtHorasLaborales.Text = "4";
+                    break;
+                case "Tiempo Parcial":
+                    txtHorasLaborales.Text = "6"; // o ajusta esto como quieras
+                    break;
+                default:
+                    txtHorasLaborales.Text = ""; // Por si acaso
+                    break;
+            }
+        }
+
     }
 }

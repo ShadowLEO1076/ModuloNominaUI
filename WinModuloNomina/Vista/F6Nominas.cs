@@ -196,7 +196,7 @@ namespace WinModuloNomina.Vista
 
         private void limpiarBtn_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 idNomTxt.Clear();
                 empleAutoCb.SelectedIndex = -1;
@@ -219,7 +219,7 @@ namespace WinModuloNomina.Vista
                 boniManTxt.Enabled = false;
                 descManTxt.Enabled = false;
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Error al limpiar los datos.");
             }
@@ -229,7 +229,7 @@ namespace WinModuloNomina.Vista
         {
             if (empleAutoCb.SelectedIndex == -1) return;
 
-            if(empleAutoCb.SelectedItem is Empleados emple)
+            if (empleAutoCb.SelectedItem is Empleados emple)
             {
                 empleNomLb1.Text = $"{emple.Nombres} {emple.Apellidos}";
             }

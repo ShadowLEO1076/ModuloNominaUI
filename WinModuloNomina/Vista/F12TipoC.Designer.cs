@@ -35,17 +35,20 @@
             btnEditarTipoC = new FontAwesome.Sharp.IconButton();
             btnEliminarCT = new FontAwesome.Sharp.IconButton();
             tableLayoutPanel1 = new TableLayoutPanel();
+            txtHorasLaborales = new TextBox();
             label1 = new Label();
             txtIdTipoContrato = new TextBox();
             txtNombreTipo = new TextBox();
             label6 = new Label();
             label3 = new Label();
             cbJornadaTipo = new ComboBox();
+            label2 = new Label();
             dgvTipoContrato = new DataGridView();
+            contratosTipoBindingSource = new BindingSource(components);
             idTipoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             jornadaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            contratosTipoBindingSource = new BindingSource(components);
+            horasJornadaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -151,30 +154,42 @@
             tableLayoutPanel1.Anchor = AnchorStyles.Left;
             tableLayoutPanel1.ColumnCount = 5;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66.6666641F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66.66667F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Controls.Add(txtHorasLaborales, 1, 3);
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Controls.Add(txtIdTipoContrato, 1, 0);
             tableLayoutPanel1.Controls.Add(txtNombreTipo, 1, 2);
             tableLayoutPanel1.Controls.Add(label6, 0, 2);
             tableLayoutPanel1.Controls.Add(label3, 0, 1);
             tableLayoutPanel1.Controls.Add(cbJornadaTipo, 1, 1);
+            tableLayoutPanel1.Controls.Add(label2, 0, 3);
             tableLayoutPanel1.Location = new Point(12, 24);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(554, 162);
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.Size = new Size(554, 160);
             tableLayoutPanel1.TabIndex = 26;
+            // 
+            // txtHorasLaborales
+            // 
+            txtHorasLaborales.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtHorasLaborales.Location = new Point(167, 126);
+            txtHorasLaborales.Margin = new Padding(3, 4, 3, 4);
+            txtHorasLaborales.Name = "txtHorasLaborales";
+            txtHorasLaborales.Size = new Size(323, 27);
+            txtHorasLaborales.TabIndex = 27;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(134, 17);
+            label1.Location = new Point(134, 10);
             label1.Name = "label1";
             label1.Size = new Size(27, 20);
             label1.TabIndex = 23;
@@ -183,7 +198,7 @@
             // txtIdTipoContrato
             // 
             txtIdTipoContrato.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtIdTipoContrato.Location = new Point(167, 13);
+            txtIdTipoContrato.Location = new Point(167, 6);
             txtIdTipoContrato.Margin = new Padding(3, 4, 3, 4);
             txtIdTipoContrato.Name = "txtIdTipoContrato";
             txtIdTipoContrato.Size = new Size(323, 27);
@@ -192,7 +207,7 @@
             // txtNombreTipo
             // 
             txtNombreTipo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtNombreTipo.Location = new Point(167, 121);
+            txtNombreTipo.Location = new Point(167, 86);
             txtNombreTipo.Margin = new Padding(3, 4, 3, 4);
             txtNombreTipo.Name = "txtNombreTipo";
             txtNombreTipo.Size = new Size(323, 27);
@@ -202,7 +217,7 @@
             // 
             label6.Anchor = AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Location = new Point(71, 125);
+            label6.Location = new Point(71, 90);
             label6.Name = "label6";
             label6.Size = new Size(90, 20);
             label6.TabIndex = 19;
@@ -212,7 +227,7 @@
             // 
             label3.Anchor = AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(97, 71);
+            label3.Location = new Point(97, 50);
             label3.Name = "label3";
             label3.Size = new Size(64, 20);
             label3.TabIndex = 18;
@@ -222,27 +237,40 @@
             // 
             cbJornadaTipo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbJornadaTipo.FormattingEnabled = true;
-            cbJornadaTipo.Location = new Point(167, 67);
+            cbJornadaTipo.Location = new Point(167, 46);
             cbJornadaTipo.Margin = new Padding(3, 4, 3, 4);
             cbJornadaTipo.Name = "cbJornadaTipo";
             cbJornadaTipo.Size = new Size(323, 28);
             cbJornadaTipo.TabIndex = 22;
             // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Location = new Point(42, 130);
+            label2.Name = "label2";
+            label2.Size = new Size(119, 20);
+            label2.TabIndex = 24;
+            label2.Text = "Horas Laborales:";
+            // 
             // dgvTipoContrato
             // 
-            dgvTipoContrato.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvTipoContrato.AutoGenerateColumns = false;
             dgvTipoContrato.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTipoContrato.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTipoContrato.Columns.AddRange(new DataGridViewColumn[] { idTipoDataGridViewTextBoxColumn, jornadaDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn });
+            dgvTipoContrato.Columns.AddRange(new DataGridViewColumn[] { idTipoDataGridViewTextBoxColumn, jornadaDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, horasJornadaDataGridViewTextBoxColumn });
             dgvTipoContrato.DataSource = contratosTipoBindingSource;
-            dgvTipoContrato.Location = new Point(12, 240);
+            dgvTipoContrato.Dock = DockStyle.Fill;
+            dgvTipoContrato.Location = new Point(0, 193);
             dgvTipoContrato.Margin = new Padding(3, 4, 3, 4);
             dgvTipoContrato.Name = "dgvTipoContrato";
             dgvTipoContrato.RowHeadersWidth = 51;
-            dgvTipoContrato.Size = new Size(852, 197);
-            dgvTipoContrato.TabIndex = 26;
-            dgvTipoContrato.CellClick += dgvTipoContrato_CellClick;
+            dgvTipoContrato.Size = new Size(876, 257);
+            dgvTipoContrato.TabIndex = 27;
+            // 
+            // contratosTipoBindingSource
+            // 
+            contratosTipoBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.ContratosTipo);
             // 
             // idTipoDataGridViewTextBoxColumn
             // 
@@ -265,9 +293,12 @@
             nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
             nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
             // 
-            // contratosTipoBindingSource
+            // horasJornadaDataGridViewTextBoxColumn
             // 
-            contratosTipoBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.ContratosTipo);
+            horasJornadaDataGridViewTextBoxColumn.DataPropertyName = "HorasJornada";
+            horasJornadaDataGridViewTextBoxColumn.HeaderText = "HorasJornada";
+            horasJornadaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            horasJornadaDataGridViewTextBoxColumn.Name = "horasJornadaDataGridViewTextBoxColumn";
             // 
             // F12TipoC
             // 
@@ -300,12 +331,16 @@
         private Label label6;
         private TextBox txtNombreTipo;
         private TextBox txtIdTipoContrato;
+        private Label label1;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Label label2;
+        private TextBox txtHorasLaborales;
+        private DataGridViewTextBoxColumn horasLaboralesDataGridViewTextBoxColumn;
         private DataGridView dgvTipoContrato;
         private DataGridViewTextBoxColumn idTipoDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn jornadaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn horasJornadaDataGridViewTextBoxColumn;
         private BindingSource contratosTipoBindingSource;
-        private Label label1;
-        private FlowLayoutPanel flowLayoutPanel1;
     }
 }
