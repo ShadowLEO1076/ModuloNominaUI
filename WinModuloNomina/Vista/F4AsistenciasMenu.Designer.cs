@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             panelControl = new Panel();
-            panelVentanas = new Panel();
             asistenciasFormBtn = new FontAwesome.Sharp.IconButton();
+            panelVentanas = new Panel();
+            historialBtn = new FontAwesome.Sharp.IconButton();
             panelControl.SuspendLayout();
             SuspendLayout();
             // 
@@ -38,12 +39,33 @@
             // 
             panelControl.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelControl.BackColor = SystemColors.HotTrack;
+            panelControl.Controls.Add(historialBtn);
             panelControl.Controls.Add(asistenciasFormBtn);
             panelControl.Dock = DockStyle.Left;
             panelControl.Location = new Point(0, 0);
             panelControl.Name = "panelControl";
             panelControl.Size = new Size(143, 450);
             panelControl.TabIndex = 0;
+            // 
+            // asistenciasFormBtn
+            // 
+            asistenciasFormBtn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            asistenciasFormBtn.BackColor = Color.Transparent;
+            asistenciasFormBtn.FlatStyle = FlatStyle.Flat;
+            asistenciasFormBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
+            asistenciasFormBtn.ForeColor = Color.WhiteSmoke;
+            asistenciasFormBtn.IconChar = FontAwesome.Sharp.IconChar.LayerGroup;
+            asistenciasFormBtn.IconColor = Color.WhiteSmoke;
+            asistenciasFormBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            asistenciasFormBtn.IconSize = 30;
+            asistenciasFormBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            asistenciasFormBtn.Location = new Point(0, 12);
+            asistenciasFormBtn.Name = "asistenciasFormBtn";
+            asistenciasFormBtn.Size = new Size(143, 56);
+            asistenciasFormBtn.TabIndex = 0;
+            asistenciasFormBtn.Text = "Asistencia";
+            asistenciasFormBtn.UseVisualStyleBackColor = false;
+            asistenciasFormBtn.Click += asistenciasFormBtn_Click;
             // 
             // panelVentanas
             // 
@@ -54,25 +76,24 @@
             panelVentanas.Size = new Size(657, 450);
             panelVentanas.TabIndex = 1;
             // 
-            // asistenciasFormBtn
+            // historialBtn
             // 
-            asistenciasFormBtn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            asistenciasFormBtn.BackColor = Color.Transparent;
-            asistenciasFormBtn.FlatStyle = FlatStyle.Flat;
-            asistenciasFormBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
-            asistenciasFormBtn.ForeColor = Color.WhiteSmoke;
-            asistenciasFormBtn.IconChar = FontAwesome.Sharp.IconChar.LayerGroup;
-            asistenciasFormBtn.IconColor = Color.WhiteSmoke;
-            asistenciasFormBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            asistenciasFormBtn.IconSize = 30;
-            asistenciasFormBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            asistenciasFormBtn.Location = new Point(0, 47);
-            asistenciasFormBtn.Name = "asistenciasFormBtn";
-            asistenciasFormBtn.Size = new Size(143, 80);
-            asistenciasFormBtn.TabIndex = 0;
-            asistenciasFormBtn.Text = "Asistencia";
-            asistenciasFormBtn.UseVisualStyleBackColor = false;
-            asistenciasFormBtn.Click += asistenciasFormBtn_Click;
+            historialBtn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            historialBtn.BackColor = Color.Transparent;
+            historialBtn.FlatStyle = FlatStyle.Flat;
+            historialBtn.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
+            historialBtn.ForeColor = Color.WhiteSmoke;
+            historialBtn.IconChar = FontAwesome.Sharp.IconChar.Book;
+            historialBtn.IconColor = Color.WhiteSmoke;
+            historialBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            historialBtn.IconSize = 30;
+            historialBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            historialBtn.Location = new Point(0, 68);
+            historialBtn.Name = "historialBtn";
+            historialBtn.Size = new Size(143, 56);
+            historialBtn.TabIndex = 1;
+            historialBtn.Text = "Historial";
+            historialBtn.UseVisualStyleBackColor = false;
             // 
             // F4AsistenciasMenu
             // 
@@ -92,5 +113,6 @@
         private Panel panelControl;
         private Panel panelVentanas;
         private FontAwesome.Sharp.IconButton asistenciasFormBtn;
+        private FontAwesome.Sharp.IconButton historialBtn;
     }
 }
