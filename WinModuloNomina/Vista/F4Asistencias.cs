@@ -38,7 +38,7 @@ namespace WinModuloNomina.Vista
             //inicia así para que no se pueda actualizar nada
             empleNomApeCb.SelectedIndex = -1;
             empleCedCb.SelectedIndex = -1;
-            registroCb.SelectedIndex = 0;
+            registroCb.SelectedIndex = -1;
             //cargar los botones desactivados para obligar a la gente a seleccionar un tipo de asistencia
         }
 
@@ -57,6 +57,8 @@ namespace WinModuloNomina.Vista
             {
                 licenciaCb.Enabled = false;
                 ingresoAsisBtn.Enabled = true;
+                entradaAlmBtn.Enabled = true;
+                salidaAlmBtn.Enabled = true;
                 inasistenciaBtn.Enabled = false;
             }
             else if (tipo == "Inasistencia")
@@ -64,6 +66,8 @@ namespace WinModuloNomina.Vista
                 licenciaCb.Enabled = true;
                 //los botones de inasistencia se desactivan
                 ingresoAsisBtn.Enabled = false;
+                entradaAlmBtn.Enabled = false;
+                salidaAlmBtn.Enabled = false;
                 inasistenciaBtn.Enabled = true;
             }
         }

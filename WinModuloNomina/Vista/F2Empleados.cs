@@ -138,6 +138,7 @@ namespace WinModuloNomina.Vista
 
             await _api.PostAsync<Empleados>("EmpleadoControlador/InsertarEmpleado", empleado);
             await CargarEmpleados();
+            await CargarEmpleadosInactivos();
         }
 
         private void empleadosInacDgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -292,6 +293,7 @@ namespace WinModuloNomina.Vista
 
             await _api.PutAsync<Empleados>("EmpleadosControlador/ActualizarAsync", empleado);
             await CargarEmpleados();
+            await CargarEmpleadosInactivos();
         }
 
         private async void buscarBtn_Click(object sender, EventArgs e)

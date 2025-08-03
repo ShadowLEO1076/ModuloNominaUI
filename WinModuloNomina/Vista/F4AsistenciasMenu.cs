@@ -18,14 +18,14 @@ namespace WinModuloNomina.Vista
         public F4AsistenciasMenu()
         {
             InitializeComponent();
-            
+
             //permite definir los elementos dentro de un panel como elementos interactuables
-            foreach(Control control in panelControl.Controls)
+            foreach (Control control in panelControl.Controls)
             {
                 if (control is IconButton)
                 {
                     var btn = (IconButton)control;
-                    
+
                 }
             }
         }
@@ -35,6 +35,11 @@ namespace WinModuloNomina.Vista
             OpenChildForm(new F4Asistencias(), "Ingresa registro de asistencias");
         }
 
+        private void historialBtn_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new F4AsistenciasHistorial(), "Historial de registros");
+        }
+        
         //necesario para tener childForms
         private async void OpenChildForm(Form childForm, string title)
         {
@@ -62,12 +67,12 @@ namespace WinModuloNomina.Vista
                 childForm.Dock = DockStyle.Fill;
 
                 // Limpiar controles existentes
-                
+
                 panelVentanas.Controls.Clear();
 
                 panelVentanas.Controls.Add(childForm);
                 panelVentanas.Tag = childForm;
-                
+
                 // Actualizar el título
                 //labelcambiante.Text = title;
 
@@ -90,5 +95,7 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show($"Error al abrir el formulario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
     }
 }
