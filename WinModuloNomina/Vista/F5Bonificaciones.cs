@@ -219,9 +219,9 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                tipoCb.DataSource = bonosTipo;
+              tipoCb.DataSource = bonosTipo;
 
-                tipoCb.SelectedIndex = -1; // No seleccionado al cargar
+              tipoCb.SelectedIndex = -1; // No seleccionado al cargar
             }
             catch
             {

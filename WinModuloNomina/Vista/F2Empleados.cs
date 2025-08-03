@@ -110,7 +110,6 @@ namespace WinModuloNomina.Vista
                 return;
             }
 
-
             // Verificar si la cédula ya está registrada
             var correoExiste = await _api.GetAsync<bool>($"EmpleadosControlador/VerificarCorreoElectronico/{correoTxt.Text}");
             if (correoExiste != null && correoExiste == true)
@@ -139,6 +138,7 @@ namespace WinModuloNomina.Vista
 
             await _api.PostAsync<Empleados>("EmpleadoControlador/InsertarEmpleado", empleado);
             await CargarEmpleados();
+            await CargarEmpleadosInactivos();
         }
 
         private void empleadosInacDgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -293,6 +293,7 @@ namespace WinModuloNomina.Vista
 
             await _api.PutAsync<Empleados>("EmpleadosControlador/ActualizarAsync", empleado);
             await CargarEmpleados();
+            await CargarEmpleadosInactivos();
         }
 
         private async void buscarBtn_Click(object sender, EventArgs e)
@@ -442,7 +443,5 @@ namespace WinModuloNomina.Vista
             }
 
         }
-
-
     }
 }

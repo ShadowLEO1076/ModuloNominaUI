@@ -111,6 +111,7 @@ namespace WinModuloNomina.Controlador
                 throw new Exception($"Error en la petición DELETE: {respuesta.StatusCode} - {contenido}");
             }
         }
+
         // Post sin tipo genérico, útil cuando solo te importa el resultado HTTP
         public async Task<HttpResponseMessage>PostAsync(string endpoint, object data)
         {
@@ -127,10 +128,6 @@ namespace WinModuloNomina.Controlador
                 throw;
             }
         }
-
-
-
-
     }
 }
 

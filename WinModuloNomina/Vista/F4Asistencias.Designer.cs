@@ -30,62 +30,194 @@
         {
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            salidaAlmBtn = new Button();
+            entradaAlmBtn = new Button();
+            salidaBtn = new Button();
+            inasistenciaBtn = new Button();
+            ingresoAsisBtn = new Button();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            fechaPreLb = new Label();
+            relojLb = new Label();
+            relojPreLb = new Label();
+            fechaLb = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
             registroLb = new Label();
             registroCb = new ComboBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            nomEmpleLb2 = new Label();
             licenciaLb = new Label();
-            nombreEmpleadoLbl = new Label();
             licenciaCb = new ComboBox();
+            licenciasLb = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            empleLb = new Label();
-            fecLb = new Label();
-            entradaLb = new Label();
-            salidaLb = new Label();
-            empleCb = new ComboBox();
-            fecAsisDtp = new DateTimePicker();
-            horaEntraDtp = new DateTimePicker();
-            horaSaliDtp = new DateTimePicker();
-            asisLb = new Label();
-            idAsisTxt = new TextBox();
+            idEmpl = new Label();
+            empleCedCb = new ComboBox();
+            nomApeEmplLb = new Label();
+            empleNomApeCb = new ComboBox();
+            cedEmpleLb = new Label();
+            idEmplLb = new Label();
             limpiarBtn = new FontAwesome.Sharp.IconButton();
-            panel2 = new Panel();
-            EliminarBtn = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            actualizarBtn = new FontAwesome.Sharp.IconButton();
-            ingresarBtn = new FontAwesome.Sharp.IconButton();
             infoLb = new Label();
             label11 = new Label();
+            idAsisTxt = new TextBox();
             asistenciasFormDTOBindingSource = new BindingSource(components);
-            inasisDgv = new DataGridView();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            asistenciasDgv = new DataGridView();
+            empleadosDgv = new DataGridView();
+            idEmpleadoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            puestoIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nombresDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            apellidosDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cedulaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            correoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaNacimientoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            generoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            telefonoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaIngresoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            estadoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            fechaCreacionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaModificacionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            empleadosBindingSource = new BindingSource(components);
+            relojTimer = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)asistenciasFormDTOBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)inasisDgv).BeginInit();
-            tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)asistenciasDgv).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)empleadosDgv).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)empleadosBindingSource).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(salidaAlmBtn);
+            panel1.Controls.Add(entradaAlmBtn);
+            panel1.Controls.Add(salidaBtn);
+            panel1.Controls.Add(inasistenciaBtn);
+            panel1.Controls.Add(ingresoAsisBtn);
+            panel1.Controls.Add(tableLayoutPanel3);
             panel1.Controls.Add(tableLayoutPanel4);
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Controls.Add(limpiarBtn);
-            panel1.Controls.Add(panel2);
             panel1.Controls.Add(infoLb);
             panel1.Controls.Add(label11);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1325, 221);
+            panel1.Size = new Size(1159, 166);
             panel1.TabIndex = 2;
+            // 
+            // salidaAlmBtn
+            // 
+            salidaAlmBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            salidaAlmBtn.Location = new Point(873, 102);
+            salidaAlmBtn.Name = "salidaAlmBtn";
+            salidaAlmBtn.Size = new Size(120, 23);
+            salidaAlmBtn.TabIndex = 22;
+            salidaAlmBtn.TabStop = false;
+            salidaAlmBtn.Text = "Salida Almuerzo";
+            salidaAlmBtn.UseVisualStyleBackColor = true;
+            salidaAlmBtn.Click += salidaAlmBtn_Click;
+            // 
+            // entradaAlmBtn
+            // 
+            entradaAlmBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            entradaAlmBtn.Location = new Point(873, 69);
+            entradaAlmBtn.Name = "entradaAlmBtn";
+            entradaAlmBtn.Size = new Size(120, 23);
+            entradaAlmBtn.TabIndex = 21;
+            entradaAlmBtn.TabStop = false;
+            entradaAlmBtn.Text = "Entrada Almuerzo";
+            entradaAlmBtn.UseVisualStyleBackColor = true;
+            entradaAlmBtn.Click += entradaAlmBtn_Click;
+            // 
+            // salidaBtn
+            // 
+            salidaBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            salidaBtn.Location = new Point(873, 131);
+            salidaBtn.Name = "salidaBtn";
+            salidaBtn.Size = new Size(120, 23);
+            salidaBtn.TabIndex = 20;
+            salidaBtn.TabStop = false;
+            salidaBtn.Text = "Salida dia";
+            salidaBtn.UseVisualStyleBackColor = true;
+            salidaBtn.Click += salidaBtn_Click;
+            // 
+            // inasistenciaBtn
+            // 
+            inasistenciaBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            inasistenciaBtn.Location = new Point(1029, 36);
+            inasistenciaBtn.Name = "inasistenciaBtn";
+            inasistenciaBtn.Size = new Size(118, 23);
+            inasistenciaBtn.TabIndex = 19;
+            inasistenciaBtn.TabStop = false;
+            inasistenciaBtn.Text = "Ingreso inasistencia";
+            inasistenciaBtn.UseVisualStyleBackColor = true;
+            inasistenciaBtn.Click += inasistenciaBtn_Click;
+            // 
+            // ingresoAsisBtn
+            // 
+            ingresoAsisBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ingresoAsisBtn.Location = new Point(873, 36);
+            ingresoAsisBtn.Name = "ingresoAsisBtn";
+            ingresoAsisBtn.Size = new Size(120, 23);
+            ingresoAsisBtn.TabIndex = 18;
+            ingresoAsisBtn.TabStop = false;
+            ingresoAsisBtn.Text = "Entrada dia";
+            ingresoAsisBtn.UseVisualStyleBackColor = true;
+            ingresoAsisBtn.Click += ingresoAsisBtn_Click;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(fechaPreLb, 0, 1);
+            tableLayoutPanel3.Controls.Add(relojLb, 1, 0);
+            tableLayoutPanel3.Controls.Add(relojPreLb, 0, 0);
+            tableLayoutPanel3.Controls.Add(fechaLb, 1, 1);
+            tableLayoutPanel3.Location = new Point(634, 36);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Size = new Size(196, 47);
+            tableLayoutPanel3.TabIndex = 17;
+            // 
+            // fechaPreLb
+            // 
+            fechaPreLb.AutoSize = true;
+            fechaPreLb.Location = new Point(3, 23);
+            fechaPreLb.Name = "fechaPreLb";
+            fechaPreLb.Size = new Size(41, 15);
+            fechaPreLb.TabIndex = 18;
+            fechaPreLb.Text = "Fecha:";
+            // 
+            // relojLb
+            // 
+            relojLb.AutoSize = true;
+            relojLb.BackColor = SystemColors.Control;
+            relojLb.ForeColor = SystemColors.ControlText;
+            relojLb.Location = new Point(101, 0);
+            relojLb.Name = "relojLb";
+            relojLb.Size = new Size(0, 15);
+            relojLb.TabIndex = 16;
+            // 
+            // relojPreLb
+            // 
+            relojPreLb.AutoSize = true;
+            relojPreLb.Location = new Point(3, 0);
+            relojPreLb.Name = "relojPreLb";
+            relojPreLb.Size = new Size(36, 15);
+            relojPreLb.TabIndex = 17;
+            relojPreLb.Text = "Hora:";
+            // 
+            // fechaLb
+            // 
+            fechaLb.AutoSize = true;
+            fechaLb.Location = new Point(101, 23);
+            fechaLb.Name = "fechaLb";
+            fechaLb.Size = new Size(0, 15);
+            fechaLb.TabIndex = 19;
             // 
             // tableLayoutPanel4
             // 
@@ -93,13 +225,12 @@
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.Controls.Add(registroLb, 0, 0);
             tableLayoutPanel4.Controls.Add(registroCb, 0, 1);
-            tableLayoutPanel4.Location = new Point(18, 48);
-            tableLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel4.Location = new Point(16, 36);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 46.42857F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 53.57143F));
-            tableLayoutPanel4.Size = new Size(194, 75);
+            tableLayoutPanel4.Size = new Size(170, 56);
             tableLayoutPanel4.TabIndex = 15;
             // 
             // registroLb
@@ -107,396 +238,366 @@
             registroLb.AutoSize = true;
             registroLb.Location = new Point(3, 0);
             registroLb.Name = "registroLb";
-            registroLb.Size = new Size(88, 20);
+            registroLb.Size = new Size(69, 15);
             registroLb.TabIndex = 0;
             registroLb.Text = "Registro de:";
             // 
             // registroCb
             // 
             registroCb.FormattingEnabled = true;
-            registroCb.Location = new Point(3, 38);
-            registroCb.Margin = new Padding(3, 4, 3, 4);
+            registroCb.Location = new Point(3, 29);
             registroCb.Name = "registroCb";
-            registroCb.Size = new Size(187, 28);
+            registroCb.Size = new Size(164, 23);
             registroCb.TabIndex = 1;
             registroCb.SelectedIndexChanged += registroCb_SelectedIndexChanged;
             // 
             // tableLayoutPanel2
             // 
+            tableLayoutPanel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 43.61702F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 56.38298F));
-            tableLayoutPanel2.Controls.Add(nomEmpleLb2, 0, 1);
             tableLayoutPanel2.Controls.Add(licenciaLb, 0, 0);
-            tableLayoutPanel2.Controls.Add(nombreEmpleadoLbl, 1, 1);
             tableLayoutPanel2.Controls.Add(licenciaCb, 1, 0);
-            tableLayoutPanel2.Location = new Point(821, 48);
+            tableLayoutPanel2.Controls.Add(licenciasLb, 0, 1);
+            tableLayoutPanel2.Location = new Point(16, 126);
+            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 31F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(322, 72);
+            tableLayoutPanel2.Size = new Size(211, 31);
             tableLayoutPanel2.TabIndex = 14;
-            // 
-            // nomEmpleLb2
-            // 
-            nomEmpleLb2.AutoSize = true;
-            nomEmpleLb2.Location = new Point(3, 41);
-            nomEmpleLb2.Name = "nomEmpleLb2";
-            nomEmpleLb2.Size = new Size(77, 31);
-            nomEmpleLb2.TabIndex = 17;
-            nomEmpleLb2.Text = "Nombre Empleado";
-            nomEmpleLb2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // licenciaLb
             // 
             licenciaLb.AutoSize = true;
             licenciaLb.Location = new Point(3, 0);
             licenciaLb.Name = "licenciaLb";
-            licenciaLb.Size = new Size(81, 20);
+            licenciaLb.Size = new Size(64, 1);
             licenciaLb.TabIndex = 29;
             licenciaLb.Text = "ID Licencia";
-            // 
-            // nombreEmpleadoLbl
-            // 
-            nombreEmpleadoLbl.AutoSize = true;
-            nombreEmpleadoLbl.Location = new Point(143, 41);
-            nombreEmpleadoLbl.Name = "nombreEmpleadoLbl";
-            nombreEmpleadoLbl.Size = new Size(0, 20);
-            nombreEmpleadoLbl.TabIndex = 16;
             // 
             // licenciaCb
             // 
             licenciaCb.FormattingEnabled = true;
-            licenciaCb.Location = new Point(143, 3);
+            licenciaCb.Location = new Point(95, 2);
+            licenciaCb.Margin = new Padding(3, 2, 3, 2);
             licenciaCb.Name = "licenciaCb";
-            licenciaCb.Size = new Size(174, 28);
+            licenciaCb.Size = new Size(113, 23);
             licenciaCb.TabIndex = 29;
+            // 
+            // licenciasLb
+            // 
+            licenciasLb.AutoSize = true;
+            licenciasLb.Location = new Point(3, 0);
+            licenciasLb.Name = "licenciasLb";
+            licenciasLb.Size = new Size(58, 15);
+            licenciasLb.TabIndex = 16;
+            licenciasLb.Text = "Licencias:";
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.2201271F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.77988F));
-            tableLayoutPanel1.Controls.Add(empleLb, 0, 1);
-            tableLayoutPanel1.Controls.Add(fecLb, 0, 2);
-            tableLayoutPanel1.Controls.Add(entradaLb, 0, 3);
-            tableLayoutPanel1.Controls.Add(salidaLb, 0, 4);
-            tableLayoutPanel1.Controls.Add(empleCb, 1, 1);
-            tableLayoutPanel1.Controls.Add(fecAsisDtp, 1, 2);
-            tableLayoutPanel1.Controls.Add(horaEntraDtp, 1, 3);
-            tableLayoutPanel1.Controls.Add(horaSaliDtp, 1, 4);
-            tableLayoutPanel1.Controls.Add(asisLb, 0, 0);
-            tableLayoutPanel1.Controls.Add(idAsisTxt, 1, 0);
-            tableLayoutPanel1.Location = new Point(285, 48);
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 43.7288132F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 56.2711868F));
+            tableLayoutPanel1.Controls.Add(idEmpl, 0, 0);
+            tableLayoutPanel1.Controls.Add(empleCedCb, 1, 1);
+            tableLayoutPanel1.Controls.Add(nomApeEmplLb, 0, 2);
+            tableLayoutPanel1.Controls.Add(empleNomApeCb, 1, 2);
+            tableLayoutPanel1.Controls.Add(cedEmpleLb, 0, 1);
+            tableLayoutPanel1.Controls.Add(idEmplLb, 1, 0);
+            tableLayoutPanel1.Location = new Point(277, 36);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 5;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 45.8333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 54.1666679F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(514, 165);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(295, 77);
             tableLayoutPanel1.TabIndex = 3;
             // 
-            // empleLb
+            // idEmpl
             // 
-            empleLb.AutoSize = true;
-            empleLb.Location = new Point(3, 33);
-            empleLb.Name = "empleLb";
-            empleLb.Size = new Size(127, 20);
-            empleLb.TabIndex = 18;
-            empleLb.Text = "Cédula Empleado";
+            idEmpl.AutoSize = true;
+            idEmpl.Location = new Point(3, 0);
+            idEmpl.Name = "idEmpl";
+            idEmpl.Size = new Size(74, 15);
+            idEmpl.TabIndex = 7;
+            idEmpl.Text = "ID Empleado";
             // 
-            // fecLb
+            // empleCedCb
             // 
-            fecLb.AutoSize = true;
-            fecLb.Location = new Point(3, 66);
-            fecLb.Name = "fecLb";
-            fecLb.Size = new Size(117, 20);
-            fecLb.TabIndex = 20;
-            fecLb.Text = "Fecha Asistencia";
+            empleCedCb.FormattingEnabled = true;
+            empleCedCb.Location = new Point(132, 24);
+            empleCedCb.Margin = new Padding(3, 2, 3, 2);
+            empleCedCb.Name = "empleCedCb";
+            empleCedCb.Size = new Size(160, 23);
+            empleCedCb.TabIndex = 25;
+            empleCedCb.SelectedIndexChanged += empleCedCb_SelectedIndexChanged;
             // 
-            // entradaLb
+            // nomApeEmplLb
             // 
-            entradaLb.AutoSize = true;
-            entradaLb.Location = new Point(3, 99);
-            entradaLb.Name = "entradaLb";
-            entradaLb.Size = new Size(118, 20);
-            entradaLb.TabIndex = 22;
-            entradaLb.Text = "Hora de entrada";
+            nomApeEmplLb.AutoSize = true;
+            nomApeEmplLb.Location = new Point(3, 48);
+            nomApeEmplLb.Name = "nomApeEmplLb";
+            nomApeEmplLb.Size = new Size(117, 15);
+            nomApeEmplLb.TabIndex = 26;
+            nomApeEmplLb.Text = "Nombres y Apellidos";
             // 
-            // salidaLb
+            // empleNomApeCb
             // 
-            salidaLb.AutoSize = true;
-            salidaLb.Location = new Point(3, 132);
-            salidaLb.Name = "salidaLb";
-            salidaLb.Size = new Size(106, 20);
-            salidaLb.TabIndex = 24;
-            salidaLb.Text = "Hora de salida";
+            empleNomApeCb.FormattingEnabled = true;
+            empleNomApeCb.Location = new Point(132, 50);
+            empleNomApeCb.Margin = new Padding(3, 2, 3, 2);
+            empleNomApeCb.Name = "empleNomApeCb";
+            empleNomApeCb.Size = new Size(160, 23);
+            empleNomApeCb.TabIndex = 27;
             // 
-            // empleCb
+            // cedEmpleLb
             // 
-            empleCb.FormattingEnabled = true;
-            empleCb.Location = new Point(260, 36);
-            empleCb.Name = "empleCb";
-            empleCb.Size = new Size(246, 28);
-            empleCb.TabIndex = 25;
-           // empleCb.SelectedIndexChanged += EmpleCb_SelectedIndexChanged;
+            cedEmpleLb.AutoSize = true;
+            cedEmpleLb.Location = new Point(3, 22);
+            cedEmpleLb.Name = "cedEmpleLb";
+            cedEmpleLb.Size = new Size(100, 15);
+            cedEmpleLb.TabIndex = 28;
+            cedEmpleLb.Text = "Cedula Empleado";
             // 
-            // fecAsisDtp
+            // idEmplLb
             // 
-            fecAsisDtp.Format = DateTimePickerFormat.Short;
-            fecAsisDtp.Location = new Point(260, 69);
-            fecAsisDtp.Name = "fecAsisDtp";
-            fecAsisDtp.Size = new Size(246, 27);
-            fecAsisDtp.TabIndex = 26;
-            // 
-            // horaEntraDtp
-            // 
-            horaEntraDtp.Format = DateTimePickerFormat.Time;
-            horaEntraDtp.Location = new Point(260, 102);
-            horaEntraDtp.Name = "horaEntraDtp";
-            horaEntraDtp.Size = new Size(246, 27);
-            horaEntraDtp.TabIndex = 27;
-            // 
-            // horaSaliDtp
-            // 
-            horaSaliDtp.Format = DateTimePickerFormat.Time;
-            horaSaliDtp.Location = new Point(260, 135);
-            horaSaliDtp.Name = "horaSaliDtp";
-            horaSaliDtp.Size = new Size(246, 27);
-            horaSaliDtp.TabIndex = 28;
-            // 
-            // asisLb
-            // 
-            asisLb.AutoSize = true;
-            asisLb.Location = new Point(3, 0);
-            asisLb.Name = "asisLb";
-            asisLb.Size = new Size(94, 20);
-            asisLb.TabIndex = 7;
-            asisLb.Text = "ID Asistencia";
-            // 
-            // idAsisTxt
-            // 
-            idAsisTxt.Location = new Point(260, 3);
-            idAsisTxt.Name = "idAsisTxt";
-            idAsisTxt.ReadOnly = true;
-            idAsisTxt.Size = new Size(246, 27);
-            idAsisTxt.TabIndex = 7;
+            idEmplLb.AutoSize = true;
+            idEmplLb.Location = new Point(132, 0);
+            idEmplLb.Name = "idEmplLb";
+            idEmplLb.Size = new Size(0, 15);
+            idEmplLb.TabIndex = 29;
             // 
             // limpiarBtn
             // 
+            limpiarBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             limpiarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             limpiarBtn.IconColor = Color.Black;
             limpiarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            limpiarBtn.Location = new Point(947, 176);
+            limpiarBtn.Location = new Point(470, 128);
+            limpiarBtn.Margin = new Padding(3, 2, 3, 2);
             limpiarBtn.Name = "limpiarBtn";
-            limpiarBtn.Size = new Size(117, 28);
+            limpiarBtn.Size = new Size(102, 29);
             limpiarBtn.TabIndex = 13;
             limpiarBtn.Text = "Limpiar datos";
             limpiarBtn.UseVisualStyleBackColor = true;
             limpiarBtn.Click += limpiarBtn_Click;
             // 
-            // panel2
-            // 
-            panel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel2.Controls.Add(EliminarBtn);
-            panel2.Controls.Add(iconButton2);
-            panel2.Controls.Add(actualizarBtn);
-            panel2.Controls.Add(ingresarBtn);
-            panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(1192, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(133, 221);
-            panel2.TabIndex = 4;
-            // 
-            // EliminarBtn
-            // 
-            EliminarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            EliminarBtn.IconColor = Color.Black;
-            EliminarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            EliminarBtn.Location = new Point(18, 129);
-            EliminarBtn.Name = "EliminarBtn";
-            EliminarBtn.Size = new Size(82, 39);
-            EliminarBtn.TabIndex = 12;
-            EliminarBtn.Text = "Eliminar";
-            EliminarBtn.UseVisualStyleBackColor = true;
-            EliminarBtn.Click += EliminarBtn_Click;
-            // 
-            // iconButton2
-            // 
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(18, 181);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(82, 29);
-            iconButton2.TabIndex = 10;
-            iconButton2.Text = "Buscar";
-            iconButton2.UseVisualStyleBackColor = true;
-            iconButton2.Visible = false;
-            // 
-            // actualizarBtn
-            // 
-            actualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            actualizarBtn.IconColor = Color.Black;
-            actualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            actualizarBtn.Location = new Point(18, 87);
-            actualizarBtn.Name = "actualizarBtn";
-            actualizarBtn.Size = new Size(82, 37);
-            actualizarBtn.TabIndex = 11;
-            actualizarBtn.Text = "Actualizar";
-            actualizarBtn.UseVisualStyleBackColor = true;
-            actualizarBtn.Click += actualizarBtn_Click;
-            // 
-            // ingresarBtn
-            // 
-            ingresarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            ingresarBtn.IconColor = Color.Black;
-            ingresarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ingresarBtn.Location = new Point(18, 45);
-            ingresarBtn.Name = "ingresarBtn";
-            ingresarBtn.Size = new Size(82, 37);
-            ingresarBtn.TabIndex = 9;
-            ingresarBtn.Text = "Ingresar";
-            ingresarBtn.UseVisualStyleBackColor = true;
-            ingresarBtn.Click += ingresarBtn_Click;
-            // 
             // infoLb
             // 
-            infoLb.AutoSize = true;
-            infoLb.Location = new Point(18, 24);
+            infoLb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            infoLb.Location = new Point(16, 9);
             infoLb.Name = "infoLb";
-            infoLb.Size = new Size(182, 20);
+            infoLb.Size = new Size(144, 15);
             infoLb.TabIndex = 6;
             infoLb.Text = "CONTROL DE ASISTENCIA";
             // 
             // label11
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(11, 9);
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label11.Location = new Point(10, 7);
             label11.Name = "label11";
-            label11.Size = new Size(0, 20);
+            label11.Size = new Size(0, 15);
             label11.TabIndex = 5;
             // 
-            // inasisDgv
+            // idAsisTxt
             // 
-            inasisDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            inasisDgv.Dock = DockStyle.Fill;
-            inasisDgv.Location = new Point(3, 122);
-            inasisDgv.Name = "inasisDgv";
-            inasisDgv.RowHeadersWidth = 51;
-            inasisDgv.Size = new Size(1319, 105);
-            inasisDgv.TabIndex = 9;
-            inasisDgv.CellClick += inasisDgv_CellClick;
+            idAsisTxt.Location = new Point(260, 3);
+            idAsisTxt.Margin = new Padding(3, 2, 3, 2);
+            idAsisTxt.Name = "idAsisTxt";
+            idAsisTxt.ReadOnly = true;
+            idAsisTxt.Size = new Size(246, 23);
+            idAsisTxt.TabIndex = 7;
             // 
-            // tableLayoutPanel3
+            // empleadosDgv
             // 
-            tableLayoutPanel3.ColumnCount = 1;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Controls.Add(inasisDgv, 0, 1);
-            tableLayoutPanel3.Controls.Add(asistenciasDgv, 0, 0);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(0, 221);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 51.7441864F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 48.2558136F));
-            tableLayoutPanel3.Size = new Size(1325, 230);
-            tableLayoutPanel3.TabIndex = 10;
+            empleadosDgv.AutoGenerateColumns = false;
+            empleadosDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            empleadosDgv.Columns.AddRange(new DataGridViewColumn[] { idEmpleadoDataGridViewTextBoxColumn, puestoIdDataGridViewTextBoxColumn, nombresDataGridViewTextBoxColumn, apellidosDataGridViewTextBoxColumn, cedulaDataGridViewTextBoxColumn, correoDataGridViewTextBoxColumn, fechaNacimientoDataGridViewTextBoxColumn, generoDataGridViewTextBoxColumn, telefonoDataGridViewTextBoxColumn, fechaIngresoDataGridViewTextBoxColumn, estadoDataGridViewCheckBoxColumn, fechaCreacionDataGridViewTextBoxColumn, fechaModificacionDataGridViewTextBoxColumn });
+            empleadosDgv.DataSource = empleadosBindingSource;
+            empleadosDgv.Dock = DockStyle.Fill;
+            empleadosDgv.Location = new Point(0, 166);
+            empleadosDgv.Name = "empleadosDgv";
+            empleadosDgv.RowHeadersWidth = 51;
+            empleadosDgv.Size = new Size(1159, 172);
+            empleadosDgv.TabIndex = 10;
             // 
-            // asistenciasDgv
+            // idEmpleadoDataGridViewTextBoxColumn
             // 
-            asistenciasDgv.AutoGenerateColumns = false;
-            asistenciasDgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            asistenciasDgv.DataSource = asistenciasFormDTOBindingSource;
-            asistenciasDgv.Dock = DockStyle.Fill;
-            asistenciasDgv.Location = new Point(3, 4);
-            asistenciasDgv.Margin = new Padding(3, 4, 3, 4);
-            asistenciasDgv.Name = "asistenciasDgv";
-            asistenciasDgv.RowHeadersWidth = 51;
-            asistenciasDgv.Size = new Size(1319, 111);
-            asistenciasDgv.TabIndex = 10;
-            asistenciasDgv.CellClick += asistenciasDgv_CellClick;
+            idEmpleadoDataGridViewTextBoxColumn.DataPropertyName = "IdEmpleado";
+            idEmpleadoDataGridViewTextBoxColumn.HeaderText = "IdEmpleado";
+            idEmpleadoDataGridViewTextBoxColumn.Name = "idEmpleadoDataGridViewTextBoxColumn";
+            // 
+            // puestoIdDataGridViewTextBoxColumn
+            // 
+            puestoIdDataGridViewTextBoxColumn.DataPropertyName = "PuestoId";
+            puestoIdDataGridViewTextBoxColumn.HeaderText = "PuestoId";
+            puestoIdDataGridViewTextBoxColumn.Name = "puestoIdDataGridViewTextBoxColumn";
+            // 
+            // nombresDataGridViewTextBoxColumn
+            // 
+            nombresDataGridViewTextBoxColumn.DataPropertyName = "Nombres";
+            nombresDataGridViewTextBoxColumn.HeaderText = "Nombres";
+            nombresDataGridViewTextBoxColumn.Name = "nombresDataGridViewTextBoxColumn";
+            // 
+            // apellidosDataGridViewTextBoxColumn
+            // 
+            apellidosDataGridViewTextBoxColumn.DataPropertyName = "Apellidos";
+            apellidosDataGridViewTextBoxColumn.HeaderText = "Apellidos";
+            apellidosDataGridViewTextBoxColumn.Name = "apellidosDataGridViewTextBoxColumn";
+            // 
+            // cedulaDataGridViewTextBoxColumn
+            // 
+            cedulaDataGridViewTextBoxColumn.DataPropertyName = "Cedula";
+            cedulaDataGridViewTextBoxColumn.HeaderText = "Cedula";
+            cedulaDataGridViewTextBoxColumn.Name = "cedulaDataGridViewTextBoxColumn";
+            // 
+            // correoDataGridViewTextBoxColumn
+            // 
+            correoDataGridViewTextBoxColumn.DataPropertyName = "Correo";
+            correoDataGridViewTextBoxColumn.HeaderText = "Correo";
+            correoDataGridViewTextBoxColumn.Name = "correoDataGridViewTextBoxColumn";
+            // 
+            // fechaNacimientoDataGridViewTextBoxColumn
+            // 
+            fechaNacimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaNacimiento";
+            fechaNacimientoDataGridViewTextBoxColumn.HeaderText = "FechaNacimiento";
+            fechaNacimientoDataGridViewTextBoxColumn.Name = "fechaNacimientoDataGridViewTextBoxColumn";
+            // 
+            // generoDataGridViewTextBoxColumn
+            // 
+            generoDataGridViewTextBoxColumn.DataPropertyName = "Genero";
+            generoDataGridViewTextBoxColumn.HeaderText = "Genero";
+            generoDataGridViewTextBoxColumn.Name = "generoDataGridViewTextBoxColumn";
+            // 
+            // telefonoDataGridViewTextBoxColumn
+            // 
+            telefonoDataGridViewTextBoxColumn.DataPropertyName = "Telefono";
+            telefonoDataGridViewTextBoxColumn.HeaderText = "Telefono";
+            telefonoDataGridViewTextBoxColumn.Name = "telefonoDataGridViewTextBoxColumn";
+            // 
+            // fechaIngresoDataGridViewTextBoxColumn
+            // 
+            fechaIngresoDataGridViewTextBoxColumn.DataPropertyName = "FechaIngreso";
+            fechaIngresoDataGridViewTextBoxColumn.HeaderText = "FechaIngreso";
+            fechaIngresoDataGridViewTextBoxColumn.Name = "fechaIngresoDataGridViewTextBoxColumn";
+            // 
+            // estadoDataGridViewCheckBoxColumn
+            // 
+            estadoDataGridViewCheckBoxColumn.DataPropertyName = "Estado";
+            estadoDataGridViewCheckBoxColumn.HeaderText = "Estado";
+            estadoDataGridViewCheckBoxColumn.Name = "estadoDataGridViewCheckBoxColumn";
+            estadoDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // fechaCreacionDataGridViewTextBoxColumn
+            // 
+            fechaCreacionDataGridViewTextBoxColumn.DataPropertyName = "FechaCreacion";
+            fechaCreacionDataGridViewTextBoxColumn.HeaderText = "FechaCreacion";
+            fechaCreacionDataGridViewTextBoxColumn.Name = "fechaCreacionDataGridViewTextBoxColumn";
+            // 
+            // fechaModificacionDataGridViewTextBoxColumn
+            // 
+            fechaModificacionDataGridViewTextBoxColumn.DataPropertyName = "FechaModificacion";
+            fechaModificacionDataGridViewTextBoxColumn.HeaderText = "FechaModificacion";
+            fechaModificacionDataGridViewTextBoxColumn.Name = "fechaModificacionDataGridViewTextBoxColumn";
+            // 
+            // empleadosBindingSource
+            // 
+            empleadosBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.Empleados);
+            // 
+            // relojTimer
+            // 
+            relojTimer.Enabled = true;
+            relojTimer.Interval = 1000;
+            relojTimer.Tick += relojTimer_Tick;
             // 
             // F4Asistencias
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1325, 451);
-            Controls.Add(tableLayoutPanel3);
+            ClientSize = new Size(1159, 338);
+            Controls.Add(empleadosDgv);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "F4Asistencias";
             Text = "F4Asistencias";
             Load += F4Asistencias_Load;
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel3.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
-            panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)asistenciasFormDTOBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)inasisDgv).EndInit();
-            tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)asistenciasDgv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)empleadosDgv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)empleadosBindingSource).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private Panel panel2;
-        private FontAwesome.Sharp.IconButton EliminarBtn;
-        private FontAwesome.Sharp.IconButton actualizarBtn;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton ingresarBtn;
         private Label label11;
         private DataGridViewTextBoxColumn idAsistenciaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn empleadoIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombresApellidosDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn cedulaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn horaEntradaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn horaSalidaDataGridViewTextBoxColumn;
         private BindingSource asistenciasFormDTOBindingSource;
         private Label infoLb;
         private TableLayoutPanel tableLayoutPanel1;
-        private Label asisLb;
+        private Label idEmpl;
         private TextBox idAsisTxt;
-        private Label empleLb;
-        private Label fecLb;
-        private Label entradaLb;
-        private Label salidaLb;
-        private ComboBox empleCb;
-        private DateTimePicker fecAsisDtp;
-        private DateTimePicker horaEntraDtp;
-        private DateTimePicker horaSaliDtp;
+
+        private ComboBox empleCedCb;
         private FontAwesome.Sharp.IconButton limpiarBtn;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Label licenciaLb;
-        private ComboBox licenciaCb;
-        private DataGridView inasisDgv;
         private TableLayoutPanel tableLayoutPanel3;
-        private DataGridView asistenciasDgv;
+        private DataGridView empleadosDgv;
         private TableLayoutPanel tableLayoutPanel4;
         private Label registroLb;
         private ComboBox registroCb;
-        private Label nomEmpleLb2;
-        private Label nombreEmpleadoLbl;
+        private DataGridViewTextBoxColumn idEmpleadoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn puestoIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nombresDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn apellidosDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cedulaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn correoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaNacimientoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn generoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn telefonoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaIngresoDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn estadoDataGridViewCheckBoxColumn;
+        private DataGridViewTextBoxColumn fechaCreacionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaModificacionDataGridViewTextBoxColumn;
+        private BindingSource empleadosBindingSource;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label licenciasLb;
+        private Label licenciaLb;
+        private ComboBox licenciaCb;
+        private Label nomApeEmplLb;
+        private ComboBox empleNomApeCb;
+        private Label cedEmpleLb;
+        private Label relojLb;
+        private System.Windows.Forms.Timer relojTimer;
+        private Label fechaPreLb;
+        private Label relojPreLb;
+        private Label fechaLb;
+        private Button ingresoAsisBtn;
+        private Label idEmplLb;
+        private Button inasistenciaBtn;
+        private Button salidaBtn;
+        private Button salidaAlmBtn;
+        private Button entradaAlmBtn;
     }
 }

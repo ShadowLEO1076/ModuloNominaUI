@@ -72,7 +72,6 @@ namespace WinModuloNomina.Vista
             nominasDTOBindingSource = new BindingSource(components);
             panel3 = new Panel();
             presentLb = new Label();
-            tableLayoutPanel2 = new TableLayoutPanel();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)anioNud).BeginInit();
@@ -80,13 +79,13 @@ namespace WinModuloNomina.Vista
             ((System.ComponentModel.ISupportInitialize)nominasActivasDgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nominasDTOBindingSource).BeginInit();
             panel3.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel1.Controls.Add(tableLayoutPanel2);
+            panel1.Controls.Add(empleNomLb1);
+            panel1.Controls.Add(empleNombrePresen);
             panel1.Controls.Add(nominasIngeManuLb);
             panel1.Controls.Add(limpiarBtn);
             panel1.Controls.Add(tableLayoutPanel1);
@@ -492,21 +491,6 @@ namespace WinModuloNomina.Vista
             presentLb.Text = "Nominas Activas";
             presentLb.TextAlign = ContentAlignment.TopCenter;
             // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 58.59375F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 41.40625F));
-            tableLayoutPanel2.Controls.Add(empleNombrePresen, 0, 0);
-            tableLayoutPanel2.Controls.Add(empleNomLb1, 1, 0);
-            tableLayoutPanel2.Location = new Point(803, 51);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(306, 45);
-            tableLayoutPanel2.TabIndex = 15;
-            // 
             // F6Nominas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -528,8 +512,6 @@ namespace WinModuloNomina.Vista
             ((System.ComponentModel.ISupportInitialize)nominasDTOBindingSource).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

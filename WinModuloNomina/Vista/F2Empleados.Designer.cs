@@ -363,6 +363,7 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel2.AutoSize = true;
             panel2.Controls.Add(txtBuscar);
             panel2.Controls.Add(editarBtn);

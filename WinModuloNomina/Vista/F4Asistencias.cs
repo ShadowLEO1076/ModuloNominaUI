@@ -31,416 +31,362 @@ namespace WinModuloNomina.Vista
 
         private async void F4Asistencias_Load(object sender, EventArgs e)
         {
-            await CargarAsistencias();
             await CargarEmpleados();
-            await CargarInasistencias();
             await CargarLicencias();
             CargarRegistros();
+            relojTimer.Start();
             //inicia así para que no se pueda actualizar nada
-            empleCb.SelectedIndex = -1;
-            nombreEmpleadoLbl.Text = "Seleccione un empleado";
-            registroCb.SelectedIndex = 0;
-            horaEntraDtp.Enabled = false;
-            horaSaliDtp.Enabled = false;
-            actualizarBtn.Enabled = false;
-            EliminarBtn.Enabled = false;
-            horaEntraDtp.Format = DateTimePickerFormat.Time;
-            horaSaliDtp.Format = DateTimePickerFormat.Time;
-            fecAsisDtp.Value = DateTime.Now;
-            horaEntraDtp.Value = DateTime.Now;
-            horaSaliDtp.Value = DateTime.Now;
-        }
-        private async void ingresarBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (registroCb.SelectedItem.ToString() == "Asistencia")
-                {
-                    //verificar que el día ingresado no sea mayor al actual
-                    if (DateOnly.FromDateTime(fecAsisDtp.Value) > DateOnly.FromDateTime(DateTime.Now))
-                    {
-                        MessageBox.Show("La fecha del registro debe ser la de hoy.");
-                        return;
-                    }
-                    //verificar horas
-                    if (TimeOnly.FromDateTime(horaSaliDtp.Value) <= TimeOnly.FromDateTime(horaEntraDtp.Value))
-                    {
-                        MessageBox.Show("La hora de salida de la asistencia no puede ser menor o igual a la hora de entrada.");
-                        return;
-                    }
-
-                    var veri = new VerificarAsisInasisDTO
-                    {
-                        idEmpleado = int.Parse(empleCb.SelectedValue.ToString()),
-                        fechaVerificacion = DateOnly.FromDateTime(fecAsisDtp.Value),
-                    };
-
-                    //se verifica si la entidad que se quiere ingresar no existe con anterioridad
-                    var verificacionAsis = await _api.PostAsync<VerificarAsisInasisDTO>("AsistenciasControlador/BuscarPorIdYFechaAsync", veri);
-
-                    if (verificacionAsis != null)
-                    {
-                        MessageBox.Show("El usuario ingresado ya posee una asistencia este día. No se puede volver a añadir otra.");
-                        return;
-                    }
-                    //verificar si no existe el mismo ingreso en inasistencias
-                    var verificacionInasis = await _api.PostAsync<VerificarAsisInasisDTO>("InasistenciasControlador/BuscarPorIdYFechaAsync", veri);
-                    if (verificacionInasis != null)
-                    {
-                        MessageBox.Show("El usuario ingresado ya posee una inasistencia este día. No se puede volver a añadir otra.");
-                        return;
-                    }
-
-                    var asistencia = new Asistencias
-                    {
-                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                        HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
-                        HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
-                        Estado = true
-                    };
-
-                    await _api.PostAsync<Asistencias>("AsistenciasControlador/AgregarAsync", asistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
-                }
-                else if (registroCb.SelectedItem.ToString() == "Inasistencia")
-                {
-                    //verificar día
-                    if (DateOnly.FromDateTime(fecAsisDtp.Value) > DateOnly.FromDateTime(DateTime.Now))
-                    {
-                        MessageBox.Show("La fecha del registro debe ser la de hoy.");
-                        return;
-                    }
-                    var veri = new VerificarAsisInasisDTO
-                    {
-                        idEmpleado = int.Parse(empleCb.SelectedValue.ToString()),
-                        fechaVerificacion = DateOnly.FromDateTime(fecAsisDtp.Value),
-                    };
-
-                    //se verifica si la entidad que se quiere ingresar no existe con anterioridad
-                    var verificacionAsis = await _api.PostAsync<VerificarAsisInasisDTO>("AsistenciasControlador/BuscarPorIdYFechaAsync", veri);
-
-                    if (verificacionAsis != null)
-                    {
-                        MessageBox.Show("El usuario ingresado ya posee una asistencia este día. No se puede volver a añadir otra.");
-                        return;
-                    }
-                    //verificar si no existe el mismo ingreso en inasistencias
-                    var verificacionInasis = await _api.PostAsync<VerificarAsisInasisDTO>("InasistenciasControlador/BuscarPorIdYFechaAsync", veri);
-                    if (verificacionInasis != null)
-                    {
-                        MessageBox.Show("El usuario ingresado ya posee una inasistencia este día. No se puede volver a añadir otra.");
-                        return;
-                    }
-
-                    var inasistencia = new Inasistencias
-                    {
-                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                        LicenciaId = int.Parse(licenciaCb.SelectedValue.ToString()),
-                        DiasContados = 1,
-                        Estado = true
-                    };
-
-                    await _api.PostAsync<InasistenciasFormDTO>("InasistenciasControlador/AgregarAsync", inasistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Error al insertar el registro, verifique que los datos sean correctos");
-            }
-
-        }
-
-        private async void asistenciasDgv_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0 && e.RowIndex < asistenciasDgv.Rows.Count)
-                {
-                    var asistenciasSeleccionado = asistenciasDgv.Rows[e.RowIndex].DataBoundItem as AsistenciasFormDTO;
-
-                    if (asistenciasSeleccionado != null)
-                    {
-                        idAsisTxt.Text = asistenciasSeleccionado.IdAsistencia.ToString();
-                        empleCb.SelectedValue = asistenciasSeleccionado.EmpleadoId;
-                        fecAsisDtp.Value = asistenciasSeleccionado.Fecha.ToDateTime(TimeOnly.MinValue);
-                        horaEntraDtp.Value = DateTime.Today.Add(asistenciasSeleccionado.HoraEntrada.Value.ToTimeSpan());
-                        horaSaliDtp.Value = DateTime.Today.Add(asistenciasSeleccionado.HoraSalida.Value.ToTimeSpan());
-                    }
-
-                }
-
-                actualizarBtn.Enabled = true;
-                EliminarBtn.Enabled = true;
-                ingresarBtn.Enabled = false;
-                empleCb.Enabled = false;
-                fecAsisDtp.Enabled = false;
-
-                await CargarAsistencias();
-                await CargarInasistencias();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al cargar la asistencia : favor editar los datos.");
-            }
-        }
-
-        private async void inasisDgv_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0 && e.RowIndex < inasisDgv.Rows.Count)
-                {
-                    var inasistenciasSeleccionadas = inasisDgv.Rows[e.RowIndex].DataBoundItem as InasistenciasFormDTO;
-
-                    if (inasistenciasSeleccionadas != null)
-                    {
-                        idAsisTxt.Text = inasistenciasSeleccionadas.IdInasistencias.ToString();
-                        empleCb.SelectedValue = inasistenciasSeleccionadas.EmpleadoId;
-                        fecAsisDtp.Value = inasistenciasSeleccionadas.Fecha.ToDateTime(TimeOnly.MinValue);
-                        licenciaCb.SelectedValue = inasistenciasSeleccionadas.LicenciaId;
-                    }
-
-                }
-
-                actualizarBtn.Enabled = true;
-                EliminarBtn.Enabled = true;
-                ingresarBtn.Enabled = false;
-                empleCb.Enabled = false;
-                fecAsisDtp.Enabled = false;
-                horaSaliDtp.Enabled = false;
-
-                await CargarAsistencias();
-                await CargarInasistencias();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al cargar la inasistencia : favor editar los datos.");
-            }
-        }
-
-        private async void actualizarBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //gracias al método de ClickCell solo podemos actualizar datos. Para recuperar otras opciones, debemos usar el
-                //botón limpiar datos
-                if (registroCb.SelectedItem.ToString() == "Asistencia")
-                {
-                    //verificar que el día ingresado no sea mayor al actual
-
-                    //verificar horas
-                    if (TimeOnly.FromDateTime(horaSaliDtp.Value) <= TimeOnly.FromDateTime(horaEntraDtp.Value))
-                    {
-                        MessageBox.Show("La hora de salida de la asistencia no puede ser menor o igual a la hora de entrada.");
-                        return;
-                    }
-
-                    var asistencia = new Asistencias
-                    {
-                        IdAsistencia = int.Parse(idAsisTxt.Text),
-                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                        HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
-                        HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
-                        Estado = true
-                    };
-
-                    await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
-                }
-                else if (registroCb.SelectedItem.ToString() == "Inasistencia")
-                {
-
-
-                    var inasistencia = new Inasistencias
-                    {
-                        IdInasistencia = int.Parse(idAsisTxt.Text),
-                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                        LicenciaId = int.Parse(licenciaCb.SelectedValue.ToString()),
-                        DiasContados = 1,
-                        Estado = true
-                    };
-
-                    await _api.PutAsync<InasistenciasFormDTO>("InasistenciasControlador/ActualizarAsync", inasistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Error al actualizar registro, verifique que los datos sean correctos");
-            }
-
+            empleNomApeCb.SelectedIndex = -1;
+            empleCedCb.SelectedIndex = -1;
+            registroCb.SelectedIndex = -1;
+            //cargar los botones desactivados para obligar a la gente a seleccionar un tipo de asistencia
         }
 
         private void limpiarBtn_Click(object sender, EventArgs e)
         {
             LimpiarInfo();
-            ingresarBtn.Enabled = true;
-            EliminarBtn.Enabled = false;
-            actualizarBtn.Enabled = false;
-            empleCb.Enabled = true;
-            fecAsisDtp.Enabled = true;
+        }
+        private void registroCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var tipo = registroCb.SelectedItem as string;
+
+            if (string.IsNullOrWhiteSpace(tipo)) return;
+
+            if (tipo == "Asistencia")
+            {
+                licenciaCb.Enabled = false;
+                ingresoAsisBtn.Enabled = true;
+                entradaAlmBtn.Enabled = true;
+                salidaAlmBtn.Enabled = true;
+                inasistenciaBtn.Enabled = false;
+            }
+            else if (tipo == "Inasistencia")
+            {
+                licenciaCb.Enabled = true;
+                //los botones de inasistencia se desactivan
+                ingresoAsisBtn.Enabled = false;
+                entradaAlmBtn.Enabled = false;
+                salidaAlmBtn.Enabled = false;
+                inasistenciaBtn.Enabled = true;
+            }
         }
 
-        private async void EliminarBtn_Click(object sender, EventArgs e)
+        private void relojTimer_Tick(object sender, EventArgs e)
         {
-            // no se elimina, solo se cambia su estado a false.
+            relojLb.Text = DateTime.Now.ToString("HH:mm:ss");
+            fechaLb.Text = DateTime.Now.ToShortDateString();
+        }
+
+        private async void ingresoAsisBtn_Click(object sender, EventArgs e)
+        {
             try
             {
-                if (registroCb.SelectedItem.ToString() == "Asistencia")
+                //asegurarse que el tipo de registro en Asistencia
+                if (registroCb.SelectedItem?.ToString() == "Asistencia")
                 {
-                    //verificar que el día ingresado no sea mayor al actual
-
-                    //verificar horas
-                    if (TimeOnly.FromDateTime(horaSaliDtp.Value) <= TimeOnly.FromDateTime(horaEntraDtp.Value))
+                    if (empleCedCb.SelectedIndex == -1)
                     {
-                        MessageBox.Show("La hora de salida de la asistencia no puede ser menor o igual a la hora de entrada.");
+                        MessageBox.Show("Seleccione un empleado desde las listas disponibles");
                         return;
                     }
 
+                    //inicio de verificación de datos, vemos si no existe un registro ya ese dia
+                    var verificacion = new VerificarAsisInasisDTO
+                    {
+                        idEmpleado = (int)empleCedCb.SelectedValue,
+                        fechaVerificacion = DateOnly.Parse(fechaLb.Text)
+                    };
+
+                    var busquedaAsis = await _api.PostAsync<Asistencias>("AsistenciasControlador/BuscarPorIdYFechaAsync", verificacion);
+                    var busquedaInasis = await _api.PostAsync<Inasistencias>("InasistenciasControlador/BuscarPorIdYFechaAsync", verificacion);
+
+                    if (busquedaAsis != null || busquedaInasis != null)
+                    {
+                        MessageBox.Show("Ya existe un registro de este empleado en esta fecha. Registre el resto de datos.");
+                        return;
+                    }
+                    //fin de la verificación, si pasamos, se ingresa el dato.
                     var asistencia = new Asistencias
                     {
-                        IdAsistencia = int.Parse(idAsisTxt.Text),
-                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                        HoraEntrada = TimeOnly.FromDateTime(horaEntraDtp.Value),
-                        HoraSalida = TimeOnly.FromDateTime(horaSaliDtp.Value),
-                        Estado = false
+                        EmpleadoId = (int)empleCedCb.SelectedValue,
+                        Fecha = DateOnly.Parse(fechaLb.Text),
+                        HoraEntrada = TimeOnly.Parse(relojLb.Text),
+                        HoraSalida = null,
+                        Estado = true
                     };
 
-                    await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", asistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
-                }
-                else if (registroCb.SelectedItem.ToString() == "Inasistencia")
-                {
 
-
-                    var inasistencia = new Inasistencias
+                    var resultado = await _api.PostAsync<Asistencias>("AsistenciasControlador/AgregarAsync", asistencia);
+                    if (resultado != null)
                     {
-                        IdInasistencia = int.Parse(idAsisTxt.Text),
-                        EmpleadoId = int.Parse(empleCb.SelectedValue.ToString()),
-                        Fecha = DateOnly.FromDateTime(fecAsisDtp.Value),
-                        LicenciaId = int.Parse(licenciaCb.SelectedValue.ToString()),
-                        DiasContados = 1,
-                        Estado = false
-                    };
-
-                    await _api.PutAsync<InasistenciasFormDTO>("InasistenciasControlador/ActualizarAsync", inasistencia);
-                    await CargarAsistencias();
-                    await CargarInasistencias();
+                        MessageBox.Show("Asistencia registrada con éxito.");
+                        LimpiarInfo();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Elegir la opción de registro \"Asistencia\"");
+                    return;
                 }
             }
             catch
             {
-                MessageBox.Show("Error al eliminar registro, verifique que los datos sean correctos");
+                MessageBox.Show("Error al ingresar la entrada de asistencia.");
             }
         }
-
-        /*private async void EmpleCb_SelectedIndexChanged(object sender, EventArgs e)
+        private async void inasistenciaBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if (empleCb.SelectedIndex == -1)
-                    return;
-
-                if (empleCb.SelectedItem is Empleados emp)
+                //asegurarse que el tipo de registro en Asistencia
+                if (registroCb.SelectedItem?.ToString() == "Inasistencia")
                 {
-                    string empleCedula = emp.Cedula;
-
-                    var contrato = await _api.GetAsync<Contratos>($"ContratosControlador/ObtenerContratoActivoPorCedulaAsync/{empleCedula}");
-
-                    if (contrato == null)
+                    if (empleCedCb.SelectedIndex == -1)
                     {
-                        MessageBox.Show("El empleado no tiene contrato activo.");
+                        MessageBox.Show("Seleccione un empleado desde las listas disponibles");
                         return;
                     }
 
-                    //double HoraJorDecimales = (double)contrato.HorasJornada;
+                    //inicio de verificación de datos, vemos si no existe un registro ya ese dia
+                    var verificacion = new VerificarAsisInasisDTO
+                    {
+                        idEmpleado = (int)empleCedCb.SelectedValue,
+                        fechaVerificacion = DateOnly.Parse(fechaLb.Text)
+                    };
 
-                    DateTime horaEntrada = DateTime.Now;
-                    DateTime horaSalida = horaEntrada.AddHours(HoraJorDecimales);
+                    var busquedaAsis = await _api.PostAsync<VerificarAsisInasisDTO>("AsistenciasControlador/BuscarPorIdYFechaAsync", verificacion);
+                    var busquedaInasis = await _api.PostAsync<VerificarAsisInasisDTO>("InasistenciasControlador/BuscarPorIdYFechaAsync", verificacion);
 
-                    horaEntraDtp.Value = horaEntrada;
-                    horaSaliDtp.Value = horaSalida;
+                    if (busquedaAsis != null || busquedaInasis != null)
+                    {
+                        MessageBox.Show("Ya existe un registro de este empleado en esta fecha. Registre el resto de datos.");
+                        return;
+                    }
+                    //fin de la verificación, si pasamos, se ingresa el dato.
+                    var asistencia = new Inasistencias
+                    {
+                        EmpleadoId = (int)empleCedCb.SelectedValue,
+                        Fecha = DateOnly.Parse(fechaLb.Text),
+                        LicenciaId = (int)licenciaCb.SelectedValue,
+                        Estado = true
+                    };
 
-                    nombreEmpleadoLbl.Text = $"{emp.Nombres} {emp.Apellidos}";
+
+                    var resultado = await _api.PostAsync<Inasistencias>("InasistenciasControlador/AgregarAsync", asistencia);
+                    if (resultado != null)
+                    {
+                        MessageBox.Show("Inasistencia registrada con éxito.");
+                        LimpiarInfo();
+                    }
                 }
-
+                else
+                {
+                    MessageBox.Show("Elegir la opción de registro \"Asistencia\"");
+                    return;
+                }
             }
             catch
             {
-                MessageBox.Show("Error al cargar de empleados.");
+                MessageBox.Show("Error al ingresar la entrada de asistencia.");
             }
-        }*/
+        }
+
+        private async void salidaBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //asegurarse que el tipo de registro en Asistencia
+                if (registroCb.SelectedItem?.ToString() == "Asistencia")
+                {
+                    if (empleCedCb.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Seleccione un empleado desde las listas disponibles");
+                        return;
+                    }
+
+                    //inicio de verificación de datos, vemos si no existe un registro ya ese dia
+                    var verificacion = new VerificarAsisInasisDTO
+                    {
+                        idEmpleado = (int)empleCedCb.SelectedValue,
+                        fechaVerificacion = DateOnly.Parse(fechaLb.Text)
+                    };
+
+                    var busquedaAsis = await _api.PostAsync<Asistencias>("AsistenciasControlador/BuscarPorIdYFechaAsync", verificacion);
+
+                    if (busquedaAsis == null)
+                    {
+                        MessageBox.Show("No se halló un registro en de entrada, por tanto no se puede registrar la salida.");
+                        return;
+                    }
+
+                    busquedaAsis.HoraSalida = TimeOnly.Parse(relojLb.Text);
+                    //fin de la verificación, si pasamos, se ingresa el dato.
 
 
-        //código reutilizable
+                    var resultado = await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", busquedaAsis);
+                    if (resultado != null)
+                    {
+                        MessageBox.Show("Se registro su salida con éxito.");
+                        LimpiarInfo();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Elegir la opción de registro \"Asistencia\"");
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error al ingresar la entrada de asistencia.");
+            }
+        }
+
+        private async void entradaAlmBtn_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                //asegurarse que el tipo de registro en Asistencia
+                if (registroCb.SelectedItem?.ToString() == "Asistencia")
+                {
+                    if (empleCedCb.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Seleccione un empleado desde las listas disponibles");
+                        return;
+                    }
+
+                    //inicio de verificación de datos, vemos si no existe un registro ya ese dia
+                    var verificacion = new VerificarAsisInasisDTO
+                    {
+                        idEmpleado = (int)empleCedCb.SelectedValue,
+                        fechaVerificacion = DateOnly.Parse(fechaLb.Text)
+                    };
+
+                    var busquedaAsis = await _api.PostAsync<Asistencias>("AsistenciasControlador/BuscarPorIdYFechaAsync", verificacion);
+
+                    if (busquedaAsis == null)
+                    {
+                        MessageBox.Show("No se halló un registro en de entrada, por tanto no se puede registrar la entrada de la hora de almuerzo.");
+                        return;
+                    }
+
+                    busquedaAsis.HoraInicioAlmuerzo = TimeOnly.Parse(relojLb.Text);
+                    //fin de la verificación, si pasamos, se ingresa el dato.
+
+
+                    var resultado = await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", busquedaAsis);
+                    if (resultado != null)
+                    {
+                        MessageBox.Show("Se registro su entrada al almuerzo con éxito.");
+                        LimpiarInfo();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Elegir la opción de registro \"Asistencia\"");
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error al ingresar la entrada de asistencia.");
+            }
+        }
+
+        private async void salidaAlmBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //asegurarse que el tipo de registro en Asistencia
+                if (registroCb.SelectedItem?.ToString() == "Asistencia")
+                {
+                    if (empleCedCb.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Seleccione un empleado desde las listas disponibles");
+                        return;
+                    }
+
+                    //inicio de verificación de datos, vemos si no existe un registro ya ese dia
+                    var verificacion = new VerificarAsisInasisDTO
+                    {
+                        idEmpleado = (int)empleCedCb.SelectedValue,
+                        fechaVerificacion = DateOnly.Parse(fechaLb.Text)
+                    };
+
+                    var busquedaAsis = await _api.PostAsync<Asistencias>("AsistenciasControlador/BuscarPorIdYFechaAsync", verificacion);
+
+                    if (busquedaAsis == null)
+                    {
+                        MessageBox.Show("No se halló un registro en de entrada, por tanto no se puede registrar la entrada de la hora de almuerzo.");
+                        return;
+                    }
+
+                    busquedaAsis.HoaFinAlmuerzo = TimeOnly.Parse(relojLb.Text);
+                    //fin de la verificación, si pasamos, se ingresa el dato.
+
+
+                    var resultado = await _api.PutAsync<Asistencias>("AsistenciasControlador/ActualizarAsync", busquedaAsis);
+                    if (resultado != null)
+                    {
+                        MessageBox.Show("Se registro su salida del almuerzo con éxito.");
+                        LimpiarInfo();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Elegir la opción de registro \"Asistencia\"");
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error al ingresar la entrada de asistencia.");
+            }
+        }
+
+        //código reutilizable --------------------------
+
+        private void empleCedCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (empleCedCb.SelectedIndex != -1 && empleCedCb.SelectedValue is int id)
+            {
+                idEmplLb.Text = id.ToString();
+            }
+            else
+            {
+                idEmplLb.Text = string.Empty;
+            }
+        }
+
         public void LimpiarInfo()
         {
             idAsisTxt.Clear();
-            empleCb.SelectedIndex = -1;
+            empleCedCb.SelectedIndex = -1;
             licenciaCb.SelectedIndex = -1;
             registroCb.SelectedIndex = -1;
-
-            horaEntraDtp.Value = DateTime.Today;
-            horaSaliDtp.Value = DateTime.Today;
-            fecAsisDtp.Value = DateTime.Today;
+            empleNomApeCb.SelectedIndex = -1;
         }
 
-        public async Task CargarInasistencias()
-        {
-            try
-            {
-                var busq = await _api.GetAsync<List<InasistenciasFormDTO>>("InasistenciasControlador/ObtenerTodasActivasInasistenciasFormDTO");
 
-                inasisDgv.DataSource = busq;
-                inasisDgv.Columns["Remunerable"].ReadOnly = true;
-                //esto obliga a que se generen las columnas. ME SALVÓ
-                asistenciasDgv.AutoGenerateColumns = true;
-                asistenciasDgv.AutoResizeColumns();
-                inasisDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch
-            {
-                MessageBox.Show("Error al cargar las asistencias");
-            }
-        }
-
-        public async Task CargarAsistencias()
-        {
-            try
-            {
-                var busq = await _api.GetAsync<List<AsistenciasFormDTO>>("AsistenciasControlador/ObtenerTodasActivasAsistenciasFormDTO");
-
-                asistenciasDgv.DataSource = busq;
-                asistenciasDgv.AutoResizeColumns();
-                asistenciasDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch
-            {
-                MessageBox.Show("Error al cargar las asistencias");
-            }
-        }
 
         public async Task CargarEmpleados()
         {
             try
             {
                 var datos = await _api.GetAsync<List<Empleados>>("EmpleadosControlador/ObtenerTodosActivosAsync");
-                empleCb.DataSource = datos;
-                empleCb.ValueMember = "IdEmpleado";
-                empleCb.DisplayMember = "Cedula";
+                empleCedCb.DataSource = datos;
+                empleCedCb.ValueMember = "IdEmpleado";
+                empleCedCb.DisplayMember = "Cedula";
+
+
+                empleNomApeCb.DataSource = datos;
+                empleNomApeCb.ValueMember = "IdEmpleado";
+                empleNomApeCb.DisplayMember = "NombreCompleto";
+
+                empleadosDgv.DataSource = datos;
+                empleadosDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
             {
@@ -473,28 +419,5 @@ namespace WinModuloNomina.Vista
         {
             registroCb.DataSource = TiposRegistros;
         }
-
-        private void registroCb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            var tipo = registroCb.SelectedItem as string;
-
-            if (string.IsNullOrWhiteSpace(tipo)) return;
-
-            if (tipo == "Asistencia")
-            {
-                horaEntraDtp.Enabled = true;
-                horaSaliDtp.Enabled = true;
-                licenciaCb.Enabled = false;
-            }
-            else if (tipo == "Inasistencia")
-            {
-                horaEntraDtp.Enabled = false;
-                horaSaliDtp.Enabled = false;
-                licenciaCb.Enabled = true;
-            }
-        }
-
-
-    }
+    }  
 }

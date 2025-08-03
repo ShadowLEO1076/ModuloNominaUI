@@ -10,14 +10,15 @@ public partial class Empleados
 {
     public int IdEmpleado { get; set; }
 
-    public string NombreCompleto { get; set; }
+   // public string NombreCompleto { get; set; }
 
     public int PuestoId { get; set; }
 
     public string Nombres { get; set; }
 
     public string Apellidos { get; set; }
-
+    //ELEMENTO SOLO DE LECTURA, para no hacer más faroladas.
+    public string NombreCompleto => $"{Nombres} {Apellidos}";
     public string Cedula { get; set; }
 
     public string Correo { get; set; }
