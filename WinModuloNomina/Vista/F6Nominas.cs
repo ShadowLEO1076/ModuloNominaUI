@@ -89,10 +89,10 @@ namespace WinModuloNomina.Vista
                 col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
         }
-
+        
         private async void ingAutoBtn_Click(object sender, EventArgs e)
         {
-            try
+           /* try
             {
                 var empleadoSeleccionado = empleAutoCb.SelectedItem as Empleados;
 
@@ -136,7 +136,7 @@ namespace WinModuloNomina.Vista
             catch
             {
                 MessageBox.Show("Error al ingresar nómina automáticamente.");
-            }
+            }*/
         }
 
         private async void actualizarBtn_Click(object sender, EventArgs e)

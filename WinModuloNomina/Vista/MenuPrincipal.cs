@@ -190,7 +190,7 @@ namespace WinModuloNomina.Vista
         private void btnDescuentos_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
-            OpenChildForm(new F5Descuentos(), "GESTIÓN DE DESCUENTOS");
+            OpenChildForm(new F13MenuDescuentos(), "GESTIÓN DE DESCUENTOS");
         }
 
         private void btnNomina_Click(object sender, EventArgs e)
