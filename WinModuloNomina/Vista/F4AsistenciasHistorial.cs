@@ -110,6 +110,15 @@ namespace WinModuloNomina.Vista
         {
             try 
             {
+                if (string.IsNullOrWhiteSpace(idAsisTxt.Text))
+                {
+                    MessageBox.Show("Favor, buscar y presionar el registro que necesite en a lista de abajo, tras eso, presione el botó eliminar.");
+                    return;
+                }
+
+                var confirm = MessageBox.Show("¿Está seguro que desea eliminar el registro?", "Confirmar edición", MessageBoxButtons.YesNo);
+                if (confirm != DialogResult.Yes) return;
+
                 var busq = await _api.GetAsync<Asistencias>($"AsistenciasControlador/ObtenerPorIdAsync/{int.Parse(idAsisTxt.Text)}");
 
                 busq.Estado = false;
@@ -117,6 +126,8 @@ namespace WinModuloNomina.Vista
                 await _api.PutAsync<Asistencias>($"AsistenciasControlador/ActualizarAsync", busq);
 
                 await CargarAsistencias();
+
+                MessageBox.Show("Éxito al borrar el dato seleccionado.")
             }
             catch
             {

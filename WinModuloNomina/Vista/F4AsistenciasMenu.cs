@@ -39,7 +39,12 @@ namespace WinModuloNomina.Vista
         {
             OpenChildForm(new F4AsistenciasHistorial(), "Historial de registros");
         }
-        
+
+        private void historialInasBtn_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new F4AsistenciasInasHistorial(), "Historial de registros inasistencias");
+        }
+
         //necesario para tener childForms
         private async void OpenChildForm(Form childForm, string title)
         {
@@ -95,7 +100,5 @@ namespace WinModuloNomina.Vista
                 MessageBox.Show($"Error al abrir el formulario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-       
-    }
+      }
 }
