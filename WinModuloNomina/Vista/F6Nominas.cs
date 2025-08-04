@@ -1,4 +1,5 @@
-﻿using Infraestructura.AccesoDatos;
+﻿using Aplicacion.DTO.DTOs;
+using Infraestructura.AccesoDatos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -89,54 +90,85 @@ namespace WinModuloNomina.Vista
                 col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
         }
-        
-        private async void ingAutoBtn_Click(object sender, EventArgs e)
+
+        private async void nominasMenBtn_Click(object sender, EventArgs e)
         {
-           /* try
+            try
             {
-                var empleadoSeleccionado = empleAutoCb.SelectedItem as Empleados;
-
-                if (empleadoSeleccionado == null)
+                if(mesAutoCb.SelectedIndex + 1 != DateTime.Today.Month)
                 {
-                    MessageBox.Show("Debe seleccionar un empleado.");
+                    MessageBox.Show("Favor ingresar el mes actual antes de usar el botón.");
                     return;
                 }
 
-                if (anioNud.Value != DateTime.Now.Year)
+                var datos = new BusquedaDTO
                 {
-                    MessageBox.Show("El año de la nómina debe ser el actual.");
-                    return;
-                }
-
-                if (mesAutoCb.SelectedIndex + 1 != DateTime.Now.Month)
-                {
-                    MessageBox.Show("El mes de la nómina debe ser el actual.");
-                    return;
-                }
-
-                BusquedaDTO nuevoDato = new BusquedaDTO
-                {
-                    CedulaEmpleado = empleadoSeleccionado.Cedula,
-                    anio = int.Parse(anioNud.Value.ToString()),
+                    anio = (int)anioNud.Value,
                     mes = mesAutoCb.SelectedIndex + 1
-
                 };
 
-                var verificacion = await _api.PostAsync<NominasDTO>("NominasControlador/ObtenerNominaPorEmpleadoMesAnioAsync", nuevoDato);
+                var veri = await _api.PostAsync("NominasControlador/IngresarNominasMesAutomatico", datos);
 
-                if (verificacion != null)
+                if (veri != null) 
                 {
-                    MessageBox.Show("Ya existe una nómina a nombre del empleado en la fecha establecida, en caso de necesitar hacer algo, editarla manualmente.");
-                    return;
+                    MessageBox.Show("Nóminas ingresadas correctamente.");
                 }
 
-                await _api.PostAsync<BusquedaDTO>("NominasControlador/InsertarNominaAuto", nuevoDato);
                 await CargarNominasActivosAsync();
             }
             catch
             {
-                MessageBox.Show("Error al ingresar nómina automáticamente.");
-            }*/
+                MessageBox.Show("Error al ingresar nóminas automáticamente.");
+            }
+        }
+
+        private async void ingAutoBtn_Click(object sender, EventArgs e)
+        {
+            /* try
+             {
+                 var empleadoSeleccionado = empleAutoCb.SelectedItem as Empleados;
+
+                 if (empleadoSeleccionado == null)
+                 {
+                     MessageBox.Show("Debe seleccionar un empleado.");
+                     return;
+                 }
+
+                 if (anioNud.Value != DateTime.Now.Year)
+                 {
+                     MessageBox.Show("El año de la nómina debe ser el actual.");
+                     return;
+                 }
+
+                 if (mesAutoCb.SelectedIndex + 1 != DateTime.Now.Month)
+                 {
+                     MessageBox.Show("El mes de la nómina debe ser el actual.");
+                     return;
+                 }
+
+                 BusquedaDTO nuevoDato = new BusquedaDTO
+                 {
+                     CedulaEmpleado = empleadoSeleccionado.Cedula,
+                     anio = int.Parse(anioNud.Value.ToString()),
+                     mes = mesAutoCb.SelectedIndex + 1
+
+                 };
+
+                 var verificacion = await _api.PostAsync<NominasDTO>("NominasControlador/ObtenerNominaPorEmpleadoMesAnioAsync", nuevoDato);
+
+                 if (verificacion != null)
+                 {
+                     MessageBox.Show("Ya existe una nómina a nombre del empleado en la fecha establecida, en caso de necesitar hacer algo, editarla manualmente.");
+                     return;
+                 }
+
+                 await _api.PostAsync<BusquedaDTO>("NominasControlador/InsertarNominaAuto", nuevoDato);
+                 await CargarNominasActivosAsync();
+             }
+             catch
+             {
+                 MessageBox.Show("Error al ingresar nómina automáticamente.");
+             }*/
         }
 
         private async void actualizarBtn_Click(object sender, EventArgs e)
@@ -311,5 +343,7 @@ namespace WinModuloNomina.Vista
             // Todo OK
             e.Handled = false;
         }
+
+        
     }
 }

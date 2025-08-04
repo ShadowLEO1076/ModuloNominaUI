@@ -127,7 +127,7 @@ namespace WinModuloNomina.Vista
 
                 await CargarAsistencias();
 
-                MessageBox.Show("Éxito al borrar el dato seleccionado.")
+                MessageBox.Show("Éxito al borrar el dato seleccionado.");
             }
             catch
             {
