@@ -44,11 +44,11 @@
             cbJornadaTipo = new ComboBox();
             label2 = new Label();
             dgvTipoContrato = new DataGridView();
-            contratosTipoBindingSource = new BindingSource(components);
             idTipoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             jornadaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             horasJornadaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            contratosTipoBindingSource = new BindingSource(components);
             panel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -58,6 +58,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.WhiteSmoke;
             panel2.Controls.Add(flowLayoutPanel1);
             panel2.Controls.Add(tableLayoutPanel1);
             panel2.Dock = DockStyle.Top;
@@ -268,10 +269,6 @@
             dgvTipoContrato.Size = new Size(876, 257);
             dgvTipoContrato.TabIndex = 27;
             // 
-            // contratosTipoBindingSource
-            // 
-            contratosTipoBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.ContratosTipo);
-            // 
             // idTipoDataGridViewTextBoxColumn
             // 
             idTipoDataGridViewTextBoxColumn.DataPropertyName = "IdTipo";
@@ -300,11 +297,15 @@
             horasJornadaDataGridViewTextBoxColumn.MinimumWidth = 6;
             horasJornadaDataGridViewTextBoxColumn.Name = "horasJornadaDataGridViewTextBoxColumn";
             // 
+            // contratosTipoBindingSource
+            // 
+            contratosTipoBindingSource.DataSource = typeof(Infraestructura.AccesoDatos.ContratosTipo);
+            // 
             // F12TipoC
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.WhiteSmoke;
+            BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(876, 450);
             Controls.Add(dgvTipoContrato);
             Controls.Add(panel2);

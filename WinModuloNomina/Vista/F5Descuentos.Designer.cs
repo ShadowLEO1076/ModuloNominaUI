@@ -80,10 +80,10 @@
             btnBuscar.FlatAppearance.BorderSize = 0;
             btnBuscar.FlatStyle = FlatStyle.Flat;
             btnBuscar.IconChar = FontAwesome.Sharp.IconChar.Search;
-            btnBuscar.IconColor = Color.Black;
+            btnBuscar.IconColor = Color.WhiteSmoke;
             btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBuscar.IconSize = 40;
-            btnBuscar.Location = new Point(891, 0);
+            btnBuscar.Location = new Point(951, 4);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(59, 39);
             btnBuscar.TabIndex = 18;
@@ -95,11 +95,11 @@
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel2.Controls.Add(panel2, 0, 0);
-            tableLayoutPanel2.Location = new Point(27, 56);
+            tableLayoutPanel2.Location = new Point(43, 76);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(615, 253);
+            tableLayoutPanel2.Size = new Size(675, 197);
             tableLayoutPanel2.TabIndex = 22;
             // 
             // panel2
@@ -108,7 +108,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(609, 247);
+            panel2.Size = new Size(669, 191);
             panel2.TabIndex = 23;
             // 
             // tableLayoutPanel1
@@ -138,14 +138,14 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 29.4117641F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 29.4117641F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 29.4117641F));
-            tableLayoutPanel1.Size = new Size(609, 247);
+            tableLayoutPanel1.Size = new Size(669, 191);
             tableLayoutPanel1.TabIndex = 23;
             // 
             // tipoLb
             // 
             tipoLb.Anchor = AnchorStyles.Left;
             tipoLb.AutoSize = true;
-            tipoLb.Location = new Point(3, 200);
+            tipoLb.Location = new Point(3, 152);
             tipoLb.Name = "tipoLb";
             tipoLb.Size = new Size(79, 20);
             tipoLb.TabIndex = 18;
@@ -155,16 +155,16 @@
             // 
             tipoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tipoTxt.FormattingEnabled = true;
-            tipoTxt.Location = new Point(124, 196);
+            tipoTxt.Location = new Point(136, 148);
             tipoTxt.Name = "tipoTxt";
-            tipoTxt.Size = new Size(176, 28);
+            tipoTxt.Size = new Size(194, 28);
             tipoTxt.TabIndex = 27;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Location = new Point(306, 200);
+            label2.Location = new Point(336, 152);
             label2.Name = "label2";
             label2.Size = new Size(53, 20);
             label2.TabIndex = 44;
@@ -173,16 +173,16 @@
             // montoTxt
             // 
             montoTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            montoTxt.Location = new Point(427, 196);
+            montoTxt.Location = new Point(469, 149);
             montoTxt.Name = "montoTxt";
-            montoTxt.Size = new Size(179, 27);
+            montoTxt.Size = new Size(197, 27);
             montoTxt.TabIndex = 43;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
-            label4.Location = new Point(3, 127);
+            label4.Location = new Point(3, 96);
             label4.Name = "label4";
             label4.Size = new Size(77, 20);
             label4.TabIndex = 28;
@@ -192,16 +192,16 @@
             // 
             idEmpleadoCb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             idEmpleadoCb.FormattingEnabled = true;
-            idEmpleadoCb.Location = new Point(124, 123);
+            idEmpleadoCb.Location = new Point(136, 92);
             idEmpleadoCb.Name = "idEmpleadoCb";
-            idEmpleadoCb.Size = new Size(176, 28);
+            idEmpleadoCb.Size = new Size(194, 28);
             idEmpleadoCb.TabIndex = 29;
             // 
             // fechaLb
             // 
             fechaLb.Anchor = AnchorStyles.Left;
             fechaLb.AutoSize = true;
-            fechaLb.Location = new Point(306, 127);
+            fechaLb.Location = new Point(336, 96);
             fechaLb.Name = "fechaLb";
             fechaLb.Size = new Size(103, 20);
             fechaLb.TabIndex = 24;
@@ -211,10 +211,10 @@
             // 
             fechaDTP.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             fechaDTP.Format = DateTimePickerFormat.Short;
-            fechaDTP.Location = new Point(427, 123);
+            fechaDTP.Location = new Point(469, 92);
             fechaDTP.Margin = new Padding(3, 4, 3, 4);
             fechaDTP.Name = "fechaDTP";
-            fechaDTP.Size = new Size(179, 27);
+            fechaDTP.Size = new Size(197, 27);
             fechaDTP.TabIndex = 26;
             fechaDTP.Value = new DateTime(2025, 7, 21, 20, 56, 31, 0);
             // 
@@ -222,7 +222,7 @@
             // 
             idDescuentosTxt.Anchor = AnchorStyles.Left;
             idDescuentosTxt.AutoSize = true;
-            idDescuentosTxt.Location = new Point(3, 55);
+            idDescuentosTxt.Location = new Point(3, 40);
             idDescuentosTxt.Name = "idDescuentosTxt";
             idDescuentosTxt.Size = new Size(102, 20);
             idDescuentosTxt.TabIndex = 17;
@@ -231,17 +231,17 @@
             // textBox4
             // 
             textBox4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.Location = new Point(124, 51);
+            textBox4.Location = new Point(136, 36);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(176, 27);
+            textBox4.Size = new Size(194, 27);
             textBox4.TabIndex = 10;
             // 
             // descripcionLb
             // 
             descripcionLb.Anchor = AnchorStyles.Left;
             descripcionLb.AutoSize = true;
-            descripcionLb.Location = new Point(306, 55);
+            descripcionLb.Location = new Point(336, 40);
             descripcionLb.Name = "descripcionLb";
             descripcionLb.Size = new Size(87, 20);
             descripcionLb.TabIndex = 22;
@@ -250,27 +250,27 @@
             // descripcionTxt
             // 
             descripcionTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            descripcionTxt.Location = new Point(427, 51);
+            descripcionTxt.Location = new Point(469, 36);
             descripcionTxt.Name = "descripcionTxt";
-            descripcionTxt.Size = new Size(179, 27);
+            descripcionTxt.Size = new Size(197, 27);
             descripcionTxt.TabIndex = 16;
             // 
             // panel5
             // 
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel5.BackColor = SystemColors.HotTrack;
+            panel5.BackColor = Color.FromArgb(64, 64, 64);
             panel5.Controls.Add(txtBuscarD);
             panel5.Controls.Add(btnBuscar);
             panel5.Controls.Add(label3);
-            panel5.Location = new Point(0, 322);
+            panel5.Location = new Point(0, 315);
             panel5.Name = "panel5";
-            panel5.Size = new Size(954, 39);
+            panel5.Size = new Size(1014, 46);
             panel5.TabIndex = 23;
             // 
             // txtBuscarD
             // 
             txtBuscarD.Anchor = AnchorStyles.Right;
-            txtBuscarD.Location = new Point(769, 5);
+            txtBuscarD.Location = new Point(829, 9);
             txtBuscarD.Name = "txtBuscarD";
             txtBuscarD.Size = new Size(127, 27);
             txtBuscarD.TabIndex = 26;
@@ -281,7 +281,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(390, 9);
+            label3.Location = new Point(420, 13);
             label3.Name = "label3";
             label3.Size = new Size(194, 18);
             label3.TabIndex = 19;
@@ -302,7 +302,7 @@
             dgvDescuentos.Name = "dgvDescuentos";
             dgvDescuentos.RightToLeft = RightToLeft.No;
             dgvDescuentos.RowHeadersWidth = 51;
-            dgvDescuentos.Size = new Size(951, 248);
+            dgvDescuentos.Size = new Size(1011, 201);
             dgvDescuentos.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             dgvDescuentos.TabIndex = 25;
             dgvDescuentos.CellClick += dgvDescuentos_CellClick;
@@ -373,8 +373,10 @@
             btnBorrar.Dock = DockStyle.Fill;
             btnBorrar.FlatAppearance.BorderSize = 0;
             btnBorrar.FlatStyle = FlatStyle.Flat;
+            btnBorrar.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnBorrar.ForeColor = Color.WhiteSmoke;
             btnBorrar.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnBorrar.IconColor = Color.Black;
+            btnBorrar.IconColor = Color.White;
             btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBorrar.IconSize = 34;
             btnBorrar.ImageAlign = ContentAlignment.MiddleLeft;
@@ -395,8 +397,10 @@
             btnEditar.Dock = DockStyle.Fill;
             btnEditar.FlatAppearance.BorderSize = 0;
             btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnEditar.ForeColor = Color.WhiteSmoke;
             btnEditar.IconChar = FontAwesome.Sharp.IconChar.FilePen;
-            btnEditar.IconColor = Color.Black;
+            btnEditar.IconColor = Color.White;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditar.IconSize = 35;
             btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
@@ -417,8 +421,10 @@
             btnCrear.Dock = DockStyle.Fill;
             btnCrear.FlatAppearance.BorderSize = 0;
             btnCrear.FlatStyle = FlatStyle.Flat;
+            btnCrear.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnCrear.ForeColor = Color.WhiteSmoke;
             btnCrear.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
-            btnCrear.IconColor = Color.Black;
+            btnCrear.IconColor = Color.White;
             btnCrear.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCrear.IconSize = 35;
             btnCrear.ImageAlign = ContentAlignment.MiddleLeft;
@@ -441,7 +447,7 @@
             tableLayoutPanel3.Controls.Add(btnCrear, 0, 0);
             tableLayoutPanel3.Controls.Add(btnEditar, 0, 1);
             tableLayoutPanel3.Controls.Add(btnBorrar, 0, 2);
-            tableLayoutPanel3.Location = new Point(720, 59);
+            tableLayoutPanel3.Location = new Point(780, 76);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 3;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
@@ -452,19 +458,19 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.HotTrack;
+            panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(txtEstado);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(951, 45);
+            panel1.Size = new Size(1011, 50);
             panel1.TabIndex = 26;
             // 
             // txtEstado
             // 
             txtEstado.Anchor = AnchorStyles.Right;
-            txtEstado.Location = new Point(1298, -16);
+            txtEstado.Location = new Point(1358, -13);
             txtEstado.Name = "txtEstado";
             txtEstado.Size = new Size(56, 27);
             txtEstado.TabIndex = 1;
@@ -473,19 +479,21 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(381, 9);
+            label1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(402, 18);
             label1.Name = "label1";
-            label1.Size = new Size(241, 18);
+            label1.Size = new Size(271, 20);
             label1.TabIndex = 0;
             label1.Text = "Registro Descuentos Individual";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // F5Descuentos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(951, 608);
+            BackColor = Color.WhiteSmoke;
+            ClientSize = new Size(1011, 561);
             Controls.Add(panel1);
             Controls.Add(dgvDescuentos);
             Controls.Add(tableLayoutPanel3);

@@ -33,6 +33,7 @@
             iconButton2 = new FontAwesome.Sharp.IconButton();
             dateTimePicker1 = new DateTimePicker();
             dgvDescuentosF = new Zuby.ADGV.AdvancedDataGridView();
+            btndescontar = new FontAwesome.Sharp.IconButton();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDescuentosF).BeginInit();
             SuspendLayout();
@@ -65,15 +66,22 @@
             iconButton2.BackColor = Color.SandyBrown;
             iconButton2.FlatAppearance.BorderSize = 0;
             iconButton2.FlatStyle = FlatStyle.Flat;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.Location = new Point(310, 114);
+            iconButton2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            iconButton2.ForeColor = Color.WhiteSmoke;
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            iconButton2.IconColor = Color.White;
+            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton2.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton2.Location = new Point(181, 119);
             iconButton2.Name = "iconButton2";
+            iconButton2.Padding = new Padding(12, 0, 0, 0);
             iconButton2.Size = new Size(227, 60);
             iconButton2.TabIndex = 31;
-            iconButton2.Text = "Generar Todos";
+            iconButton2.Text = "Buscar Todos";
+            iconButton2.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton2.UseVisualStyleBackColor = false;
+            iconButton2.Click += iconButton2_Click_1;
             // 
             // dateTimePicker1
             // 
@@ -104,11 +112,35 @@
             dgvDescuentosF.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             dgvDescuentosF.TabIndex = 32;
             // 
+            // btndescontar
+            // 
+            btndescontar.Anchor = AnchorStyles.Top;
+            btndescontar.BackColor = Color.RoyalBlue;
+            btndescontar.FlatAppearance.BorderSize = 0;
+            btndescontar.FlatStyle = FlatStyle.Flat;
+            btndescontar.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btndescontar.ForeColor = Color.WhiteSmoke;
+            btndescontar.IconChar = FontAwesome.Sharp.IconChar.Skull;
+            btndescontar.IconColor = Color.White;
+            btndescontar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btndescontar.ImageAlign = ContentAlignment.MiddleLeft;
+            btndescontar.Location = new Point(430, 119);
+            btndescontar.Name = "btndescontar";
+            btndescontar.Padding = new Padding(12, 0, 0, 0);
+            btndescontar.Size = new Size(227, 60);
+            btndescontar.TabIndex = 33;
+            btndescontar.Text = "Generar Todos";
+            btndescontar.TextAlign = ContentAlignment.MiddleLeft;
+            btndescontar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btndescontar.UseVisualStyleBackColor = false;
+            btndescontar.Click += btndescontar_Click;
+            // 
             // F15FaltasD
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(830, 532);
+            Controls.Add(btndescontar);
             Controls.Add(dgvDescuentosF);
             Controls.Add(iconButton2);
             Controls.Add(dateTimePicker1);
@@ -129,5 +161,6 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private DateTimePicker dateTimePicker1;
         private Zuby.ADGV.AdvancedDataGridView dgvDescuentosF;
+        private FontAwesome.Sharp.IconButton btndescontar;
     }
 }

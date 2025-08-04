@@ -202,7 +202,7 @@ namespace WinModuloNomina.Vista
 
             if (empleCb.SelectedItem is Empleados emple)
             {
-                empleLb.Text = $"{emple.Nombres} {emple.Apellidos}";
+                empleLb.Text = $"{emple.Cedula}";
             }
         }
 
@@ -253,7 +253,7 @@ namespace WinModuloNomina.Vista
                 var datos = await _api.GetAsync<List<Empleados>>("EmpleadosControlador/ObtenerTodosActivosAsync");
                 empleCb.DataSource = datos;
                 empleCb.ValueMember = "IdEmpleado";
-                empleCb.DisplayMember = "Cedula";
+                empleCb.DisplayMember = "NombreCompleto";
             }
             catch
             {

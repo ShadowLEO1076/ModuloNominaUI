@@ -89,7 +89,7 @@ namespace WinModuloNomina.Vista
         {
             try
             {
-                
+
                 await CargarEmpleadosEnComboBox();
                 await CargarComboBoxEstado();
                 await ConfigurarGestionFechas();
@@ -433,49 +433,76 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        //CRUD BASICO
+
         private async void btnCrear_Click(object sender, EventArgs e)
         {
+            if (!ValidarFormulario(true))
+                return;
 
-            if (!ValidarFormulario(true)) return;
+            // Validar que los campos de días no estén vacíos
+            if (string.IsNullOrWhiteSpace(txtDiasAcumulados.Text) ||
+                string.IsNullOrWhiteSpace(txtDiasSolicitados.Text))
+            {
+                MessageBox.Show("Debe ingresar tanto los días acumulados como los días solicitados.",
+                                "Validación",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Validar y convertir los días a enteros
+            bool acumuladosOk = int.TryParse(txtDiasAcumulados.Text.Trim(), out int diasAcumulados);
+            bool solicitadosOk = int.TryParse(txtDiasSolicitados.Text.Trim(), out int diasSolicitados);
 
-            // Crear solicitud de vacaciones
-            var nuevaSolicitud = new SolicitudVacaciones
+            if (!acumuladosOk)
+            {
+                MessageBox.Show("Ingrese un número válido para los días acumulados.",
+                                "Validación",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!solicitadosOk)
+            {
+                MessageBox.Show("Ingrese un número válido para los días solicitados.",
+                                "Validación",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar que haya suficientes días acumulados
+            if (diasSolicitados > diasAcumulados)
+            {
+                MessageBox.Show("No tiene suficientes días acumulados para esta solicitud.",
+                                "Días insuficientes",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Crear solicitud
+            var solicitud = new SolicitudVacaciones
             {
                 EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
                 FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
                 FechaFin = DateOnly.FromDateTime(dateFin.Value),
-                DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
-                Estado = cbxEstado.Text,
+                DiasSolicitados = diasSolicitados,
+                Estado = UsuarioSesion.EsAdministrador ? cbxEstado.Text : "Pendiente",
                 FechaCreacion = DateTime.Now.Date
             };
 
-
-            var nuevaSolicitud2 = new SolicitudVacaciones
+            try
             {
-                EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
-                FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
-                FechaFin = DateOnly.FromDateTime(dateFin.Value),
-                DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
-                Estado = "Pendiente",
-                FechaCreacion = DateTime.Now.Date
-
-            };
-
-
-            if (UsuarioSesion.EsAdministrador == true)
-            {
+                // Enviar solicitud
                 var solicitudCreada = await _apimodulonomina.PostAsync<SolicitudVacaciones>(
-                "SolicitudVacacionesControlador/InsertarSolicitudVacaciones",
-                nuevaSolicitud);
-                await Task.Delay(500);
-                // Si es aprobada, crear aprobación automática
-                if (nuevaSolicitud.Estado == "Aprobado" && UsuarioSesion.EsAdministrador == true)
+                    "SolicitudVacacionesControlador/InsertarSolicitudVacaciones",
+                    solicitud);
+
+                // Si el administrador aprobó directamente, registrar la aprobación automática
+                if (UsuarioSesion.EsAdministrador && solicitud.Estado == "Aprobado")
                 {
-                    // metodo para esperar 5 segundos antes de continuar 
-
-
                     var aprobacion = new AprobacionVacaciones
                     {
                         SolicitudId = solicitudCreada.IdSolicitud,
@@ -487,19 +514,26 @@ namespace WinModuloNomina.Vista
                         "AprovacionVacacionesControlador/InsertarAprobacionVacaciones",
                         aprobacion);
                 }
+
+                // Actualizar interfaz
+                LimpiarFormulario();
+                await CargarVacaciones();
             }
-            else if (UsuarioSesion.EsAdministrador == false)
+            catch (Exception ex)
             {
-                await _apimodulonomina.PostAsync<SolicitudVacaciones>(
-                "SolicitudVacacionesControlador/InsertarSolicitudVacaciones",
-                nuevaSolicitud2);
+                MessageBox.Show("Error al crear la solicitud:\n" + ex.Message,
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
-
-
-            // Actualizar interfaz
-            LimpiarFormulario();
-            await CargarVacaciones();
         }
+
+
+
+
+
+        //CRUD BASICO
+
 
         private bool ValidarFormulario(bool validarFechas = true)
         {
@@ -565,22 +599,7 @@ namespace WinModuloNomina.Vista
             }
         }
 
-        /*private void MostrarError(string mensaje, Exception ex, bool esCritico = true)
-        {
-            string mensajeCompleto = $"{mensaje}: {ex.Message}";
-
-            if (esCritico)
-            {
-                MessageBox.Show(mensajeCompleto, "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                MessageBox.Show(mensajeCompleto, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            // Loggear el error (podrías implementar un sistema de logging aquí)
-            Console.WriteLine($"{DateTime.Now}: {mensajeCompleto}\n{ex.StackTrace}");
-        }*/
+       
 
         private async void btnBorrar_Click(object sender, EventArgs e)
         {
@@ -594,7 +613,7 @@ namespace WinModuloNomina.Vista
                                   MessageBoxIcon.Warning);
                     return;
                 }
-                
+
 
 
 
@@ -637,183 +656,276 @@ namespace WinModuloNomina.Vista
         }
         private async void btnEditar_Click(object sender, EventArgs e)
         {
-            
-
             try
             {
-                int idSolicitud = int.Parse(txtIdSVacacion.Text);
-                string nuevoEstado = cbxEstado.Text;
-                string estadoAnterior = "";
+                // 1. Validar selección en grid
+                if (dgvSolicitudes.CurrentRow == null)
+                {
+                    MessageBox.Show("Seleccione una solicitud para editar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 2. Validar campos numéricos básicos
+                if (!int.TryParse(txtIdSVacacion.Text.Trim(), out int idSolicitud) ||
+                    !int.TryParse(txtDiasSolicitados.Text.Trim(), out int diasSolicitados))
+                {
+                    MessageBox.Show("Verifique los valores numéricos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // 3. Validar días acumulados (manejo seguro de decimales)
+                decimal diasAcumulados;
+                if (!decimal.TryParse(txtDiasAcumulados.Text.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out diasAcumulados))
+                {
+                    MessageBox.Show("Formato inválido en días acumulados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // 4. Obtener estado seleccionado
+                string nuevoEstado = cbxEstado.SelectedItem?.ToString();
+                if (string.IsNullOrEmpty(nuevoEstado))
+                {
+                    MessageBox.Show("Seleccione un estado válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // 5. Validar formulario
+                if (!ValidarFormulario(true)) return;
+
+                // 6. Obtener datos actuales
                 var solicitudActual = await _apimodulonomina.GetAsync<SolicitudVacaciones>(
-                        $"SolicitudVacacionesControlador/BuscarPorId/{idSolicitud}");
-                estadoAnterior = solicitudActual?.Estado ?? "";
+                    $"SolicitudVacacionesControlador/BuscarPorId/{idSolicitud}");
+
+                // 7. Preparar objeto solicitud (manteniendo tu estructura original)
                 var solicitud = new SolicitudVacaciones
                 {
                     IdSolicitud = idSolicitud,
                     EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
                     FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
                     FechaFin = DateOnly.FromDateTime(dateFin.Value),
-                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
+                    DiasSolicitados = diasSolicitados, // Usamos el valor ya validado
                     Estado = nuevoEstado,
                     FechaCreacion = solicitudActual?.FechaCreacion ?? DateTime.Now.Date
                 };
-                var solicitud2 = new SolicitudVacaciones
-                {
-                    IdSolicitud = idSolicitud,
-                    EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
-                    FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
-                    FechaFin = DateOnly.FromDateTime(dateFin.Value),
-                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
-                    Estado = "Pendiente",
-                    FechaCreacion = solicitudActual?.FechaCreacion ?? DateTime.Now.Date
 
-                };
-                var solicitud3 = new SolicitudVacaciones
-                {
-                    IdSolicitud = idSolicitud,
-                    EmpleadoId = int.Parse(cbxEmpleado.SelectedValue.ToString()),
-                    FechaInicio = DateOnly.FromDateTime(dateInicio.Value),
-                    FechaFin = DateOnly.FromDateTime(dateFin.Value),
-                    DiasSolicitados = int.Parse(txtDiasSolicitados.Text.Trim()),
-                    Estado = "Rechazado",
-                    FechaCreacion = solicitudActual?.FechaCreacion ?? DateTime.Now.Date
-
-                };
-                if (!ValidarFormulario(true)) return;
-
-                /*int idSolicitud = int.Parse(txtIdSVacacion.Text);
-                string nuevoEstado = cbxEstado.Text;
-                string estadoAnterior = "";*/
-
-                // Obtener estado actual
-
-
-                // Validar cambio de estado a "Aprobado"
-                if (nuevoEstado == "Aprobado" && !UsuarioSesion.EsAdministrador)
-                {
-                    MessageBox.Show("Solo el administrador puede aprobar solicitudes",
-                                  "Permiso denegado",
-                                  MessageBoxButtons.OK,
-                                  MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Actualizar la solicitud
-
-
-
-                // 1. Obtener la fila seleccionada
-                if (dgvSolicitudes.CurrentRow == null)
-                {
-                    MessageBox.Show("Seleccione una solicitud para editar.", "Advertencia");
-                    return;
-                }
-
-                // 2. Obtener el ID y estado DE la solicitud
-                idSolicitud = Convert.ToInt32(txtIdSVacacion.Text);
-                nuevoEstado = cbxEstado.SelectedItem.ToString();
-
-
-
+                // 8. Validación especial para aprobación
                 if (nuevoEstado == "Aprobado")
                 {
+                    // 8.1 Validar permisos
+                    if (!UsuarioSesion.EsAdministrador)
+                    {
+                        MessageBox.Show("Solo el administrador puede aprobar solicitudes",
+                                      "Permiso denegado",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                    // 4. Crear el objeto de aprobación
+                    // 8.2 Validar días acumulados vs solicitados (comparación segura)
+                    if ((int)Math.Floor(diasAcumulados) < diasSolicitados)
+                    {
+                        MessageBox.Show($"No puede aprobar. Días acumulados: {diasAcumulados}, Días solicitados: {diasSolicitados}",
+                                      "Validación",
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // 8.3 Proceso de aprobación (manteniendo tu lógica original)
                     var aprobacion = new AprobacionVacaciones
                     {
-                        IdAprobacion = 0, // mi dto espera int jason espera string
-                        SolicitudId = idSolicitud,  // mi dto espera int jason espera string
-                        FechaAprobacion = DateTime.Now.Date, // mi dto espera DateTime jason espera string
-                        UsuarioAprobador = UsuarioSesion.Cedula  // mi dto espera string jason espera string
-
+                        IdAprobacion = 0,
+                        SolicitudId = idSolicitud,
+                        FechaAprobacion = DateTime.Now.Date,
+                        UsuarioAprobador = UsuarioSesion.Cedula
                     };
-                    string json = JsonConvert.SerializeObject(aprobacion);
-                    await _apimodulonomina.PostAsync<AprobacionVacaciones>("AprovacionVacacionesControlador/InsertarAprobacionVacaciones", aprobacion);
-                    await _apimodulonomina.PutAsync<SolicitudVacaciones>("SolicitudVacacionesControlador/ActualizarSolicitudVacaciones", solicitud);
+                    // Validación básica
+                    if (cbxEmpleado.SelectedValue == null)
+                    {
+                        txtDiasAcumulados.Text = "0";
+                        return;
+                    }
+                    
+                    // Conversión segura del ID
+                    if (!int.TryParse(cbxEmpleado.SelectedValue.ToString(), out int idEmpleado))
+                    {
+                        txtDiasAcumulados.Text = "0";
+                        return;
+                    }
+                    /*
+                    // Obtener saldo actual
+                    var saldo = await _apimodulonomina.GetAsync<SaldoVacaciones>(
+                        $"SaldoVacacionesControlador/BuscarSaldoPorIdEmpleado/{idEmpleado}");
+
+                    if (saldo == null)
+                    {
+                        MessageBox.Show("No se encontró el saldo de vacaciones del empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }*/
+/*
+                    // Calcular nuevos valores
+                    decimal nuevosDiasAcumulados = saldo.DiasAcumulados - diasSolicitados;
+                    decimal nuevosDiasUsados = saldo.DiasUsadosAnioActual + diasSolicitados;*/
+
+                    // Crear objeto de actualización
+                    // Modifica el objeto actualizacion para asegurar el formato correcto
+                    /*var actualizacion = new
+                    {
+                        Id = saldo.Id,
+                        IdEmpleado = int.Parse(cbxEmpleado.SelectedValue.ToString()),
+                        DiasAcumulados = nuevosDiasAcumulados.ToString("0.00", CultureInfo.InvariantCulture),
+                        FechaUltimaAsignacion = dateInicio.Value.ToString("yyyy-MM-dd"),
+                        DiasUsadosAnioActual = nuevosDiasUsados.ToString("0.00", CultureInfo.InvariantCulture),
+                        AnioActual = 2025
+                    };*/
+
+                    // Asignar ID al campo de texto (si es necesario)
+                    //txtSaldoid.Text = saldo.Id.ToString();
+
+                    // Ejecutar operaciones
+                    await _apimodulonomina.PostAsync<AprobacionVacaciones>(
+                        "AprovacionVacacionesControlador/InsertarAprobacionVacaciones",
+                        aprobacion);
+
+                    await _apimodulonomina.PutAsync<SolicitudVacaciones>(
+                        "SolicitudVacacionesControlador/ActualizarSolicitudVacaciones",
+                        solicitud);
+
+                    /*await _apimodulonomina.PutAsync<SaldoVacaciones>(
+                        "SaldoVacacionesControlador/ActualizarSaldoVacaciones",
+                        actualizacion);*/
+
+
 
                 }
-                else if (nuevoEstado == "Rechazado")
+                else if (nuevoEstado == "Rechazado" || nuevoEstado == "Pendiente")
                 {
-                    if (string.IsNullOrWhiteSpace(txtidAprovacion.Text))
-                    {
-                        MessageBox.Show("Clik en el id a eliminar en la tabla de aprovados",
-                                      "Validación",
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    // Convertir el ID a entero de forma segura
+                    // 9. Validación para Rechazado/Pendiente
                     if (!int.TryParse(txtidAprovacion.Text.Trim(), out int idaprovacion))
                     {
-                        MessageBox.Show("El ID de aprobación no es válido",
-                                      "Error",
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Error);
+                        MessageBox.Show("ID de aprobación no válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    // Confirmar eliminación
-                    var confirmacion = MessageBox.Show($"¿Está seguro de eliminar la aprobación con ID {idaprovacion}?",
-                                                     "Confirmar eliminación",
-                                                     MessageBoxButtons.YesNo,
-                                                     MessageBoxIcon.Question);
+                    // 10. Confirmación de acción
+                    var confirmacion = MessageBox.Show(
+                        $"¿Está seguro de cambiar a estado {nuevoEstado}?",
+                        "Confirmar",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
 
                     if (confirmacion != DialogResult.Yes) return;
 
-                    // Eliminar usando el ID directamente en la URL
-                    await _apimodulonomina.DeleteAsync($"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
-                    await _apimodulonomina.PutAsync<SolicitudVacaciones>("SolicitudVacacionesControlador/ActualizarSolicitudVacaciones", solicitud3);
-                }
-                else if (nuevoEstado == "Pendiente")
-                {
-                    if (string.IsNullOrWhiteSpace(txtidAprovacion.Text))
-                    {
-                        MessageBox.Show("Seleccione una aprobación para eliminar",
-                                      "Validación",
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Warning);
-                        return;
-                    }
+                    // 11. Ejecutar acciones (manteniendo tu lógica original)
+                    await _apimodulonomina.DeleteAsync(
+                        $"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
 
-                    // Convertir el ID a entero de forma segura
-                    if (!int.TryParse(txtidAprovacion.Text.Trim(), out int idaprovacion))
-                    {
-                        MessageBox.Show("El ID de aprobación no es válido",
-                                      "Error",
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    // Confirmar eliminación
-                    var confirmacion = MessageBox.Show($"¿Está seguro de eliminar la aprobación con ID {idaprovacion}?",
-                                                     "Confirmar eliminación",
-                                                     MessageBoxButtons.YesNo,
-                                                     MessageBoxIcon.Question);
-
-                    if (confirmacion != DialogResult.Yes) return;
-
-                    // Eliminar usando el ID directamente en la URL
-                    await _apimodulonomina.DeleteAsync($"AprovacionVacacionesControlador/EliminarAprobacionVacaciones/{idaprovacion}");
-                    await _apimodulonomina.PutAsync<SolicitudVacaciones>("SolicitudVacacionesControlador/ActualizarSolicitudVacaciones", solicitud2);
+                    await _apimodulonomina.PutAsync<SolicitudVacaciones>(
+                        "SolicitudVacacionesControlador/ActualizarSolicitudVacaciones",
+                        solicitud);
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar aqui la solicitud.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // 12. Actualización normal para otros estados
+                    await _apimodulonomina.PutAsync<SolicitudVacaciones>(
+                        "SolicitudVacacionesControlador/ActualizarSolicitudVacaciones",
+                        solicitud);
                 }
+
+                // 13. Actualizar vista
                 await CargarVacaciones();
-
-
-
+                MessageBox.Show("Solicitud actualizada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR AL EDITAR LA SOLICITUD");
+                MessageBox.Show($"Error al editar la solicitud: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        /*private async void btnEliminarA_Click(object sender, EventArgs e)
+
+
+
+        private void dgvSolicitudes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private async void cbxEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validación básica
+                if (cbxEmpleado.SelectedValue == null)
+                {
+                    txtDiasAcumulados.Text = "0";
+                    return;
+                }
+
+                // Conversión segura del ID
+                int idEmpleado;
+                if (!int.TryParse(cbxEmpleado.SelectedValue.ToString(), out idEmpleado))
+                {
+                    txtDiasAcumulados.Text = "0";
+                    return;
+                }
+
+                // Obtener saldo (versión simplificada)
+                var saldo = await _apimodulonomina.GetAsync<SaldoVacaciones>(
+                    $"SaldoVacacionesControlador/BuscarSaldoPorIdEmpleado/{idEmpleado}");
+
+                // Manejo seguro del valor decimal/int
+                int diasAcumulados = 0;
+                if (saldo != null)
+                {
+                    // Conversión directa a entero (truncando decimales)
+                    diasAcumulados = (int)saldo.DiasAcumulados;
+                }
+
+                // Asignación segura
+                txtDiasAcumulados.Text = diasAcumulados.ToString();
+
+                // Feedback opcional
+                if (diasAcumulados == 0)
+                {
+                    MessageBox.Show("El empleado no tiene días acumulados");
+                }
+            }
+            catch (Exception ex)
+            {
+                txtDiasAcumulados.Text = "0";
+                MessageBox.Show("Error al cargar días acumulados: " + ex.Message,
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+    }
+}
+
+
+
+
+/*private void MostrarError(string mensaje, Exception ex, bool esCritico = true)
+       {
+           string mensajeCompleto = $"{mensaje}: {ex.Message}";
+
+           if (esCritico)
+           {
+               MessageBox.Show(mensajeCompleto, "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           }
+           else
+           {
+               MessageBox.Show(mensajeCompleto, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+           }
+
+           // Loggear el error (podrías implementar un sistema de logging aquí)
+           Console.WriteLine($"{DateTime.Now}: {mensajeCompleto}\n{ex.StackTrace}");
+       }*/
+
+
+/*private async void btnEliminarA_Click(object sender, EventArgs e)
         {
 
 
@@ -893,10 +1005,3 @@ namespace WinModuloNomina.Vista
                 await CargarVacaciones(); // Actualizar la vista siempre
             }
         }*/
-
-        private void dgvSolicitudes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-    }
-}
